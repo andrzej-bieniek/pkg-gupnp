@@ -1,0 +1,159 @@
+gupnp (0.13.2-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+    Hello from from Thailand Mini-DebCamp 2010 BSP
+  * Added versioned build-dep on docbook-xsl (Closes:#569770)
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Sun, 14 Mar 2010 14:37:08 +0700
+
+gupnp (0.13.2-1) unstable; urgency=low
+
+  * New upstream release (Closes: #562045)
+  * Clarify copyright
+
+ -- Ross Burton <ross@debian.org>  Mon, 25 Jan 2010 09:06:26 +0000
+
+gupnp (0.13.1-1) unstable; urgency=low
+
+  * New upstream release
+  - Fallback to unix CM when NetworkManager isn't present (Closes: #548707)
+
+ -- Ross Burton <ross@debian.org>  Fri, 16 Oct 2009 09:16:39 +0100
+
+gupnp (0.13.0-3) unstable; urgency=low
+
+  * Add missing dbus-glib build-dependency (Closes: #548452)
+  * Don't validate DTDs to avoid network
+
+ -- Ross Burton <ross@debian.org>  Sun, 27 Sep 2009 19:10:54 +0100
+
+gupnp (0.13.0-2) unstable; urgency=low
+
+  * Bump libgssdp depends (Closes: #548452)
+
+ -- Ross Burton <ross@debian.org>  Sun, 27 Sep 2009 15:28:11 +0100
+
+gupnp (0.13.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Thu, 24 Sep 2009 15:24:29 +0100
+
+gupnp (0.12.8-1) unstable; urgency=low
+
+  * New upstream upstream, incorporating security NMU
+
+ -- Ross Burton <ross@debian.org>  Mon, 13 Jul 2009 08:36:59 +0100
+
+gupnp (0.12.6-3.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix remote denial of service that can be triggered via an action
+    without any content (CVE-2009-2174; Closes: #534594).
+
+ -- Nico Golde <nion@debian.org>  Wed, 01 Jul 2009 13:10:13 +0200
+
+gupnp (0.12.6-3) unstable; urgency=low
+
+  * Bump libglib2.0 build dependency (Closes: #517393)
+  * Change the -doc package to arch:all (Closes: #517611)
+
+ -- Ross Burton <ross@debian.org>  Sun, 08 Mar 2009 00:13:29 +0000
+
+gupnp (0.12.6-2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Fri, 20 Feb 2009 15:43:34 +0000
+
+gupnp (0.12.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ross Burton <ross@debian.org>  Tue, 30 Sep 2008 16:19:56 +0100
+
+gupnp (0.12.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Mon, 30 Jun 2008 09:32:18 +0100
+
+gupnp (0.12-1) unstable; urgency=low
+
+  * New upstream release.
+  * Rename library packages to reflect soname
+  * Add gupnp-binding-tool and Python recommends to -dev
+
+ -- Ross Burton <ross@debian.org>  Tue, 17 Jun 2008 09:30:53 +0100
+
+gupnp (0.10.1-2) unstable; urgency=low
+
+  * In -dev, tighten dependency on gssdp-dev, add libsoup2.4-dev and
+    libxml2-dev.
+
+ -- Ross Burton <ross@debian.org>  Wed, 21 May 2008 08:37:58 +0100
+
+gupnp (0.10.1-1) unstable; urgency=low
+
+  * Brown paper bag release to bump soname after ABI breakage.
+
+ -- Ross Burton <ross@debian.org>  Mon, 19 May 2008 21:58:08 +0100
+
+gupnp (0.10-1) unstable; urgency=low
+
+  * New upstream release
+    - Update build depends
+  * Add useful packages to recommends for -doc and -dbg
+  * Don't use $(Source-Version)
+  
+ -- Ross Burton <ross@debian.org>  Tue, 13 May 2008 17:49:27 +0100
+
+gupnp (0.8-1) unstable; urgency=low
+
+  * New upstream release
+    - No translations (Closes: #460607)
+  * Add debian/watch.
+
+ -- Ross Burton <ross@debian.org>  Tue, 18 Mar 2008 12:41:19 +0000
+
+gupnp (0.6-2) unstable; urgency=low
+
+  * Add -dbg package.
+
+ -- Ross Burton <ross@debian.org>  Tue, 16 Oct 2007 17:05:57 +0100
+
+gupnp (0.6-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Sun, 23 Sep 2007 14:47:38 +0100
+
+gupnp (0.4-2) unstable; urgency=low
+
+  * Add libgssdp-1.0-dev dependency on libgupnp-1.0-dev.
+
+ -- Ross Burton <ross@debian.org>  Thu, 23 Aug 2007 17:02:10 +0100
+
+gupnp (0.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Thu, 23 Aug 2007 16:34:44 +0100
+
+gupnp (0.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Thu,  2 Aug 2007 11:36:54 +0100
+
+gupnp (0.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ross Burton <ross@debian.org>  Thu, 26 Jul 2007 19:32:22 +0100
+
+gupnp (0.1-1) unstable; urgency=low
+
+  * Initial packaging.
+
+ -- Ross Burton <ross@debian.org>  Wed, 13 Jun 2007 09:52:29 +0100

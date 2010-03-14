@@ -1,0 +1,45 @@
+Source: gupnp
+Section: libs
+Priority: optional
+Maintainer: Ross Burton <ross@debian.org>
+Build-Depends: debhelper (>= 5), cdbs, uuid-dev, libglib2.0-dev (>= 2.18), libsoup2.4-dev, libxml2-dev, libgssdp-1.0-dev (>= 0.7.1), libdbus-glib-1-dev, shared-mime-info, xsltproc, docbook-xsl (>= 1.75.2+dfsg-5)
+Standards-Version: 3.8.3
+
+Package: libgupnp-1.0-3
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, shared-mime-info
+Description: GObject-based library for UPnP
+ A GObject-based API for doing UPnP transparently.
+
+Package: libgupnp-1.0-dev
+Section: libdevel
+Architecture: any
+Depends: libgupnp-1.0-3 (= ${binary:Version}), libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
+Recommends: python
+Suggests: libgupnp-doc
+Description: GObject-based library for UPnP (development files)
+ A GObject-based API for doing UPnP transparently.
+ .
+ This package contains the development files.
+
+Package: libgupnp-1.0-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: libgupnp-1.0-3 (= ${binary:Version}), ${misc:Depends}
+Recommends: libgssdp-1.0-dbg, libglib2.0-0-dbg
+Description: GObject-based library for UPnP (debug symbols)
+ A GObject-based API for doing UPnP transparently.
+ .
+ This package contains the debug symbols.
+
+Package: libgupnp-doc
+Section: doc
+Architecture: all
+Depends: lynx | www-browser, ${misc:Depends}
+Recommends: libgssdp-doc
+Description: GObject-based library for UPnP (documentation)
+ A GObject-based API for doing UPnP transparently.
+ .
+ This package contains the documentation.
