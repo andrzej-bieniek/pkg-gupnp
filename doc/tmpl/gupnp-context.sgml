@@ -17,6 +17,9 @@ GUPnPContext
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT GUPnPContext ##### -->
 <para>
 
@@ -117,6 +120,18 @@ GUPnPContext
 @context: 
 @local_path: 
 @server_path: 
+
+
+<!-- ##### FUNCTION gupnp_context_host_path_for_agent ##### -->
+<para>
+
+</para>
+
+@context: 
+@local_path: 
+@server_path: 
+@user_agent: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gupnp_context_unhost_path ##### -->

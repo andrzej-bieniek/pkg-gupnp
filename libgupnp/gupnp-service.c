@@ -182,26 +182,64 @@ notify_data_free (NotifyData *data)
 }
 
 struct _GUPnPServiceAction {
+        volatile gint ref_count;
+
         GUPnPContext *context;
 
         char         *name;
 
         SoupMessage  *msg;
 
-        xmlDoc       *doc;
+        GUPnPXMLDoc  *doc;
         xmlNode      *node;
 
         GString      *response_str;
 };
 
+GUPnPServiceAction *
+gupnp_service_action_ref (GUPnPServiceAction *action)
+{
+        g_return_val_if_fail (action, NULL);
+        g_return_val_if_fail (action->ref_count > 0, NULL);
+
+        g_atomic_int_inc (&action->ref_count);
+
+        return action;
+}
+
+void
+gupnp_service_action_unref (GUPnPServiceAction *action)
+{
+        g_return_if_fail (action);
+        g_return_if_fail (action->ref_count > 0);
+
+        if (g_atomic_int_dec_and_test (&action->ref_count)) {
+                g_free (action->name);
+                g_object_unref (action->msg);
+                g_object_unref (action->context);
+                g_object_unref (action->doc);
+
+                g_slice_free (GUPnPServiceAction, action);
+        }
+}
+
+/**
+ * gupnp_service_action_get_type:
+ *
+ * Get the gtype for GUPnPServiceActon
+ *
+ * Return value: The gtype of GUPnPServiceAction
+ **/
 GType
 gupnp_service_action_get_type (void)
 {
         static GType our_type = 0;
 
         if (our_type == 0)
-                our_type = g_pointer_type_register_static
-                                        ("GUPnPServiceAction");
+                our_type = g_boxed_type_register_static
+                        ("GUPnPServiceAction",
+                         (GBoxedCopyFunc) gupnp_service_action_ref,
+                         (GBoxedFreeFunc) gupnp_service_action_unref);
 
         return our_type;
 }
@@ -234,7 +272,7 @@ finalize_action (GUPnPServiceAction *action)
         response_body = g_string_free (action->response_str, FALSE);
 
         soup_message_set_response (action->msg,
-                                   "text/xml",
+                                   "text/xml; charset=\"utf-8\"",
                                    SOUP_MEMORY_TAKE,
                                    response_body,
                                    strlen (response_body));
@@ -251,12 +289,7 @@ finalize_action (GUPnPServiceAction *action)
         soup_server_unpause_message (server, action->msg);
 
         /* Cleanup */
-        g_free (action->name);
-        g_object_unref (action->msg);
-        g_object_unref (action->context);
-        xmlFreeDoc (action->doc);
-
-        g_slice_free (GUPnPServiceAction, action);
+        gupnp_service_action_unref (action);
 }
 
 /**
@@ -276,13 +309,14 @@ gupnp_service_action_get_name (GUPnPServiceAction *action)
 }
 
 /**
- * gupnp_service_action_get_locales
+ * gupnp_service_action_get_locales:
  * @action: A #GUPnPServiceAction
  *
  * Get an ordered (preferred first) #GList of locales preferred by
  * the client. Free list and elements after use.
  *
- * Return value: A #GList of #char* locale names.
+ * Return value: (element-type utf8) (transfer full): A #GList of #char*
+ * locale names.
  **/
 GList *
 gupnp_service_action_get_locales (GUPnPServiceAction *action)
@@ -357,7 +391,50 @@ gupnp_service_action_get_valist (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_get_value
+ * gupnp_service_action_get_values:
+ * @action: A #GUPnPServiceAction
+ * @arg_names: (element-type utf8) : A #GList of argument names as string
+ * @arg_types: (element-type GType): A #GList of argument types as #GType
+ *
+ * A variant of #gupnp_service_action_get that uses #GList instead of varargs.
+ *
+ * Return value: (element-type GValue) (transfer full): The values as #GList of
+ * #GValue. #g_list_free the returned list and #g_value_unset and #g_slice_free
+ * each element.
+ **/
+GList *
+gupnp_service_action_get_values (GUPnPServiceAction *action,
+                                 GList              *arg_names,
+                                 GList              *arg_types)
+{
+        GList *arg_values;
+        int i;
+
+        g_return_val_if_fail (action != NULL, NULL);
+
+        arg_values = NULL;
+
+        for (i = 0; i < g_list_length (arg_names); i++) {
+                const char *arg_name;
+                GType arg_type;
+                GValue *arg_value;
+
+                arg_name = (const char *) g_list_nth_data (arg_names, i);
+                arg_type = (GType) g_list_nth_data (arg_types, i);
+
+                arg_value = g_slice_new0 (GValue);
+                g_value_init (arg_value, arg_type);
+
+                gupnp_service_action_get_value (action, arg_name, arg_value);
+
+                arg_values = g_list_append (arg_values, arg_value);
+        }
+
+        return arg_values;
+}
+
+/**
+ * gupnp_service_action_get_value: (skip)
  * @action: A #GUPnPServiceAction
  * @argument: The name of the argument to retrieve
  * @value: The #GValue to store the value of the argument, initialized
@@ -391,6 +468,35 @@ gupnp_service_action_get_value (GUPnPServiceAction *action,
                 g_warning ("Failed to retreive '%s' argument of '%s' action",
                            argument,
                            action->name);
+}
+
+/**
+ * gupnp_service_action_get_gvalue:
+ * @action: A #GUPnPServiceAction
+ * @argument: The name of the argument to retrieve
+ * @type: The type of argument to retrieve
+ *
+ * Rename To: gupnp_service_action_get_value
+ * Retrieves the value of @argument into a GValue of type @type and returns it.
+ * The method exists only and only to satify PyGI, please use
+ * #gupnp_service_action_get_value and ignore this if possible.
+ *
+ * Return value: (transfer full): Value as #GValue associated with @action.
+ * #g_value_unset and #g_slice_free it after usage.
+ **/
+GValue *
+gupnp_service_action_get_gvalue (GUPnPServiceAction *action,
+                                       const char         *argument,
+                                       GType               type)
+{
+        GValue *val;
+
+        val = g_slice_new0 (GValue);
+        g_value_init (val, type);
+
+        gupnp_service_action_get_value (action, argument, val);
+
+        return val;
 }
 
 /**
@@ -456,6 +562,51 @@ gupnp_service_action_set_valist (GUPnPServiceAction *action,
                 }
 
                 arg_name = va_arg (var_args, const char *);
+        }
+}
+
+/**
+ * gupnp_service_action_set_values:
+ * @action: A #GUPnPServiceAction
+ * @arg_names: (element-type utf8) (transfer-none): A #GList of argument names
+ * @arg_values: (element-type GValue) (transfer-none): The #GList of values (as
+ * #GValues) that line up with @arg_names.
+ *
+ * Sets the specified action return values.
+ **/
+void
+gupnp_service_action_set_values (GUPnPServiceAction *action,
+                                 GList              *arg_names,
+                                 GList              *arg_values)
+{
+        g_return_if_fail (action != NULL);
+        g_return_if_fail (arg_names != NULL);
+        g_return_if_fail (arg_values != NULL);
+        g_return_if_fail (g_list_length (arg_names) ==
+                          g_list_length (arg_values));
+
+        if (action->msg->status_code == SOUP_STATUS_INTERNAL_SERVER_ERROR) {
+                g_warning ("Calling gupnp_service_action_set_value() after "
+                           "having called gupnp_service_action_return_error() "
+                           "is not allowed.");
+
+                return;
+        }
+
+        /* Append to response */
+        for (; arg_names; arg_names = arg_names->next) {
+                const char *arg_name;
+                GValue *value;
+
+                arg_name = arg_names->data;
+                value = arg_values->data;
+
+                xml_util_start_element (action->response_str, arg_name);
+                gvalue_util_value_append_to_xml_string (value,
+                                                        action->response_str);
+                xml_util_end_element (action->response_str, arg_name);
+
+                arg_values = arg_values->next;
         }
 }
 
@@ -596,7 +747,8 @@ gupnp_service_action_return_error (GUPnPServiceAction *action,
  * Get the #SoupMessage associated with @action. Mainly intended for
  * applications to be able to read HTTP headers received from clients.
  *
- * Return value: #SoupMessage associated with @action. Unref after using it.
+ * Return value: (transfer full): #SoupMessage associated with @action. Unref
+ * after using it.
  **/
 SoupMessage *
 gupnp_service_action_get_message (GUPnPServiceAction *action)
@@ -785,9 +937,10 @@ control_server_handler (SoupServer        *server,
         /* Create action structure */
         action = g_slice_new (GUPnPServiceAction);
 
+        action->ref_count    = 1;
         action->name         = g_strdup (action_name);
         action->msg          = g_object_ref (msg);
-        action->doc          = doc;
+        action->doc          = gupnp_xml_doc_new(doc);
         action->node         = action_node;
         action->response_str = new_action_response_str (action_name,
                                                         soap_action);
@@ -1159,21 +1312,23 @@ subscription_server_handler (SoupServer        *server,
         }
 }
 
-void
-got_introspection (GUPnPServiceInfo *info,
-    GUPnPServiceIntrospection *introspection,
-    const GError *error,
-    gpointer user_data)
+static void
+got_introspection (GUPnPServiceInfo          *info,
+                   GUPnPServiceIntrospection *introspection,
+                   const GError              *error,
+                   gpointer                   user_data)
 {
         GUPnPService *service = user_data;
         const GList *state_variables, *l;
         GHashTableIter iter;
-        SubscriptionData *data;
+        gpointer data;
+
+        service = GUPNP_SERVICE (user_data);
 
         if (introspection) {
                 state_variables =
-                    gupnp_service_introspection_list_state_variables
-                    (introspection);
+                        gupnp_service_introspection_list_state_variables
+                                (introspection);
 
                 for (l = state_variables; l; l = l->next) {
                         GUPnPServiceStateVariableInfo *variable;
@@ -1184,21 +1339,20 @@ got_introspection (GUPnPServiceInfo *info,
                                 continue;
 
                         service->priv->state_variables =
-                            g_list_prepend (service->priv->state_variables,
-                                g_strdup (variable->name));
+                                g_list_prepend (service->priv->state_variables,
+                                                g_strdup (variable->name));
                 }
 
                 g_object_unref (introspection);
-        } else {
+        } else
                 g_warning ("Failed to get SCPD: %s\n"
-                    "The initial event message will not be sent.",
-                    error ? error->message : "No error");
-        }
+                           "The initial event message will not be sent.",
+                           error ? error->message : "No error");
 
         g_hash_table_iter_init (&iter, service->priv->subscriptions);
 
-        while (g_hash_table_iter_next (&iter, NULL, (gpointer*) &data))
-                send_initial_state (data);
+        while (g_hash_table_iter_next (&iter, NULL, &data))
+                send_initial_state ((SubscriptionData *) data);
 
         g_object_unref (service);
 }
@@ -1228,9 +1382,9 @@ gupnp_service_constructor (GType                  type,
         info    = GUPNP_SERVICE_INFO (object);
 
         /* Get introspection and save state variable names */
-
-        gupnp_service_info_get_introspection_async (info, got_introspection,
-            object);
+        gupnp_service_info_get_introspection_async (info,
+                                                    got_introspection,
+                                                    object);
         g_object_ref (object);
 
         /* Get server */
@@ -1301,9 +1455,11 @@ gupnp_service_set_property (GObject      *object,
         service = GUPNP_SERVICE (object);
 
         switch (property_id) {
-        case PROP_ROOT_DEVICE:
+        case PROP_ROOT_DEVICE: {
+                GUPnPRootDevice **dev;
+
                 service->priv->root_device = g_value_get_object (value);
-                GUPnPRootDevice **dev = &(service->priv->root_device);
+                dev = &(service->priv->root_device);
 
                 g_object_add_weak_pointer
                         (G_OBJECT (service->priv->root_device),
@@ -1318,6 +1474,7 @@ gupnp_service_set_property (GObject      *object,
                                                  0);
 
                 break;
+        }
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
                 break;
@@ -1615,7 +1772,7 @@ notify_got_response (SoupSession *session,
                 /* Other failure: Try next callback or signal failure. */
                 if (data->callbacks->next) {
                         SoupURI *uri;
-                        SoupSession *session;
+                        SoupSession *service_session;
 
                         /* Call next callback */
                         data->callbacks = data->callbacks->next;
@@ -1628,9 +1785,9 @@ notify_got_response (SoupSession *session,
                         data->pending_messages = 
                                 g_list_prepend (data->pending_messages, msg);
 
-                        session = gupnp_service_get_session (data->service);
+                        service_session = gupnp_service_get_session (data->service);
 
-                        soup_session_requeue_message (session, msg);
+                        soup_session_requeue_message (service_session, msg);
                 } else {
                         /* Emit 'notify-failed' signal */
                         GError *error;
@@ -1785,13 +1942,13 @@ gupnp_service_notify_value (GUPnPService *service,
                             const char   *variable,
                             const GValue *value)
 {
+        NotifyData *data;
+
         g_return_if_fail (GUPNP_IS_SERVICE (service));
         g_return_if_fail (variable != NULL);
         g_return_if_fail (G_IS_VALUE (value));
 
         /* Queue */
-        NotifyData *data;
-
         data = g_slice_new0 (NotifyData);
 
         data->variable = g_strdup (variable);
@@ -1845,7 +2002,7 @@ static char *
 strip_camel_case (char *camel_str)
 {
         char *stripped;
-        int i, j;
+        unsigned int i, j;
 
         /* Keep enough space for underscores */
         stripped = g_malloc (strlen (camel_str) * 2);

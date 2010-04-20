@@ -59,6 +59,9 @@ gupnp_service_get_type (void) G_GNUC_CONST;
  **/
 typedef struct _GUPnPServiceAction GUPnPServiceAction;
 
+GType
+gupnp_service_action_get_type (void) G_GNUC_CONST;
+
 #define GUPNP_TYPE_SERVICE_ACTION (gupnp_service_action_get_type ())
 
 typedef struct _GUPnPServicePrivate GUPnPServicePrivate;
@@ -96,6 +99,10 @@ typedef struct {
         void (* _gupnp_reserved4) (void);
 } GUPnPServiceClass;
 
+
+GType
+gupnp_service_action_get_type (void);
+
 const char *
 gupnp_service_action_get_name     (GUPnPServiceAction *action);
 
@@ -110,10 +117,20 @@ void
 gupnp_service_action_get_valist   (GUPnPServiceAction *action,
                                    va_list             var_args);
 
+GList *
+gupnp_service_action_get_values (GUPnPServiceAction *action,
+                                 GList              *arg_names,
+                                 GList              *arg_types);
+
 void
 gupnp_service_action_get_value    (GUPnPServiceAction *action,
                                    const char         *argument,
                                    GValue             *value);
+
+GValue *
+gupnp_service_action_get_gvalue   (GUPnPServiceAction *action,
+                                   const char         *argument,
+                                   GType               type);
 
 void
 gupnp_service_action_set          (GUPnPServiceAction *action,
@@ -122,6 +139,11 @@ gupnp_service_action_set          (GUPnPServiceAction *action,
 void
 gupnp_service_action_set_valist   (GUPnPServiceAction *action,
                                    va_list             var_args);
+
+void
+gupnp_service_action_set_values   (GUPnPServiceAction *action,
+                                   GList              *arg_names,
+                                   GList              *arg_values);
 
 void
 gupnp_service_action_set_value    (GUPnPServiceAction *action,

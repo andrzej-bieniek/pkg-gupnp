@@ -1,3 +1,13 @@
+<!-- ##### SIGNAL GUPnPContext::about-to-send ##### -->
+<para>
+
+</para>
+
+@gupnpcontext: the object which received the signal.
+@arg1: 
+@arg2: 
+@Returns: 
+
 <!-- ##### ARG GUPnPContext:host-ip ##### -->
 <para>
 
@@ -10,17 +20,15 @@
 </para>
 
 
+<!-- ##### ARG GUPnPContextManager:error ##### -->
+<para>
+
+</para>
+
+
 <!-- ##### ARG GUPnPRootDevice:relative-location ##### -->
 <para>
 
 </para>
 
-
-<!-- ##### FUNCTION gupnp_context_get_name ##### -->
-<para>
-
-</para>
-
-@context: 
-@Returns: 
 

@@ -93,6 +93,57 @@ EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-unix-context-manager.c  \
 	     gupnp-unix-context-manager.h
 
-CLEANFILES = $(BUILT_SOURCES)
+
+if HAVE_INTROSPECTION
+
+GUPnP-1.0.gir: libgupnp-1.0.la $(INTROSPECTION_SCANNER)
+	$(AM_V_GEN) \
+	$(INTROSPECTION_SCANNER) -v \
+		--namespace=GUPnP --nsversion=1.0 \
+		--include=libxml2-2.0 \
+		--include=GObject-2.0 \
+		--include=Soup-2.4 \
+		--include=GSSDP-1.0 \
+		--library=$< \
+		--libtool="$(top_builddir)/libtool" \
+		--pkg libxml-2.0 \
+		--pkg gobject-2.0 \
+		--pkg gssdp-1.0 \
+		--pkg libsoup-2.4 \
+		--output $@ \
+		-I$(top_srcdir) \
+		$(addprefix $(top_srcdir)/libgupnp/, $(libgupnpinc_HEADERS)) \
+		$(top_srcdir)/libgupnp/gupnp-context.c \
+		$(top_srcdir)/libgupnp/gupnp-context-manager.c	\
+		$(top_srcdir)/libgupnp/gupnp-control-point.c \
+		$(top_srcdir)/libgupnp/gupnp-device.c \
+		$(top_srcdir)/libgupnp/gupnp-device-info.c \
+		$(top_srcdir)/libgupnp/gupnp-device-proxy.c \
+		$(top_srcdir)/libgupnp/gupnp-error.c \
+		$(top_srcdir)/libgupnp/gupnp-resource-factory.c \
+		$(top_srcdir)/libgupnp/gupnp-root-device.c \
+		$(top_srcdir)/libgupnp/gupnp-service.c	\
+		$(top_srcdir)/libgupnp/gupnp-service-info.c \
+		$(top_srcdir)/libgupnp/gupnp-service-proxy.c \
+		$(top_srcdir)/libgupnp/gupnp-service-introspection.c \
+		$(top_srcdir)/libgupnp/gupnp-xml-doc.c	\
+		$(top_srcdir)/libgupnp/gupnp-types.c
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = GUPnP-1.0.gir
+
+typelibdir = $(libdir)/girepository-1.0/
+typelib_DATA = $(gir_DATA:.gir=.typelib)
+
+%.typelib: %.gir $(INTROSPECTION_COMPILER)
+	$(AM_V_GEN) \
+	$(INTROSPECTION_COMPILER) \
+		--includedir=$(srcdir) \
+		--includedir=. \
+		$(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
+
+endif
+
+CLEANFILES = $(BUILT_SOURCES) $(gir_DATA) $(typelib_DATA)
 DISTCLEANFILES = $(BUILT_SOURCES)
 MAINTAINERCLEANFILES = Makefile.in $(BUILT_SOURCES)

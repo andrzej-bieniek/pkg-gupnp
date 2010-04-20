@@ -547,8 +547,8 @@ gupnp_service_info_get_event_subscription_url (GUPnPServiceInfo *info)
  * Warning: You  should use gupnp_service_info_get_introspection_async()
  * instead, this function re-enter the GMainloop before returning.
  *
- * Return value: A new #GUPnPServiceIntrospection for this service or %NULL.
- * Unref after use.
+ * Return value: (transfer full):  A new #GUPnPServiceIntrospection for this
+ * service or %NULL. Unref after use.
  **/
 GUPnPServiceIntrospection *
 gupnp_service_info_get_introspection (GUPnPServiceInfo *info,
@@ -582,8 +582,6 @@ gupnp_service_info_get_introspection (GUPnPServiceInfo *info,
 
                 return NULL;
         }
-
-        http_request_set_user_agent (msg);
 
         /* Send off the message */
         session = gupnp_context_get_session (info->priv->context);
@@ -719,8 +717,6 @@ gupnp_service_info_get_introspection_async
 
                 return;
         }
-
-        http_request_set_user_agent (data->message);
 
         data->info      = info;
         data->callback  = callback;

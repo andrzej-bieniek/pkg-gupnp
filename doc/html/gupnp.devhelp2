@@ -11,7 +11,7 @@
       <sub name="Device Information" link="api-device-info.html">
         <sub name="GUPnPDeviceInfo" link="GUPnPDeviceInfo.html"/>
         <sub name="GUPnPServiceInfo" link="GUPnPServiceInfo.html"/>
-        <sub name="GUPnPServiceIntrospection" link="GUPnPServiceIntrospection.html"/>
+        <sub name="GUPnPServiceIntrospection" link="gupnp-gupnp-service-introspection.html"/>
       </sub>
       <sub name="Device Control" link="api-device-control.html">
         <sub name="GUPnPControlPoint" link="GUPnPControlPoint.html"/>
@@ -40,6 +40,7 @@
       <sub name="Service Description" link="schemas-service.html"/>
     </sub>
     <sub name="" link="glossary.html"/>
+    <sub name="Annotation Glossary" link="annotation-glossary.html"/>
     <sub name="" link="ix01.html"/>
   </chapters>
   <functions>
@@ -97,18 +98,18 @@
     <keyword type="property" name="The &quot;service-type&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--service-type"/>
     <keyword type="property" name="The &quot;udn&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--udn"/>
     <keyword type="property" name="The &quot;url-base&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--url-base"/>
-    <keyword type="enum" name="enum GUPnPServiceActionArgDirection" link="GUPnPServiceIntrospection.html#GUPnPServiceActionArgDirection"/>
-    <keyword type="struct" name="GUPnPServiceActionArgInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceActionArgInfo"/>
-    <keyword type="struct" name="GUPnPServiceActionInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceActionInfo"/>
-    <keyword type="struct" name="GUPnPServiceStateVariableInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceStateVariableInfo"/>
-    <keyword type="struct" name="GUPnPServiceIntrospection" link="GUPnPServiceIntrospection.html#GUPnPServiceIntrospection-struct"/>
-    <keyword type="function" name="gupnp_service_introspection_list_action_names ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-action-names"/>
-    <keyword type="function" name="gupnp_service_introspection_list_actions ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-actions"/>
-    <keyword type="function" name="gupnp_service_introspection_get_action ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-get-action"/>
-    <keyword type="function" name="gupnp_service_introspection_list_state_variable_names ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-state-variable-names"/>
-    <keyword type="function" name="gupnp_service_introspection_list_state_variables ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-state-variables"/>
-    <keyword type="function" name="gupnp_service_introspection_get_state_variable ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-get-state-variable"/>
-    <keyword type="property" name="The &quot;scpd&quot; property" link="GUPnPServiceIntrospection.html#GUPnPServiceIntrospection--scpd"/>
+    <keyword type="enum" name="enum GUPnPServiceActionArgDirection" link="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgDirection"/>
+    <keyword type="struct" name="GUPnPServiceActionArgInfo" link="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgInfo"/>
+    <keyword type="struct" name="GUPnPServiceActionInfo" link="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo"/>
+    <keyword type="struct" name="GUPnPServiceStateVariableInfo" link="gupnp-gupnp-service-introspection.html#GUPnPServiceStateVariableInfo"/>
+    <keyword type="struct" name="GUPnPServiceIntrospection" link="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection-struct"/>
+    <keyword type="function" name="gupnp_service_introspection_list_action_names ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-action-names"/>
+    <keyword type="function" name="gupnp_service_introspection_list_actions ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-actions"/>
+    <keyword type="function" name="gupnp_service_introspection_get_action ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-get-action"/>
+    <keyword type="function" name="gupnp_service_introspection_list_state_variable_names ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variable-names"/>
+    <keyword type="function" name="gupnp_service_introspection_list_state_variables ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variables"/>
+    <keyword type="function" name="gupnp_service_introspection_get_state_variable ()" link="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-get-state-variable"/>
+    <keyword type="property" name="The &quot;scpd&quot; property" link="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection--scpd"/>
     <keyword type="struct" name="GUPnPControlPoint" link="GUPnPControlPoint.html#GUPnPControlPoint-struct"/>
     <keyword type="function" name="gupnp_control_point_new ()" link="GUPnPControlPoint.html#gupnp-control-point-new"/>
     <keyword type="function" name="gupnp_control_point_new_full ()" link="GUPnPControlPoint.html#gupnp-control-point-new-full"/>
@@ -129,12 +130,15 @@
     <keyword type="function" name="gupnp_service_proxy_send_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action"/>
     <keyword type="function" name="gupnp_service_proxy_send_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-valist"/>
     <keyword type="function" name="gupnp_service_proxy_send_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-hash"/>
+    <keyword type="function" name="gupnp_service_proxy_send_action_list ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-list"/>
     <keyword type="function" name="gupnp_service_proxy_begin_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action"/>
     <keyword type="function" name="gupnp_service_proxy_begin_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-valist"/>
     <keyword type="function" name="gupnp_service_proxy_begin_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-hash"/>
+    <keyword type="function" name="gupnp_service_proxy_begin_action_list ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-list"/>
     <keyword type="function" name="gupnp_service_proxy_end_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action"/>
     <keyword type="function" name="gupnp_service_proxy_end_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist"/>
     <keyword type="function" name="gupnp_service_proxy_end_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash"/>
+    <keyword type="function" name="gupnp_service_proxy_end_action_list ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list"/>
     <keyword type="function" name="gupnp_service_proxy_cancel_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action"/>
     <keyword type="function" name="gupnp_service_proxy_add_notify ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify"/>
     <keyword type="function" name="gupnp_service_proxy_remove_notify ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-remove-notify"/>
@@ -163,9 +167,12 @@
     <keyword type="function" name="gupnp_service_action_get ()" link="GUPnPService.html#gupnp-service-action-get"/>
     <keyword type="function" name="gupnp_service_action_get_valist ()" link="GUPnPService.html#gupnp-service-action-get-valist"/>
     <keyword type="function" name="gupnp_service_action_get_value ()" link="GUPnPService.html#gupnp-service-action-get-value"/>
+    <keyword type="function" name="gupnp_service_action_get_gvalue ()" link="GUPnPService.html#gupnp-service-action-get-gvalue"/>
+    <keyword type="function" name="gupnp_service_action_get_values ()" link="GUPnPService.html#gupnp-service-action-get-values"/>
     <keyword type="function" name="gupnp_service_action_set ()" link="GUPnPService.html#gupnp-service-action-set"/>
     <keyword type="function" name="gupnp_service_action_set_valist ()" link="GUPnPService.html#gupnp-service-action-set-valist"/>
     <keyword type="function" name="gupnp_service_action_set_value ()" link="GUPnPService.html#gupnp-service-action-set-value"/>
+    <keyword type="function" name="gupnp_service_action_set_values ()" link="GUPnPService.html#gupnp-service-action-set-values"/>
     <keyword type="function" name="gupnp_service_action_return ()" link="GUPnPService.html#gupnp-service-action-return"/>
     <keyword type="function" name="gupnp_service_action_return_error ()" link="GUPnPService.html#gupnp-service-action-return-error"/>
     <keyword type="function" name="gupnp_service_action_get_message ()" link="GUPnPService.html#gupnp-service-action-get-message"/>
@@ -188,6 +195,7 @@
     <keyword type="function" name="gupnp_context_set_subscription_timeout ()" link="GUPnPContext.html#gupnp-context-set-subscription-timeout"/>
     <keyword type="function" name="gupnp_context_get_subscription_timeout ()" link="GUPnPContext.html#gupnp-context-get-subscription-timeout"/>
     <keyword type="function" name="gupnp_context_host_path ()" link="GUPnPContext.html#gupnp-context-host-path"/>
+    <keyword type="function" name="gupnp_context_host_path_for_agent ()" link="GUPnPContext.html#gupnp-context-host-path-for-agent"/>
     <keyword type="function" name="gupnp_context_unhost_path ()" link="GUPnPContext.html#gupnp-context-unhost-path"/>
     <keyword type="property" name="The &quot;port&quot; property" link="GUPnPContext.html#GUPnPContext--port"/>
     <keyword type="property" name="The &quot;server&quot; property" link="GUPnPContext.html#GUPnPContext--server"/>
@@ -212,41 +220,41 @@
     <keyword type="struct" name="GUPnPXMLDoc" link="GUPnPXMLDoc.html#GUPnPXMLDoc-struct"/>
     <keyword type="function" name="gupnp_xml_doc_new ()" link="GUPnPXMLDoc.html#gupnp-xml-doc-new"/>
     <keyword type="function" name="gupnp_xml_doc_new_from_path ()" link="GUPnPXMLDoc.html#gupnp-xml-doc-new-from-path"/>
-    <keyword type="macro" name="GUPNP_SERVER_ERROR" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR--CAPS"/>
+    <keyword type="macro" name="GUPNP_SERVER_ERROR" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR:CAPS"/>
     <keyword type="enum" name="enum GUPnPServerError" link="gupnp-Error-codes.html#GUPnPServerError"/>
-    <keyword type="macro" name="GUPNP_EVENTING_ERROR" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR--CAPS"/>
+    <keyword type="macro" name="GUPNP_EVENTING_ERROR" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR:CAPS"/>
     <keyword type="enum" name="enum GUPnPEventingError" link="gupnp-Error-codes.html#GUPnPEventingError"/>
-    <keyword type="macro" name="GUPNP_CONTROL_ERROR" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR--CAPS"/>
+    <keyword type="macro" name="GUPNP_CONTROL_ERROR" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR:CAPS"/>
     <keyword type="enum" name="enum GUPnPControlError" link="gupnp-Error-codes.html#GUPnPControlError"/>
-    <keyword type="macro" name="GUPNP_XML_ERROR" link="gupnp-Error-codes.html#GUPNP-XML-ERROR--CAPS"/>
+    <keyword type="macro" name="GUPNP_XML_ERROR" link="gupnp-Error-codes.html#GUPNP-XML-ERROR:CAPS"/>
     <keyword type="enum" name="enum GUPnPXMLError" link="gupnp-Error-codes.html#GUPnPXMLError"/>
-    <keyword type="macro" name="GUPNP_TYPE_BIN_BASE64" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-BASE64--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_BIN_HEX" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-HEX--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_DATE" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_DATE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_DATE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME-TZ--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME-TZ--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_URI" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-URI--CAPS"/>
-    <keyword type="macro" name="GUPNP_TYPE_UUID" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-UUID--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN" link="GUPnPServiceIntrospection.html#GUPNP-SERVICE-ACTION-ARG-DIRECTION-IN--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT" link="GUPnPServiceIntrospection.html#GUPNP-SERVICE-ACTION-ARG-DIRECTION-OUT--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INTERNAL-SERVER-ERROR--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_NOT_FOUND" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-NOT-FOUND--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_NOT_IMPLEMENTED" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-NOT-IMPLEMENTED--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_INVALID_RESPONSE" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INVALID-RESPONSE--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_INVALID_URL" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INVALID-URL--CAPS"/>
-    <keyword type="constant" name="GUPNP_SERVER_ERROR_OTHER" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-OTHER--CAPS"/>
-    <keyword type="constant" name="GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-SUBSCRIPTION-FAILED--CAPS"/>
-    <keyword type="constant" name="GUPNP_EVENTING_ERROR_SUBSCRIPTION_LOST" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-SUBSCRIPTION-LOST--CAPS"/>
-    <keyword type="constant" name="GUPNP_EVENTING_ERROR_NOTIFY_FAILED" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-NOTIFY-FAILED--CAPS"/>
-    <keyword type="constant" name="GUPNP_CONTROL_ERROR_INVALID_ACTION" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ACTION--CAPS"/>
-    <keyword type="constant" name="GUPNP_CONTROL_ERROR_INVALID_ARGS" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ARGS--CAPS"/>
-    <keyword type="constant" name="GUPNP_CONTROL_ERROR_OUT_OF_SYNC" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-OUT-OF-SYNC--CAPS"/>
-    <keyword type="constant" name="GUPNP_CONTROL_ERROR_ACTION_FAILED" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-ACTION-FAILED--CAPS"/>
-    <keyword type="constant" name="GUPNP_XML_ERROR_PARSE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-PARSE--CAPS"/>
-    <keyword type="constant" name="GUPNP_XML_ERROR_NO_NODE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-NO-NODE--CAPS"/>
-    <keyword type="constant" name="GUPNP_XML_ERROR_EMPTY_NODE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-EMPTY-NODE--CAPS"/>
-    <keyword type="constant" name="GUPNP_XML_ERROR_OTHER" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-OTHER--CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_BIN_BASE64" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-BASE64:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_BIN_HEX" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-HEX:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_DATE" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_DATE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_DATE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME-TZ:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME-TZ:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_URI" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-URI:CAPS"/>
+    <keyword type="macro" name="GUPNP_TYPE_UUID" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-UUID:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN" link="gupnp-gupnp-service-introspection.html#GUPNP-SERVICE-ACTION-ARG-DIRECTION-IN:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT" link="gupnp-gupnp-service-introspection.html#GUPNP-SERVICE-ACTION-ARG-DIRECTION-OUT:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INTERNAL-SERVER-ERROR:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_NOT_FOUND" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-NOT-FOUND:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_NOT_IMPLEMENTED" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-NOT-IMPLEMENTED:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_INVALID_RESPONSE" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INVALID-RESPONSE:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_INVALID_URL" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-INVALID-URL:CAPS"/>
+    <keyword type="constant" name="GUPNP_SERVER_ERROR_OTHER" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR-OTHER:CAPS"/>
+    <keyword type="constant" name="GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-SUBSCRIPTION-FAILED:CAPS"/>
+    <keyword type="constant" name="GUPNP_EVENTING_ERROR_SUBSCRIPTION_LOST" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-SUBSCRIPTION-LOST:CAPS"/>
+    <keyword type="constant" name="GUPNP_EVENTING_ERROR_NOTIFY_FAILED" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR-NOTIFY-FAILED:CAPS"/>
+    <keyword type="constant" name="GUPNP_CONTROL_ERROR_INVALID_ACTION" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ACTION:CAPS"/>
+    <keyword type="constant" name="GUPNP_CONTROL_ERROR_INVALID_ARGS" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ARGS:CAPS"/>
+    <keyword type="constant" name="GUPNP_CONTROL_ERROR_OUT_OF_SYNC" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-OUT-OF-SYNC:CAPS"/>
+    <keyword type="constant" name="GUPNP_CONTROL_ERROR_ACTION_FAILED" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-ACTION-FAILED:CAPS"/>
+    <keyword type="constant" name="GUPNP_XML_ERROR_PARSE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-PARSE:CAPS"/>
+    <keyword type="constant" name="GUPNP_XML_ERROR_NO_NODE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-NO-NODE:CAPS"/>
+    <keyword type="constant" name="GUPNP_XML_ERROR_EMPTY_NODE" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-EMPTY-NODE:CAPS"/>
+    <keyword type="constant" name="GUPNP_XML_ERROR_OTHER" link="gupnp-Error-codes.html#GUPNP-XML-ERROR-OTHER:CAPS"/>
   </functions>
 </book>

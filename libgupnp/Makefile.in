@@ -16,6 +16,7 @@
 @SET_MAKE@
 
 
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
@@ -39,7 +40,8 @@ subdir = libgupnp
 DIST_COMMON = $(libgupnpinc_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/introspection.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -67,7 +69,8 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libgupnpincdir)"
+am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" \
+	"$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(libgupnpincdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libgupnp_1_0_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
@@ -132,6 +135,7 @@ am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
 am__v_GEN_0 = @echo "  GEN   " $@;
 SOURCES = $(libgupnp_1_0_la_SOURCES)
 DIST_SOURCES = $(am__libgupnp_1_0_la_SOURCES_DIST)
+DATA = $(gir_DATA) $(typelib_DATA)
 HEADERS = $(libgupnpinc_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -167,12 +171,19 @@ GREP = @GREP@
 GTHREAD_CFLAGS = @GTHREAD_CFLAGS@
 GTHREAD_LIBS = @GTHREAD_LIBS@
 GTKDOC_CHECK = @GTKDOC_CHECK@
+GTKDOC_MKPDF = @GTKDOC_MKPDF@
+GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+INTROSPECTION_COMPILER = @INTROSPECTION_COMPILER@
+INTROSPECTION_GENERATE = @INTROSPECTION_GENERATE@
+INTROSPECTION_GIRDIR = @INTROSPECTION_GIRDIR@
+INTROSPECTION_SCANNER = @INTROSPECTION_SCANNER@
+INTROSPECTION_TYPELIBDIR = @INTROSPECTION_TYPELIBDIR@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBCONIC_CFLAGS = @LIBCONIC_CFLAGS@
@@ -199,7 +210,6 @@ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
-PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
@@ -338,7 +348,11 @@ EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-unix-context-manager.c  \
 	     gupnp-unix-context-manager.h
 
-CLEANFILES = $(BUILT_SOURCES)
+@HAVE_INTROSPECTION_TRUE@girdir = $(datadir)/gir-1.0
+@HAVE_INTROSPECTION_TRUE@gir_DATA = GUPnP-1.0.gir
+@HAVE_INTROSPECTION_TRUE@typelibdir = $(libdir)/girepository-1.0/
+@HAVE_INTROSPECTION_TRUE@typelib_DATA = $(gir_DATA:.gir=.typelib)
+CLEANFILES = $(BUILT_SOURCES) $(gir_DATA) $(typelib_DATA)
 DISTCLEANFILES = $(BUILT_SOURCES)
 MAINTAINERCLEANFILES = Makefile.in $(BUILT_SOURCES)
 all: $(BUILT_SOURCES)
@@ -467,6 +481,46 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+install-girDATA: $(gir_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(girdir)" || $(MKDIR_P) "$(DESTDIR)$(girdir)"
+	@list='$(gir_DATA)'; test -n "$(girdir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(girdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(girdir)" || exit $$?; \
+	done
+
+uninstall-girDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(gir_DATA)'; test -n "$(girdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(girdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(girdir)" && rm -f $$files
+install-typelibDATA: $(typelib_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(typelibdir)" || $(MKDIR_P) "$(DESTDIR)$(typelibdir)"
+	@list='$(typelib_DATA)'; test -n "$(typelibdir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(typelibdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(typelibdir)" || exit $$?; \
+	done
+
+uninstall-typelibDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(typelib_DATA)'; test -n "$(typelibdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(typelibdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(typelibdir)" && rm -f $$files
 install-libgupnpincHEADERS: $(libgupnpinc_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(libgupnpincdir)" || $(MKDIR_P) "$(DESTDIR)$(libgupnpincdir)"
@@ -573,9 +627,9 @@ distdir: $(DISTFILES)
 check-am: all-am
 check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-am
-all-am: Makefile $(LTLIBRARIES) $(HEADERS)
+all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libgupnpincdir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" "$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(libgupnpincdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -631,7 +685,8 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libgupnpincHEADERS
+install-data-am: install-girDATA install-libgupnpincHEADERS \
+	install-typelibDATA
 
 install-dvi: install-dvi-am
 
@@ -677,7 +732,8 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLTLIBRARIES uninstall-libgupnpincHEADERS
+uninstall-am: uninstall-girDATA uninstall-libLTLIBRARIES \
+	uninstall-libgupnpincHEADERS uninstall-typelibDATA
 
 .MAKE: all check install install-am install-strip
 
@@ -686,15 +742,16 @@ uninstall-am: uninstall-libLTLIBRARIES uninstall-libgupnpincHEADERS
 	distclean-compile distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am \
+	install-dvi-am install-exec install-exec-am install-girDATA \
+	install-html install-html-am install-info install-info-am \
 	install-libLTLIBRARIES install-libgupnpincHEADERS install-man \
 	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
-	pdf pdf-am ps ps-am tags uninstall uninstall-am \
-	uninstall-libLTLIBRARIES uninstall-libgupnpincHEADERS
+	install-strip install-typelibDATA installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
+	uninstall-am uninstall-girDATA uninstall-libLTLIBRARIES \
+	uninstall-libgupnpincHEADERS uninstall-typelibDATA
 
 
 gupnp-marshal.c: gupnp-marshal.list
@@ -702,6 +759,46 @@ gupnp-marshal.c: gupnp-marshal.list
 
 gupnp-marshal.h: gupnp-marshal.list
 	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=gupnp_marshal $(srcdir)/gupnp-marshal.list --header > gupnp-marshal.h
+
+@HAVE_INTROSPECTION_TRUE@GUPnP-1.0.gir: libgupnp-1.0.la $(INTROSPECTION_SCANNER)
+@HAVE_INTROSPECTION_TRUE@	$(AM_V_GEN) \
+@HAVE_INTROSPECTION_TRUE@	$(INTROSPECTION_SCANNER) -v \
+@HAVE_INTROSPECTION_TRUE@		--namespace=GUPnP --nsversion=1.0 \
+@HAVE_INTROSPECTION_TRUE@		--include=libxml2-2.0 \
+@HAVE_INTROSPECTION_TRUE@		--include=GObject-2.0 \
+@HAVE_INTROSPECTION_TRUE@		--include=Soup-2.4 \
+@HAVE_INTROSPECTION_TRUE@		--include=GSSDP-1.0 \
+@HAVE_INTROSPECTION_TRUE@		--library=$< \
+@HAVE_INTROSPECTION_TRUE@		--libtool="$(top_builddir)/libtool" \
+@HAVE_INTROSPECTION_TRUE@		--pkg libxml-2.0 \
+@HAVE_INTROSPECTION_TRUE@		--pkg gobject-2.0 \
+@HAVE_INTROSPECTION_TRUE@		--pkg gssdp-1.0 \
+@HAVE_INTROSPECTION_TRUE@		--pkg libsoup-2.4 \
+@HAVE_INTROSPECTION_TRUE@		--output $@ \
+@HAVE_INTROSPECTION_TRUE@		-I$(top_srcdir) \
+@HAVE_INTROSPECTION_TRUE@		$(addprefix $(top_srcdir)/libgupnp/, $(libgupnpinc_HEADERS)) \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-context.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-context-manager.c	\
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-control-point.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-device.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-device-info.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-device-proxy.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-error.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-resource-factory.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-root-device.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-service.c	\
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-service-info.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-service-proxy.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-service-introspection.c \
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-xml-doc.c	\
+@HAVE_INTROSPECTION_TRUE@		$(top_srcdir)/libgupnp/gupnp-types.c
+
+@HAVE_INTROSPECTION_TRUE@%.typelib: %.gir $(INTROSPECTION_COMPILER)
+@HAVE_INTROSPECTION_TRUE@	$(AM_V_GEN) \
+@HAVE_INTROSPECTION_TRUE@	$(INTROSPECTION_COMPILER) \
+@HAVE_INTROSPECTION_TRUE@		--includedir=$(srcdir) \
+@HAVE_INTROSPECTION_TRUE@		--includedir=. \
+@HAVE_INTROSPECTION_TRUE@		$(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

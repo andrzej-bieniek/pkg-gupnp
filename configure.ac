@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(gupnp, 0.13.2, http://www.gupnp.org/)
+AC_INIT(gupnp, 0.13.3, http://www.gupnp.org/)
 AM_INIT_AUTOMAKE()
 AC_CONFIG_SRCDIR(libgupnp/gupnp.h)
 AM_CONFIG_HEADER(config.h)
@@ -11,13 +11,14 @@ AC_ISC_POSIX
 AC_PROG_CC
 AC_STDC_HEADERS
 AC_PROG_LIBTOOL
+AC_CONFIG_MACRO_DIR([m4])
 AC_FUNC_MMAP
 AC_SYS_LARGEFILE
 
 PKG_CHECK_MODULES(LIBGUPNP, glib-2.0 >= 2.18 \
                             gobject-2.0 >= 2.18 \
                             gmodule-2.0 \
-                            gssdp-1.0 >= 0.7 \
+                            gssdp-1.0 >= 0.7.1 \
                             libsoup-2.4 >= 2.4.1 \
                             libxml-2.0 \
                             uuid)
@@ -70,6 +71,8 @@ AC_ARG_ENABLE(debug,
 if test "x$enable_debug" = "xyes"; then
         CFLAGS="$CFLAGS -g -Wall -Werror"
 fi
+
+GOBJECT_INTROSPECTION_CHECK([0.6.4])
 
 # Gtk-doc
 GTK_DOC_CHECK([1.0])
