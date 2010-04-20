@@ -1,5 +1,6 @@
-gupnp (0.13.3-1) UNRELEASED; urgency=low
+gupnp (0.13.3-1) unstable; urgency=low
 
+  * Acknowledge NMU (thanks Andrew Lee)
   * New upstream release (Closes: #577220)
   * Include new GObject Introspection data.
     + ship .gir in -dev package.
@@ -9,8 +10,9 @@ gupnp (0.13.3-1) UNRELEASED; urgency=low
     (<= 0.6.5-5), to prevent .gir file collisions.
   * Add Homepage and Vcs-* fields
   * Bump to policy version 3.8.4
+  * Add myself to Uploaders (acknowledged by Ross Burton)
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Apr 2010 11:51:16 +0200
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Apr 2010 14:02:54 +0200
 
 gupnp (0.13.2-1.1) unstable; urgency=low
 
