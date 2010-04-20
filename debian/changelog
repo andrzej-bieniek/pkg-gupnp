@@ -7,8 +7,10 @@ gupnp (0.13.3-1) UNRELEASED; urgency=low
   * Use multi-line build-dependencies and add gobject-introspection.
   * Add a versioned replaces on libgupnp-1.0-dev against gir-repository-dev
     (<= 0.6.5-5), to prevent .gir file collisions.
+  * Add Homepage and Vcs-* fields
+  * Bump to policy version 3.8.4
 
- -- Andreas Henriksson <andreas@fatal.se>  Sat, 10 Apr 2010 17:26:19 +0200
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Apr 2010 11:51:16 +0200
 
 gupnp (0.13.2-1.1) unstable; urgency=low
 
