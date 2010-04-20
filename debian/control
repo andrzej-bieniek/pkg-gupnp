@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 5),
                xsltproc,
                docbook-xsl (>= 1.75.2+dfsg-5),
                gobject-introspection
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/gupnp.git
