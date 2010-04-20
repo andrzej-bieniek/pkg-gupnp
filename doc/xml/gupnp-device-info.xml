@@ -1,0 +1,609 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPDeviceInfo">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPDeviceInfo.top_of_page">GUPnPDeviceInfo</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPDeviceInfo</refname>
+<refpurpose>Base abstract class for querying device information.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPDeviceInfo.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPDeviceInfo-struct">GUPnPDeviceInfo</link>;
+<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * <link linkend="gupnp-device-info-get-resource-factory">gupnp_device_info_get_resource_factory</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *device_info);
+<link linkend="GUPnPContext">GUPnPContext</link> *      <link linkend="gupnp-device-info-get-context">gupnp_device_info_get_context</link>       (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-device-info-get-location">gupnp_device_info_get_location</link>      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+const <link linkend="SoupURI">SoupURI</link> *     <link linkend="gupnp-device-info-get-url-base">gupnp_device_info_get_url_base</link>      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-device-info-get-udn">gupnp_device_info_get_udn</link>           (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-device-info-get-device-type">gupnp_device_info_get_device_type</link>   (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-friendly-name">gupnp_device_info_get_friendly_name</link> (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-manufacturer">gupnp_device_info_get_manufacturer</link>  (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-manufacturer-url">gupnp_device_info_get_manufacturer_url</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-model-description">gupnp_device_info_get_model_description</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-model-name">gupnp_device_info_get_model_name</link>    (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-model-number">gupnp_device_info_get_model_number</link>  (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-model-url">gupnp_device_info_get_model_url</link>     (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-serial-number">gupnp_device_info_get_serial_number</link> (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-presentation-url">gupnp_device_info_get_presentation_url</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-upc">gupnp_device_info_get_upc</link>           (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-icon-url">gupnp_device_info_get_icon_url</link>      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *requested_mime_type,
+                                                         <link linkend="int">int</link> requested_depth,
+                                                         <link linkend="int">int</link> requested_width,
+                                                         <link linkend="int">int</link> requested_height,
+                                                         <link linkend="gboolean">gboolean</link> prefer_bigger,
+                                                         <link linkend="char">char</link> **mime_type,
+                                                         <link linkend="int">int</link> *depth,
+                                                         <link linkend="int">int</link> *width,
+                                                         <link linkend="int">int</link> *height);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-device-info-list-dlna-capabilities">gupnp_device_info_list_dlna_capabilities</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-device-info-get-description-value">gupnp_device_info_get_description_value</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *element);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-device-info-list-devices">gupnp_device_info_list_devices</link>      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-device-info-list-device-types">gupnp_device_info_list_device_types</link> (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *   <link linkend="gupnp-device-info-get-device">gupnp_device_info_get_device</link>        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *type);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-device-info-list-services">gupnp_device_info_list_services</link>     (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-device-info-list-service-types">gupnp_device_info_list_service_types</link>
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);
+<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *  <link linkend="gupnp-device-info-get-service">gupnp_device_info_get_service</link>       (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *type);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPDeviceInfo.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPDeviceInfo
+         +----<link linkend="GUPnPDevice">GUPnPDevice</link>
+         +----<link linkend="GUPnPDeviceProxy">GUPnPDeviceProxy</link>
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPDeviceInfo.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPDeviceInfo--context">context</link>&quot;                  <link linkend="GUPnPContext">GUPnPContext</link>*         : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--device-type">device-type</link>&quot;              <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--document">document</link>&quot;                 <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--element">element</link>&quot;                  <link linkend="gpointer">gpointer</link>              : Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--location">location</link>&quot;                 <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--resource-factory">resource-factory</link>&quot;         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link>*  : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--udn">udn</link>&quot;                      <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPDeviceInfo--url-base">url-base</link>&quot;                 <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPDeviceInfo.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+The <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link> base abstract class provides methods for querying
+device information.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPDeviceInfo.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPDeviceInfo-struct" role="struct">
+<title>GUPnPDeviceInfo</title>
+<indexterm zone="GUPnPDeviceInfo-struct"><primary sortas="GUPnPDeviceInfo">GUPnPDeviceInfo</primary></indexterm><programlisting>typedef struct _GUPnPDeviceInfo GUPnPDeviceInfo;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-device-info-get-resource-factory" role="function">
+<title>gupnp_device_info_get_resource_factory ()</title>
+<indexterm zone="gupnp-device-info-get-resource-factory"><primary sortas="gupnp_device_info_get_resource_factory">gupnp_device_info_get_resource_factory</primary></indexterm><programlisting><link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * gupnp_device_info_get_resource_factory
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *device_info);</programlisting>
+<para>
+Get the <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> used by the <parameter>device_info</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>device_info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-context" role="function">
+<title>gupnp_device_info_get_context ()</title>
+<indexterm zone="gupnp-device-info-get-context"><primary sortas="gupnp_device_info_get_context">gupnp_device_info_get_context</primary></indexterm><programlisting><link linkend="GUPnPContext">GUPnPContext</link> *      gupnp_device_info_get_context       (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the associated <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-location" role="function">
+<title>gupnp_device_info_get_location ()</title>
+<indexterm zone="gupnp-device-info-get-location"><primary sortas="gupnp_device_info_get_location">gupnp_device_info_get_location</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_device_info_get_location      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the location of the device description file.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-url-base" role="function">
+<title>gupnp_device_info_get_url_base ()</title>
+<indexterm zone="gupnp-device-info-get-url-base"><primary sortas="gupnp_device_info_get_url_base">gupnp_device_info_get_url_base</primary></indexterm><programlisting>const <link linkend="SoupURI">SoupURI</link> *     gupnp_device_info_get_url_base      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the URL base of this device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="SoupURI"><type>SoupURI</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-udn" role="function">
+<title>gupnp_device_info_get_udn ()</title>
+<indexterm zone="gupnp-device-info-get-udn"><primary sortas="gupnp_device_info_get_udn">gupnp_device_info_get_udn</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_device_info_get_udn           (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the Unique Device Name of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-device-type" role="function">
+<title>gupnp_device_info_get_device_type ()</title>
+<indexterm zone="gupnp-device-info-get-device-type"><primary sortas="gupnp_device_info_get_device_type">gupnp_device_info_get_device_type</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_device_info_get_device_type   (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the UPnP device type.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-friendly-name" role="function">
+<title>gupnp_device_info_get_friendly_name ()</title>
+<indexterm zone="gupnp-device-info-get-friendly-name"><primary sortas="gupnp_device_info_get_friendly_name">gupnp_device_info_get_friendly_name</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_friendly_name (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the friendly name of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-manufacturer" role="function">
+<title>gupnp_device_info_get_manufacturer ()</title>
+<indexterm zone="gupnp-device-info-get-manufacturer"><primary sortas="gupnp_device_info_get_manufacturer">gupnp_device_info_get_manufacturer</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_manufacturer  (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the manufacturer of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-manufacturer-url" role="function">
+<title>gupnp_device_info_get_manufacturer_url ()</title>
+<indexterm zone="gupnp-device-info-get-manufacturer-url"><primary sortas="gupnp_device_info_get_manufacturer_url">gupnp_device_info_get_manufacturer_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_manufacturer_url
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a URL pointing to the manufacturer's website.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-model-description" role="function">
+<title>gupnp_device_info_get_model_description ()</title>
+<indexterm zone="gupnp-device-info-get-model-description"><primary sortas="gupnp_device_info_get_model_description">gupnp_device_info_get_model_description</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_model_description
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the description of the device model.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-model-name" role="function">
+<title>gupnp_device_info_get_model_name ()</title>
+<indexterm zone="gupnp-device-info-get-model-name"><primary sortas="gupnp_device_info_get_model_name">gupnp_device_info_get_model_name</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_model_name    (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the model name of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-model-number" role="function">
+<title>gupnp_device_info_get_model_number ()</title>
+<indexterm zone="gupnp-device-info-get-model-number"><primary sortas="gupnp_device_info_get_model_number">gupnp_device_info_get_model_number</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_model_number  (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the model number of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-model-url" role="function">
+<title>gupnp_device_info_get_model_url ()</title>
+<indexterm zone="gupnp-device-info-get-model-url"><primary sortas="gupnp_device_info_get_model_url">gupnp_device_info_get_model_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_model_url     (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a URL pointing to the device model's website.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-serial-number" role="function">
+<title>gupnp_device_info_get_serial_number ()</title>
+<indexterm zone="gupnp-device-info-get-serial-number"><primary sortas="gupnp_device_info_get_serial_number">gupnp_device_info_get_serial_number</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_serial_number (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the serial number of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-presentation-url" role="function">
+<title>gupnp_device_info_get_presentation_url ()</title>
+<indexterm zone="gupnp-device-info-get-presentation-url"><primary sortas="gupnp_device_info_get_presentation_url">gupnp_device_info_get_presentation_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_presentation_url
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a URL pointing to the device's presentation page, for web-based
+administration.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-upc" role="function">
+<title>gupnp_device_info_get_upc ()</title>
+<indexterm zone="gupnp-device-info-get-upc"><primary sortas="gupnp_device_info_get_upc">gupnp_device_info_get_upc</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_upc           (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get the Universal Product Code of the device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-icon-url" role="function">
+<title>gupnp_device_info_get_icon_url ()</title>
+<indexterm zone="gupnp-device-info-get-icon-url"><primary sortas="gupnp_device_info_get_icon_url">gupnp_device_info_get_icon_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_icon_url      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *requested_mime_type,
+                                                         <link linkend="int">int</link> requested_depth,
+                                                         <link linkend="int">int</link> requested_width,
+                                                         <link linkend="int">int</link> requested_height,
+                                                         <link linkend="gboolean">gboolean</link> prefer_bigger,
+                                                         <link linkend="char">char</link> **mime_type,
+                                                         <link linkend="int">int</link> *depth,
+                                                         <link linkend="int">int</link> *width,
+                                                         <link linkend="int">int</link> *height);</programlisting>
+<para>
+Get a URL pointing to the icon most closely matching the
+given criteria, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. If <parameter>requested_mime_type</parameter> is set, only icons with
+this mime type will be returned. If <parameter>requested_depth</parameter> is set, only icons with
+this or lower depth will be returned. If <parameter>requested_width</parameter> and/or
+<parameter>requested_height</parameter> are set, only icons that are this size or smaller are
+returned, unless <parameter>prefer_bigger</parameter> is set, in which case the next biggest icon
+will be returned. The returned strings should be freed.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>requested_mime_type</parameter>&#160;:</term>
+<listitem><simpara> The requested file format, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> for any
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>requested_depth</parameter>&#160;:</term>
+<listitem><simpara> The requested color depth, or -1 for any
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>requested_width</parameter>&#160;:</term>
+<listitem><simpara> The requested width, or -1 for any
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>requested_height</parameter>&#160;:</term>
+<listitem><simpara> The requested height, or -1 for any
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>prefer_bigger</parameter>&#160;:</term>
+<listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if a bigger, rather than a smaller icon should be
+returned if no exact match could be found
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>mime_type</parameter>&#160;:</term>
+<listitem><simpara> The location where to store the the format of the returned icon,
+or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. The returned string should be freed after use
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>depth</parameter>&#160;:</term>
+<listitem><simpara> The location where to store the depth of the returned icon, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>width</parameter>&#160;:</term>
+<listitem><simpara> The location where to store the width of the returned icon, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>height</parameter>&#160;:</term>
+<listitem><simpara> The location where to store the height of the returned icon, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a string, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>.  <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-list-dlna-capabilities" role="function">
+<title>gupnp_device_info_list_dlna_capabilities ()</title>
+<indexterm zone="gupnp-device-info-list-dlna-capabilities"><primary sortas="gupnp_device_info_list_dlna_capabilities">gupnp_device_info_list_dlna_capabilities</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_device_info_list_dlna_capabilities
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a <link linkend="GList"><type>GList</type></link> of strings that represent the device capabilities as
+announced in the device description file using the
+&lt;dlna:X_DLNACAP&gt; element.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GList"><type>GList</type></link> of newly allocated strings or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if
+              the device description doesn't contain the
+              &lt;dlna:X_DLNACAP&gt; element.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-description-value" role="function">
+<title>gupnp_device_info_get_description_value ()</title>
+<indexterm zone="gupnp-device-info-get-description-value"><primary sortas="gupnp_device_info_get_description_value">gupnp_device_info_get_description_value</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_device_info_get_description_value
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *element);</programlisting>
+<para>
+This function provides generic access to the contents of arbitrary
+elements in the device description file.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara>    A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>element</parameter>&#160;:</term>
+<listitem><simpara> Name of the description element to retrieve
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a newly allocated string or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if the device
+              description doesn't contain the given <parameter>element</parameter>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-list-devices" role="function">
+<title>gupnp_device_info_list_devices ()</title>
+<indexterm zone="gupnp-device-info-list-devices"><primary sortas="gupnp_device_info_list_devices">gupnp_device_info_list_devices</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_device_info_list_devices      (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a <link linkend="GList"><type>GList</type></link> of new objects implementing <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+representing the devices directly contained in <parameter>info</parameter>. The returned list
+should be <link linkend="g-list-free"><function>g_list_free()</function></link>'d and the elements should be <link linkend="g-object-unref"><function>g_object_unref()</function></link>'d.
+</para>
+<para>
+Note that devices are not cached internally, so that every time you
+call this function new objects are created. The application
+must cache any used devices if it wishes to keep them around and re-use
+them.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GList"><type>GList</type></link> of new <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link> objects.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-list-device-types" role="function">
+<title>gupnp_device_info_list_device_types ()</title>
+<indexterm zone="gupnp-device-info-list-device-types"><primary sortas="gupnp_device_info_list_device_types">gupnp_device_info_list_device_types</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_device_info_list_device_types (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a <link linkend="GList"><type>GList</type></link> of strings representing the types of the devices
+directly contained in <parameter>info</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of strings. The elements should be <link linkend="g-free"><function>g_free()</function></link>'d and the
+list should be <link linkend="g-list-free"><function>g_list_free()</function></link>'d.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-device" role="function">
+<title>gupnp_device_info_get_device ()</title>
+<indexterm zone="gupnp-device-info-get-device"><primary sortas="gupnp_device_info_get_device">gupnp_device_info_get_device</primary></indexterm><programlisting><link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *   gupnp_device_info_get_device        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *type);</programlisting>
+<para>
+Get the service with type <parameter>type</parameter> directly contained in <parameter>info</parameter> as
+a new object implementing <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if no such device
+was found. The returned object should be unreffed when done.
+</para>
+<para>
+Note that devices are not cached internally, so that every time you
+call this function a new object is created. The application
+must cache any used devices if it wishes to keep them around and re-use
+them.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type</parameter>&#160;:</term>
+<listitem><simpara> The type of the device to be retrieved.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-list-services" role="function">
+<title>gupnp_device_info_list_services ()</title>
+<indexterm zone="gupnp-device-info-list-services"><primary sortas="gupnp_device_info_list_services">gupnp_device_info_list_services</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_device_info_list_services     (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a <link linkend="GList"><type>GList</type></link> of new objects implementing <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+representing the services directly contained in <parameter>info</parameter>. The returned list
+should be <link linkend="g-list-free"><function>g_list_free()</function></link>'d and the elements should be <link linkend="g-object-unref"><function>g_object_unref()</function></link>'d.
+</para>
+<para>
+Note that services are not cached internally, so that every time you
+call this function new objects are created. The application
+must cache any used services if it wishes to keep them around and re-use
+them.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of new <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link> objects.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-list-service-types" role="function">
+<title>gupnp_device_info_list_service_types ()</title>
+<indexterm zone="gupnp-device-info-list-service-types"><primary sortas="gupnp_device_info_list_service_types">gupnp_device_info_list_service_types</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_device_info_list_service_types
+                                                        (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info);</programlisting>
+<para>
+Get a <link linkend="GList"><type>GList</type></link> of strings representing the types of the services
+directly contained in <parameter>info</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of strings. The elements should be <link linkend="g-free"><function>g_free()</function></link>'d and the
+list should be <link linkend="g-list-free"><function>g_list_free()</function></link>'d.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-device-info-get-service" role="function">
+<title>gupnp_device_info_get_service ()</title>
+<indexterm zone="gupnp-device-info-get-service"><primary sortas="gupnp_device_info_get_service">gupnp_device_info_get_service</primary></indexterm><programlisting><link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *  gupnp_device_info_get_service       (<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link> *info,
+                                                         const <link linkend="char">char</link> *type);</programlisting>
+<para>
+Get the service with type <parameter>type</parameter> directly contained in <parameter>info</parameter> as
+a new object implementing <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if no such device
+was found. The returned object should be unreffed when done.
+</para>
+<para>
+Note that services are not cached internally, so that every time you
+call this function a new object is created. The application
+must cache any used services if it wishes to keep them around and re-use
+them.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type</parameter>&#160;:</term>
+<listitem><simpara> The type of the service to be retrieved.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPDeviceInfo.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPDeviceInfo--context" role="property"><title>The <literal>&quot;context&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--context"><primary sortas="GUPnPDeviceInfo:context">GUPnPDeviceInfo:context</primary></indexterm><programlisting>  &quot;context&quot;                  <link linkend="GUPnPContext">GUPnPContext</link>*         : Read / Write / Construct Only</programlisting>
+<para>
+The <link linkend="GUPnPContext"><type>GUPnPContext</type></link> to use.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPDeviceInfo--device-type" role="property"><title>The <literal>&quot;device-type&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--device-type"><primary sortas="GUPnPDeviceInfo:device-type">GUPnPDeviceInfo:device-type</primary></indexterm><programlisting>  &quot;device-type&quot;              <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The device type.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPDeviceInfo--document" role="property"><title>The <literal>&quot;document&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--document"><primary sortas="GUPnPDeviceInfo:document">GUPnPDeviceInfo:document</primary></indexterm><programlisting>  &quot;document&quot;                 <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only</programlisting>
+<para>
+Private property.</para>
+<para>
+</para><para>Stability Level Private</para>
+</refsect2>
+<refsect2 id="GUPnPDeviceInfo--element" role="property"><title>The <literal>&quot;element&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--element"><primary sortas="GUPnPDeviceInfo:element">GUPnPDeviceInfo:element</primary></indexterm><programlisting>  &quot;element&quot;                  <link linkend="gpointer">gpointer</link>              : Write / Construct Only</programlisting>
+<para>
+Private property.</para>
+<para>
+</para><para>Stability Level Private</para>
+</refsect2>
+<refsect2 id="GUPnPDeviceInfo--location" role="property"><title>The <literal>&quot;location&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--location"><primary sortas="GUPnPDeviceInfo:location">GUPnPDeviceInfo:location</primary></indexterm><programlisting>  &quot;location&quot;                 <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The location of the device description file.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPDeviceInfo--resource-factory" role="property"><title>The <literal>&quot;resource-factory&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--resource-factory"><primary sortas="GUPnPDeviceInfo:resource-factory">GUPnPDeviceInfo:resource-factory</primary></indexterm><programlisting>  &quot;resource-factory&quot;         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link>*  : Read / Write / Construct Only</programlisting>
+<para>
+The resource factory to use. Set to NULL for default factory.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPDeviceInfo--udn" role="property"><title>The <literal>&quot;udn&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--udn"><primary sortas="GUPnPDeviceInfo:udn">GUPnPDeviceInfo:udn</primary></indexterm><programlisting>  &quot;udn&quot;                      <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The UDN of this device.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPDeviceInfo--url-base" role="property"><title>The <literal>&quot;url-base&quot;</literal> property</title>
+<indexterm zone="GUPnPDeviceInfo--url-base"><primary sortas="GUPnPDeviceInfo:url-base">GUPnPDeviceInfo:url-base</primary></indexterm><programlisting>  &quot;url-base&quot;                 <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only</programlisting>
+<para>
+The URL base (<link linkend="SoupURI"><type>SoupURI</type></link>).</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+
+
+
+</refentry>

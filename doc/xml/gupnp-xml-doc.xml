@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPXMLDoc">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPXMLDoc.top_of_page">GUPnPXMLDoc</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPXMLDoc</refname>
+<refpurpose>GObject wrapper for xmlDoc.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPXMLDoc.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPXMLDoc-struct">GUPnPXMLDoc</link>;
+<link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *       <link linkend="gupnp-xml-doc-new">gupnp_xml_doc_new</link>                   (<link linkend="xmlDoc">xmlDoc</link> *xml_doc);
+<link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *       <link linkend="gupnp-xml-doc-new-from-path">gupnp_xml_doc_new_from_path</link>         (const <link linkend="char">char</link> *path,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPXMLDoc.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPXMLDoc
+</synopsis>
+</refsect1>
+
+
+
+
+
+
+
+
+<refsect1 id="GUPnPXMLDoc.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+GObject wrapper for xmlDoc, so that we can use refcounting and weak
+references.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPXMLDoc.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPXMLDoc-struct" role="struct">
+<title>GUPnPXMLDoc</title>
+<indexterm zone="GUPnPXMLDoc-struct"><primary sortas="GUPnPXMLDoc">GUPnPXMLDoc</primary></indexterm><programlisting>typedef struct {
+        xmlDoc *doc;
+} GUPnPXMLDoc;
+</programlisting>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-xml-doc-new" role="function">
+<title>gupnp_xml_doc_new ()</title>
+<indexterm zone="gupnp-xml-doc-new"><primary sortas="gupnp_xml_doc_new">gupnp_xml_doc_new</primary></indexterm><programlisting><link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *       gupnp_xml_doc_new                   (<link linkend="xmlDoc">xmlDoc</link> *xml_doc);</programlisting>
+<para>
+Create a new <link linkend="GUPnPXMLDoc"><type>GUPnPXMLDoc</type></link> for <parameter>xml_doc</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>xml_doc</parameter>&#160;:</term>
+<listitem><simpara> Pointer to <link linkend="xmlDoc"><type>xmlDoc</type></link> to wrap under this object
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPXMLDoc"><type>GUPnPXMLDoc</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> on an error
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-xml-doc-new-from-path" role="function">
+<title>gupnp_xml_doc_new_from_path ()</title>
+<indexterm zone="gupnp-xml-doc-new-from-path"><primary sortas="gupnp_xml_doc_new_from_path">gupnp_xml_doc_new_from_path</primary></indexterm><programlisting><link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *       gupnp_xml_doc_new_from_path         (const <link linkend="char">char</link> *path,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Create a new <link linkend="GUPnPXMLDoc"><type>GUPnPXMLDoc</type></link> for the XML document at <parameter>path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>path</parameter>&#160;:</term>
+<listitem><simpara> Path to xml document
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> Location to put the error into
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPXMLDoc"><type>GUPnPXMLDoc</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> on an error
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

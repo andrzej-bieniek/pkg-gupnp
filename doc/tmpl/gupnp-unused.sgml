@@ -1,0 +1,26 @@
+<!-- ##### ARG GUPnPContext:host-ip ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG GUPnPContext:name ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG GUPnPRootDevice:relative-location ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION gupnp_context_get_name ##### -->
+<para>
+
+</para>
+
+@context: 
+@Returns: 
+

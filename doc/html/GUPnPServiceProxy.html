@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPServiceProxy</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="GUPnP Reference Manual">
+<link rel="up" href="api-device-control.html" title="Device Control">
+<link rel="prev" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy">
+<link rel="next" href="api-device-impl.html" title="Device Implementation">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="part" href="tutorial.html" title="Part I. Tutorial">
+<link rel="chapter" href="overview.html" title="Overview">
+<link rel="chapter" href="client-tutorial.html" title="Writing a UPnP Client">
+<link rel="chapter" href="server-tutorial.html" title="Writing a UPnP Service">
+<link rel="part" href="api.html" title="Part II. Reference">
+<link rel="chapter" href="api-device-info.html" title="Device Information">
+<link rel="chapter" href="api-device-control.html" title="Device Control">
+<link rel="chapter" href="api-device-impl.html" title="Device Implementation">
+<link rel="chapter" href="api-utility.html" title="Utility Functions">
+<link rel="chapter" href="api-tools.html" title="Tools">
+<link rel="part" href="schemas.html" title="Part III. XML Schemas">
+<link rel="chapter" href="schemas-device.html" title="Device Description">
+<link rel="chapter" href="schemas-service.html" title="Service Description">
+<link rel="glossary" href="glossary.html" title="Glossary">
+<link rel="index" href="ix01.html" title="Index">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPDeviceProxy.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="api-device-control.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP Reference Manual</th>
+<td><a accesskey="n" href="api-device-impl.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPServiceProxy.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GUPnPServiceProxy.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GUPnPServiceProxy.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GUPnPServiceProxy.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GUPnPServiceProxy.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GUPnPServiceProxy">
+<a name="GUPnPServiceProxy"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPServiceProxy.top_of_page"></a>GUPnPServiceProxy</span></h2>
+<p>GUPnPServiceProxy — Proxy class for remote services.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GUPnPServiceProxy.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-struct" title="GUPnPServiceProxy">GUPnPServiceProxy</a>;
+                    <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a>;
+void                (<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">*GUPnPServiceProxyActionCallback</a>)  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+void                (<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">*GUPnPServiceProxyNotifyCallback</a>)  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+>GValue</a> *value,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()">gupnp_service_proxy_send_action</a>     (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         ...);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-valist" title="gupnp_service_proxy_send_action_valist ()">gupnp_service_proxy_send_action_valist</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         va_list var_args);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-hash" title="gupnp_service_proxy_send_action_hash ()">gupnp_service_proxy_send_action_hash</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_hash,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *out_hash);
+<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()">gupnp_service_proxy_begin_action</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         ...);
+<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-valist" title="gupnp_service_proxy_begin_action_valist ()">gupnp_service_proxy_begin_action_valist</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         va_list var_args);
+<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-hash" title="gupnp_service_proxy_begin_action_hash ()">gupnp_service_proxy_begin_action_hash</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *hash);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()">gupnp_service_proxy_end_action</a>      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         ...);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist" title="gupnp_service_proxy_end_action_valist ()">gupnp_service_proxy_end_action_valist</a>
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         va_list var_args);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()">gupnp_service_proxy_end_action_hash</a> (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *hash);
+void                <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()">gupnp_service_proxy_cancel_action</a>   (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify" title="gupnp_service_proxy_add_notify ()">gupnp_service_proxy_add_notify</a>      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
+>GType</a> type,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">GUPnPServiceProxyNotifyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-remove-notify" title="gupnp_service_proxy_remove_notify ()">gupnp_service_proxy_remove_notify</a>   (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">GUPnPServiceProxyNotifyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+void                <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-set-subscribed" title="gupnp_service_proxy_set_subscribed ()">gupnp_service_proxy_set_subscribed</a>  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> subscribed);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-get-subscribed" title="gupnp_service_proxy_get_subscribed ()">gupnp_service_proxy_get_subscribed</a>  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GUPnPServiceProxy.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a>
+         +----GUPnPServiceProxy
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GUPnPServiceProxy.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy--subscribed" title='The "subscribed" property'>subscribed</a>"               <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>              : Read / Write
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GUPnPServiceProxy.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-subscription-lost" title='The "subscription-lost" signal'>subscription-lost</a>"                              : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GUPnPServiceProxy.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> sends commands to a remote UPnP service and handles
+incoming event notifications. <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> implements the
+<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> interface.</p>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GUPnPServiceProxy.details"></a><h2>Details</h2>
+<div class="refsect2" title="GUPnPServiceProxy">
+<a name="GUPnPServiceProxy-struct"></a><h3>GUPnPServiceProxy</h3>
+<pre class="programlisting">typedef struct _GUPnPServiceProxy GUPnPServiceProxy;</pre>
+<p>
+This struct contains private data only, and should be accessed using the
+functions below.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GUPnPServiceProxyAction">
+<a name="GUPnPServiceProxyAction"></a><h3>GUPnPServiceProxyAction</h3>
+<pre class="programlisting">typedef struct _GUPnPServiceProxyAction GUPnPServiceProxyAction;</pre>
+<p>
+Opaque structure for holding in-progress action data.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GUPnPServiceProxyActionCallback ()">
+<a name="GUPnPServiceProxyActionCallback"></a><h3>GUPnPServiceProxyActionCallback ()</h3>
+<pre class="programlisting">void                (*GUPnPServiceProxyActionCallback)  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Callback notifying that <em class="parameter"><code>action</code></em> on <em class="parameter"><code>proxy</code></em> has returned and
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a> etc can be called.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> <em class="parameter"><code>action</code></em> is called from
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> in progress
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="GUPnPServiceProxyNotifyCallback ()">
+<a name="GUPnPServiceProxyNotifyCallback"></a><h3>GUPnPServiceProxyNotifyCallback ()</h3>
+<pre class="programlisting">void                (*GUPnPServiceProxyNotifyCallback)  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+>GValue</a> *value,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Callback notifying that the state variable <em class="parameter"><code>variable</code></em> on <em class="parameter"><code>proxy</code></em> has changed to
+<em class="parameter"><code>value</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> the notification originates from
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>variable</code></em> :</span></p></td>
+<td> The name of the variable being notified
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td> The <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+><span class="type">GValue</span></a> of the variable being notified
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_send_action ()">
+<a name="gupnp-service-proxy-send-action"></a><h3>gupnp_service_proxy_send_action ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_send_action     (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         ...);</pre>
+<p>
+Sends action <em class="parameter"><code>action</code></em> with parameters <em class="parameter"><code>Varargs</code></em> to the service exposed by
+<em class="parameter"><code>proxy</code></em> synchronously. If an error occurred, <em class="parameter"><code>error</code></em> will be set. In case of
+a UPnPError the error code will be the same in <em class="parameter"><code>error</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td> tuples of in parameter name, in parameter type, and in parameter
+value, followed by <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>, and then tuples of out parameter name,
+out parameter type, and out parameter value location, terminated with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if sending the action was succesful.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_send_action_valist ()">
+<a name="gupnp-service-proxy-send-action-valist"></a><h3>gupnp_service_proxy_send_action_valist ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_send_action_valist
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         va_list var_args);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a va_list for
+use by language bindings.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>var_args</code></em> :</span></p></td>
+<td> va_list of tuples of in parameter name, in parameter type, and in
+parameter value, followed by <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>, and then tuples of out parameter name,
+out parameter type, and out parameter value location
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if sending the action was succesful.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_send_action_hash ()">
+<a name="gupnp-service-proxy-send-action-hash"></a><h3>gupnp_service_proxy_send_action_hash ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_send_action_hash
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *in_hash,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *out_hash);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a pair of
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a>s for runtime determined parameter lists.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>in_hash</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a> of in parameter name and <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+><span class="type">GValue</span></a> pairs
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>out_hash</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a> of out parameter name and initialized
+<a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+><span class="type">GValue</span></a> pairs
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if sending the action was succesful.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_begin_action ()">
+<a name="gupnp-service-proxy-begin-action"></a><h3>gupnp_service_proxy_begin_action ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * gupnp_service_proxy_begin_action
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         ...);</pre>
+<p>
+Sends action <em class="parameter"><code>action</code></em> with parameters <em class="parameter"><code>Varargs</code></em> to the service exposed by
+<em class="parameter"><code>proxy</code></em> asynchronously, calling <em class="parameter"><code>callback</code></em> on completion. From <em class="parameter"><code>callback</code></em>, call
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a> to check for errors, to retrieve return
+values, and to free the <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> The callback to call when sending the action has succeeded
+or failed
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data for <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td> tuples of in parameter name, in parameter type, and in parameter
+value, terminated with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will
+be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><code class="function">gupnp_service_proxy_cancel_action()</code></a> or
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist" title="gupnp_service_proxy_end_action_valist ()"><code class="function">gupnp_service_proxy_end_action_valist()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_begin_action_valist ()">
+<a name="gupnp-service-proxy-begin-action-valist"></a><h3>gupnp_service_proxy_begin_action_valist ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * gupnp_service_proxy_begin_action_valist
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         va_list var_args);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a va_list for
+use by language bindings.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> The callback to call when sending the action has succeeded
+or failed
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data for <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>var_args</code></em> :</span></p></td>
+<td> A va_list of tuples of in parameter name, in parameter type, and
+in parameter value
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will
+be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><code class="function">gupnp_service_proxy_cancel_action()</code></a> or
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist" title="gupnp_service_proxy_end_action_valist ()"><code class="function">gupnp_service_proxy_end_action_valist()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_begin_action_hash ()">
+<a name="gupnp-service-proxy-begin-action-hash"></a><h3>gupnp_service_proxy_begin_action_hash ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> * gupnp_service_proxy_begin_action_hash
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *action,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">GUPnPServiceProxyActionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *hash);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a>
+for runtime generated parameter lists.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> An action
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> The callback to call when sending the action has succeeded
+or failed
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data for <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a> of in parameter name and <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+><span class="type">GValue</span></a> pairs
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will
+be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><code class="function">gupnp_service_proxy_cancel_action()</code></a> or
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()"><code class="function">gupnp_service_proxy_end_action_hash()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_end_action ()">
+<a name="gupnp-service-proxy-end-action"></a><h3>gupnp_service_proxy_end_action ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_end_action      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         ...);</pre>
+<p>
+Retrieves the result of <em class="parameter"><code>action</code></em>. The out parameters in <em class="parameter"><code>Varargs</code></em> will be
+filled in, and if an error occurred, <em class="parameter"><code>error</code></em> will be set. In case of
+a UPnPError the error code will be the same in <em class="parameter"><code>error</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td> tuples of out parameter name, out parameter type, and out parameter
+value location, terminated with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. The out parameter values should be
+freed after use
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> on success.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_end_action_valist ()">
+<a name="gupnp-service-proxy-end-action-valist"></a><h3>gupnp_service_proxy_end_action_valist ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_end_action_valist
+                                                        (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         va_list var_args);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a va_list for
+use by language bindings.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>var_args</code></em> :</span></p></td>
+<td> A va_list of tuples of out parameter name, out parameter type,
+and out parameter value location. The out parameter values should be
+freed after use
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> on success.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_end_action_hash ()">
+<a name="gupnp-service-proxy-end-action-hash"></a><h3>gupnp_service_proxy_end_action_hash ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_end_action_hash (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+>GHashTable</a> *hash);</pre>
+<p>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a>
+for runtime generated parameter lists.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The location where to store any error, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"
+><span class="type">GHashTable</span></a> of out parameter name and initialised <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"
+><span class="type">GValue</span></a> pairs
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> on success.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_cancel_action ()">
+<a name="gupnp-service-proxy-cancel-action"></a><h3>gupnp_service_proxy_cancel_action ()</h3>
+<pre class="programlisting">void                gupnp_service_proxy_cancel_action   (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a> *action);</pre>
+<p>
+Cancels <em class="parameter"><code>action</code></em>, freeing the <em class="parameter"><code>action</code></em> handle.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_add_notify ()">
+<a name="gupnp-service-proxy-add-notify"></a><h3>gupnp_service_proxy_add_notify ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_add_notify      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
+>GType</a> type,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">GUPnPServiceProxyNotifyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Sets up <em class="parameter"><code>callback</code></em> to be called whenever a change notification for
+<em class="parameter"><code>variable</code></em> is recieved.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>variable</code></em> :</span></p></td>
+<td> The variable to add notification for
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td> The type of the variable
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> The callback to call when <em class="parameter"><code>variable</code></em> changes
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data for <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> on success.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_remove_notify ()">
+<a name="gupnp-service-proxy-remove-notify"></a><h3>gupnp_service_proxy_remove_notify ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_remove_notify   (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         const char *variable,
+                                                         <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">GUPnPServiceProxyNotifyCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Cancels the variable change notification for <em class="parameter"><code>callback</code></em> and <em class="parameter"><code>user_data</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>variable</code></em> :</span></p></td>
+<td> The variable to add notification for
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> The callback to call when <em class="parameter"><code>variable</code></em> changes
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data for <em class="parameter"><code>callback</code></em>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> on success.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_set_subscribed ()">
+<a name="gupnp-service-proxy-set-subscribed"></a><h3>gupnp_service_proxy_set_subscribed ()</h3>
+<pre class="programlisting">void                gupnp_service_proxy_set_subscribed  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> subscribed);</pre>
+<p>
+(Un)subscribes to this service.
+</p>
+<p>
+Note that the relevant messages are not immediately sent but queued.
+If you want to unsubcribe from this service because the application
+is quitting, rely on automatic synchronised unsubscription on object
+destruction instead.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>subscribed</code></em> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> to subscribe to this service
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_proxy_get_subscribed ()">
+<a name="gupnp-service-proxy-get-subscribed"></a><h3>gupnp_service_proxy_get_subscribed ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gupnp_service_proxy_get_subscribed  (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy);</pre>
+<p>
+Returns if we are subscribed to this service.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if we are subscribed to this service, otherwise <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
+><code class="literal">FALSE</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GUPnPServiceProxy.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "subscribed" property'>
+<a name="GUPnPServiceProxy--subscribed"></a><h3>The <code class="literal">"subscribed"</code> property</h3>
+<pre class="programlisting">  "subscribed"               <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>              : Read / Write</pre>
+<p>
+Whether we are subscribed to this service.</p>
+<p>
+</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GUPnPServiceProxy.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "subscription-lost" signal'>
+<a name="GUPnPServiceProxy-subscription-lost"></a><h3>The <code class="literal">"subscription-lost"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a> *proxy,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>           error,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>           user_data)      : Run Last</pre>
+<p>
+Emitted whenever the subscription to this service has been lost due
+to an error condition.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> that received the signal
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A pointer to a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> describing why the subscription has
+been lost
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

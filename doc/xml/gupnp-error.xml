@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="gupnp-Error-codes">
+<refmeta>
+<refentrytitle role="top_of_page" id="gupnp-Error-codes.top_of_page">Error codes</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Error codes</refname>
+<refpurpose>Error domains and codes.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="gupnp-Error-codes.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+#define             <link linkend="GUPNP-SERVER-ERROR--CAPS">GUPNP_SERVER_ERROR</link>
+enum                <link linkend="GUPnPServerError">GUPnPServerError</link>;
+#define             <link linkend="GUPNP-EVENTING-ERROR--CAPS">GUPNP_EVENTING_ERROR</link>
+enum                <link linkend="GUPnPEventingError">GUPnPEventingError</link>;
+#define             <link linkend="GUPNP-CONTROL-ERROR--CAPS">GUPNP_CONTROL_ERROR</link>
+enum                <link linkend="GUPnPControlError">GUPnPControlError</link>;
+#define             <link linkend="GUPNP-XML-ERROR--CAPS">GUPNP_XML_ERROR</link>
+enum                <link linkend="GUPnPXMLError">GUPnPXMLError</link>;
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="gupnp-Error-codes.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="gupnp-Error-codes.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPNP-SERVER-ERROR--CAPS" role="macro">
+<title>GUPNP_SERVER_ERROR</title>
+<indexterm zone="GUPNP-SERVER-ERROR--CAPS"><primary sortas="GUPNP_SERVER_ERROR">GUPNP_SERVER_ERROR</primary></indexterm><programlisting>#define GUPNP_SERVER_ERROR (gupnp_server_error_quark ())
+</programlisting>
+<para>
+The <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's server errors.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's server errors.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServerError" role="enum">
+<title>enum GUPnPServerError</title>
+<indexterm zone="GUPnPServerError"><primary sortas="GUPnPServerError">GUPnPServerError</primary></indexterm><programlisting>typedef enum {
+        GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR,
+        GUPNP_SERVER_ERROR_NOT_FOUND,
+        GUPNP_SERVER_ERROR_NOT_IMPLEMENTED,
+        GUPNP_SERVER_ERROR_INVALID_RESPONSE,
+        GUPNP_SERVER_ERROR_INVALID_URL,
+        GUPNP_SERVER_ERROR_OTHER
+} GUPnPServerError;
+</programlisting>
+<para>
+<link linkend="GError"><type>GError</type></link> codes used for errors in the <link linkend="GUPNP-SERVER-ERROR--CAPS"><type>GUPNP_SERVER_ERROR</type></link> domain, when there
+is communication with another server.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GUPNP-SERVER-ERROR-INTERNAL-SERVER-ERROR--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR</literal></term>
+<listitem><simpara> Internal server error.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVER-ERROR-NOT-FOUND--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_NOT_FOUND</literal></term>
+<listitem><simpara> The resource was not found.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVER-ERROR-NOT-IMPLEMENTED--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_NOT_IMPLEMENTED</literal></term>
+<listitem><simpara> This method is not implemented.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVER-ERROR-INVALID-RESPONSE--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_INVALID_RESPONSE</literal></term>
+<listitem><simpara> Invalid response.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVER-ERROR-INVALID-URL--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_INVALID_URL</literal></term>
+<listitem><simpara> Invalid URL.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVER-ERROR-OTHER--CAPS" role="constant">
+<term><literal>GUPNP_SERVER_ERROR_OTHER</literal></term>
+<listitem><simpara> Unknown/unhandled error.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPNP-EVENTING-ERROR--CAPS" role="macro">
+<title>GUPNP_EVENTING_ERROR</title>
+<indexterm zone="GUPNP-EVENTING-ERROR--CAPS"><primary sortas="GUPNP_EVENTING_ERROR">GUPNP_EVENTING_ERROR</primary></indexterm><programlisting>#define GUPNP_EVENTING_ERROR (gupnp_eventing_error_quark ())
+</programlisting>
+<para>
+The <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's eventing errors.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's eventing errors.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPEventingError" role="enum">
+<title>enum GUPnPEventingError</title>
+<indexterm zone="GUPnPEventingError"><primary sortas="GUPnPEventingError">GUPnPEventingError</primary></indexterm><programlisting>typedef enum {
+        GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED,
+        GUPNP_EVENTING_ERROR_SUBSCRIPTION_LOST,
+        GUPNP_EVENTING_ERROR_NOTIFY_FAILED
+} GUPnPEventingError;
+</programlisting>
+<para>
+<link linkend="GError"><type>GError</type></link> codes used for errors in the <link linkend="GUPNP-EVENTING-ERROR--CAPS"><type>GUPNP_EVENTING_ERROR</type></link> domain, during
+eventing of state variables.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GUPNP-EVENTING-ERROR-SUBSCRIPTION-FAILED--CAPS" role="constant">
+<term><literal>GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED</literal></term>
+<listitem><simpara> The subscription attempt failed.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-EVENTING-ERROR-SUBSCRIPTION-LOST--CAPS" role="constant">
+<term><literal>GUPNP_EVENTING_ERROR_SUBSCRIPTION_LOST</literal></term>
+<listitem><simpara> The subscription was lost.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-EVENTING-ERROR-NOTIFY-FAILED--CAPS" role="constant">
+<term><literal>GUPNP_EVENTING_ERROR_NOTIFY_FAILED</literal></term>
+<listitem><simpara> The notification failed.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPNP-CONTROL-ERROR--CAPS" role="macro">
+<title>GUPNP_CONTROL_ERROR</title>
+<indexterm zone="GUPNP-CONTROL-ERROR--CAPS"><primary sortas="GUPNP_CONTROL_ERROR">GUPNP_CONTROL_ERROR</primary></indexterm><programlisting>#define GUPNP_CONTROL_ERROR (gupnp_control_error_quark ())
+</programlisting>
+<para>
+The <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's control errors.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP's control errors.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPControlError" role="enum">
+<title>enum GUPnPControlError</title>
+<indexterm zone="GUPnPControlError"><primary sortas="GUPnPControlError">GUPnPControlError</primary></indexterm><programlisting>typedef enum {
+        GUPNP_CONTROL_ERROR_INVALID_ACTION = 401,
+        GUPNP_CONTROL_ERROR_INVALID_ARGS   = 402,
+        GUPNP_CONTROL_ERROR_OUT_OF_SYNC    = 403,
+        GUPNP_CONTROL_ERROR_ACTION_FAILED  = 501
+} GUPnPControlError;
+</programlisting>
+<para>
+<link linkend="GError"><type>GError</type></link> codes used for errors in the <link linkend="GUPNP-CONTROL-ERROR--CAPS"><type>GUPNP_CONTROL_ERROR</type></link> domain, during
+invocation of service actions.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GUPNP-CONTROL-ERROR-INVALID-ACTION--CAPS" role="constant">
+<term><literal>GUPNP_CONTROL_ERROR_INVALID_ACTION</literal></term>
+<listitem><simpara> The action name was invalid.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-CONTROL-ERROR-INVALID-ARGS--CAPS" role="constant">
+<term><literal>GUPNP_CONTROL_ERROR_INVALID_ARGS</literal></term>
+<listitem><simpara> The action arguments were invalid.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-CONTROL-ERROR-OUT-OF-SYNC--CAPS" role="constant">
+<term><literal>GUPNP_CONTROL_ERROR_OUT_OF_SYNC</literal></term>
+<listitem><simpara> Out of sync (deprecated).
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-CONTROL-ERROR-ACTION-FAILED--CAPS" role="constant">
+<term><literal>GUPNP_CONTROL_ERROR_ACTION_FAILED</literal></term>
+<listitem><simpara> The action failed.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPNP-XML-ERROR--CAPS" role="macro">
+<title>GUPNP_XML_ERROR</title>
+<indexterm zone="GUPNP-XML-ERROR--CAPS"><primary sortas="GUPNP_XML_ERROR">GUPNP_XML_ERROR</primary></indexterm><programlisting>#define GUPNP_XML_ERROR (gupnp_xml_error_quark ())
+</programlisting>
+<para>
+The <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP XML processing errors.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GQuark"><type>GQuark</type></link> uniquely used by GUPnP XML processing errors.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPXMLError" role="enum">
+<title>enum GUPnPXMLError</title>
+<indexterm zone="GUPnPXMLError"><primary sortas="GUPnPXMLError">GUPnPXMLError</primary></indexterm><programlisting>typedef enum {
+        GUPNP_XML_ERROR_PARSE,
+        GUPNP_XML_ERROR_NO_NODE,
+        GUPNP_XML_ERROR_EMPTY_NODE,
+        GUPNP_XML_ERROR_OTHER
+} GUPnPXMLError;
+</programlisting>
+<para>
+<link linkend="GError"><type>GError</type></link> codes used for errors in the <link linkend="GUPNP-XML-ERROR--CAPS"><type>GUPNP_XML_ERROR</type></link> domain, during
+processing of XML data.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GUPNP-XML-ERROR-PARSE--CAPS" role="constant">
+<term><literal>GUPNP_XML_ERROR_PARSE</literal></term>
+<listitem><simpara> Generic XML parsing error.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-XML-ERROR-NO-NODE--CAPS" role="constant">
+<term><literal>GUPNP_XML_ERROR_NO_NODE</literal></term>
+<listitem><simpara> A required XML node was not found.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-XML-ERROR-EMPTY-NODE--CAPS" role="constant">
+<term><literal>GUPNP_XML_ERROR_EMPTY_NODE</literal></term>
+<listitem><simpara> An XML node is unexpectedly empty.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-XML-ERROR-OTHER--CAPS" role="constant">
+<term><literal>GUPNP_XML_ERROR_OTHER</literal></term>
+<listitem><simpara> Unknown/unhandled XML related errors.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

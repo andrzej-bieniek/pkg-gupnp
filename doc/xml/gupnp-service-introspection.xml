@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPServiceIntrospection">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPServiceIntrospection.top_of_page">GUPnPServiceIntrospection</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPServiceIntrospection</refname>
+<refpurpose>Service introspection class.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPServiceIntrospection.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+enum                <link linkend="GUPnPServiceActionArgDirection">GUPnPServiceActionArgDirection</link>;
+                    <link linkend="GUPnPServiceActionArgInfo">GUPnPServiceActionArgInfo</link>;
+                    <link linkend="GUPnPServiceActionInfo">GUPnPServiceActionInfo</link>;
+                    <link linkend="GUPnPServiceStateVariableInfo">GUPnPServiceStateVariableInfo</link>;
+                    <link linkend="GUPnPServiceIntrospection-struct">GUPnPServiceIntrospection</link>;
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-service-introspection-list-action-names">gupnp_service_introspection_list_action_names</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-service-introspection-list-actions">gupnp_service_introspection_list_actions</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);
+const <link linkend="GUPnPServiceActionInfo">GUPnPServiceActionInfo</link> * <link linkend="gupnp-service-introspection-get-action">gupnp_service_introspection_get_action</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="gchar">gchar</link> *action_name);
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-service-introspection-list-state-variable-names">gupnp_service_introspection_list_state_variable_names</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-service-introspection-list-state-variables">gupnp_service_introspection_list_state_variables</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);
+const <link linkend="GUPnPServiceStateVariableInfo">GUPnPServiceStateVariableInfo</link> * <link linkend="gupnp-service-introspection-get-state-variable">gupnp_service_introspection_get_state_variable</link>
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="gchar">gchar</link> *variable_name);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPServiceIntrospection.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPServiceIntrospection
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPServiceIntrospection.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPServiceIntrospection--scpd">scpd</link>&quot;                     <link linkend="gpointer">gpointer</link>              : Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPServiceIntrospection.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+The <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link> class provides methods for service
+introspection based on information contained in its service description
+document (SCPD). There is no constructor provided for this class, please use
+<link linkend="gupnp-service-info-get-introspection"><type>gupnp_service_info_get_introspection</type></link> or
+<link linkend="gupnp-service-info-get-introspection-async"><type>gupnp_service_info_get_introspection_async</type></link> to create an
+<link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link> object for a specific service.
+</para>
+<para>
+Note that all the introspection information is retreived from the service
+description document (SCPD) provided by the service and hence can not be
+guaranteed to be complete. A UPnP service is required to provide an SCPD but
+unfortunately, many services either do not provide this document or the
+document does not provide any or all of the introspection information.
+</para>
+<para>
+This class exposes internals of the UPnP protocol and should not need
+to be used for regular device or control point development.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPServiceIntrospection.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPServiceActionArgDirection" role="enum">
+<title>enum GUPnPServiceActionArgDirection</title>
+<indexterm zone="GUPnPServiceActionArgDirection"><primary sortas="GUPnPServiceActionArgDirection">GUPnPServiceActionArgDirection</primary></indexterm><programlisting>typedef enum
+{
+        GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN,
+        GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT
+} GUPnPServiceActionArgDirection;
+</programlisting>
+<para>
+Represents the direction of a service state variable.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GUPNP-SERVICE-ACTION-ARG-DIRECTION-IN--CAPS" role="constant">
+<term><literal>GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN</literal></term>
+<listitem><simpara> An "in" variable, to the service.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GUPNP-SERVICE-ACTION-ARG-DIRECTION-OUT--CAPS" role="constant">
+<term><literal>GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT</literal></term>
+<listitem><simpara> An "out" variable, from the service.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServiceActionArgInfo" role="struct">
+<title>GUPnPServiceActionArgInfo</title>
+<indexterm zone="GUPnPServiceActionArgInfo"><primary sortas="GUPnPServiceActionArgInfo">GUPnPServiceActionArgInfo</primary></indexterm><programlisting>typedef struct {
+        char                          *name;
+        GUPnPServiceActionArgDirection direction;
+        char                          *related_state_variable;
+        gboolean                       retval;
+} GUPnPServiceActionArgInfo;
+</programlisting>
+<para>
+This structure contains information about the argument of service action.</para>
+<para>
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="char">char</link>&#160;*<structfield>name</structfield>;</term>
+<listitem><simpara> The name of the action argument.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GUPnPServiceActionArgDirection">GUPnPServiceActionArgDirection</link>&#160;<structfield>direction</structfield>;</term>
+<listitem><simpara> The direction of the action argument.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="char">char</link>&#160;*<structfield>related_state_variable</structfield>;</term>
+<listitem><simpara> The name of the state variable associated with this
+argument.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="gboolean">gboolean</link>&#160;<structfield>retval</structfield>;</term>
+<listitem><simpara> Whether this argument is the return value of the action.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServiceActionInfo" role="struct">
+<title>GUPnPServiceActionInfo</title>
+<indexterm zone="GUPnPServiceActionInfo"><primary sortas="GUPnPServiceActionInfo">GUPnPServiceActionInfo</primary></indexterm><programlisting>typedef struct {
+        char  *name;
+        GList *arguments; /* list of #GUPnPServiceActionArgInfo */
+} GUPnPServiceActionInfo;
+</programlisting>
+<para>
+This structure contains information about a service action.</para>
+<para>
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="char">char</link>&#160;*<structfield>name</structfield>;</term>
+<listitem><simpara> The name of the action argument.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GList">GList</link>&#160;*<structfield>arguments</structfield>;</term>
+<listitem><simpara> A GList of all the arguments
+(of type <link linkend="GUPnPServiceActionArgInfo"><type>GUPnPServiceActionArgInfo</type></link>) of this action.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServiceStateVariableInfo" role="struct">
+<title>GUPnPServiceStateVariableInfo</title>
+<indexterm zone="GUPnPServiceStateVariableInfo"><primary sortas="GUPnPServiceStateVariableInfo">GUPnPServiceStateVariableInfo</primary></indexterm><programlisting>typedef struct {
+        char    *name;
+        gboolean send_events;
+        gboolean is_numeric;
+        GType    type;
+        GValue   default_value;
+        GValue   minimum;
+        GValue   maximum;
+        GValue   step;
+        GList   *allowed_values;
+} GUPnPServiceStateVariableInfo;
+</programlisting>
+<para>
+This structure contains information about service state variable.</para>
+<para>
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="char">char</link>&#160;*<structfield>name</structfield>;</term>
+<listitem><simpara> The name of the state variable.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="gboolean">gboolean</link>&#160;<structfield>send_events</structfield>;</term>
+<listitem><simpara> Whether this state variable can source events.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="gboolean">gboolean</link>&#160;<structfield>is_numeric</structfield>;</term>
+<listitem><simpara> Wether this state variable is a numeric type (integer and
+float).
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GType">GType</link>&#160;<structfield>type</structfield>;</term>
+<listitem><simpara> The GType of this state variable.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GValue">GValue</link>&#160;<structfield>default_value</structfield>;</term>
+<listitem><simpara> The default value of this state variable.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GValue">GValue</link>&#160;<structfield>minimum</structfield>;</term>
+<listitem><simpara> The minimum value of this state variable. Only applies to numeric
+data types.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GValue">GValue</link>&#160;<structfield>maximum</structfield>;</term>
+<listitem><simpara> The maximum value of this state variable. Only applies to numeric
+data types.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GValue">GValue</link>&#160;<structfield>step</structfield>;</term>
+<listitem><simpara> The step value of this state variable. Only applies to numeric
+data types.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GList">GList</link>&#160;*<structfield>allowed_values</structfield>;</term>
+<listitem><simpara> The allowed values of this state variable. Only applies to
+string data types. Unlike the other fields in this structure, this field
+contains a list of (char *) strings rather than GValues.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServiceIntrospection-struct" role="struct">
+<title>GUPnPServiceIntrospection</title>
+<indexterm zone="GUPnPServiceIntrospection-struct"><primary sortas="GUPnPServiceIntrospection">GUPnPServiceIntrospection</primary></indexterm><programlisting>typedef struct _GUPnPServiceIntrospection GUPnPServiceIntrospection;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-service-introspection-list-action-names" role="function">
+<title>gupnp_service_introspection_list_action_names ()</title>
+<indexterm zone="gupnp-service-introspection-list-action-names"><primary sortas="gupnp_service_introspection_list_action_names">gupnp_service_introspection_list_action_names</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_service_introspection_list_action_names
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);</programlisting>
+<para>
+Returns a GList of names of all the actions in this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A GList of names of all the actions or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not modify
+or free it or its contents.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-introspection-list-actions" role="function">
+<title>gupnp_service_introspection_list_actions ()</title>
+<indexterm zone="gupnp-service-introspection-list-actions"><primary sortas="gupnp_service_introspection_list_actions">gupnp_service_introspection_list_actions</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_service_introspection_list_actions
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);</programlisting>
+<para>
+Returns a <link linkend="GList"><type>GList</type></link> of all the actions (of type <link linkend="GUPnPServiceActionInfo"><type>GUPnPServiceActionInfo</type></link>) in
+this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of all the actions or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not modify or free it
+or its contents.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-introspection-get-action" role="function">
+<title>gupnp_service_introspection_get_action ()</title>
+<indexterm zone="gupnp-service-introspection-get-action"><primary sortas="gupnp_service_introspection_get_action">gupnp_service_introspection_get_action</primary></indexterm><programlisting>const <link linkend="GUPnPServiceActionInfo">GUPnPServiceActionInfo</link> * gupnp_service_introspection_get_action
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="gchar">gchar</link> *action_name);</programlisting>
+<para>
+Returns the action by the name <parameter>action_name</parameter> in this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action_name</parameter>&#160;:</term>
+<listitem><simpara> The name of the action to retreive
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the action or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not modify or free it.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-introspection-list-state-variable-names" role="function">
+<title>gupnp_service_introspection_list_state_variable_names ()</title>
+<indexterm zone="gupnp-service-introspection-list-state-variable-names"><primary sortas="gupnp_service_introspection_list_state_variable_names">gupnp_service_introspection_list_state_variable_names</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_service_introspection_list_state_variable_names
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);</programlisting>
+<para>
+Returns a <link linkend="GList"><type>GList</type></link> of names of all the state variables in this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of names of all the state variables or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not
+modify or free it or its contents.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-introspection-list-state-variables" role="function">
+<title>gupnp_service_introspection_list_state_variables ()</title>
+<indexterm zone="gupnp-service-introspection-list-state-variables"><primary sortas="gupnp_service_introspection_list_state_variables">gupnp_service_introspection_list_state_variables</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_service_introspection_list_state_variables
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection);</programlisting>
+<para>
+Returns a GList of all the state variables (of type
+<link linkend="GUPnPServiceStateVariableInfo"><type>GUPnPServiceStateVariableInfo</type></link>) in this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of all the state variables or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not modify or
+free it or its contents.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-introspection-get-state-variable" role="function">
+<title>gupnp_service_introspection_get_state_variable ()</title>
+<indexterm zone="gupnp-service-introspection-get-state-variable"><primary sortas="gupnp_service_introspection_get_state_variable">gupnp_service_introspection_get_state_variable</primary></indexterm><programlisting>const <link linkend="GUPnPServiceStateVariableInfo">GUPnPServiceStateVariableInfo</link> * gupnp_service_introspection_get_state_variable
+                                                        (<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="gchar">gchar</link> *variable_name);</programlisting>
+<para>
+Returns the state variable by the name <parameter>variable_name</parameter> in this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable_name</parameter>&#160;:</term>
+<listitem><simpara> The name of the variable to retreive
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the state variable or <link linkend="NULL--CAPS"><literal>NULL</literal></link>. Do not modify or free it.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPServiceIntrospection.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPServiceIntrospection--scpd" role="property"><title>The <literal>&quot;scpd&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceIntrospection--scpd"><primary sortas="GUPnPServiceIntrospection:scpd">GUPnPServiceIntrospection:scpd</primary></indexterm><programlisting>  &quot;scpd&quot;                     <link linkend="gpointer">gpointer</link>              : Write / Construct Only</programlisting>
+<para>
+The scpd of the device description file.</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+
+
+
+</refentry>

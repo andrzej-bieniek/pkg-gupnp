@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPResourceFactory">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPResourceFactory.top_of_page">GUPnPResourceFactory</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPResourceFactory</refname>
+<refpurpose>Class for resource and resource proxy object creation.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPResourceFactory.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPResourceFactory-struct">GUPnPResourceFactory</link>;
+<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * <link linkend="gupnp-resource-factory-new">gupnp_resource_factory_new</link>       (void);
+<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * <link linkend="gupnp-resource-factory-get-default">gupnp_resource_factory_get_default</link>
+                                                        (void);
+<link linkend="void">void</link>                <link linkend="gupnp-resource-factory-register-resource-type">gupnp_resource_factory_register_resource_type</link>
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type,
+                                                         <link linkend="GType">GType</link> type);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-resource-factory-unregister-resource-type">gupnp_resource_factory_unregister_resource_type</link>
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type);
+<link linkend="void">void</link>                <link linkend="gupnp-resource-factory-register-resource-proxy-type">gupnp_resource_factory_register_resource_proxy_type</link>
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type,
+                                                         <link linkend="GType">GType</link> type);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-resource-factory-unregister-resource-proxy-type">gupnp_resource_factory_unregister_resource_proxy_type</link>
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPResourceFactory.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPResourceFactory
+</synopsis>
+</refsect1>
+
+
+
+
+
+
+
+
+<refsect1 id="GUPnPResourceFactory.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> objects are used by <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link>,
+<link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link> and <link linkend="GUPnPDevice"><type>GUPnPDevice</type></link> to create resource proxy and resource
+objects. Register UPnP type - <link linkend="GType"><type>GType</type></link> pairs to have resource or resource proxy
+objects created with the specified <link linkend="GType"><type>GType</type></link> whenever an object for a resource
+of the specified UPnP type is requested. The <link linkend="GType"><type>GType</type></link><!-- -->s need
+to be derived from the relevant resource or resource proxy type (e.g.
+a device proxy type needs to be derived from <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link>).</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPResourceFactory.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPResourceFactory-struct" role="struct">
+<title>GUPnPResourceFactory</title>
+<indexterm zone="GUPnPResourceFactory-struct"><primary sortas="GUPnPResourceFactory">GUPnPResourceFactory</primary></indexterm><programlisting>typedef struct _GUPnPResourceFactory GUPnPResourceFactory;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-resource-factory-new" role="function">
+<title>gupnp_resource_factory_new ()</title>
+<indexterm zone="gupnp-resource-factory-new"><primary sortas="gupnp_resource_factory_new">gupnp_resource_factory_new</primary></indexterm><programlisting><link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * gupnp_resource_factory_new       (void);</programlisting>
+<para>
+Create a new <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-resource-factory-get-default" role="function">
+<title>gupnp_resource_factory_get_default ()</title>
+<indexterm zone="gupnp-resource-factory-get-default"><primary sortas="gupnp_resource_factory_get_default">gupnp_resource_factory_get_default</primary></indexterm><programlisting><link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * gupnp_resource_factory_get_default
+                                                        (void);</programlisting>
+<para>
+Get the default singleton <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <parameter>GUPnPResourceFactory</parameter> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-resource-factory-register-resource-type" role="function">
+<title>gupnp_resource_factory_register_resource_type ()</title>
+<indexterm zone="gupnp-resource-factory-register-resource-type"><primary sortas="gupnp_resource_factory_register_resource_type">gupnp_resource_factory_register_resource_type</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_resource_factory_register_resource_type
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type,
+                                                         <link linkend="GType">GType</link> type);</programlisting>
+<para>
+Registers the GType <parameter>type</parameter> for the resource of UPnP type <parameter>upnp_type</parameter>. After
+this call, the factory <parameter>factory</parameter> will create object of GType <parameter>type</parameter> each time
+it is asked to create a resource object for UPnP type <parameter>upnp_type</parameter>.
+</para>
+<para>
+Note: GType <parameter>type</parameter> must be a derived type of <link linkend="GUPNP-TYPE-DEVICE--CAPS"><type>GUPNP_TYPE_DEVICE</type></link> if resource is
+a device or <link linkend="GUPNP-TYPE-SERVICE--CAPS"><type>GUPNP_TYPE_SERVICE</type></link> if its a service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>upnp_type</parameter>&#160;:</term>
+<listitem><simpara> The UPnP type name of the resource.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type</parameter>&#160;:</term>
+<listitem><simpara> The requested GType assignment for the resource.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-resource-factory-unregister-resource-type" role="function">
+<title>gupnp_resource_factory_unregister_resource_type ()</title>
+<indexterm zone="gupnp-resource-factory-unregister-resource-type"><primary sortas="gupnp_resource_factory_unregister_resource_type">gupnp_resource_factory_unregister_resource_type</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_resource_factory_unregister_resource_type
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type);</programlisting>
+<para>
+Unregisters the GType assignment for the resource of UPnP type <parameter>upnp_type</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>upnp_type</parameter>&#160;:</term>
+<listitem><simpara> The UPnP type name of the resource.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if GType assignment was removed successfully, <link linkend="FALSE--CAPS"><literal>FALSE</literal></link>
+otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-resource-factory-register-resource-proxy-type" role="function">
+<title>gupnp_resource_factory_register_resource_proxy_type ()</title>
+<indexterm zone="gupnp-resource-factory-register-resource-proxy-type"><primary sortas="gupnp_resource_factory_register_resource_proxy_type">gupnp_resource_factory_register_resource_proxy_type</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_resource_factory_register_resource_proxy_type
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type,
+                                                         <link linkend="GType">GType</link> type);</programlisting>
+<para>
+Registers the GType <parameter>type</parameter> for the proxy of resource of UPnP type <parameter>upnp_type</parameter>.
+After this call, the factory <parameter>factory</parameter> will create object of GType <parameter>type</parameter> each
+time it is asked to create a resource proxy object for UPnP type <parameter>upnp_type</parameter>.
+</para>
+<para>
+Note: GType <parameter>type</parameter> must be a derived type of <link linkend="GUPNP-TYPE-DEVICE-PROXY--CAPS"><type>GUPNP_TYPE_DEVICE_PROXY</type></link> if
+resource is a device or <link linkend="GUPNP-TYPE-SERVICE-PROXY--CAPS"><type>GUPNP_TYPE_SERVICE_PROXY</type></link> if its a service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>upnp_type</parameter>&#160;:</term>
+<listitem><simpara> The UPnP type name of the resource.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type</parameter>&#160;:</term>
+<listitem><simpara> The requested GType assignment for the resource proxy.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-resource-factory-unregister-resource-proxy-type" role="function">
+<title>gupnp_resource_factory_unregister_resource_proxy_type ()</title>
+<indexterm zone="gupnp-resource-factory-unregister-resource-proxy-type"><primary sortas="gupnp_resource_factory_unregister_resource_proxy_type">gupnp_resource_factory_unregister_resource_proxy_type</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_resource_factory_unregister_resource_proxy_type
+                                                        (<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *upnp_type);</programlisting>
+<para>
+Unregisters the GType assignment for the proxy of resource of UPnP type
+<parameter>upnp_type</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>upnp_type</parameter>&#160;:</term>
+<listitem><simpara> The UPnP type name of the resource.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if GType assignment was removed successfully, <link linkend="FALSE--CAPS"><literal>FALSE</literal></link>
+otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPServiceInfo">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPServiceInfo.top_of_page">GUPnPServiceInfo</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPServiceInfo</refname>
+<refpurpose>Base abstract class for querying service information.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPServiceInfo.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPServiceInfo-struct">GUPnPServiceInfo</link>;
+<link linkend="void">void</link>                (<link linkend="GUPnPServiceIntrospectionCallback">*GUPnPServiceIntrospectionCallback</link>)
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="GError">GError</link> *error,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="GUPnPContext">GUPnPContext</link> *      <link linkend="gupnp-service-info-get-context">gupnp_service_info_get_context</link>      (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-service-info-get-location">gupnp_service_info_get_location</link>     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+const <link linkend="SoupURI">SoupURI</link> *     <link linkend="gupnp-service-info-get-url-base">gupnp_service_info_get_url_base</link>     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-service-info-get-udn">gupnp_service_info_get_udn</link>          (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+const <link linkend="char">char</link> *        <link linkend="gupnp-service-info-get-service-type">gupnp_service_info_get_service_type</link> (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-service-info-get-id">gupnp_service_info_get_id</link>           (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-service-info-get-scpd-url">gupnp_service_info_get_scpd_url</link>     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-service-info-get-control-url">gupnp_service_info_get_control_url</link>  (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+<link linkend="char">char</link> *              <link linkend="gupnp-service-info-get-event-subscription-url">gupnp_service_info_get_event_subscription_url</link>
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);
+<link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> * <link linkend="gupnp-service-info-get-introspection">gupnp_service_info_get_introspection</link>
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="void">void</link>                <link linkend="gupnp-service-info-get-introspection-async">gupnp_service_info_get_introspection_async</link>
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GUPnPServiceIntrospectionCallback">GUPnPServiceIntrospectionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPServiceInfo.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPServiceInfo
+         +----<link linkend="GUPnPService">GUPnPService</link>
+         +----<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link>
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPServiceInfo.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPServiceInfo--context">context</link>&quot;                  <link linkend="GUPnPContext">GUPnPContext</link>*         : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--document">document</link>&quot;                 <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--element">element</link>&quot;                  <link linkend="gpointer">gpointer</link>              : Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--location">location</link>&quot;                 <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--service-type">service-type</link>&quot;             <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--udn">udn</link>&quot;                      <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPServiceInfo--url-base">url-base</link>&quot;                 <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPServiceInfo.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+The <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link> base abstract class provides methods for querying
+service information.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPServiceInfo.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPServiceInfo-struct" role="struct">
+<title>GUPnPServiceInfo</title>
+<indexterm zone="GUPnPServiceInfo-struct"><primary sortas="GUPnPServiceInfo">GUPnPServiceInfo</primary></indexterm><programlisting>typedef struct _GUPnPServiceInfo GUPnPServiceInfo;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPServiceIntrospectionCallback" role="function">
+<title>GUPnPServiceIntrospectionCallback ()</title>
+<indexterm zone="GUPnPServiceIntrospectionCallback"><primary sortas="GUPnPServiceIntrospectionCallback">GUPnPServiceIntrospectionCallback</primary></indexterm><programlisting><link linkend="void">void</link>                (*GUPnPServiceIntrospectionCallback)
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> *introspection,
+                                                         const <link linkend="GError">GError</link> *error,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Callback notifying that <parameter>introspection</parameter> for <parameter>info</parameter> has been obtained.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link> introspection was requested for
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>introspection</parameter>&#160;:</term>
+<listitem><simpara> The new <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link> object, or NULL
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GError"><type>GError</type></link> that occurred, or NULL
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-context" role="function">
+<title>gupnp_service_info_get_context ()</title>
+<indexterm zone="gupnp-service-info-get-context"><primary sortas="gupnp_service_info_get_context">gupnp_service_info_get_context</primary></indexterm><programlisting><link linkend="GUPnPContext">GUPnPContext</link> *      gupnp_service_info_get_context      (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the <link linkend="GUPnPContext"><type>GUPnPContext</type></link> associated with <parameter>info</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-location" role="function">
+<title>gupnp_service_info_get_location ()</title>
+<indexterm zone="gupnp-service-info-get-location"><primary sortas="gupnp_service_info_get_location">gupnp_service_info_get_location</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_service_info_get_location     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the location of the device description file.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-url-base" role="function">
+<title>gupnp_service_info_get_url_base ()</title>
+<indexterm zone="gupnp-service-info-get-url-base"><primary sortas="gupnp_service_info_get_url_base">gupnp_service_info_get_url_base</primary></indexterm><programlisting>const <link linkend="SoupURI">SoupURI</link> *     gupnp_service_info_get_url_base     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the URL base of this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant <link linkend="SoupURI"><type>SoupURI</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-udn" role="function">
+<title>gupnp_service_info_get_udn ()</title>
+<indexterm zone="gupnp-service-info-get-udn"><primary sortas="gupnp_service_info_get_udn">gupnp_service_info_get_udn</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_service_info_get_udn          (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the Unique Device Name of the containing device.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-service-type" role="function">
+<title>gupnp_service_info_get_service_type ()</title>
+<indexterm zone="gupnp-service-info-get-service-type"><primary sortas="gupnp_service_info_get_service_type">gupnp_service_info_get_service_type</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_service_info_get_service_type (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the UPnP service type, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A constant string.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-id" role="function">
+<title>gupnp_service_info_get_id ()</title>
+<indexterm zone="gupnp-service-info-get-id"><primary sortas="gupnp_service_info_get_id">gupnp_service_info_get_id</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_service_info_get_id           (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the ID of this service, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if there is no ID.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string. This string should be freed with <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-scpd-url" role="function">
+<title>gupnp_service_info_get_scpd_url ()</title>
+<indexterm zone="gupnp-service-info-get-scpd-url"><primary sortas="gupnp_service_info_get_scpd_url">gupnp_service_info_get_scpd_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_service_info_get_scpd_url     (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the SCPD URL for this service, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if there is no SCPD.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string. This string should be freed with <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-control-url" role="function">
+<title>gupnp_service_info_get_control_url ()</title>
+<indexterm zone="gupnp-service-info-get-control-url"><primary sortas="gupnp_service_info_get_control_url">gupnp_service_info_get_control_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_service_info_get_control_url  (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the control URL for this service, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>..</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string. This string should be freed with <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-event-subscription-url" role="function">
+<title>gupnp_service_info_get_event_subscription_url ()</title>
+<indexterm zone="gupnp-service-info-get-event-subscription-url"><primary sortas="gupnp_service_info_get_event_subscription_url">gupnp_service_info_get_event_subscription_url</primary></indexterm><programlisting><link linkend="char">char</link> *              gupnp_service_info_get_event_subscription_url
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info);</programlisting>
+<para>
+Get the event subscription URL for this service, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A string. This string should be freed with <link linkend="g-free"><function>g_free()</function></link> after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-introspection" role="function">
+<title>gupnp_service_info_get_introspection ()</title>
+<indexterm zone="gupnp-service-info-get-introspection"><primary sortas="gupnp_service_info_get_introspection">gupnp_service_info_get_introspection</primary></indexterm><programlisting><link linkend="GUPnPServiceIntrospection">GUPnPServiceIntrospection</link> * gupnp_service_info_get_introspection
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Note that introspection object is created from the information in service
+description document (SCPD) provided by the service so it can not be created
+if the service does not provide an SCPD.
+</para>
+<para>
+Warning: You  should use <link linkend="gupnp-service-info-get-introspection-async"><function>gupnp_service_info_get_introspection_async()</function></link>
+instead, this function re-enter the GMainloop before returning.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> return location for a <link linkend="GError"><type>GError</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPServiceIntrospection"><type>GUPnPServiceIntrospection</type></link> for this service or <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+Unref after use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-info-get-introspection-async" role="function">
+<title>gupnp_service_info_get_introspection_async ()</title>
+<indexterm zone="gupnp-service-info-get-introspection-async"><primary sortas="gupnp_service_info_get_introspection_async">gupnp_service_info_get_introspection_async</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_info_get_introspection_async
+                                                        (<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link> *info,
+                                                         <link linkend="GUPnPServiceIntrospectionCallback">GUPnPServiceIntrospectionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Note that introspection object is created from the information in service
+description document (SCPD) provided by the service so it can not be created
+if the service does not provide an SCPD.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>info</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> callback to be called when introspection object is ready.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> user_data to be passed to the callback.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPServiceInfo.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPServiceInfo--context" role="property"><title>The <literal>&quot;context&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--context"><primary sortas="GUPnPServiceInfo:context">GUPnPServiceInfo:context</primary></indexterm><programlisting>  &quot;context&quot;                  <link linkend="GUPnPContext">GUPnPContext</link>*         : Read / Write / Construct Only</programlisting>
+<para>
+The <link linkend="GUPnPContext"><type>GUPnPContext</type></link> to use.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPServiceInfo--document" role="property"><title>The <literal>&quot;document&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--document"><primary sortas="GUPnPServiceInfo:document">GUPnPServiceInfo:document</primary></indexterm><programlisting>  &quot;document&quot;                 <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only</programlisting>
+<para>
+Private property.</para>
+<para>
+</para><para>Stability Level Private</para>
+</refsect2>
+<refsect2 id="GUPnPServiceInfo--element" role="property"><title>The <literal>&quot;element&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--element"><primary sortas="GUPnPServiceInfo:element">GUPnPServiceInfo:element</primary></indexterm><programlisting>  &quot;element&quot;                  <link linkend="gpointer">gpointer</link>              : Write / Construct Only</programlisting>
+<para>
+Private property.</para>
+<para>
+</para><para>Stability Level Private</para>
+</refsect2>
+<refsect2 id="GUPnPServiceInfo--location" role="property"><title>The <literal>&quot;location&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--location"><primary sortas="GUPnPServiceInfo:location">GUPnPServiceInfo:location</primary></indexterm><programlisting>  &quot;location&quot;                 <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The location of the device description file.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPServiceInfo--service-type" role="property"><title>The <literal>&quot;service-type&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--service-type"><primary sortas="GUPnPServiceInfo:service-type">GUPnPServiceInfo:service-type</primary></indexterm><programlisting>  &quot;service-type&quot;             <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The service type.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPServiceInfo--udn" role="property"><title>The <literal>&quot;udn&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--udn"><primary sortas="GUPnPServiceInfo:udn">GUPnPServiceInfo:udn</primary></indexterm><programlisting>  &quot;udn&quot;                      <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The UDN of the containing device.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPServiceInfo--url-base" role="property"><title>The <literal>&quot;url-base&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceInfo--url-base"><primary sortas="GUPnPServiceInfo:url-base">GUPnPServiceInfo:url-base</primary></indexterm><programlisting>  &quot;url-base&quot;                 <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only</programlisting>
+<para>
+The URL base (<link linkend="SoupURI"><type>SoupURI</type></link>).</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+
+
+
+</refentry>

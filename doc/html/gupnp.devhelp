@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="GUPnP Reference Manual" link="index.html" author="" name="gupnp">
+  <chapters>
+    <sub name="Tutorial" link="tutorial.html">
+      <sub name="Overview" link="overview.html"/>
+      <sub name="Writing a UPnP Client" link="client-tutorial.html"/>
+      <sub name="Writing a UPnP Service" link="server-tutorial.html"/>
+    </sub>
+    <sub name="Reference" link="api.html">
+      <sub name="Device Information" link="api-device-info.html">
+        <sub name="GUPnPDeviceInfo" link="GUPnPDeviceInfo.html"/>
+        <sub name="GUPnPServiceInfo" link="GUPnPServiceInfo.html"/>
+        <sub name="GUPnPServiceIntrospection" link="GUPnPServiceIntrospection.html"/>
+      </sub>
+      <sub name="Device Control" link="api-device-control.html">
+        <sub name="GUPnPControlPoint" link="GUPnPControlPoint.html"/>
+        <sub name="GUPnPDeviceProxy" link="GUPnPDeviceProxy.html"/>
+        <sub name="GUPnPServiceProxy" link="GUPnPServiceProxy.html"/>
+      </sub>
+      <sub name="Device Implementation" link="api-device-impl.html">
+        <sub name="GUPnPDevice" link="GUPnPDevice.html"/>
+        <sub name="GUPnPRootDevice" link="GUPnPRootDevice.html"/>
+        <sub name="GUPnPService" link="GUPnPService.html"/>
+      </sub>
+      <sub name="Utility Functions" link="api-utility.html">
+        <sub name="GUPnPContext" link="GUPnPContext.html"/>
+        <sub name="GUPnPContextManager" link="GUPnPContextManager.html"/>
+        <sub name="GUPnPResourceFactory" link="GUPnPResourceFactory.html"/>
+        <sub name="GUPnPXMLDoc" link="GUPnPXMLDoc.html"/>
+        <sub name="Error codes" link="gupnp-Error-codes.html"/>
+        <sub name="Special UPnP types" link="gupnp-Special-UPnP-types.html"/>
+      </sub>
+      <sub name="Tools" link="api-tools.html">
+        <sub name="gupnp-binding-tool" link="gupnp-binding-tool.html"/>
+      </sub>
+    </sub>
+    <sub name="XML Schemas" link="schemas.html">
+      <sub name="Device Description" link="schemas-device.html"/>
+      <sub name="Service Description" link="schemas-service.html"/>
+    </sub>
+    <sub name="" link="glossary.html"/>
+    <sub name="" link="ix01.html"/>
+  </chapters>
+  <functions>
+    <function name="GUPnPDeviceInfo" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo-struct"/>
+    <function name="gupnp_device_info_get_resource_factory ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-resource-factory"/>
+    <function name="gupnp_device_info_get_context ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-context"/>
+    <function name="gupnp_device_info_get_location ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-location"/>
+    <function name="gupnp_device_info_get_url_base ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-url-base"/>
+    <function name="gupnp_device_info_get_udn ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-udn"/>
+    <function name="gupnp_device_info_get_device_type ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-device-type"/>
+    <function name="gupnp_device_info_get_friendly_name ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-friendly-name"/>
+    <function name="gupnp_device_info_get_manufacturer ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-manufacturer"/>
+    <function name="gupnp_device_info_get_manufacturer_url ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-manufacturer-url"/>
+    <function name="gupnp_device_info_get_model_description ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-model-description"/>
+    <function name="gupnp_device_info_get_model_name ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-model-name"/>
+    <function name="gupnp_device_info_get_model_number ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-model-number"/>
+    <function name="gupnp_device_info_get_model_url ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-model-url"/>
+    <function name="gupnp_device_info_get_serial_number ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-serial-number"/>
+    <function name="gupnp_device_info_get_presentation_url ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-presentation-url"/>
+    <function name="gupnp_device_info_get_upc ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-upc"/>
+    <function name="gupnp_device_info_get_icon_url ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-icon-url"/>
+    <function name="gupnp_device_info_list_dlna_capabilities ()" link="GUPnPDeviceInfo.html#gupnp-device-info-list-dlna-capabilities"/>
+    <function name="gupnp_device_info_get_description_value ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-description-value"/>
+    <function name="gupnp_device_info_list_devices ()" link="GUPnPDeviceInfo.html#gupnp-device-info-list-devices"/>
+    <function name="gupnp_device_info_list_device_types ()" link="GUPnPDeviceInfo.html#gupnp-device-info-list-device-types"/>
+    <function name="gupnp_device_info_get_device ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-device"/>
+    <function name="gupnp_device_info_list_services ()" link="GUPnPDeviceInfo.html#gupnp-device-info-list-services"/>
+    <function name="gupnp_device_info_list_service_types ()" link="GUPnPDeviceInfo.html#gupnp-device-info-list-service-types"/>
+    <function name="gupnp_device_info_get_service ()" link="GUPnPDeviceInfo.html#gupnp-device-info-get-service"/>
+    <function name="The &quot;context&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--context"/>
+    <function name="The &quot;device-type&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--device-type"/>
+    <function name="The &quot;document&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--document"/>
+    <function name="The &quot;element&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--element"/>
+    <function name="The &quot;location&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--location"/>
+    <function name="The &quot;resource-factory&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--resource-factory"/>
+    <function name="The &quot;udn&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--udn"/>
+    <function name="The &quot;url-base&quot; property" link="GUPnPDeviceInfo.html#GUPnPDeviceInfo--url-base"/>
+    <function name="GUPnPServiceInfo" link="GUPnPServiceInfo.html#GUPnPServiceInfo-struct"/>
+    <function name="GUPnPServiceIntrospectionCallback ()" link="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback"/>
+    <function name="gupnp_service_info_get_context ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-context"/>
+    <function name="gupnp_service_info_get_location ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-location"/>
+    <function name="gupnp_service_info_get_url_base ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-url-base"/>
+    <function name="gupnp_service_info_get_udn ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-udn"/>
+    <function name="gupnp_service_info_get_service_type ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-service-type"/>
+    <function name="gupnp_service_info_get_id ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-id"/>
+    <function name="gupnp_service_info_get_scpd_url ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-scpd-url"/>
+    <function name="gupnp_service_info_get_control_url ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-control-url"/>
+    <function name="gupnp_service_info_get_event_subscription_url ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-event-subscription-url"/>
+    <function name="gupnp_service_info_get_introspection ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-introspection"/>
+    <function name="gupnp_service_info_get_introspection_async ()" link="GUPnPServiceInfo.html#gupnp-service-info-get-introspection-async"/>
+    <function name="The &quot;context&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--context"/>
+    <function name="The &quot;document&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--document"/>
+    <function name="The &quot;element&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--element"/>
+    <function name="The &quot;location&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--location"/>
+    <function name="The &quot;service-type&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--service-type"/>
+    <function name="The &quot;udn&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--udn"/>
+    <function name="The &quot;url-base&quot; property" link="GUPnPServiceInfo.html#GUPnPServiceInfo--url-base"/>
+    <function name="enum GUPnPServiceActionArgDirection" link="GUPnPServiceIntrospection.html#GUPnPServiceActionArgDirection"/>
+    <function name="GUPnPServiceActionArgInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceActionArgInfo"/>
+    <function name="GUPnPServiceActionInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceActionInfo"/>
+    <function name="GUPnPServiceStateVariableInfo" link="GUPnPServiceIntrospection.html#GUPnPServiceStateVariableInfo"/>
+    <function name="GUPnPServiceIntrospection" link="GUPnPServiceIntrospection.html#GUPnPServiceIntrospection-struct"/>
+    <function name="gupnp_service_introspection_list_action_names ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-action-names"/>
+    <function name="gupnp_service_introspection_list_actions ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-actions"/>
+    <function name="gupnp_service_introspection_get_action ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-get-action"/>
+    <function name="gupnp_service_introspection_list_state_variable_names ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-state-variable-names"/>
+    <function name="gupnp_service_introspection_list_state_variables ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-list-state-variables"/>
+    <function name="gupnp_service_introspection_get_state_variable ()" link="GUPnPServiceIntrospection.html#gupnp-service-introspection-get-state-variable"/>
+    <function name="The &quot;scpd&quot; property" link="GUPnPServiceIntrospection.html#GUPnPServiceIntrospection--scpd"/>
+    <function name="GUPnPControlPoint" link="GUPnPControlPoint.html#GUPnPControlPoint-struct"/>
+    <function name="gupnp_control_point_new ()" link="GUPnPControlPoint.html#gupnp-control-point-new"/>
+    <function name="gupnp_control_point_new_full ()" link="GUPnPControlPoint.html#gupnp-control-point-new-full"/>
+    <function name="gupnp_control_point_get_resource_factory ()" link="GUPnPControlPoint.html#gupnp-control-point-get-resource-factory"/>
+    <function name="gupnp_control_point_get_context ()" link="GUPnPControlPoint.html#gupnp-control-point-get-context"/>
+    <function name="gupnp_control_point_list_device_proxies ()" link="GUPnPControlPoint.html#gupnp-control-point-list-device-proxies"/>
+    <function name="gupnp_control_point_list_service_proxies ()" link="GUPnPControlPoint.html#gupnp-control-point-list-service-proxies"/>
+    <function name="The &quot;resource-factory&quot; property" link="GUPnPControlPoint.html#GUPnPControlPoint--resource-factory"/>
+    <function name="The &quot;device-proxy-available&quot; signal" link="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-available"/>
+    <function name="The &quot;device-proxy-unavailable&quot; signal" link="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-unavailable"/>
+    <function name="The &quot;service-proxy-available&quot; signal" link="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-available"/>
+    <function name="The &quot;service-proxy-unavailable&quot; signal" link="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-unavailable"/>
+    <function name="GUPnPDeviceProxy" link="GUPnPDeviceProxy.html#GUPnPDeviceProxy-struct"/>
+    <function name="GUPnPServiceProxy" link="GUPnPServiceProxy.html#GUPnPServiceProxy-struct"/>
+    <function name="GUPnPServiceProxyAction" link="GUPnPServiceProxy.html#GUPnPServiceProxyAction"/>
+    <function name="GUPnPServiceProxyActionCallback ()" link="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback"/>
+    <function name="GUPnPServiceProxyNotifyCallback ()" link="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback"/>
+    <function name="gupnp_service_proxy_send_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action"/>
+    <function name="gupnp_service_proxy_send_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-valist"/>
+    <function name="gupnp_service_proxy_send_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-hash"/>
+    <function name="gupnp_service_proxy_begin_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action"/>
+    <function name="gupnp_service_proxy_begin_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-valist"/>
+    <function name="gupnp_service_proxy_begin_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-hash"/>
+    <function name="gupnp_service_proxy_end_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action"/>
+    <function name="gupnp_service_proxy_end_action_valist ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist"/>
+    <function name="gupnp_service_proxy_end_action_hash ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash"/>
+    <function name="gupnp_service_proxy_cancel_action ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action"/>
+    <function name="gupnp_service_proxy_add_notify ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify"/>
+    <function name="gupnp_service_proxy_remove_notify ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-remove-notify"/>
+    <function name="gupnp_service_proxy_set_subscribed ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-set-subscribed"/>
+    <function name="gupnp_service_proxy_get_subscribed ()" link="GUPnPServiceProxy.html#gupnp-service-proxy-get-subscribed"/>
+    <function name="The &quot;subscribed&quot; property" link="GUPnPServiceProxy.html#GUPnPServiceProxy--subscribed"/>
+    <function name="The &quot;subscription-lost&quot; signal" link="GUPnPServiceProxy.html#GUPnPServiceProxy-subscription-lost"/>
+    <function name="GUPnPDevice" link="GUPnPDevice.html#GUPnPDevice-struct"/>
+    <function name="The &quot;root-device&quot; property" link="GUPnPDevice.html#GUPnPDevice--root-device"/>
+    <function name="GUPnPRootDevice" link="GUPnPRootDevice.html#GUPnPRootDevice-struct"/>
+    <function name="gupnp_root_device_new ()" link="GUPnPRootDevice.html#gupnp-root-device-new"/>
+    <function name="gupnp_root_device_new_full ()" link="GUPnPRootDevice.html#gupnp-root-device-new-full"/>
+    <function name="gupnp_root_device_set_available ()" link="GUPnPRootDevice.html#gupnp-root-device-set-available"/>
+    <function name="gupnp_root_device_get_available ()" link="GUPnPRootDevice.html#gupnp-root-device-get-available"/>
+    <function name="gupnp_root_device_get_relative_location ()" link="GUPnPRootDevice.html#gupnp-root-device-get-relative-location"/>
+    <function name="gupnp_root_device_get_description_dir ()" link="GUPnPRootDevice.html#gupnp-root-device-get-description-dir"/>
+    <function name="gupnp_root_device_get_description_path ()" link="GUPnPRootDevice.html#gupnp-root-device-get-description-path"/>
+    <function name="The &quot;available&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--available"/>
+    <function name="The &quot;description-dir&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-dir"/>
+    <function name="The &quot;description-doc&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-doc"/>
+    <function name="The &quot;description-path&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-path"/>
+    <function name="GUPnPService" link="GUPnPService.html#GUPnPService-struct"/>
+    <function name="GUPnPServiceAction" link="GUPnPService.html#GUPnPServiceAction"/>
+    <function name="gupnp_service_action_get_name ()" link="GUPnPService.html#gupnp-service-action-get-name"/>
+    <function name="gupnp_service_action_get_locales ()" link="GUPnPService.html#gupnp-service-action-get-locales"/>
+    <function name="gupnp_service_action_get ()" link="GUPnPService.html#gupnp-service-action-get"/>
+    <function name="gupnp_service_action_get_valist ()" link="GUPnPService.html#gupnp-service-action-get-valist"/>
+    <function name="gupnp_service_action_get_value ()" link="GUPnPService.html#gupnp-service-action-get-value"/>
+    <function name="gupnp_service_action_set ()" link="GUPnPService.html#gupnp-service-action-set"/>
+    <function name="gupnp_service_action_set_valist ()" link="GUPnPService.html#gupnp-service-action-set-valist"/>
+    <function name="gupnp_service_action_set_value ()" link="GUPnPService.html#gupnp-service-action-set-value"/>
+    <function name="gupnp_service_action_return ()" link="GUPnPService.html#gupnp-service-action-return"/>
+    <function name="gupnp_service_action_return_error ()" link="GUPnPService.html#gupnp-service-action-return-error"/>
+    <function name="gupnp_service_action_get_message ()" link="GUPnPService.html#gupnp-service-action-get-message"/>
+    <function name="gupnp_service_notify ()" link="GUPnPService.html#gupnp-service-notify"/>
+    <function name="gupnp_service_notify_valist ()" link="GUPnPService.html#gupnp-service-notify-valist"/>
+    <function name="gupnp_service_notify_value ()" link="GUPnPService.html#gupnp-service-notify-value"/>
+    <function name="gupnp_service_freeze_notify ()" link="GUPnPService.html#gupnp-service-freeze-notify"/>
+    <function name="gupnp_service_thaw_notify ()" link="GUPnPService.html#gupnp-service-thaw-notify"/>
+    <function name="gupnp_service_signals_autoconnect ()" link="GUPnPService.html#gupnp-service-signals-autoconnect"/>
+    <function name="The &quot;root-device&quot; property" link="GUPnPService.html#GUPnPService--root-device"/>
+    <function name="The &quot;action-invoked&quot; signal" link="GUPnPService.html#GUPnPService-action-invoked"/>
+    <function name="The &quot;notify-failed&quot; signal" link="GUPnPService.html#GUPnPService-notify-failed"/>
+    <function name="The &quot;query-variable&quot; signal" link="GUPnPService.html#GUPnPService-query-variable"/>
+    <function name="GUPnPContext" link="GUPnPContext.html#GUPnPContext-struct"/>
+    <function name="gupnp_context_new ()" link="GUPnPContext.html#gupnp-context-new"/>
+    <function name="gupnp_context_get_host_ip ()" link="GUPnPContext.html#gupnp-context-get-host-ip"/>
+    <function name="gupnp_context_get_port ()" link="GUPnPContext.html#gupnp-context-get-port"/>
+    <function name="gupnp_context_get_server ()" link="GUPnPContext.html#gupnp-context-get-server"/>
+    <function name="gupnp_context_get_session ()" link="GUPnPContext.html#gupnp-context-get-session"/>
+    <function name="gupnp_context_set_subscription_timeout ()" link="GUPnPContext.html#gupnp-context-set-subscription-timeout"/>
+    <function name="gupnp_context_get_subscription_timeout ()" link="GUPnPContext.html#gupnp-context-get-subscription-timeout"/>
+    <function name="gupnp_context_host_path ()" link="GUPnPContext.html#gupnp-context-host-path"/>
+    <function name="gupnp_context_unhost_path ()" link="GUPnPContext.html#gupnp-context-unhost-path"/>
+    <function name="The &quot;port&quot; property" link="GUPnPContext.html#GUPnPContext--port"/>
+    <function name="The &quot;server&quot; property" link="GUPnPContext.html#GUPnPContext--server"/>
+    <function name="The &quot;session&quot; property" link="GUPnPContext.html#GUPnPContext--session"/>
+    <function name="The &quot;subscription-timeout&quot; property" link="GUPnPContext.html#GUPnPContext--subscription-timeout"/>
+    <function name="GUPnPContextManager" link="GUPnPContextManager.html#GUPnPContextManager-struct"/>
+    <function name="gupnp_context_manager_new ()" link="GUPnPContextManager.html#gupnp-context-manager-new"/>
+    <function name="gupnp_context_manager_manage_control_point ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-control-point"/>
+    <function name="gupnp_context_manager_manage_root_device ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-root-device"/>
+    <function name="The &quot;context-manager&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--context-manager"/>
+    <function name="The &quot;main-context&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--main-context"/>
+    <function name="The &quot;port&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--port"/>
+    <function name="The &quot;context-available&quot; signal" link="GUPnPContextManager.html#GUPnPContextManager-context-available"/>
+    <function name="The &quot;context-unavailable&quot; signal" link="GUPnPContextManager.html#GUPnPContextManager-context-unavailable"/>
+    <function name="GUPnPResourceFactory" link="GUPnPResourceFactory.html#GUPnPResourceFactory-struct"/>
+    <function name="gupnp_resource_factory_new ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-new"/>
+    <function name="gupnp_resource_factory_get_default ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-get-default"/>
+    <function name="gupnp_resource_factory_register_resource_type ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-type"/>
+    <function name="gupnp_resource_factory_unregister_resource_type ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-type"/>
+    <function name="gupnp_resource_factory_register_resource_proxy_type ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-proxy-type"/>
+    <function name="gupnp_resource_factory_unregister_resource_proxy_type ()" link="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-proxy-type"/>
+    <function name="GUPnPXMLDoc" link="GUPnPXMLDoc.html#GUPnPXMLDoc-struct"/>
+    <function name="gupnp_xml_doc_new ()" link="GUPnPXMLDoc.html#gupnp-xml-doc-new"/>
+    <function name="gupnp_xml_doc_new_from_path ()" link="GUPnPXMLDoc.html#gupnp-xml-doc-new-from-path"/>
+    <function name="GUPNP_SERVER_ERROR" link="gupnp-Error-codes.html#GUPNP-SERVER-ERROR--CAPS"/>
+    <function name="enum GUPnPServerError" link="gupnp-Error-codes.html#GUPnPServerError"/>
+    <function name="GUPNP_EVENTING_ERROR" link="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR--CAPS"/>
+    <function name="enum GUPnPEventingError" link="gupnp-Error-codes.html#GUPnPEventingError"/>
+    <function name="GUPNP_CONTROL_ERROR" link="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR--CAPS"/>
+    <function name="enum GUPnPControlError" link="gupnp-Error-codes.html#GUPnPControlError"/>
+    <function name="GUPNP_XML_ERROR" link="gupnp-Error-codes.html#GUPNP-XML-ERROR--CAPS"/>
+    <function name="enum GUPnPXMLError" link="gupnp-Error-codes.html#GUPnPXMLError"/>
+    <function name="GUPNP_TYPE_BIN_BASE64" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-BASE64--CAPS"/>
+    <function name="GUPNP_TYPE_BIN_HEX" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-HEX--CAPS"/>
+    <function name="GUPNP_TYPE_DATE" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE--CAPS"/>
+    <function name="GUPNP_TYPE_DATE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME--CAPS"/>
+    <function name="GUPNP_TYPE_DATE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-DATE-TIME-TZ--CAPS"/>
+    <function name="GUPNP_TYPE_TIME" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME--CAPS"/>
+    <function name="GUPNP_TYPE_TIME_TZ" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-TIME-TZ--CAPS"/>
+    <function name="GUPNP_TYPE_URI" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-URI--CAPS"/>
+    <function name="GUPNP_TYPE_UUID" link="gupnp-Special-UPnP-types.html#GUPNP-TYPE-UUID--CAPS"/>
+  </functions>
+</book>

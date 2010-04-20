@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPDevice">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPDevice.top_of_page">GUPnPDevice</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPDevice</refname>
+<refpurpose>Class for device implementations.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPDevice.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPDevice-struct">GUPnPDevice</link>;
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPDevice.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link>
+         +----GUPnPDevice
+               +----<link linkend="GUPnPRootDevice">GUPnPRootDevice</link>
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPDevice.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPDevice--root-device">root-device</link>&quot;              <link linkend="GUPnPRootDevice">GUPnPRootDevice</link>*      : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPDevice.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPDevice"><type>GUPnPDevice</type></link> allows for retrieving a device's subdevices
+and services. <link linkend="GUPnPDevice"><type>GUPnPDevice</type></link> implements the <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link>
+interface.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPDevice.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPDevice-struct" role="struct">
+<title>GUPnPDevice</title>
+<indexterm zone="GUPnPDevice-struct"><primary sortas="GUPnPDevice">GUPnPDevice</primary></indexterm><programlisting>typedef struct _GUPnPDevice GUPnPDevice;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPDevice.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPDevice--root-device" role="property"><title>The <literal>&quot;root-device&quot;</literal> property</title>
+<indexterm zone="GUPnPDevice--root-device"><primary sortas="GUPnPDevice:root-device">GUPnPDevice:root-device</primary></indexterm><programlisting>  &quot;root-device&quot;              <link linkend="GUPnPRootDevice">GUPnPRootDevice</link>*      : Read / Write / Construct Only</programlisting>
+<para>
+The containing <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>, or NULL if this is the root
+device.</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+
+
+
+</refentry>

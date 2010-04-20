@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPContextManager">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPContextManager.top_of_page">GUPnPContextManager</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPContextManager</refname>
+<refpurpose>Manages <link linkend="GUPnPContext"><type>GUPnPContext</type></link> objects.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPContextManager.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPContextManager-struct">GUPnPContextManager</link>;
+<link linkend="GUPnPContextManager">GUPnPContextManager</link> * <link linkend="gupnp-context-manager-new">gupnp_context_manager_new</link>         (<link linkend="GMainContext">GMainContext</link> *main_context,
+                                                         <link linkend="guint">guint</link> port);
+<link linkend="void">void</link>                <link linkend="gupnp-context-manager-manage-control-point">gupnp_context_manager_manage_control_point</link>
+                                                        (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *manager,
+                                                         <link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);
+<link linkend="void">void</link>                <link linkend="gupnp-context-manager-manage-root-device">gupnp_context_manager_manage_root_device</link>
+                                                        (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *manager,
+                                                         <link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPContextManager.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GUPnPContextManager
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPContextManager.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPContextManager--context-manager">context-manager</link>&quot;          <link linkend="GUPnPContextManager">GUPnPContextManager</link>*  : Write / Construct Only
+  &quot;<link linkend="GUPnPContextManager--main-context">main-context</link>&quot;             <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPContextManager--port">port</link>&quot;                     <link linkend="guint">guint</link>                 : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GUPnPContextManager.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GUPnPContextManager-context-available">context-available</link>&quot;                              : Run Last
+  &quot;<link linkend="GUPnPContextManager-context-unavailable">context-unavailable</link>&quot;                            : Run Last
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GUPnPContextManager.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+A Utility class that takes care of creation and destruction of
+<link linkend="GUPnPContext"><type>GUPnPContext</type></link> objects for all available network interfaces as they go up
+(connect) and down (disconnect), respectively.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPContextManager.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPContextManager-struct" role="struct">
+<title>GUPnPContextManager</title>
+<indexterm zone="GUPnPContextManager-struct"><primary sortas="GUPnPContextManager">GUPnPContextManager</primary></indexterm><programlisting>typedef struct _GUPnPContextManager GUPnPContextManager;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-context-manager-new" role="function">
+<title>gupnp_context_manager_new ()</title>
+<indexterm zone="gupnp-context-manager-new"><primary sortas="gupnp_context_manager_new">gupnp_context_manager_new</primary></indexterm><programlisting><link linkend="GUPnPContextManager">GUPnPContextManager</link> * gupnp_context_manager_new         (<link linkend="GMainContext">GMainContext</link> *main_context,
+                                                         <link linkend="guint">guint</link> port);</programlisting>
+<para>
+Create a new <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>main_context</parameter>&#160;:</term>
+<listitem><simpara> GMainContext to pass to created GUPnPContext objects.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>port</parameter>&#160;:</term>
+<listitem><simpara> Port to create contexts for, or 0 if you don't care what port is used.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-manager-manage-control-point" role="function">
+<title>gupnp_context_manager_manage_control_point ()</title>
+<indexterm zone="gupnp-context-manager-manage-control-point"><primary sortas="gupnp_context_manager_manage_control_point">gupnp_context_manager_manage_control_point</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_context_manager_manage_control_point
+                                                        (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *manager,
+                                                         <link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);</programlisting>
+<para>
+By calling this function, you are asking <parameter>manager</parameter> to keep a reference to
+<parameter>control_point</parameter> until it's associated <link linkend="GUPnPContext"><type>GUPnPContext</type></link> is no longer available.
+You usually want to call this function from
+<link linkend="GUPnPContextManager-context-available"><type>"context-available"</type></link> handler after you create a
+<link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> object for the newly available context.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>manager</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> to be taken care of
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-manager-manage-root-device" role="function">
+<title>gupnp_context_manager_manage_root_device ()</title>
+<indexterm zone="gupnp-context-manager-manage-root-device"><primary sortas="gupnp_context_manager_manage_root_device">gupnp_context_manager_manage_root_device</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_context_manager_manage_root_device
+                                                        (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *manager,
+                                                         <link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);</programlisting>
+<para>
+By calling this function, you are asking <parameter>manager</parameter> to keep a reference to
+<parameter>root_device</parameter> when it's associated <link linkend="GUPnPContext"><type>GUPnPContext</type></link> is no longer available. You
+usually want to call this function from
+<link linkend="GUPnPContextManager-context-available"><type>"context-available"</type></link> handler after you create a
+<link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link> object for the newly available context.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>manager</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link> to be taken care of
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPContextManager.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPContextManager--context-manager" role="property"><title>The <literal>&quot;context-manager&quot;</literal> property</title>
+<indexterm zone="GUPnPContextManager--context-manager"><primary sortas="GUPnPContextManager:context-manager">GUPnPContextManager:context-manager</primary></indexterm><programlisting>  &quot;context-manager&quot;          <link linkend="GUPnPContextManager">GUPnPContextManager</link>*  : Write / Construct Only</programlisting>
+<para>
+The actual GUPnPContextManager implementation used. This is an
+internal property and therefore Application developer should just
+ignore it.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPContextManager--main-context" role="property"><title>The <literal>&quot;main-context&quot;</literal> property</title>
+<indexterm zone="GUPnPContextManager--main-context"><primary sortas="GUPnPContextManager:main-context">GUPnPContextManager:main-context</primary></indexterm><programlisting>  &quot;main-context&quot;             <link linkend="gpointer">gpointer</link>              : Read / Write / Construct Only</programlisting>
+<para>GMainContext to pass to created GUPnPContext objects.</para></refsect2>
+<refsect2 id="GUPnPContextManager--port" role="property"><title>The <literal>&quot;port&quot;</literal> property</title>
+<indexterm zone="GUPnPContextManager--port"><primary sortas="GUPnPContextManager:port">GUPnPContextManager:port</primary></indexterm><programlisting>  &quot;port&quot;                     <link linkend="guint">guint</link>                 : Read / Write / Construct Only</programlisting>
+<para>
+<parameter>port</parameter>: Port to create contexts for, or 0 if you don't care what
+port is used by <link linkend="GUPnPContext"><type>GUPnPContext</type></link> objects created by this object.</para>
+<para>
+</para><para>Default value: 0</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GUPnPContextManager.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GUPnPContextManager-context-available" role="signal"><title>The <literal>&quot;context-available&quot;</literal> signal</title>
+<indexterm zone="GUPnPContextManager-context-available"><primary sortas="GUPnPContextManager::context-available">GUPnPContextManager::context-available</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *context_manager,
+                                                        <link linkend="GUPnPContext">GUPnPContext</link>        *context,
+                                                        <link linkend="gpointer">gpointer</link>             user_data)            : Run Last</programlisting>
+<para>
+Signals the availability of new <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context_manager</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> The now available <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPContextManager-context-unavailable" role="signal"><title>The <literal>&quot;context-unavailable&quot;</literal> signal</title>
+<indexterm zone="GUPnPContextManager-context-unavailable"><primary sortas="GUPnPContextManager::context-unavailable">GUPnPContextManager::context-unavailable</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPContextManager">GUPnPContextManager</link> *context_manager,
+                                                        <link linkend="GUPnPContext">GUPnPContext</link>        *context,
+                                                        <link linkend="gpointer">gpointer</link>             user_data)            : Run Last</programlisting>
+<para>
+Signals the unavailability of a <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context_manager</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPContextManager"><type>GUPnPContextManager</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> The now unavailable <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

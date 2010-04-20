@@ -1,0 +1,84 @@
+<!-- ##### SECTION Title ##### -->
+GUPnPContextManager
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GUPnPContextManager ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GUPnPContextManager::context-available ##### -->
+<para>
+
+</para>
+
+@gupnpcontextmanager: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL GUPnPContextManager::context-unavailable ##### -->
+<para>
+
+</para>
+
+@gupnpcontextmanager: the object which received the signal.
+@arg1: 
+
+<!-- ##### ARG GUPnPContextManager:context-manager ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GUPnPContextManager:main-context ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GUPnPContextManager:port ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gupnp_context_manager_new ##### -->
+<para>
+
+</para>
+
+@main_context: 
+@port: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gupnp_context_manager_manage_control_point ##### -->
+<para>
+
+</para>
+
+@manager: 
+@control_point: 
+
+
+<!-- ##### FUNCTION gupnp_context_manager_manage_root_device ##### -->
+<para>
+
+</para>
+
+@manager: 
+@root_device: 
+
+

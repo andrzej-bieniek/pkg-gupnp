@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="gupnp-Special-UPnP-types">
+<refmeta>
+<refentrytitle role="top_of_page" id="gupnp-Special-UPnP-types.top_of_page">Special UPnP types</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Special UPnP types</refname>
+<refpurpose>Extra types for use when calling UPnP actions.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="gupnp-Special-UPnP-types.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+#define             <link linkend="GUPNP-TYPE-BIN-BASE64--CAPS">GUPNP_TYPE_BIN_BASE64</link>
+#define             <link linkend="GUPNP-TYPE-BIN-HEX--CAPS">GUPNP_TYPE_BIN_HEX</link>
+#define             <link linkend="GUPNP-TYPE-DATE--CAPS">GUPNP_TYPE_DATE</link>
+#define             <link linkend="GUPNP-TYPE-DATE-TIME--CAPS">GUPNP_TYPE_DATE_TIME</link>
+#define             <link linkend="GUPNP-TYPE-DATE-TIME-TZ--CAPS">GUPNP_TYPE_DATE_TIME_TZ</link>
+#define             <link linkend="GUPNP-TYPE-TIME--CAPS">GUPNP_TYPE_TIME</link>
+#define             <link linkend="GUPNP-TYPE-TIME-TZ--CAPS">GUPNP_TYPE_TIME_TZ</link>
+#define             <link linkend="GUPNP-TYPE-URI--CAPS">GUPNP_TYPE_URI</link>
+#define             <link linkend="GUPNP-TYPE-UUID--CAPS">GUPNP_TYPE_UUID</link>
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="gupnp-Special-UPnP-types.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+These GTypes are used to marshal to and from string data to particular UPnP
+types when invoking actions on a <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="gupnp-Special-UPnP-types.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPNP-TYPE-BIN-BASE64--CAPS" role="macro">
+<title>GUPNP_TYPE_BIN_BASE64</title>
+<indexterm zone="GUPNP-TYPE-BIN-BASE64--CAPS"><primary sortas="GUPNP_TYPE_BIN_BASE64">GUPNP_TYPE_BIN_BASE64</primary></indexterm><programlisting>#define             GUPNP_TYPE_BIN_BASE64</programlisting>
+<para>
+A string type containing Base-64 encoded binary data.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-BIN-HEX--CAPS" role="macro">
+<title>GUPNP_TYPE_BIN_HEX</title>
+<indexterm zone="GUPNP-TYPE-BIN-HEX--CAPS"><primary sortas="GUPNP_TYPE_BIN_HEX">GUPNP_TYPE_BIN_HEX</primary></indexterm><programlisting>#define             GUPNP_TYPE_BIN_HEX</programlisting>
+<para>
+A string type containing binary hexadecimal encoded binary data.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-DATE--CAPS" role="macro">
+<title>GUPNP_TYPE_DATE</title>
+<indexterm zone="GUPNP-TYPE-DATE--CAPS"><primary sortas="GUPNP_TYPE_DATE">GUPNP_TYPE_DATE</primary></indexterm><programlisting>#define             GUPNP_TYPE_DATE</programlisting>
+<para>
+A string type representing a date in ISO 8601 format with no time or timezone.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-DATE-TIME--CAPS" role="macro">
+<title>GUPNP_TYPE_DATE_TIME</title>
+<indexterm zone="GUPNP-TYPE-DATE-TIME--CAPS"><primary sortas="GUPNP_TYPE_DATE_TIME">GUPNP_TYPE_DATE_TIME</primary></indexterm><programlisting>#define             GUPNP_TYPE_DATE_TIME</programlisting>
+<para>
+A string type representing a date in ISO 8601 format with optional time but no timezone.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-DATE-TIME-TZ--CAPS" role="macro">
+<title>GUPNP_TYPE_DATE_TIME_TZ</title>
+<indexterm zone="GUPNP-TYPE-DATE-TIME-TZ--CAPS"><primary sortas="GUPNP_TYPE_DATE_TIME_TZ">GUPNP_TYPE_DATE_TIME_TZ</primary></indexterm><programlisting>#define             GUPNP_TYPE_DATE_TIME_TZ</programlisting>
+<para>
+A string type representing a date in ISO 8601 format with optional time and timezone.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-TIME--CAPS" role="macro">
+<title>GUPNP_TYPE_TIME</title>
+<indexterm zone="GUPNP-TYPE-TIME--CAPS"><primary sortas="GUPNP_TYPE_TIME">GUPNP_TYPE_TIME</primary></indexterm><programlisting>#define             GUPNP_TYPE_TIME</programlisting>
+<para>
+A string type representing a time in ISO 8601 format with no date or timezone.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-TIME-TZ--CAPS" role="macro">
+<title>GUPNP_TYPE_TIME_TZ</title>
+<indexterm zone="GUPNP-TYPE-TIME-TZ--CAPS"><primary sortas="GUPNP_TYPE_TIME_TZ">GUPNP_TYPE_TIME_TZ</primary></indexterm><programlisting>#define             GUPNP_TYPE_TIME_TZ</programlisting>
+<para>
+A string type representing a time in ISO 8601 format with optional timezone and no date.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-URI--CAPS" role="macro">
+<title>GUPNP_TYPE_URI</title>
+<indexterm zone="GUPNP-TYPE-URI--CAPS"><primary sortas="GUPNP_TYPE_URI">GUPNP_TYPE_URI</primary></indexterm><programlisting>#define             GUPNP_TYPE_URI</programlisting>
+<para>
+A string type representing a Universal Resource Indentifier.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPNP-TYPE-UUID--CAPS" role="macro">
+<title>GUPNP_TYPE_UUID</title>
+<indexterm zone="GUPNP-TYPE-UUID--CAPS"><primary sortas="GUPNP_TYPE_UUID">GUPNP_TYPE_UUID</primary></indexterm><programlisting>#define             GUPNP_TYPE_UUID</programlisting>
+<para>
+A Universally Unique ID represented as a hexadecimal-encoded string.</para>
+<para>
+</para></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

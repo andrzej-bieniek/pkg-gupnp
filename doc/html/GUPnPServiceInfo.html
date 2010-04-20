@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPServiceInfo</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="GUPnP Reference Manual">
+<link rel="up" href="api-device-info.html" title="Device Information">
+<link rel="prev" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">
+<link rel="next" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="part" href="tutorial.html" title="Part I. Tutorial">
+<link rel="chapter" href="overview.html" title="Overview">
+<link rel="chapter" href="client-tutorial.html" title="Writing a UPnP Client">
+<link rel="chapter" href="server-tutorial.html" title="Writing a UPnP Service">
+<link rel="part" href="api.html" title="Part II. Reference">
+<link rel="chapter" href="api-device-info.html" title="Device Information">
+<link rel="chapter" href="api-device-control.html" title="Device Control">
+<link rel="chapter" href="api-device-impl.html" title="Device Implementation">
+<link rel="chapter" href="api-utility.html" title="Utility Functions">
+<link rel="chapter" href="api-tools.html" title="Tools">
+<link rel="part" href="schemas.html" title="Part III. XML Schemas">
+<link rel="chapter" href="schemas-device.html" title="Device Description">
+<link rel="chapter" href="schemas-service.html" title="Service Description">
+<link rel="glossary" href="glossary.html" title="Glossary">
+<link rel="index" href="ix01.html" title="Index">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPDeviceInfo.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="api-device-info.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP Reference Manual</th>
+<td><a accesskey="n" href="GUPnPServiceIntrospection.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPServiceInfo.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GUPnPServiceInfo.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GUPnPServiceInfo.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GUPnPServiceInfo.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry" title="GUPnPServiceInfo">
+<a name="GUPnPServiceInfo"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPServiceInfo.top_of_page"></a>GUPnPServiceInfo</span></h2>
+<p>GUPnPServiceInfo — Base abstract class for querying service information.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GUPnPServiceInfo.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo-struct" title="GUPnPServiceInfo">GUPnPServiceInfo</a>;
+void                (<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()">*GUPnPServiceIntrospectionCallback</a>)
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection">GUPnPServiceIntrospection</a> *introspection,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> *error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+<a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a> *      <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-context" title="gupnp_service_info_get_context ()">gupnp_service_info_get_context</a>      (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+const char *        <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-location" title="gupnp_service_info_get_location ()">gupnp_service_info_get_location</a>     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+const <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+>SoupURI</a> *     <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-url-base" title="gupnp_service_info_get_url_base ()">gupnp_service_info_get_url_base</a>     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+const char *        <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-udn" title="gupnp_service_info_get_udn ()">gupnp_service_info_get_udn</a>          (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+const char *        <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-service-type" title="gupnp_service_info_get_service_type ()">gupnp_service_info_get_service_type</a> (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+char *              <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-id" title="gupnp_service_info_get_id ()">gupnp_service_info_get_id</a>           (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+char *              <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-scpd-url" title="gupnp_service_info_get_scpd_url ()">gupnp_service_info_get_scpd_url</a>     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+char *              <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-control-url" title="gupnp_service_info_get_control_url ()">gupnp_service_info_get_control_url</a>  (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+char *              <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-event-subscription-url" title="gupnp_service_info_get_event_subscription_url ()">gupnp_service_info_get_event_subscription_url</a>
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);
+<a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection">GUPnPServiceIntrospection</a> * <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-introspection" title="gupnp_service_info_get_introspection ()">gupnp_service_info_get_introspection</a>
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+void                <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-introspection-async" title="gupnp_service_info_get_introspection_async ()">gupnp_service_info_get_introspection_async</a>
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()">GUPnPServiceIntrospectionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GUPnPServiceInfo.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GUPnPServiceInfo
+         +----<a class="link" href="GUPnPService.html" title="GUPnPService">GUPnPService</a>
+         +----<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a>
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GUPnPServiceInfo.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--context" title='The "context" property'>context</a>"                  <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>*         : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--document" title='The "document" property'>document</a>"                 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">GUPnPXMLDoc</a>*          : Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--element" title='The "element" property'>element</a>"                  <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--location" title='The "location" property'>location</a>"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--service-type" title='The "service-type" property'>service-type</a>"             <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--udn" title='The "udn" property'>udn</a>"                      <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--url-base" title='The "url-base" property'>url-base</a>"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GUPnPServiceInfo.description"></a><h2>Description</h2>
+<p>
+The <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> base abstract class provides methods for querying
+service information.</p>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GUPnPServiceInfo.details"></a><h2>Details</h2>
+<div class="refsect2" title="GUPnPServiceInfo">
+<a name="GUPnPServiceInfo-struct"></a><h3>GUPnPServiceInfo</h3>
+<pre class="programlisting">typedef struct _GUPnPServiceInfo GUPnPServiceInfo;</pre>
+<p>
+This struct contains private data only, and should be accessed using the
+functions below.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GUPnPServiceIntrospectionCallback ()">
+<a name="GUPnPServiceIntrospectionCallback"></a><h3>GUPnPServiceIntrospectionCallback ()</h3>
+<pre class="programlisting">void                (*GUPnPServiceIntrospectionCallback)
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection">GUPnPServiceIntrospection</a> *introspection,
+                                                         const <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> *error,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Callback notifying that <em class="parameter"><code>introspection</code></em> for <em class="parameter"><code>info</code></em> has been obtained.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> introspection was requested for
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>introspection</code></em> :</span></p></td>
+<td> The new <a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> object, or NULL
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> The <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> that occurred, or NULL
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> User data
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_context ()">
+<a name="gupnp-service-info-get-context"></a><h3>gupnp_service_info_get_context ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a> *      gupnp_service_info_get_context      (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> associated with <em class="parameter"><code>info</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_location ()">
+<a name="gupnp-service-info-get-location"></a><h3>gupnp_service_info_get_location ()</h3>
+<pre class="programlisting">const char *        gupnp_service_info_get_location     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the location of the device description file.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_url_base ()">
+<a name="gupnp-service-info-get-url-base"></a><h3>gupnp_service_info_get_url_base ()</h3>
+<pre class="programlisting">const <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+>SoupURI</a> *     gupnp_service_info_get_url_base     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the URL base of this service.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+><span class="type">SoupURI</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_udn ()">
+<a name="gupnp-service-info-get-udn"></a><h3>gupnp_service_info_get_udn ()</h3>
+<pre class="programlisting">const char *        gupnp_service_info_get_udn          (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the Unique Device Name of the containing device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_service_type ()">
+<a name="gupnp-service-info-get-service-type"></a><h3>gupnp_service_info_get_service_type ()</h3>
+<pre class="programlisting">const char *        gupnp_service_info_get_service_type (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the UPnP service type, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_id ()">
+<a name="gupnp-service-info-get-id"></a><h3>gupnp_service_info_get_id ()</h3>
+<pre class="programlisting">char *              gupnp_service_info_get_id           (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the ID of this service, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if there is no ID.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string. This string should be freed with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_scpd_url ()">
+<a name="gupnp-service-info-get-scpd-url"></a><h3>gupnp_service_info_get_scpd_url ()</h3>
+<pre class="programlisting">char *              gupnp_service_info_get_scpd_url     (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the SCPD URL for this service, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if there is no SCPD.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string. This string should be freed with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_control_url ()">
+<a name="gupnp-service-info-get-control-url"></a><h3>gupnp_service_info_get_control_url ()</h3>
+<pre class="programlisting">char *              gupnp_service_info_get_control_url  (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the control URL for this service, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>..</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string. This string should be freed with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_event_subscription_url ()">
+<a name="gupnp-service-info-get-event-subscription-url"></a><h3>gupnp_service_info_get_event_subscription_url ()</h3>
+<pre class="programlisting">char *              gupnp_service_info_get_event_subscription_url
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info);</pre>
+<p>
+Get the event subscription URL for this service, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string. This string should be freed with <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_introspection ()">
+<a name="gupnp-service-info-get-introspection"></a><h3>gupnp_service_info_get_introspection ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection">GUPnPServiceIntrospection</a> * gupnp_service_info_get_introspection
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Note that introspection object is created from the information in service
+description document (SCPD) provided by the service so it can not be created
+if the service does not provide an SCPD.
+</p>
+<p>
+Warning: You  should use <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-introspection-async" title="gupnp_service_info_get_introspection_async ()"><code class="function">gupnp_service_info_get_introspection_async()</code></a>
+instead, this function re-enter the GMainloop before returning.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> return location for a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a>, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A new <a class="link" href="GUPnPServiceIntrospection.html" title="GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> for this service or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>.
+Unref after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_service_info_get_introspection_async ()">
+<a name="gupnp-service-info-get-introspection-async"></a><h3>gupnp_service_info_get_introspection_async ()</h3>
+<pre class="programlisting">void                gupnp_service_info_get_introspection_async
+                                                        (<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *info,
+                                                         <a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()">GUPnPServiceIntrospectionCallback</a> callback,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data);</pre>
+<p>
+Note that introspection object is created from the information in service
+description document (SCPD) provided by the service so it can not be created
+if the service does not provide an SCPD.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td> callback to be called when introspection object is ready.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td> user_data to be passed to the callback.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GUPnPServiceInfo.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "context" property'>
+<a name="GUPnPServiceInfo--context"></a><h3>The <code class="literal">"context"</code> property</h3>
+<pre class="programlisting">  "context"                  <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>*         : Read / Write / Construct Only</pre>
+<p>
+The <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> to use.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title='The "document" property'>
+<a name="GUPnPServiceInfo--document"></a><h3>The <code class="literal">"document"</code> property</h3>
+<pre class="programlisting">  "document"                 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">GUPnPXMLDoc</a>*          : Write / Construct Only</pre>
+<p>
+Private property.</p>
+<p>
+</p>
+<p>Stability Level Private</p>
+</div>
+<hr>
+<div class="refsect2" title='The "element" property'>
+<a name="GUPnPServiceInfo--element"></a><h3>The <code class="literal">"element"</code> property</h3>
+<pre class="programlisting">  "element"                  <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Write / Construct Only</pre>
+<p>
+Private property.</p>
+<p>
+</p>
+<p>Stability Level Private</p>
+</div>
+<hr>
+<div class="refsect2" title='The "location" property'>
+<a name="GUPnPServiceInfo--location"></a><h3>The <code class="literal">"location"</code> property</h3>
+<pre class="programlisting">  "location"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The location of the device description file.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "service-type" property'>
+<a name="GUPnPServiceInfo--service-type"></a><h3>The <code class="literal">"service-type"</code> property</h3>
+<pre class="programlisting">  "service-type"             <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The service type.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "udn" property'>
+<a name="GUPnPServiceInfo--udn"></a><h3>The <code class="literal">"udn"</code> property</h3>
+<pre class="programlisting">  "udn"                      <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The UDN of the containing device.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "url-base" property'>
+<a name="GUPnPServiceInfo--url-base"></a><h3>The <code class="literal">"url-base"</code> property</h3>
+<pre class="programlisting">  "url-base"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only</pre>
+<p>
+The URL base (<a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+><span class="type">SoupURI</span></a>).</p>
+<p>
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

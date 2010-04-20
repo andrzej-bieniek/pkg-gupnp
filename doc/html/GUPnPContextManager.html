@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPContextManager</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="GUPnP Reference Manual">
+<link rel="up" href="api-utility.html" title="Utility Functions">
+<link rel="prev" href="GUPnPContext.html" title="GUPnPContext">
+<link rel="next" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="part" href="tutorial.html" title="Part I. Tutorial">
+<link rel="chapter" href="overview.html" title="Overview">
+<link rel="chapter" href="client-tutorial.html" title="Writing a UPnP Client">
+<link rel="chapter" href="server-tutorial.html" title="Writing a UPnP Service">
+<link rel="part" href="api.html" title="Part II. Reference">
+<link rel="chapter" href="api-device-info.html" title="Device Information">
+<link rel="chapter" href="api-device-control.html" title="Device Control">
+<link rel="chapter" href="api-device-impl.html" title="Device Implementation">
+<link rel="chapter" href="api-utility.html" title="Utility Functions">
+<link rel="chapter" href="api-tools.html" title="Tools">
+<link rel="part" href="schemas.html" title="Part III. XML Schemas">
+<link rel="chapter" href="schemas-device.html" title="Device Description">
+<link rel="chapter" href="schemas-service.html" title="Service Description">
+<link rel="glossary" href="glossary.html" title="Glossary">
+<link rel="index" href="ix01.html" title="Index">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPContext.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="api-utility.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP Reference Manual</th>
+<td><a accesskey="n" href="GUPnPResourceFactory.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPContextManager.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GUPnPContextManager.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GUPnPContextManager.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GUPnPContextManager.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GUPnPContextManager.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GUPnPContextManager">
+<a name="GUPnPContextManager"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPContextManager.top_of_page"></a>GUPnPContextManager</span></h2>
+<p>GUPnPContextManager — Manages <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> objects.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GUPnPContextManager.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GUPnPContextManager.html#GUPnPContextManager-struct" title="GUPnPContextManager">GUPnPContextManager</a>;
+<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> * <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-new" title="gupnp_context_manager_new ()">gupnp_context_manager_new</a>         (<a
+href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"
+>GMainContext</a> *main_context,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a> port);
+void                <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-manage-control-point" title="gupnp_context_manager_manage_control_point ()">gupnp_context_manager_manage_control_point</a>
+                                                        (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *manager,
+                                                         <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint">GUPnPControlPoint</a> *control_point);
+void                <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-manage-root-device" title="gupnp_context_manager_manage_root_device ()">gupnp_context_manager_manage_root_device</a>
+                                                        (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *manager,
+                                                         <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice">GUPnPRootDevice</a> *root_device);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GUPnPContextManager.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GUPnPContextManager
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GUPnPContextManager.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager--context-manager" title='The "context-manager" property'>context-manager</a>"          <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a>*  : Write / Construct Only
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager--main-context" title='The "main-context" property'>main-context</a>"             <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager--port" title='The "port" property'>port</a>"                     <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a>                 : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GUPnPContextManager.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'>context-available</a>"                              : Run Last
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-unavailable" title='The "context-unavailable" signal'>context-unavailable</a>"                            : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GUPnPContextManager.description"></a><h2>Description</h2>
+<p>
+A Utility class that takes care of creation and destruction of
+<a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> objects for all available network interfaces as they go up
+(connect) and down (disconnect), respectively.</p>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GUPnPContextManager.details"></a><h2>Details</h2>
+<div class="refsect2" title="GUPnPContextManager">
+<a name="GUPnPContextManager-struct"></a><h3>GUPnPContextManager</h3>
+<pre class="programlisting">typedef struct _GUPnPContextManager GUPnPContextManager;</pre>
+<p>
+This struct contains private data only, and should be accessed using the
+functions below.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_context_manager_new ()">
+<a name="gupnp-context-manager-new"></a><h3>gupnp_context_manager_new ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> * gupnp_context_manager_new         (<a
+href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"
+>GMainContext</a> *main_context,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a> port);</pre>
+<p>
+Create a new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>main_context</code></em> :</span></p></td>
+<td> GMainContext to pass to created GUPnPContext objects.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>port</code></em> :</span></p></td>
+<td> Port to create contexts for, or 0 if you don't care what port is used.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_context_manager_manage_control_point ()">
+<a name="gupnp-context-manager-manage-control-point"></a><h3>gupnp_context_manager_manage_control_point ()</h3>
+<pre class="programlisting">void                gupnp_context_manager_manage_control_point
+                                                        (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *manager,
+                                                         <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint">GUPnPControlPoint</a> *control_point);</pre>
+<p>
+By calling this function, you are asking <em class="parameter"><code>manager</code></em> to keep a reference to
+<em class="parameter"><code>control_point</code></em> until it's associated <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> is no longer available.
+You usually want to call this function from
+<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'><span class="type">"context-available"</span></a> handler after you create a
+<a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> object for the newly available context.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>control_point</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> to be taken care of
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_context_manager_manage_root_device ()">
+<a name="gupnp-context-manager-manage-root-device"></a><h3>gupnp_context_manager_manage_root_device ()</h3>
+<pre class="programlisting">void                gupnp_context_manager_manage_root_device
+                                                        (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *manager,
+                                                         <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice">GUPnPRootDevice</a> *root_device);</pre>
+<p>
+By calling this function, you are asking <em class="parameter"><code>manager</code></em> to keep a reference to
+<em class="parameter"><code>root_device</code></em> when it's associated <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> is no longer available. You
+usually want to call this function from
+<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'><span class="type">"context-available"</span></a> handler after you create a
+<a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> object for the newly available context.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>root_device</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> to be taken care of
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GUPnPContextManager.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "context-manager" property'>
+<a name="GUPnPContextManager--context-manager"></a><h3>The <code class="literal">"context-manager"</code> property</h3>
+<pre class="programlisting">  "context-manager"          <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a>*  : Write / Construct Only</pre>
+<p>
+The actual GUPnPContextManager implementation used. This is an
+internal property and therefore Application developer should just
+ignore it.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title='The "main-context" property'>
+<a name="GUPnPContextManager--main-context"></a><h3>The <code class="literal">"main-context"</code> property</h3>
+<pre class="programlisting">  "main-context"             <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only</pre>
+<p>GMainContext to pass to created GUPnPContext objects.</p>
+</div>
+<hr>
+<div class="refsect2" title='The "port" property'>
+<a name="GUPnPContextManager--port"></a><h3>The <code class="literal">"port"</code> property</h3>
+<pre class="programlisting">  "port"                     <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a>                 : Read / Write / Construct Only</pre>
+<p>
+<em class="parameter"><code>port</code></em>: Port to create contexts for, or 0 if you don't care what
+port is used by <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> objects created by this object.</p>
+<p>
+</p>
+<p>Default value: 0</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GUPnPContextManager.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "context-available" signal'>
+<a name="GUPnPContextManager-context-available"></a><h3>The <code class="literal">"context-available"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *context_manager,
+                                                        <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>        *context,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>             user_data)            : Run Last</pre>
+<p>
+Signals the availability of new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context_manager</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> that received the signal
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td> The now available <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "context-unavailable" signal'>
+<a name="GUPnPContextManager-context-unavailable"></a><h3>The <code class="literal">"context-unavailable"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager">GUPnPContextManager</a> *context_manager,
+                                                        <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>        *context,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>             user_data)            : Run Last</pre>
+<p>
+Signals the unavailability of a <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context_manager</code></em> :</span></p></td>
+<td> The <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> that received the signal
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td> The now unavailable <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

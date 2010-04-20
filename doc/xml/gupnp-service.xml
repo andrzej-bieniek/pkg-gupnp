@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPService">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPService.top_of_page">GUPnPService</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPService</refname>
+<refpurpose>Class for service implementations.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPService.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPService-struct">GUPnPService</link>;
+                    <link linkend="GUPnPServiceAction">GUPnPServiceAction</link>;
+const <link linkend="char">char</link> *        <link linkend="gupnp-service-action-get-name">gupnp_service_action_get_name</link>       (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);
+<link linkend="GList">GList</link> *             <link linkend="gupnp-service-action-get-locales">gupnp_service_action_get_locales</link>    (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-get">gupnp_service_action_get</link>            (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-get-valist">gupnp_service_action_get_valist</link>     (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-get-value">gupnp_service_action_get_value</link>      (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         const <link linkend="char">char</link> *argument,
+                                                         <link linkend="GValue">GValue</link> *value);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-set">gupnp_service_action_set</link>            (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-set-valist">gupnp_service_action_set_valist</link>     (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-set-value">gupnp_service_action_set_value</link>      (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         const <link linkend="char">char</link> *argument,
+                                                         const <link linkend="GValue">GValue</link> *value);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-return">gupnp_service_action_return</link>         (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);
+<link linkend="void">void</link>                <link linkend="gupnp-service-action-return-error">gupnp_service_action_return_error</link>   (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="guint">guint</link> error_code,
+                                                         const <link linkend="char">char</link> *error_description);
+<link linkend="SoupMessage">SoupMessage</link> *       <link linkend="gupnp-service-action-get-message">gupnp_service_action_get_message</link>    (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);
+<link linkend="void">void</link>                <link linkend="gupnp-service-notify">gupnp_service_notify</link>                (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="gupnp-service-notify-valist">gupnp_service_notify_valist</link>         (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="void">void</link>                <link linkend="gupnp-service-notify-value">gupnp_service_notify_value</link>          (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         const <link linkend="GValue">GValue</link> *value);
+<link linkend="void">void</link>                <link linkend="gupnp-service-freeze-notify">gupnp_service_freeze_notify</link>         (<link linkend="GUPnPService">GUPnPService</link> *service);
+<link linkend="void">void</link>                <link linkend="gupnp-service-thaw-notify">gupnp_service_thaw_notify</link>           (<link linkend="GUPnPService">GUPnPService</link> *service);
+<link linkend="void">void</link>                <link linkend="gupnp-service-signals-autoconnect">gupnp_service_signals_autoconnect</link>   (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPService.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link>
+         +----GUPnPService
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPService.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPService--root-device">root-device</link>&quot;              <link linkend="GUPnPRootDevice">GUPnPRootDevice</link>*      : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GUPnPService.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GUPnPService-action-invoked">action-invoked</link>&quot;                                 : Run Last / Has Details
+  &quot;<link linkend="GUPnPService-notify-failed">notify-failed</link>&quot;                                  : Run Last
+  &quot;<link linkend="GUPnPService-query-variable">query-variable</link>&quot;                                 : Run Last / Has Details
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GUPnPService.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPService"><type>GUPnPService</type></link> allows for handling incoming actions and state variable
+notification. <link linkend="GUPnPService"><type>GUPnPService</type></link> implements the <link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link> interface.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPService.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPService-struct" role="struct">
+<title>GUPnPService</title>
+<indexterm zone="GUPnPService-struct"><primary sortas="GUPnPService">GUPnPService</primary></indexterm><programlisting>typedef struct _GUPnPService GUPnPService;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPServiceAction" role="struct">
+<title>GUPnPServiceAction</title>
+<indexterm zone="GUPnPServiceAction"><primary sortas="GUPnPServiceAction">GUPnPServiceAction</primary></indexterm><programlisting>typedef struct _GUPnPServiceAction GUPnPServiceAction;</programlisting>
+<para>
+Opaque structure for holding in-progress action data.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-service-action-get-name" role="function">
+<title>gupnp_service_action_get_name ()</title>
+<indexterm zone="gupnp-service-action-get-name"><primary sortas="gupnp_service_action_get_name">gupnp_service_action_get_name</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_service_action_get_name       (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);</programlisting>
+<para>
+Get the name of <parameter>action</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The name of <parameter>action</parameter>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-get-locales" role="function">
+<title>gupnp_service_action_get_locales ()</title>
+<indexterm zone="gupnp-service-action-get-locales"><primary sortas="gupnp_service_action_get_locales">gupnp_service_action_get_locales</primary></indexterm><programlisting><link linkend="GList">GList</link> *             gupnp_service_action_get_locales    (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);</programlisting>
+<para>
+Get an ordered (preferred first) <link linkend="GList"><type>GList</type></link> of locales preferred by
+the client. Free list and elements after use.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GList"><type>GList</type></link> of <link linkend="char"><type>char</type></link>* locale names.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-get" role="function">
+<title>gupnp_service_action_get ()</title>
+<indexterm zone="gupnp-service-action-get"><primary sortas="gupnp_service_action_get">gupnp_service_action_get</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_get            (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         ...);</programlisting>
+<para>
+Retrieves the specified action arguments.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> tuples of argument name, argument type, and argument value
+location, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-get-valist" role="function">
+<title>gupnp_service_action_get_valist ()</title>
+<indexterm zone="gupnp-service-action-get-valist"><primary sortas="gupnp_service_action_get_valist">gupnp_service_action_get_valist</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_get_valist     (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-action-get"><function>gupnp_service_action_get()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> va_list of tuples of argument name, argument type, and argument
+value location.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-get-value" role="function">
+<title>gupnp_service_action_get_value ()</title>
+<indexterm zone="gupnp-service-action-get-value"><primary sortas="gupnp_service_action_get_value">gupnp_service_action_get_value</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_get_value      (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         const <link linkend="char">char</link> *argument,
+                                                         <link linkend="GValue">GValue</link> *value);</programlisting>
+<para>
+Retrieves the value of <parameter>argument</parameter> into <parameter>value</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>argument</parameter>&#160;:</term>
+<listitem><simpara> The name of the argument to retrieve
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GValue"><type>GValue</type></link> to store the value of the argument, initialized
+to the correct type.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-set" role="function">
+<title>gupnp_service_action_set ()</title>
+<indexterm zone="gupnp-service-action-set"><primary sortas="gupnp_service_action_set">gupnp_service_action_set</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_set            (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         ...);</programlisting>
+<para>
+Sets the specified action return values.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> tuples of return value name, return value type, and
+actual return value, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-set-valist" role="function">
+<title>gupnp_service_action_set_valist ()</title>
+<indexterm zone="gupnp-service-action-set-valist"><primary sortas="gupnp_service_action_set_valist">gupnp_service_action_set_valist</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_set_valist     (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-action-set"><function>gupnp_service_action_set()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> va_list of tuples of return value name, return value type, and
+actual return value.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-set-value" role="function">
+<title>gupnp_service_action_set_value ()</title>
+<indexterm zone="gupnp-service-action-set-value"><primary sortas="gupnp_service_action_set_value">gupnp_service_action_set_value</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_set_value      (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         const <link linkend="char">char</link> *argument,
+                                                         const <link linkend="GValue">GValue</link> *value);</programlisting>
+<para>
+Sets the value of <parameter>argument</parameter> to <parameter>value</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>argument</parameter>&#160;:</term>
+<listitem><simpara> The name of the return value to retrieve
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GValue"><type>GValue</type></link> to store the return value
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-return" role="function">
+<title>gupnp_service_action_return ()</title>
+<indexterm zone="gupnp-service-action-return"><primary sortas="gupnp_service_action_return">gupnp_service_action_return</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_return         (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);</programlisting>
+<para>
+Return succesfully.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-return-error" role="function">
+<title>gupnp_service_action_return_error ()</title>
+<indexterm zone="gupnp-service-action-return-error"><primary sortas="gupnp_service_action_return_error">gupnp_service_action_return_error</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_action_return_error   (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                         <link linkend="guint">guint</link> error_code,
+                                                         const <link linkend="char">char</link> *error_description);</programlisting>
+<para>
+Return <parameter>error_code</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error_code</parameter>&#160;:</term>
+<listitem><simpara> The error code
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error_description</parameter>&#160;:</term>
+<listitem><simpara> The error description, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> if <parameter>error_code</parameter> is
+one of <link linkend="GUPNP-CONTROL-ERROR-INVALID-ACTION--CAPS"><type>GUPNP_CONTROL_ERROR_INVALID_ACTION</type></link>,
+<link linkend="GUPNP-CONTROL-ERROR-INVALID-ARGS--CAPS"><type>GUPNP_CONTROL_ERROR_INVALID_ARGS</type></link>, <link linkend="GUPNP-CONTROL-ERROR-OUT-OF-SYNC--CAPS"><type>GUPNP_CONTROL_ERROR_OUT_OF_SYNC</type></link> or
+<link linkend="GUPNP-CONTROL-ERROR-ACTION-FAILED--CAPS"><type>GUPNP_CONTROL_ERROR_ACTION_FAILED</type></link>, in which case a description is
+provided automatically.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-action-get-message" role="function">
+<title>gupnp_service_action_get_message ()</title>
+<indexterm zone="gupnp-service-action-get-message"><primary sortas="gupnp_service_action_get_message">gupnp_service_action_get_message</primary></indexterm><programlisting><link linkend="SoupMessage">SoupMessage</link> *       gupnp_service_action_get_message    (<link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action);</programlisting>
+<para>
+Get the <link linkend="SoupMessage"><type>SoupMessage</type></link> associated with <parameter>action</parameter>. Mainly intended for
+applications to be able to read HTTP headers received from clients.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceAction"><type>GUPnPServiceAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="SoupMessage"><type>SoupMessage</type></link> associated with <parameter>action</parameter>. Unref after using it.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-notify" role="function">
+<title>gupnp_service_notify ()</title>
+<indexterm zone="gupnp-service-notify"><primary sortas="gupnp_service_notify">gupnp_service_notify</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_notify                (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         ...);</programlisting>
+<para>
+Notifies listening clients that the properties listed in <parameter>Varargs</parameter>
+have changed to the specified values.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> Tuples of variable name, variable type, and variable value,
+terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-notify-valist" role="function">
+<title>gupnp_service_notify_valist ()</title>
+<indexterm zone="gupnp-service-notify-valist"><primary sortas="gupnp_service_notify_valist">gupnp_service_notify_valist</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_notify_valist         (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-notify"><function>gupnp_service_notify()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> A va_list of tuples of variable name, variable type, and variable
+value, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-notify-value" role="function">
+<title>gupnp_service_notify_value ()</title>
+<indexterm zone="gupnp-service-notify-value"><primary sortas="gupnp_service_notify_value">gupnp_service_notify_value</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_notify_value          (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         const <link linkend="GValue">GValue</link> *value);</programlisting>
+<para>
+Notifies listening clients that <parameter>variable</parameter> has changed to <parameter>value</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable</parameter>&#160;:</term>
+<listitem><simpara> The name of the variable to notify
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value</parameter>&#160;:</term>
+<listitem><simpara> The value of the variable
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-freeze-notify" role="function">
+<title>gupnp_service_freeze_notify ()</title>
+<indexterm zone="gupnp-service-freeze-notify"><primary sortas="gupnp_service_freeze_notify">gupnp_service_freeze_notify</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_freeze_notify         (<link linkend="GUPnPService">GUPnPService</link> *service);</programlisting>
+<para>
+Causes new notifications to be queued up until <link linkend="gupnp-service-thaw-notify"><function>gupnp_service_thaw_notify()</function></link>
+is called.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-thaw-notify" role="function">
+<title>gupnp_service_thaw_notify ()</title>
+<indexterm zone="gupnp-service-thaw-notify"><primary sortas="gupnp_service_thaw_notify">gupnp_service_thaw_notify</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_thaw_notify           (<link linkend="GUPnPService">GUPnPService</link> *service);</programlisting>
+<para>
+Sends out any pending notifications, and stops queuing of new ones.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-signals-autoconnect" role="function">
+<title>gupnp_service_signals_autoconnect ()</title>
+<indexterm zone="gupnp-service-signals-autoconnect"><primary sortas="gupnp_service_signals_autoconnect">gupnp_service_signals_autoconnect</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_signals_autoconnect   (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+A convenience function that attempts to connect all possible
+<link linkend="GUPnPService-action-invoked"><type>"action-invoked"</type></link> and <link linkend="GUPnPService-query-variable"><type>"query-variable"</type></link> signals to
+appropriate callbacks for the service <parameter>service</parameter>. It uses service introspection
+and GModule's introspective features. It is very simillar to
+<link linkend="glade-xml-signal-autoconnect"><function>glade_xml_signal_autoconnect()</function></link> except that it attempts to guess the names of
+the signal handlers on its own.
+</para>
+<para>
+For this function to do its magic, the application must name the callback
+functions for <link linkend="GUPnPService-action-invoked"><type>"action-invoked"</type></link> signals by striping the CamelCase
+off the action names and either prepend "on_" or append "_cb" to them. Same
+goes for <link linkend="GUPnPService-query-variable"><type>"query-variable"</type></link> signals, except that "query_" should
+be prepended to the variable name. For example, callback function for
+"GetSystemUpdateID" action should be either named as
+"get_system_update_id_cb" or "on_get_system_update_id" and callback function
+for the query of "SystemUpdateID" state variable should be named
+"query_system_update_id_cb" or "on_query_system_update_id".
+</para>
+<para>
+Note that this function will not work correctly if GModule is not supported
+on the platform or introspection is not available for service <parameter>service</parameter>.
+</para>
+<para>
+WARNING: This function can not and therefore does not guarantee that the
+resulting signal connections will be correct as it depends heavily on a
+particular naming schemes described above.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPService"><type>GUPnPService</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> the data to pass to each of the callbacks
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> return location for a <link linkend="GError"><type>GError</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPService.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPService--root-device" role="property"><title>The <literal>&quot;root-device&quot;</literal> property</title>
+<indexterm zone="GUPnPService--root-device"><primary sortas="GUPnPService:root-device">GUPnPService:root-device</primary></indexterm><programlisting>  &quot;root-device&quot;              <link linkend="GUPnPRootDevice">GUPnPRootDevice</link>*      : Read / Write / Construct Only</programlisting>
+<para>
+The containing <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>.</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+<refsect1 id="GUPnPService.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GUPnPService-action-invoked" role="signal"><title>The <literal>&quot;action-invoked&quot;</literal> signal</title>
+<indexterm zone="GUPnPService-action-invoked"><primary sortas="GUPnPService::action-invoked">GUPnPService::action-invoked</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPService">GUPnPService</link>       *service,
+                                                        <link linkend="GUPnPServiceAction">GUPnPServiceAction</link> *action,
+                                                        <link linkend="gpointer">gpointer</link>            user_data)      : Run Last / Has Details</programlisting>
+<para>
+Emitted whenever an action is invoked. Handler should process
+<parameter>action</parameter> and must call either <link linkend="gupnp-service-action-return"><function>gupnp_service_action_return()</function></link> or
+<link linkend="gupnp-service-action-return-error"><function>gupnp_service_action_return_error()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPService"><type>GUPnPService</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> The invoked <link linkend="GUPnPAction"><type>GUPnPAction</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPService-notify-failed" role="signal"><title>The <literal>&quot;notify-failed&quot;</literal> signal</title>
+<indexterm zone="GUPnPService-notify-failed"><primary sortas="GUPnPService::notify-failed">GUPnPService::notify-failed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                        <link linkend="gpointer">gpointer</link>      callback_url,
+                                                        <link linkend="gpointer">gpointer</link>      reason,
+                                                        <link linkend="gpointer">gpointer</link>      user_data)         : Run Last</programlisting>
+<para>
+Emitted whenever notification of a client fails.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPService"><type>GUPnPService</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback_url</parameter>&#160;:</term>
+<listitem><simpara> The callback URL
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>reason</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> describing why the notify failed
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPService-query-variable" role="signal"><title>The <literal>&quot;query-variable&quot;</literal> signal</title>
+<indexterm zone="GUPnPService-query-variable"><primary sortas="GUPnPService::query-variable">GUPnPService::query-variable</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPService">GUPnPService</link> *service,
+                                                        <link linkend="gchar">gchar</link>        *variable,
+                                                        <link linkend="gpointer">gpointer</link>      value,
+                                                        <link linkend="gpointer">gpointer</link>      user_data)      : Run Last / Has Details</programlisting>
+<para>
+Emitted whenever <parameter>service</parameter> needs to know the value of <parameter>variable</parameter>.
+Handler should fill <parameter>value</parameter> with the value of <parameter>variable</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>service</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPService"><type>GUPnPService</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable</parameter>&#160;:</term>
+<listitem><simpara> The variable that is being queried
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value</parameter>&#160;:</term>
+<listitem><simpara> The location of the <link linkend="GValue"><type>GValue</type></link> of the variable
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

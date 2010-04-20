@@ -1,0 +1,1121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPDeviceInfo</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="GUPnP Reference Manual">
+<link rel="up" href="api-device-info.html" title="Device Information">
+<link rel="prev" href="api-device-info.html" title="Device Information">
+<link rel="next" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="part" href="tutorial.html" title="Part I. Tutorial">
+<link rel="chapter" href="overview.html" title="Overview">
+<link rel="chapter" href="client-tutorial.html" title="Writing a UPnP Client">
+<link rel="chapter" href="server-tutorial.html" title="Writing a UPnP Service">
+<link rel="part" href="api.html" title="Part II. Reference">
+<link rel="chapter" href="api-device-info.html" title="Device Information">
+<link rel="chapter" href="api-device-control.html" title="Device Control">
+<link rel="chapter" href="api-device-impl.html" title="Device Implementation">
+<link rel="chapter" href="api-utility.html" title="Utility Functions">
+<link rel="chapter" href="api-tools.html" title="Tools">
+<link rel="part" href="schemas.html" title="Part III. XML Schemas">
+<link rel="chapter" href="schemas-device.html" title="Device Description">
+<link rel="chapter" href="schemas-service.html" title="Service Description">
+<link rel="glossary" href="glossary.html" title="Glossary">
+<link rel="index" href="ix01.html" title="Index">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="api-device-info.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="api-device-info.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP Reference Manual</th>
+<td><a accesskey="n" href="GUPnPServiceInfo.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPDeviceInfo.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GUPnPDeviceInfo.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GUPnPDeviceInfo.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GUPnPDeviceInfo.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry" title="GUPnPDeviceInfo">
+<a name="GUPnPDeviceInfo"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPDeviceInfo.top_of_page"></a>GUPnPDeviceInfo</span></h2>
+<p>GUPnPDeviceInfo — Base abstract class for querying device information.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GUPnPDeviceInfo.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo-struct" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a>;
+<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-resource-factory" title="gupnp_device_info_get_resource_factory ()">gupnp_device_info_get_resource_factory</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *device_info);
+<a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a> *      <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-context" title="gupnp_device_info_get_context ()">gupnp_device_info_get_context</a>       (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+const char *        <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-location" title="gupnp_device_info_get_location ()">gupnp_device_info_get_location</a>      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+const <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+>SoupURI</a> *     <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-url-base" title="gupnp_device_info_get_url_base ()">gupnp_device_info_get_url_base</a>      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+const char *        <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-udn" title="gupnp_device_info_get_udn ()">gupnp_device_info_get_udn</a>           (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+const char *        <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-device-type" title="gupnp_device_info_get_device_type ()">gupnp_device_info_get_device_type</a>   (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-friendly-name" title="gupnp_device_info_get_friendly_name ()">gupnp_device_info_get_friendly_name</a> (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-manufacturer" title="gupnp_device_info_get_manufacturer ()">gupnp_device_info_get_manufacturer</a>  (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-manufacturer-url" title="gupnp_device_info_get_manufacturer_url ()">gupnp_device_info_get_manufacturer_url</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-model-description" title="gupnp_device_info_get_model_description ()">gupnp_device_info_get_model_description</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-model-name" title="gupnp_device_info_get_model_name ()">gupnp_device_info_get_model_name</a>    (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-model-number" title="gupnp_device_info_get_model_number ()">gupnp_device_info_get_model_number</a>  (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-model-url" title="gupnp_device_info_get_model_url ()">gupnp_device_info_get_model_url</a>     (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-serial-number" title="gupnp_device_info_get_serial_number ()">gupnp_device_info_get_serial_number</a> (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-presentation-url" title="gupnp_device_info_get_presentation_url ()">gupnp_device_info_get_presentation_url</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-upc" title="gupnp_device_info_get_upc ()">gupnp_device_info_get_upc</a>           (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-icon-url" title="gupnp_device_info_get_icon_url ()">gupnp_device_info_get_icon_url</a>      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *requested_mime_type,
+                                                         int requested_depth,
+                                                         int requested_width,
+                                                         int requested_height,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> prefer_bigger,
+                                                         char **mime_type,
+                                                         int *depth,
+                                                         int *width,
+                                                         int *height);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-dlna-capabilities" title="gupnp_device_info_list_dlna_capabilities ()">gupnp_device_info_list_dlna_capabilities</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+char *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-description-value" title="gupnp_device_info_get_description_value ()">gupnp_device_info_get_description_value</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *element);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-devices" title="gupnp_device_info_list_devices ()">gupnp_device_info_list_devices</a>      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-device-types" title="gupnp_device_info_list_device_types ()">gupnp_device_info_list_device_types</a> (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *   <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-device" title="gupnp_device_info_get_device ()">gupnp_device_info_get_device</a>        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *type);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-services" title="gupnp_device_info_list_services ()">gupnp_device_info_list_services</a>     (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-service-types" title="gupnp_device_info_list_service_types ()">gupnp_device_info_list_service_types</a>
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);
+<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *  <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-service" title="gupnp_device_info_get_service ()">gupnp_device_info_get_service</a>       (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *type);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GUPnPDeviceInfo.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GUPnPDeviceInfo
+         +----<a class="link" href="GUPnPDevice.html" title="GUPnPDevice">GUPnPDevice</a>
+         +----<a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy">GUPnPDeviceProxy</a>
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GUPnPDeviceInfo.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--context" title='The "context" property'>context</a>"                  <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>*         : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--device-type" title='The "device-type" property'>device-type</a>"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--document" title='The "document" property'>document</a>"                 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">GUPnPXMLDoc</a>*          : Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--element" title='The "element" property'>element</a>"                  <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--location" title='The "location" property'>location</a>"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--resource-factory" title='The "resource-factory" property'>resource-factory</a>"         <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a>*  : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--udn" title='The "udn" property'>udn</a>"                      <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDeviceInfo.html#GUPnPDeviceInfo--url-base" title='The "url-base" property'>url-base</a>"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GUPnPDeviceInfo.description"></a><h2>Description</h2>
+<p>
+The <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> base abstract class provides methods for querying
+device information.</p>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GUPnPDeviceInfo.details"></a><h2>Details</h2>
+<div class="refsect2" title="GUPnPDeviceInfo">
+<a name="GUPnPDeviceInfo-struct"></a><h3>GUPnPDeviceInfo</h3>
+<pre class="programlisting">typedef struct _GUPnPDeviceInfo GUPnPDeviceInfo;</pre>
+<p>
+This struct contains private data only, and should be accessed using the
+functions below.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_resource_factory ()">
+<a name="gupnp-device-info-get-resource-factory"></a><h3>gupnp_device_info_get_resource_factory ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * gupnp_device_info_get_resource_factory
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *device_info);</pre>
+<p>
+Get the <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> used by the <em class="parameter"><code>device_info</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device_info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_context ()">
+<a name="gupnp-device-info-get-context"></a><h3>gupnp_device_info_get_context ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a> *      gupnp_device_info_get_context       (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the associated <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_location ()">
+<a name="gupnp-device-info-get-location"></a><h3>gupnp_device_info_get_location ()</h3>
+<pre class="programlisting">const char *        gupnp_device_info_get_location      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the location of the device description file.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_url_base ()">
+<a name="gupnp-device-info-get-url-base"></a><h3>gupnp_device_info_get_url_base ()</h3>
+<pre class="programlisting">const <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+>SoupURI</a> *     gupnp_device_info_get_url_base      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the URL base of this device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+><span class="type">SoupURI</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_udn ()">
+<a name="gupnp-device-info-get-udn"></a><h3>gupnp_device_info_get_udn ()</h3>
+<pre class="programlisting">const char *        gupnp_device_info_get_udn           (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the Unique Device Name of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_device_type ()">
+<a name="gupnp-device-info-get-device-type"></a><h3>gupnp_device_info_get_device_type ()</h3>
+<pre class="programlisting">const char *        gupnp_device_info_get_device_type   (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the UPnP device type.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A constant string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_friendly_name ()">
+<a name="gupnp-device-info-get-friendly-name"></a><h3>gupnp_device_info_get_friendly_name ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_friendly_name (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the friendly name of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_manufacturer ()">
+<a name="gupnp-device-info-get-manufacturer"></a><h3>gupnp_device_info_get_manufacturer ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_manufacturer  (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the manufacturer of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_manufacturer_url ()">
+<a name="gupnp-device-info-get-manufacturer-url"></a><h3>gupnp_device_info_get_manufacturer_url ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_manufacturer_url
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a URL pointing to the manufacturer's website.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_model_description ()">
+<a name="gupnp-device-info-get-model-description"></a><h3>gupnp_device_info_get_model_description ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_model_description
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the description of the device model.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_model_name ()">
+<a name="gupnp-device-info-get-model-name"></a><h3>gupnp_device_info_get_model_name ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_model_name    (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the model name of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_model_number ()">
+<a name="gupnp-device-info-get-model-number"></a><h3>gupnp_device_info_get_model_number ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_model_number  (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the model number of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_model_url ()">
+<a name="gupnp-device-info-get-model-url"></a><h3>gupnp_device_info_get_model_url ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_model_url     (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a URL pointing to the device model's website.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_serial_number ()">
+<a name="gupnp-device-info-get-serial-number"></a><h3>gupnp_device_info_get_serial_number ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_serial_number (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the serial number of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_presentation_url ()">
+<a name="gupnp-device-info-get-presentation-url"></a><h3>gupnp_device_info_get_presentation_url ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_presentation_url
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a URL pointing to the device's presentation page, for web-based
+administration.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_upc ()">
+<a name="gupnp-device-info-get-upc"></a><h3>gupnp_device_info_get_upc ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_upc           (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get the Universal Product Code of the device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_icon_url ()">
+<a name="gupnp-device-info-get-icon-url"></a><h3>gupnp_device_info_get_icon_url ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_icon_url      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *requested_mime_type,
+                                                         int requested_depth,
+                                                         int requested_width,
+                                                         int requested_height,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> prefer_bigger,
+                                                         char **mime_type,
+                                                         int *depth,
+                                                         int *width,
+                                                         int *height);</pre>
+<p>
+Get a URL pointing to the icon most closely matching the
+given criteria, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. If <em class="parameter"><code>requested_mime_type</code></em> is set, only icons with
+this mime type will be returned. If <em class="parameter"><code>requested_depth</code></em> is set, only icons with
+this or lower depth will be returned. If <em class="parameter"><code>requested_width</code></em> and/or
+<em class="parameter"><code>requested_height</code></em> are set, only icons that are this size or smaller are
+returned, unless <em class="parameter"><code>prefer_bigger</code></em> is set, in which case the next biggest icon
+will be returned. The returned strings should be freed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>requested_mime_type</code></em> :</span></p></td>
+<td> The requested file format, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> for any
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>requested_depth</code></em> :</span></p></td>
+<td> The requested color depth, or -1 for any
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>requested_width</code></em> :</span></p></td>
+<td> The requested width, or -1 for any
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>requested_height</code></em> :</span></p></td>
+<td> The requested height, or -1 for any
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prefer_bigger</code></em> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><code class="literal">TRUE</code></a> if a bigger, rather than a smaller icon should be
+returned if no exact match could be found
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mime_type</code></em> :</span></p></td>
+<td> The location where to store the the format of the returned icon,
+or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>. The returned string should be freed after use
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>depth</code></em> :</span></p></td>
+<td> The location where to store the depth of the returned icon, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>width</code></em> :</span></p></td>
+<td> The location where to store the width of the returned icon, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>height</code></em> :</span></p></td>
+<td> The location where to store the height of the returned icon, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a string, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>.  <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a> after use.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_list_dlna_capabilities ()">
+<a name="gupnp-device-info-list-dlna-capabilities"></a><h3>gupnp_device_info_list_dlna_capabilities ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             gupnp_device_info_list_dlna_capabilities
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of strings that represent the device capabilities as
+announced in the device description file using the
+&lt;dlna:X_DLNACAP&gt; element.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of newly allocated strings or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if
+              the device description doesn't contain the
+              &lt;dlna:X_DLNACAP&gt; element.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_description_value ()">
+<a name="gupnp-device-info-get-description-value"></a><h3>gupnp_device_info_get_description_value ()</h3>
+<pre class="programlisting">char *              gupnp_device_info_get_description_value
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *element);</pre>
+<p>
+This function provides generic access to the contents of arbitrary
+elements in the device description file.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>    A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>element</code></em> :</span></p></td>
+<td> Name of the description element to retrieve
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a newly allocated string or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if the device
+              description doesn't contain the given <em class="parameter"><code>element</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_list_devices ()">
+<a name="gupnp-device-info-list-devices"></a><h3>gupnp_device_info_list_devices ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             gupnp_device_info_list_devices      (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of new objects implementing <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+representing the devices directly contained in <em class="parameter"><code>info</code></em>. The returned list
+should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"
+><code class="function">g_list_free()</code></a>'d and the elements should be <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"
+><code class="function">g_object_unref()</code></a>'d.
+</p>
+<p>
+Note that devices are not cached internally, so that every time you
+call this function new objects are created. The application
+must cache any used devices if it wishes to keep them around and re-use
+them.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of new <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> objects.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_list_device_types ()">
+<a name="gupnp-device-info-list-device-types"></a><h3>gupnp_device_info_list_device_types ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             gupnp_device_info_list_device_types (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of strings representing the types of the devices
+directly contained in <em class="parameter"><code>info</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of strings. The elements should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a>'d and the
+list should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"
+><code class="function">g_list_free()</code></a>'d.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_device ()">
+<a name="gupnp-device-info-get-device"></a><h3>gupnp_device_info_get_device ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *   gupnp_device_info_get_device        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *type);</pre>
+<p>
+Get the service with type <em class="parameter"><code>type</code></em> directly contained in <em class="parameter"><code>info</code></em> as
+a new object implementing <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if no such device
+was found. The returned object should be unreffed when done.
+</p>
+<p>
+Note that devices are not cached internally, so that every time you
+call this function a new object is created. The application
+must cache any used devices if it wishes to keep them around and re-use
+them.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td> The type of the device to be retrieved.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A new <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_list_services ()">
+<a name="gupnp-device-info-list-services"></a><h3>gupnp_device_info_list_services ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             gupnp_device_info_list_services     (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of new objects implementing <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>
+representing the services directly contained in <em class="parameter"><code>info</code></em>. The returned list
+should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"
+><code class="function">g_list_free()</code></a>'d and the elements should be <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"
+><code class="function">g_object_unref()</code></a>'d.
+</p>
+<p>
+Note that services are not cached internally, so that every time you
+call this function new objects are created. The application
+must cache any used services if it wishes to keep them around and re-use
+them.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of new <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> objects.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_list_service_types ()">
+<a name="gupnp-device-info-list-service-types"></a><h3>gupnp_device_info_list_service_types ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+>GList</a> *             gupnp_device_info_list_service_types
+                                                        (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info);</pre>
+<p>
+Get a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of strings representing the types of the services
+directly contained in <em class="parameter"><code>info</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"
+><span class="type">GList</span></a> of strings. The elements should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"
+><code class="function">g_free()</code></a>'d and the
+list should be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"
+><code class="function">g_list_free()</code></a>'d.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gupnp_device_info_get_service ()">
+<a name="gupnp-device-info-get-service"></a><h3>gupnp_device_info_get_service ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a> *  gupnp_device_info_get_service       (<a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">GUPnPDeviceInfo</a> *info,
+                                                         const char *type);</pre>
+<p>
+Get the service with type <em class="parameter"><code>type</code></em> directly contained in <em class="parameter"><code>info</code></em> as
+a new object implementing <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a> if no such device
+was found. The returned object should be unreffed when done.
+</p>
+<p>
+Note that services are not cached internally, so that every time you
+call this function a new object is created. The application
+must cache any used services if it wishes to keep them around and re-use
+them.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td> A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td> The type of the service to be retrieved.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GUPnPDeviceInfo.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "context" property'>
+<a name="GUPnPDeviceInfo--context"></a><h3>The <code class="literal">"context"</code> property</h3>
+<pre class="programlisting">  "context"                  <a class="link" href="GUPnPContext.html" title="GUPnPContext">GUPnPContext</a>*         : Read / Write / Construct Only</pre>
+<p>
+The <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> to use.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title='The "device-type" property'>
+<a name="GUPnPDeviceInfo--device-type"></a><h3>The <code class="literal">"device-type"</code> property</h3>
+<pre class="programlisting">  "device-type"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The device type.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "document" property'>
+<a name="GUPnPDeviceInfo--document"></a><h3>The <code class="literal">"document"</code> property</h3>
+<pre class="programlisting">  "document"                 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">GUPnPXMLDoc</a>*          : Write / Construct Only</pre>
+<p>
+Private property.</p>
+<p>
+</p>
+<p>Stability Level Private</p>
+</div>
+<hr>
+<div class="refsect2" title='The "element" property'>
+<a name="GUPnPDeviceInfo--element"></a><h3>The <code class="literal">"element"</code> property</h3>
+<pre class="programlisting">  "element"                  <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Write / Construct Only</pre>
+<p>
+Private property.</p>
+<p>
+</p>
+<p>Stability Level Private</p>
+</div>
+<hr>
+<div class="refsect2" title='The "location" property'>
+<a name="GUPnPDeviceInfo--location"></a><h3>The <code class="literal">"location"</code> property</h3>
+<pre class="programlisting">  "location"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The location of the device description file.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "resource-factory" property'>
+<a name="GUPnPDeviceInfo--resource-factory"></a><h3>The <code class="literal">"resource-factory"</code> property</h3>
+<pre class="programlisting">  "resource-factory"         <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a>*  : Read / Write / Construct Only</pre>
+<p>
+The resource factory to use. Set to NULL for default factory.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title='The "udn" property'>
+<a name="GUPnPDeviceInfo--udn"></a><h3>The <code class="literal">"udn"</code> property</h3>
+<pre class="programlisting">  "udn"                      <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Read / Write / Construct Only</pre>
+<p>
+The UDN of this device.</p>
+<p>
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2" title='The "url-base" property'>
+<a name="GUPnPDeviceInfo--url-base"></a><h3>The <code class="literal">"url-base"</code> property</h3>
+<pre class="programlisting">  "url-base"                 <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>              : Read / Write / Construct Only</pre>
+<p>
+The URL base (<a
+href="/usr/share/gtk-doc/html/libsoup-2.4/libsoup-24-SoupURI.html#SoupURI"
+><span class="type">SoupURI</span></a>).</p>
+<p>
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

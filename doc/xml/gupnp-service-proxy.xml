@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPServiceProxy">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPServiceProxy.top_of_page">GUPnPServiceProxy</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPServiceProxy</refname>
+<refpurpose>Proxy class for remote services.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPServiceProxy.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPServiceProxy-struct">GUPnPServiceProxy</link>;
+                    <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link>;
+<link linkend="void">void</link>                (<link linkend="GUPnPServiceProxyActionCallback">*GUPnPServiceProxyActionCallback</link>)  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                (<link linkend="GUPnPServiceProxyNotifyCallback">*GUPnPServiceProxyNotifyCallback</link>)  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-send-action">gupnp_service_proxy_send_action</link>     (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-send-action-valist">gupnp_service_proxy_send_action_valist</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-send-action-hash">gupnp_service_proxy_send_action_hash</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GHashTable">GHashTable</link> *in_hash,
+                                                         <link linkend="GHashTable">GHashTable</link> *out_hash);
+<link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * <link linkend="gupnp-service-proxy-begin-action">gupnp_service_proxy_begin_action</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         ...);
+<link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * <link linkend="gupnp-service-proxy-begin-action-valist">gupnp_service_proxy_begin_action_valist</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * <link linkend="gupnp-service-proxy-begin-action-hash">gupnp_service_proxy_begin_action_hash</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GHashTable">GHashTable</link> *hash);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-end-action">gupnp_service_proxy_end_action</link>      (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-end-action-valist">gupnp_service_proxy_end_action_valist</link>
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="va-list">va_list</link> var_args);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-end-action-hash">gupnp_service_proxy_end_action_hash</link> (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GHashTable">GHashTable</link> *hash);
+<link linkend="void">void</link>                <link linkend="gupnp-service-proxy-cancel-action">gupnp_service_proxy_cancel_action</link>   (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-add-notify">gupnp_service_proxy_add_notify</link>      (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GType">GType</link> type,
+                                                         <link linkend="GUPnPServiceProxyNotifyCallback">GUPnPServiceProxyNotifyCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-remove-notify">gupnp_service_proxy_remove_notify</link>   (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GUPnPServiceProxyNotifyCallback">GUPnPServiceProxyNotifyCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                <link linkend="gupnp-service-proxy-set-subscribed">gupnp_service_proxy_set_subscribed</link>  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="gboolean">gboolean</link> subscribed);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-service-proxy-get-subscribed">gupnp_service_proxy_get_subscribed</link>  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPServiceProxy.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GUPnPServiceInfo">GUPnPServiceInfo</link>
+         +----GUPnPServiceProxy
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPServiceProxy.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPServiceProxy--subscribed">subscribed</link>&quot;               <link linkend="gboolean">gboolean</link>              : Read / Write
+</synopsis>
+</refsect1>
+
+<refsect1 id="GUPnPServiceProxy.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GUPnPServiceProxy-subscription-lost">subscription-lost</link>&quot;                              : Run Last
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GUPnPServiceProxy.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> sends commands to a remote UPnP service and handles
+incoming event notifications. <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> implements the
+<link linkend="GUPnPServiceInfo"><type>GUPnPServiceInfo</type></link> interface.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPServiceProxy.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPServiceProxy-struct" role="struct">
+<title>GUPnPServiceProxy</title>
+<indexterm zone="GUPnPServiceProxy-struct"><primary sortas="GUPnPServiceProxy">GUPnPServiceProxy</primary></indexterm><programlisting>typedef struct _GUPnPServiceProxy GUPnPServiceProxy;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPServiceProxyAction" role="struct">
+<title>GUPnPServiceProxyAction</title>
+<indexterm zone="GUPnPServiceProxyAction"><primary sortas="GUPnPServiceProxyAction">GUPnPServiceProxyAction</primary></indexterm><programlisting>typedef struct _GUPnPServiceProxyAction GUPnPServiceProxyAction;</programlisting>
+<para>
+Opaque structure for holding in-progress action data.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPServiceProxyActionCallback" role="function">
+<title>GUPnPServiceProxyActionCallback ()</title>
+<indexterm zone="GUPnPServiceProxyActionCallback"><primary sortas="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</primary></indexterm><programlisting><link linkend="void">void</link>                (*GUPnPServiceProxyActionCallback)  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Callback notifying that <parameter>action</parameter> on <parameter>proxy</parameter> has returned and
+<link linkend="gupnp-service-proxy-end-action"><function>gupnp_service_proxy_end_action()</function></link> etc can be called.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> <parameter>action</parameter> is called from
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> in progress
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="GUPnPServiceProxyNotifyCallback" role="function">
+<title>GUPnPServiceProxyNotifyCallback ()</title>
+<indexterm zone="GUPnPServiceProxyNotifyCallback"><primary sortas="GUPnPServiceProxyNotifyCallback">GUPnPServiceProxyNotifyCallback</primary></indexterm><programlisting><link linkend="void">void</link>                (*GUPnPServiceProxyNotifyCallback)  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Callback notifying that the state variable <parameter>variable</parameter> on <parameter>proxy</parameter> has changed to
+<parameter>value</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> the notification originates from
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable</parameter>&#160;:</term>
+<listitem><simpara> The name of the variable being notified
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GValue"><type>GValue</type></link> of the variable being notified
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-send-action" role="function">
+<title>gupnp_service_proxy_send_action ()</title>
+<indexterm zone="gupnp-service-proxy-send-action"><primary sortas="gupnp_service_proxy_send_action">gupnp_service_proxy_send_action</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_send_action     (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         ...);</programlisting>
+<para>
+Sends action <parameter>action</parameter> with parameters <parameter>Varargs</parameter> to the service exposed by
+<parameter>proxy</parameter> synchronously. If an error occurred, <parameter>error</parameter> will be set. In case of
+a UPnPError the error code will be the same in <parameter>error</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> tuples of in parameter name, in parameter type, and in parameter
+value, followed by <link linkend="NULL--CAPS"><literal>NULL</literal></link>, and then tuples of out parameter name,
+out parameter type, and out parameter value location, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if sending the action was succesful.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-send-action-valist" role="function">
+<title>gupnp_service_proxy_send_action_valist ()</title>
+<indexterm zone="gupnp-service-proxy-send-action-valist"><primary sortas="gupnp_service_proxy_send_action_valist">gupnp_service_proxy_send_action_valist</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_send_action_valist
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-send-action"><function>gupnp_service_proxy_send_action()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> va_list of tuples of in parameter name, in parameter type, and in
+parameter value, followed by <link linkend="NULL--CAPS"><literal>NULL</literal></link>, and then tuples of out parameter name,
+out parameter type, and out parameter value location
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if sending the action was succesful.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-send-action-hash" role="function">
+<title>gupnp_service_proxy_send_action_hash ()</title>
+<indexterm zone="gupnp-service-proxy-send-action-hash"><primary sortas="gupnp_service_proxy_send_action_hash">gupnp_service_proxy_send_action_hash</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_send_action_hash
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GHashTable">GHashTable</link> *in_hash,
+                                                         <link linkend="GHashTable">GHashTable</link> *out_hash);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-send-action"><function>gupnp_service_proxy_send_action()</function></link>; this version takes a pair of
+<link linkend="GHashTable"><type>GHashTable</type></link><!-- -->s for runtime determined parameter lists.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>in_hash</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GHashTable"><type>GHashTable</type></link> of in parameter name and <link linkend="GValue"><type>GValue</type></link> pairs
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>out_hash</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GHashTable"><type>GHashTable</type></link> of out parameter name and initialized
+<link linkend="GValue"><type>GValue</type></link> pairs
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if sending the action was succesful.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-begin-action" role="function">
+<title>gupnp_service_proxy_begin_action ()</title>
+<indexterm zone="gupnp-service-proxy-begin-action"><primary sortas="gupnp_service_proxy_begin_action">gupnp_service_proxy_begin_action</primary></indexterm><programlisting><link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * gupnp_service_proxy_begin_action
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         ...);</programlisting>
+<para>
+Sends action <parameter>action</parameter> with parameters <parameter>Varargs</parameter> to the service exposed by
+<parameter>proxy</parameter> asynchronously, calling <parameter>callback</parameter> on completion. From <parameter>callback</parameter>, call
+<link linkend="gupnp-service-proxy-end-action"><function>gupnp_service_proxy_end_action()</function></link> to check for errors, to retrieve return
+values, and to free the <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> The callback to call when sending the action has succeeded
+or failed
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data for <parameter>callback</parameter>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> tuples of in parameter name, in parameter type, and in parameter
+value, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle. This will
+be freed when calling <link linkend="gupnp-service-proxy-cancel-action"><function>gupnp_service_proxy_cancel_action()</function></link> or
+<link linkend="gupnp-service-proxy-end-action-valist"><function>gupnp_service_proxy_end_action_valist()</function></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-begin-action-valist" role="function">
+<title>gupnp_service_proxy_begin_action_valist ()</title>
+<indexterm zone="gupnp-service-proxy-begin-action-valist"><primary sortas="gupnp_service_proxy_begin_action_valist">gupnp_service_proxy_begin_action_valist</primary></indexterm><programlisting><link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * gupnp_service_proxy_begin_action_valist
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-begin-action"><function>gupnp_service_proxy_begin_action()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> The callback to call when sending the action has succeeded
+or failed
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data for <parameter>callback</parameter>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> A va_list of tuples of in parameter name, in parameter type, and
+in parameter value
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle. This will
+be freed when calling <link linkend="gupnp-service-proxy-cancel-action"><function>gupnp_service_proxy_cancel_action()</function></link> or
+<link linkend="gupnp-service-proxy-end-action-valist"><function>gupnp_service_proxy_end_action_valist()</function></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-begin-action-hash" role="function">
+<title>gupnp_service_proxy_begin_action_hash ()</title>
+<indexterm zone="gupnp-service-proxy-begin-action-hash"><primary sortas="gupnp_service_proxy_begin_action_hash">gupnp_service_proxy_begin_action_hash</primary></indexterm><programlisting><link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> * gupnp_service_proxy_begin_action_hash
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *action,
+                                                         <link linkend="GUPnPServiceProxyActionCallback">GUPnPServiceProxyActionCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GHashTable">GHashTable</link> *hash);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-begin-action"><function>gupnp_service_proxy_begin_action()</function></link>; this version takes a <link linkend="GHashTable"><type>GHashTable</type></link>
+for runtime generated parameter lists.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> An action
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> The callback to call when sending the action has succeeded
+or failed
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data for <parameter>callback</parameter>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>hash</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GHashTable"><type>GHashTable</type></link> of in parameter name and <link linkend="GValue"><type>GValue</type></link> pairs
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle. This will
+be freed when calling <link linkend="gupnp-service-proxy-cancel-action"><function>gupnp_service_proxy_cancel_action()</function></link> or
+<link linkend="gupnp-service-proxy-end-action-hash"><function>gupnp_service_proxy_end_action_hash()</function></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-end-action" role="function">
+<title>gupnp_service_proxy_end_action ()</title>
+<indexterm zone="gupnp-service-proxy-end-action"><primary sortas="gupnp_service_proxy_end_action">gupnp_service_proxy_end_action</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_end_action      (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         ...);</programlisting>
+<para>
+Retrieves the result of <parameter>action</parameter>. The out parameters in <parameter>Varargs</parameter> will be
+filled in, and if an error occurred, <parameter>error</parameter> will be set. In case of
+a UPnPError the error code will be the same in <parameter>error</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&#160;:</term>
+<listitem><simpara> tuples of out parameter name, out parameter type, and out parameter
+value location, terminated with <link linkend="NULL--CAPS"><literal>NULL</literal></link>. The out parameter values should be
+freed after use
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> on success.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-end-action-valist" role="function">
+<title>gupnp_service_proxy_end_action_valist ()</title>
+<indexterm zone="gupnp-service-proxy-end-action-valist"><primary sortas="gupnp_service_proxy_end_action_valist">gupnp_service_proxy_end_action_valist</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_end_action_valist
+                                                        (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="va-list">va_list</link> var_args);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-end-action"><function>gupnp_service_proxy_end_action()</function></link>; this version takes a va_list for
+use by language bindings.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&#160;:</term>
+<listitem><simpara> A va_list of tuples of out parameter name, out parameter type,
+and out parameter value location. The out parameter values should be
+freed after use
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> on success.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-end-action-hash" role="function">
+<title>gupnp_service_proxy_end_action_hash ()</title>
+<indexterm zone="gupnp-service-proxy-end-action-hash"><primary sortas="gupnp_service_proxy_end_action_hash">gupnp_service_proxy_end_action_hash</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_end_action_hash (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GHashTable">GHashTable</link> *hash);</programlisting>
+<para>
+See <link linkend="gupnp-service-proxy-end-action"><function>gupnp_service_proxy_end_action()</function></link>; this version takes a <link linkend="GHashTable"><type>GHashTable</type></link>
+for runtime generated parameter lists.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> The location where to store any error, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>hash</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GHashTable"><type>GHashTable</type></link> of out parameter name and initialised <link linkend="GValue"><type>GValue</type></link> pairs
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> on success.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-cancel-action" role="function">
+<title>gupnp_service_proxy_cancel_action ()</title>
+<indexterm zone="gupnp-service-proxy-cancel-action"><primary sortas="gupnp_service_proxy_cancel_action">gupnp_service_proxy_cancel_action</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_proxy_cancel_action   (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="GUPnPServiceProxyAction">GUPnPServiceProxyAction</link> *action);</programlisting>
+<para>
+Cancels <parameter>action</parameter>, freeing the <parameter>action</parameter> handle.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>action</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxyAction"><type>GUPnPServiceProxyAction</type></link> handle
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-add-notify" role="function">
+<title>gupnp_service_proxy_add_notify ()</title>
+<indexterm zone="gupnp-service-proxy-add-notify"><primary sortas="gupnp_service_proxy_add_notify">gupnp_service_proxy_add_notify</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_add_notify      (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GType">GType</link> type,
+                                                         <link linkend="GUPnPServiceProxyNotifyCallback">GUPnPServiceProxyNotifyCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Sets up <parameter>callback</parameter> to be called whenever a change notification for
+<parameter>variable</parameter> is recieved.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable</parameter>&#160;:</term>
+<listitem><simpara> The variable to add notification for
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type</parameter>&#160;:</term>
+<listitem><simpara> The type of the variable
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> The callback to call when <parameter>variable</parameter> changes
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data for <parameter>callback</parameter>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> on success.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-remove-notify" role="function">
+<title>gupnp_service_proxy_remove_notify ()</title>
+<indexterm zone="gupnp-service-proxy-remove-notify"><primary sortas="gupnp_service_proxy_remove_notify">gupnp_service_proxy_remove_notify</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_remove_notify   (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *variable,
+                                                         <link linkend="GUPnPServiceProxyNotifyCallback">GUPnPServiceProxyNotifyCallback</link> callback,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Cancels the variable change notification for <parameter>callback</parameter> and <parameter>user_data</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>variable</parameter>&#160;:</term>
+<listitem><simpara> The variable to add notification for
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> The callback to call when <parameter>variable</parameter> changes
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> User data for <parameter>callback</parameter>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> on success.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-set-subscribed" role="function">
+<title>gupnp_service_proxy_set_subscribed ()</title>
+<indexterm zone="gupnp-service-proxy-set-subscribed"><primary sortas="gupnp_service_proxy_set_subscribed">gupnp_service_proxy_set_subscribed</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_service_proxy_set_subscribed  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                         <link linkend="gboolean">gboolean</link> subscribed);</programlisting>
+<para>
+(Un)subscribes to this service.
+</para>
+<para>
+Note that the relevant messages are not immediately sent but queued.
+If you want to unsubcribe from this service because the application
+is quitting, rely on automatic synchronised unsubscription on object
+destruction instead.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>subscribed</parameter>&#160;:</term>
+<listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> to subscribe to this service
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-service-proxy-get-subscribed" role="function">
+<title>gupnp_service_proxy_get_subscribed ()</title>
+<indexterm zone="gupnp-service-proxy-get-subscribed"><primary sortas="gupnp_service_proxy_get_subscribed">gupnp_service_proxy_get_subscribed</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_service_proxy_get_subscribed  (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy);</programlisting>
+<para>
+Returns if we are subscribed to this service.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if we are subscribed to this service, otherwise <link linkend="FALSE--CAPS"><literal>FALSE</literal></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPServiceProxy.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPServiceProxy--subscribed" role="property"><title>The <literal>&quot;subscribed&quot;</literal> property</title>
+<indexterm zone="GUPnPServiceProxy--subscribed"><primary sortas="GUPnPServiceProxy:subscribed">GUPnPServiceProxy:subscribed</primary></indexterm><programlisting>  &quot;subscribed&quot;               <link linkend="gboolean">gboolean</link>              : Read / Write</programlisting>
+<para>
+Whether we are subscribed to this service.</para>
+<para>
+</para><para>Default value: FALSE</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GUPnPServiceProxy.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GUPnPServiceProxy-subscription-lost" role="signal"><title>The <literal>&quot;subscription-lost&quot;</literal> signal</title>
+<indexterm zone="GUPnPServiceProxy-subscription-lost"><primary sortas="GUPnPServiceProxy::subscription-lost">GUPnPServiceProxy::subscription-lost</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                        <link linkend="gpointer">gpointer</link>           error,
+                                                        <link linkend="gpointer">gpointer</link>           user_data)      : Run Last</programlisting>
+<para>
+Emitted whenever the subscription to this service has been lost due
+to an error condition.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> describing why the subscription has
+been lost
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

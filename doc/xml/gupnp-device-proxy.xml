@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPDeviceProxy">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPDeviceProxy.top_of_page">GUPnPDeviceProxy</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPDeviceProxy</refname>
+<refpurpose>Proxy class for remote devices.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPDeviceProxy.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPDeviceProxy-struct">GUPnPDeviceProxy</link>;
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPDeviceProxy.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link>
+         +----GUPnPDeviceProxy
+</synopsis>
+</refsect1>
+
+
+
+
+
+
+
+
+<refsect1 id="GUPnPDeviceProxy.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link> allows for retrieving proxies for a device's subdevices
+and services. <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link> implements the <link linkend="GUPnPDeviceInfo"><type>GUPnPDeviceInfo</type></link> interface.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPDeviceProxy.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPDeviceProxy-struct" role="struct">
+<title>GUPnPDeviceProxy</title>
+<indexterm zone="GUPnPDeviceProxy-struct"><primary sortas="GUPnPDeviceProxy">GUPnPDeviceProxy</primary></indexterm><programlisting>typedef struct _GUPnPDeviceProxy GUPnPDeviceProxy;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

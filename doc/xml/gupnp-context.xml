@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPContext">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPContext.top_of_page">GUPnPContext</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPContext</refname>
+<refpurpose>Context object wrapping shared networking bits.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPContext.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPContext-struct">GUPnPContext</link>;
+<link linkend="GUPnPContext">GUPnPContext</link> *      <link linkend="gupnp-context-new">gupnp_context_new</link>                   (<link linkend="GMainContext">GMainContext</link> *main_context,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         <link linkend="guint">guint</link> port,
+                                                         <link linkend="GError">GError</link> **error);
+const <link linkend="char">char</link> *        <link linkend="gupnp-context-get-host-ip">gupnp_context_get_host_ip</link>           (<link linkend="GUPnPContext">GUPnPContext</link> *context);
+<link linkend="guint">guint</link>               <link linkend="gupnp-context-get-port">gupnp_context_get_port</link>              (<link linkend="GUPnPContext">GUPnPContext</link> *context);
+<link linkend="SoupServer">SoupServer</link> *        <link linkend="gupnp-context-get-server">gupnp_context_get_server</link>            (<link linkend="GUPnPContext">GUPnPContext</link> *context);
+<link linkend="SoupSession">SoupSession</link> *       <link linkend="gupnp-context-get-session">gupnp_context_get_session</link>           (<link linkend="GUPnPContext">GUPnPContext</link> *context);
+<link linkend="void">void</link>                <link linkend="gupnp-context-set-subscription-timeout">gupnp_context_set_subscription_timeout</link>
+                                                        (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="guint">guint</link> timeout);
+<link linkend="guint">guint</link>               <link linkend="gupnp-context-get-subscription-timeout">gupnp_context_get_subscription_timeout</link>
+                                                        (<link linkend="GUPnPContext">GUPnPContext</link> *context);
+<link linkend="void">void</link>                <link linkend="gupnp-context-host-path">gupnp_context_host_path</link>             (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *local_path,
+                                                         const <link linkend="char">char</link> *server_path);
+<link linkend="void">void</link>                <link linkend="gupnp-context-unhost-path">gupnp_context_unhost_path</link>           (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *server_path);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPContext.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GSSDPClient">GSSDPClient</link>
+         +----GUPnPContext
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPContext.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPContext--port">port</link>&quot;                     <link linkend="guint">guint</link>                 : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPContext--server">server</link>&quot;                   <link linkend="SoupServer">SoupServer</link>*           : Read
+  &quot;<link linkend="GUPnPContext--session">session</link>&quot;                  <link linkend="SoupSession">SoupSession</link>*          : Read
+  &quot;<link linkend="GUPnPContext--subscription-timeout">subscription-timeout</link>&quot;     <link linkend="guint">guint</link>                 : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPContext.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPContext"><type>GUPnPContext</type></link> wraps the networking bits that are used by the various
+GUPnP classes. It automatically starts a web server on demand.
+</para>
+<para>
+For debugging, it is possible to see the messages being sent and received by
+exporting <link linkend="GUPNP-DEBUG--CAPS"><type>GUPNP_DEBUG</type></link>.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPContext.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPContext-struct" role="struct">
+<title>GUPnPContext</title>
+<indexterm zone="GUPnPContext-struct"><primary sortas="GUPnPContext">GUPnPContext</primary></indexterm><programlisting>typedef struct _GUPnPContext GUPnPContext;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-context-new" role="function">
+<title>gupnp_context_new ()</title>
+<indexterm zone="gupnp-context-new"><primary sortas="gupnp_context_new">gupnp_context_new</primary></indexterm><programlisting><link linkend="GUPnPContext">GUPnPContext</link> *      gupnp_context_new                   (<link linkend="GMainContext">GMainContext</link> *main_context,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         <link linkend="guint">guint</link> port,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Create a new <link linkend="GUPnPContext"><type>GUPnPContext</type></link> with the specified <parameter>main_context</parameter>, <parameter>interface</parameter> and
+<parameter>port</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>main_context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GMainContext"><type>GMainContext</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> to use the default one
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface</parameter>&#160;:</term>
+<listitem><simpara> The network interface to use, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> to auto-detect.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>port</parameter>&#160;:</term>
+<listitem><simpara> Port to run on, or 0 if you don't care what port is used.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A location to store a <link linkend="GError"><type>GError</type></link>, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPContext"><type>GUPnPContext</type></link> object, or <link linkend="NULL--CAPS"><literal>NULL</literal></link> on an error
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-get-host-ip" role="function" condition="deprecated">
+<title>gupnp_context_get_host_ip ()</title>
+<indexterm zone="gupnp-context-get-host-ip" role="deprecated"><primary sortas="gupnp_context_get_host_ip">gupnp_context_get_host_ip</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_context_get_host_ip           (<link linkend="GUPnPContext">GUPnPContext</link> *context);</programlisting>
+<warning><para><literal>gupnp_context_get_host_ip</literal> has been deprecated since version 0.12.7 and should not be used in newly-written code. The "host-ip" property has moved to the base class
+<link linkend="GSSDPClient"><type>GSSDPClient</type></link> so newer applications should use
+<link linkend="gssdp-client-get-host-ip"><type>gssdp_client_get_host_ip</type></link> instead.</para></warning>
+<para>
+Get the IP address we advertise ourselves as using.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The IP address. This string should not be freed.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-get-port" role="function">
+<title>gupnp_context_get_port ()</title>
+<indexterm zone="gupnp-context-get-port"><primary sortas="gupnp_context_get_port">gupnp_context_get_port</primary></indexterm><programlisting><link linkend="guint">guint</link>               gupnp_context_get_port              (<link linkend="GUPnPContext">GUPnPContext</link> *context);</programlisting>
+<para>
+Get the port that the SOAP server is running on.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The port the SOAP server is running on.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-get-server" role="function">
+<title>gupnp_context_get_server ()</title>
+<indexterm zone="gupnp-context-get-server"><primary sortas="gupnp_context_get_server">gupnp_context_get_server</primary></indexterm><programlisting><link linkend="SoupServer">SoupServer</link> *        gupnp_context_get_server            (<link linkend="GUPnPContext">GUPnPContext</link> *context);</programlisting>
+<para>
+Get the <link linkend="SoupServer"><type>SoupServer</type></link> HTTP server that GUPnP is using.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The <link linkend="SoupServer"><type>SoupServer</type></link> used by GUPnP. Do not unref this when finished.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-get-session" role="function">
+<title>gupnp_context_get_session ()</title>
+<indexterm zone="gupnp-context-get-session"><primary sortas="gupnp_context_get_session">gupnp_context_get_session</primary></indexterm><programlisting><link linkend="SoupSession">SoupSession</link> *       gupnp_context_get_session           (<link linkend="GUPnPContext">GUPnPContext</link> *context);</programlisting>
+<para>
+Get the <link linkend="SoupSession"><type>SoupSession</type></link> object that GUPnP is using.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The <link linkend="SoupSession"><type>SoupSession</type></link> used by GUPnP. Do not unref this when
+finished.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-set-subscription-timeout" role="function">
+<title>gupnp_context_set_subscription_timeout ()</title>
+<indexterm zone="gupnp-context-set-subscription-timeout"><primary sortas="gupnp_context_set_subscription_timeout">gupnp_context_set_subscription_timeout</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_context_set_subscription_timeout
+                                                        (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="guint">guint</link> timeout);</programlisting>
+<para>
+Sets the event subscription timeout to <parameter>timeout</parameter>. Use 0 if you don't
+want subscriptions to time out. Note that any client side subscriptions
+will automatically be renewed.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timeout</parameter>&#160;:</term>
+<listitem><simpara> Event subscription timeout in seconds
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-get-subscription-timeout" role="function">
+<title>gupnp_context_get_subscription_timeout ()</title>
+<indexterm zone="gupnp-context-get-subscription-timeout"><primary sortas="gupnp_context_get_subscription_timeout">gupnp_context_get_subscription_timeout</primary></indexterm><programlisting><link linkend="guint">guint</link>               gupnp_context_get_subscription_timeout
+                                                        (<link linkend="GUPnPContext">GUPnPContext</link> *context);</programlisting>
+<para>
+Get the event subscription timeout (in seconds), or 0 meaning there is no
+timeout.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The event subscription timeout in seconds.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-host-path" role="function">
+<title>gupnp_context_host_path ()</title>
+<indexterm zone="gupnp-context-host-path"><primary sortas="gupnp_context_host_path">gupnp_context_host_path</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_context_host_path             (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *local_path,
+                                                         const <link linkend="char">char</link> *server_path);</programlisting>
+<para>
+Start hosting <parameter>local_path</parameter> at <parameter>server_path</parameter>. Files with the path
+<parameter>local_path.LOCALE</parameter> (if they exist) will be served up when LOCALE is
+specified in the request's Accept-Language header.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>local_path</parameter>&#160;:</term>
+<listitem><simpara> Path to the local file or folder to be hosted
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>server_path</parameter>&#160;:</term>
+<listitem><simpara> Web server path where <parameter>local_path</parameter> should be hosted
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-context-unhost-path" role="function">
+<title>gupnp_context_unhost_path ()</title>
+<indexterm zone="gupnp-context-unhost-path"><primary sortas="gupnp_context_unhost_path">gupnp_context_unhost_path</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_context_unhost_path           (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *server_path);</programlisting>
+<para>
+Stop hosting the file or folder at <parameter>server_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>server_path</parameter>&#160;:</term>
+<listitem><simpara> Web server path where the file or folder is hosted
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPContext.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPContext--port" role="property"><title>The <literal>&quot;port&quot;</literal> property</title>
+<indexterm zone="GUPnPContext--port"><primary sortas="GUPnPContext:port">GUPnPContext:port</primary></indexterm><programlisting>  &quot;port&quot;                     <link linkend="guint">guint</link>                 : Read / Write / Construct Only</programlisting>
+<para>
+The port to run on. Set to 0 if you don't care what port to run on.</para>
+<para>
+</para><para>Default value: 0</para>
+</refsect2>
+<refsect2 id="GUPnPContext--server" role="property"><title>The <literal>&quot;server&quot;</literal> property</title>
+<indexterm zone="GUPnPContext--server"><primary sortas="GUPnPContext:server">GUPnPContext:server</primary></indexterm><programlisting>  &quot;server&quot;                   <link linkend="SoupServer">SoupServer</link>*           : Read</programlisting>
+<para>
+The <link linkend="SoupServer"><type>SoupServer</type></link> HTTP server used by GUPnP.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPContext--session" role="property"><title>The <literal>&quot;session&quot;</literal> property</title>
+<indexterm zone="GUPnPContext--session"><primary sortas="GUPnPContext:session">GUPnPContext:session</primary></indexterm><programlisting>  &quot;session&quot;                  <link linkend="SoupSession">SoupSession</link>*          : Read</programlisting>
+<para>
+The <link linkend="SoupSession"><type>SoupSession</type></link> object used by GUPnP.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPContext--subscription-timeout" role="property"><title>The <literal>&quot;subscription-timeout&quot;</literal> property</title>
+<indexterm zone="GUPnPContext--subscription-timeout"><primary sortas="GUPnPContext:subscription-timeout">GUPnPContext:subscription-timeout</primary></indexterm><programlisting>  &quot;subscription-timeout&quot;     <link linkend="guint">guint</link>                 : Read / Write / Construct Only</programlisting>
+<para>
+The preferred subscription timeout: the number of seconds after
+which subscriptions are renewed. Set to '0' if subscriptions
+are never to time out.</para>
+<para>
+</para><para>Allowed values: &lt;= 604800</para>
+<para>Default value: 1800</para>
+</refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

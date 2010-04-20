@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPRootDevice">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPRootDevice.top_of_page">GUPnPRootDevice</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPRootDevice</refname>
+<refpurpose>Class for root device implementations.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPRootDevice.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPRootDevice-struct">GUPnPRootDevice</link>;
+<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *   <link linkend="gupnp-root-device-new">gupnp_root_device_new</link>               (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *description_path,
+                                                         const <link linkend="char">char</link> *description_dir);
+<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *   <link linkend="gupnp-root-device-new-full">gupnp_root_device_new_full</link>          (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *description_doc,
+                                                         const <link linkend="char">char</link> *description_path,
+                                                         const <link linkend="char">char</link> *description_dir);
+<link linkend="void">void</link>                <link linkend="gupnp-root-device-set-available">gupnp_root_device_set_available</link>     (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device,
+                                                         <link linkend="gboolean">gboolean</link> available);
+<link linkend="gboolean">gboolean</link>            <link linkend="gupnp-root-device-get-available">gupnp_root_device_get_available</link>     (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);
+const <link linkend="char">char</link> *        <link linkend="gupnp-root-device-get-relative-location">gupnp_root_device_get_relative_location</link>
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);
+const <link linkend="char">char</link> *        <link linkend="gupnp-root-device-get-description-dir">gupnp_root_device_get_description_dir</link>
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);
+const <link linkend="char">char</link> *        <link linkend="gupnp-root-device-get-description-path">gupnp_root_device_get_description_path</link>
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPRootDevice.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GUPnPDeviceInfo">GUPnPDeviceInfo</link>
+         +----<link linkend="GUPnPDevice">GUPnPDevice</link>
+               +----GUPnPRootDevice
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPRootDevice.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPRootDevice--available">available</link>&quot;                <link linkend="gboolean">gboolean</link>              : Read / Write
+  &quot;<link linkend="GUPnPRootDevice--description-dir">description-dir</link>&quot;          <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+  &quot;<link linkend="GUPnPRootDevice--description-doc">description-doc</link>&quot;          <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only
+  &quot;<link linkend="GUPnPRootDevice--description-path">description-path</link>&quot;         <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+
+
+<refsect1 id="GUPnPRootDevice.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link> allows for implementing root devices.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPRootDevice.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPRootDevice-struct" role="struct">
+<title>GUPnPRootDevice</title>
+<indexterm zone="GUPnPRootDevice-struct"><primary sortas="GUPnPRootDevice">GUPnPRootDevice</primary></indexterm><programlisting>typedef struct _GUPnPRootDevice GUPnPRootDevice;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-root-device-new" role="function">
+<title>gupnp_root_device_new ()</title>
+<indexterm zone="gupnp-root-device-new"><primary sortas="gupnp_root_device_new">gupnp_root_device_new</primary></indexterm><programlisting><link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *   gupnp_root_device_new               (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *description_path,
+                                                         const <link linkend="char">char</link> *description_dir);</programlisting>
+<para>
+Create a new <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link> object, automatically loading and parsing
+device description document from <parameter>description_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>description_path</parameter>&#160;:</term>
+<listitem><simpara> Path to device description document. This could either
+be an absolute path or path relative to <parameter>description_dir</parameter>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>description_dir</parameter>&#160;:</term>
+<listitem><simpara> Path to directory where description documents are provided.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <parameter>GUPnPRootDevice</parameter> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-new-full" role="function">
+<title>gupnp_root_device_new_full ()</title>
+<indexterm zone="gupnp-root-device-new-full"><primary sortas="gupnp_root_device_new_full">gupnp_root_device_new_full</primary></indexterm><programlisting><link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *   gupnp_root_device_new_full          (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link> *description_doc,
+                                                         const <link linkend="char">char</link> *description_path,
+                                                         const <link linkend="char">char</link> *description_dir);</programlisting>
+<para>
+Create a new <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>, automatically loading and parsing
+device description document from <parameter>description_path</parameter> if <parameter>description_doc</parameter> is
+<link linkend="NULL--CAPS"><literal>NULL</literal></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>description_doc</parameter>&#160;:</term>
+<listitem><simpara> Device description document, or <link linkend="NULL--CAPS"><literal>NULL</literal></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>description_path</parameter>&#160;:</term>
+<listitem><simpara> Path to device description document. This could either
+be an absolute path or path relative to <parameter>description_dir</parameter>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>description_dir</parameter>&#160;:</term>
+<listitem><simpara> Path to directory where description documents are provided.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-set-available" role="function">
+<title>gupnp_root_device_set_available ()</title>
+<indexterm zone="gupnp-root-device-set-available"><primary sortas="gupnp_root_device_set_available">gupnp_root_device_set_available</primary></indexterm><programlisting><link linkend="void">void</link>                gupnp_root_device_set_available     (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device,
+                                                         <link linkend="gboolean">gboolean</link> available);</programlisting>
+<para>
+Controls whether or not <parameter>root_device</parameter> is available (announcing
+its presence).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>available</parameter>&#160;:</term>
+<listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if <parameter>root_device</parameter> should be available
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-get-available" role="function">
+<title>gupnp_root_device_get_available ()</title>
+<indexterm zone="gupnp-root-device-get-available"><primary sortas="gupnp_root_device_get_available">gupnp_root_device_get_available</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gupnp_root_device_get_available     (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);</programlisting>
+<para>
+Get whether or not <parameter>root_device</parameter> is available (announcing its presence).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if <parameter>root_device</parameter> is available, <link linkend="FALSE--CAPS"><literal>FALSE</literal></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-get-relative-location" role="function">
+<title>gupnp_root_device_get_relative_location ()</title>
+<indexterm zone="gupnp-root-device-get-relative-location"><primary sortas="gupnp_root_device_get_relative_location">gupnp_root_device_get_relative_location</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_root_device_get_relative_location
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);</programlisting>
+<para>
+Get the relative location of <parameter>root_device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The relative location of <parameter>root_device</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-get-description-dir" role="function">
+<title>gupnp_root_device_get_description_dir ()</title>
+<indexterm zone="gupnp-root-device-get-description-dir"><primary sortas="gupnp_root_device_get_description_dir">gupnp_root_device_get_description_dir</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_root_device_get_description_dir
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);</programlisting>
+<para>
+Get the path to the directory containing description documents related to
+<parameter>root_device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The path to description document directory of <parameter>root_device</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-root-device-get-description-path" role="function">
+<title>gupnp_root_device_get_description_path ()</title>
+<indexterm zone="gupnp-root-device-get-description-path"><primary sortas="gupnp_root_device_get_description_path">gupnp_root_device_get_description_path</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gupnp_root_device_get_description_path
+                                                        (<link linkend="GUPnPRootDevice">GUPnPRootDevice</link> *root_device);</programlisting>
+<para>
+Get the path to the device description document of <parameter>root_device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>root_device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPRootDevice"><type>GUPnPRootDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The path to device description document of <parameter>root_device</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPRootDevice.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPRootDevice--available" role="property"><title>The <literal>&quot;available&quot;</literal> property</title>
+<indexterm zone="GUPnPRootDevice--available"><primary sortas="GUPnPRootDevice:available">GUPnPRootDevice:available</primary></indexterm><programlisting>  &quot;available&quot;                <link linkend="gboolean">gboolean</link>              : Read / Write</programlisting>
+<para>
+TRUE if this device is available.</para>
+<para>
+</para><para>Default value: FALSE</para>
+</refsect2>
+<refsect2 id="GUPnPRootDevice--description-dir" role="property"><title>The <literal>&quot;description-dir&quot;</literal> property</title>
+<indexterm zone="GUPnPRootDevice--description-dir"><primary sortas="GUPnPRootDevice:description-dir">GUPnPRootDevice:description-dir</primary></indexterm><programlisting>  &quot;description-dir&quot;          <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The path to directory where description documents are provided.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+<refsect2 id="GUPnPRootDevice--description-doc" role="property"><title>The <literal>&quot;description-doc&quot;</literal> property</title>
+<indexterm zone="GUPnPRootDevice--description-doc"><primary sortas="GUPnPRootDevice:description-doc">GUPnPRootDevice:description-doc</primary></indexterm><programlisting>  &quot;description-doc&quot;          <link linkend="GUPnPXMLDoc">GUPnPXMLDoc</link>*          : Write / Construct Only</programlisting>
+<para>
+Device description document. Constructor property.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GUPnPRootDevice--description-path" role="property"><title>The <literal>&quot;description-path&quot;</literal> property</title>
+<indexterm zone="GUPnPRootDevice--description-path"><primary sortas="GUPnPRootDevice:description-path">GUPnPRootDevice:description-path</primary></indexterm><programlisting>  &quot;description-path&quot;         <link linkend="gchar">gchar</link>*                : Read / Write / Construct Only</programlisting>
+<para>
+The path to device description document. This could either be an
+absolute path or path relative to GUPnPRootDevice:description-dir.</para>
+<para>
+</para><para>Default value: NULL</para>
+</refsect2>
+</refsect1>
+
+
+
+
+</refentry>

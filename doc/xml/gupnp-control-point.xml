@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id="GUPnPControlPoint">
+<refmeta>
+<refentrytitle role="top_of_page" id="GUPnPControlPoint.top_of_page">GUPnPControlPoint</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GUPNP Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GUPnPControlPoint</refname>
+<refpurpose>Class for resource discovery.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GUPnPControlPoint.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GUPnPControlPoint-struct">GUPnPControlPoint</link>;
+<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> * <link linkend="gupnp-control-point-new">gupnp_control_point_new</link>             (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *target);
+<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> * <link linkend="gupnp-control-point-new-full">gupnp_control_point_new_full</link>        (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *target);
+<link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * <link linkend="gupnp-control-point-get-resource-factory">gupnp_control_point_get_resource_factory</link>
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);
+<link linkend="GUPnPContext">GUPnPContext</link> *      <link linkend="gupnp-control-point-get-context">gupnp_control_point_get_context</link>     (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-control-point-list-device-proxies">gupnp_control_point_list_device_proxies</link>
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);
+const <link linkend="GList">GList</link> *       <link linkend="gupnp-control-point-list-service-proxies">gupnp_control_point_list_service_proxies</link>
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GUPnPControlPoint.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----<link linkend="GSSDPResourceBrowser">GSSDPResourceBrowser</link>
+         +----GUPnPControlPoint
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GUPnPControlPoint.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GUPnPControlPoint--resource-factory">resource-factory</link>&quot;         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link>*  : Read / Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GUPnPControlPoint.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GUPnPControlPoint-device-proxy-available">device-proxy-available</link>&quot;                         : Run Last
+  &quot;<link linkend="GUPnPControlPoint-device-proxy-unavailable">device-proxy-unavailable</link>&quot;                       : Run Last
+  &quot;<link linkend="GUPnPControlPoint-service-proxy-available">service-proxy-available</link>&quot;                        : Run Last
+  &quot;<link linkend="GUPnPControlPoint-service-proxy-unavailable">service-proxy-unavailable</link>&quot;                      : Run Last
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GUPnPControlPoint.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> handles device and service discovery. After creating
+a control point and activating it using <link linkend="gssdp-resource-browser-set-active"><function>gssdp_resource_browser_set_active()</function></link>,
+the ::device-proxy-available, ::service-proxy-available,
+::device-proxy-unavailable and ::service-proxy-unavailable signals will
+be emitted whenever the availability of a device or service matching
+the specified discovery target changes.</para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GUPnPControlPoint.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GUPnPControlPoint-struct" role="struct">
+<title>GUPnPControlPoint</title>
+<indexterm zone="GUPnPControlPoint-struct"><primary sortas="GUPnPControlPoint">GUPnPControlPoint</primary></indexterm><programlisting>typedef struct _GUPnPControlPoint GUPnPControlPoint;</programlisting>
+<para>
+This struct contains private data only, and should be accessed using the
+functions below.</para>
+<para>
+</para></refsect2>
+<refsect2 id="gupnp-control-point-new" role="function">
+<title>gupnp_control_point_new ()</title>
+<indexterm zone="gupnp-control-point-new"><primary sortas="gupnp_control_point_new">gupnp_control_point_new</primary></indexterm><programlisting><link linkend="GUPnPControlPoint">GUPnPControlPoint</link> * gupnp_control_point_new             (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         const <link linkend="char">char</link> *target);</programlisting>
+<para>
+Create a new <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> with the specified <parameter>context</parameter> and <parameter>target</parameter>.
+</para>
+<para>
+<parameter>target</parameter> should be a service or device name, such as
+<literal>urn:schemas-upnp-org:service:WANIPConnection:1</literal> or
+<literal>urn:schemas-upnp-org:device:MediaRenderer:1</literal>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>target</parameter>&#160;:</term>
+<listitem><simpara> The search target
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-control-point-new-full" role="function">
+<title>gupnp_control_point_new_full ()</title>
+<indexterm zone="gupnp-control-point-new-full"><primary sortas="gupnp_control_point_new_full">gupnp_control_point_new_full</primary></indexterm><programlisting><link linkend="GUPnPControlPoint">GUPnPControlPoint</link> * gupnp_control_point_new_full        (<link linkend="GUPnPContext">GUPnPContext</link> *context,
+                                                         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> *factory,
+                                                         const <link linkend="char">char</link> *target);</programlisting>
+<para>
+Create a new <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> with the specified <parameter>context</parameter>, <parameter>factory</parameter> and
+<parameter>target</parameter>.
+</para>
+<para>
+<parameter>target</parameter> should be a service or device name, such as
+<literal>urn:schemas-upnp-org:service:WANIPConnection:1</literal> or
+<literal>urn:schemas-upnp-org:device:MediaRenderer:1</literal>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>context</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPContext"><type>GUPnPContext</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>factory</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>target</parameter>&#160;:</term>
+<listitem><simpara> The search target
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A new <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-control-point-get-resource-factory" role="function">
+<title>gupnp_control_point_get_resource_factory ()</title>
+<indexterm zone="gupnp-control-point-get-resource-factory"><primary sortas="gupnp_control_point_get_resource_factory">gupnp_control_point_get_resource_factory</primary></indexterm><programlisting><link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link> * gupnp_control_point_get_resource_factory
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);</programlisting>
+<para>
+Get the <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link> used by the <parameter>control_point</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GUPnPResourceFactory"><type>GUPnPResourceFactory</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-control-point-get-context" role="function">
+<title>gupnp_control_point_get_context ()</title>
+<indexterm zone="gupnp-control-point-get-context"><primary sortas="gupnp_control_point_get_context">gupnp_control_point_get_context</primary></indexterm><programlisting><link linkend="GUPnPContext">GUPnPContext</link> *      gupnp_control_point_get_context     (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);</programlisting>
+<para>
+Get the <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> associated with <parameter>control_point</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The <link linkend="GUPnPContext"><type>GUPnPContext</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-control-point-list-device-proxies" role="function">
+<title>gupnp_control_point_list_device_proxies ()</title>
+<indexterm zone="gupnp-control-point-list-device-proxies"><primary sortas="gupnp_control_point_list_device_proxies">gupnp_control_point_list_device_proxies</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_control_point_list_device_proxies
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);</programlisting>
+<para>
+Get the <link linkend="GList"><type>GList</type></link> of discovered <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link> objects. Do not free the list
+nor its elements.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GList"><type>GList</type></link> of <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link> objects.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gupnp-control-point-list-service-proxies" role="function">
+<title>gupnp_control_point_list_service_proxies ()</title>
+<indexterm zone="gupnp-control-point-list-service-proxies"><primary sortas="gupnp_control_point_list_service_proxies">gupnp_control_point_list_service_proxies</primary></indexterm><programlisting>const <link linkend="GList">GList</link> *       gupnp_control_point_list_service_proxies
+                                                        (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point);</programlisting>
+<para>
+Get the <link linkend="GList"><type>GList</type></link> of discovered <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> objects. Do not free the list
+nor its elements.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="GList"><type>GList</type></link> of <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link> objects.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GUPnPControlPoint.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GUPnPControlPoint--resource-factory" role="property"><title>The <literal>&quot;resource-factory&quot;</literal> property</title>
+<indexterm zone="GUPnPControlPoint--resource-factory"><primary sortas="GUPnPControlPoint:resource-factory">GUPnPControlPoint:resource-factory</primary></indexterm><programlisting>  &quot;resource-factory&quot;         <link linkend="GUPnPResourceFactory">GUPnPResourceFactory</link>*  : Read / Write / Construct Only</programlisting>
+<para>
+The resource factory to use. Set to NULL for default factory.</para>
+<para>
+</para></refsect2>
+</refsect1>
+
+<refsect1 id="GUPnPControlPoint.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GUPnPControlPoint-device-proxy-available" role="signal"><title>The <literal>&quot;device-proxy-available&quot;</literal> signal</title>
+<indexterm zone="GUPnPControlPoint-device-proxy-available"><primary sortas="GUPnPControlPoint::device-proxy-available">GUPnPControlPoint::device-proxy-available</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point,
+                                                        <link linkend="GUPnPDeviceProxy">GUPnPDeviceProxy</link>  *proxy,
+                                                        <link linkend="gpointer">gpointer</link>           user_data)          : Run Last</programlisting>
+<para>
+The ::device-proxy-available signal is emitted whenever a new
+device has become available.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The now available <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPControlPoint-device-proxy-unavailable" role="signal"><title>The <literal>&quot;device-proxy-unavailable&quot;</literal> signal</title>
+<indexterm zone="GUPnPControlPoint-device-proxy-unavailable"><primary sortas="GUPnPControlPoint::device-proxy-unavailable">GUPnPControlPoint::device-proxy-unavailable</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point,
+                                                        <link linkend="GUPnPDeviceProxy">GUPnPDeviceProxy</link>  *proxy,
+                                                        <link linkend="gpointer">gpointer</link>           user_data)          : Run Last</programlisting>
+<para>
+The ::device-proxy-unavailable signal is emitted whenever a
+device is not available any more.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The now unavailable <link linkend="GUPnPDeviceProxy"><type>GUPnPDeviceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPControlPoint-service-proxy-available" role="signal"><title>The <literal>&quot;service-proxy-available&quot;</literal> signal</title>
+<indexterm zone="GUPnPControlPoint-service-proxy-available"><primary sortas="GUPnPControlPoint::service-proxy-available">GUPnPControlPoint::service-proxy-available</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point,
+                                                        <link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                        <link linkend="gpointer">gpointer</link>           user_data)          : Run Last</programlisting>
+<para>
+The ::service-proxy-available signal is emitted whenever a new
+service has become available.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The now available <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GUPnPControlPoint-service-proxy-unavailable" role="signal"><title>The <literal>&quot;service-proxy-unavailable&quot;</literal> signal</title>
+<indexterm zone="GUPnPControlPoint-service-proxy-unavailable"><primary sortas="GUPnPControlPoint::service-proxy-unavailable">GUPnPControlPoint::service-proxy-unavailable</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GUPnPControlPoint">GUPnPControlPoint</link> *control_point,
+                                                        <link linkend="GUPnPServiceProxy">GUPnPServiceProxy</link> *proxy,
+                                                        <link linkend="gpointer">gpointer</link>           user_data)          : Run Last</programlisting>
+<para>
+The ::service-proxy-unavailable signal is emitted whenever a
+service is not available any more.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>control_point</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="GUPnPControlPoint"><type>GUPnPControlPoint</type></link> that received the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>proxy</parameter>&#160;:</term>
+<listitem><simpara> The now unavailable <link linkend="GUPnPServiceProxy"><type>GUPnPServiceProxy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>
