@@ -1,3 +1,15 @@
+gupnp (0.13.3-1) UNRELEASED; urgency=low
+
+  * New upstream release (Closes: #577220)
+  * Include new GObject Introspection data.
+    + ship .gir in -dev package.
+    + Add new gir1.0-gupnp-1.0 package with typelib.
+  * Use multi-line build-dependencies and add gobject-introspection.
+  * Add a versioned replaces on libgupnp-1.0-dev against gir-repository-dev
+    (<= 0.6.5-5), to prevent .gir file collisions.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 10 Apr 2010 17:26:19 +0200
+
 gupnp (0.13.2-1.1) unstable; urgency=low
 
   * Non-maintainer upload.
