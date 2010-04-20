@@ -2,7 +2,18 @@ Source: gupnp
 Section: libs
 Priority: optional
 Maintainer: Ross Burton <ross@debian.org>
-Build-Depends: debhelper (>= 5), cdbs, uuid-dev, libglib2.0-dev (>= 2.18), libsoup2.4-dev, libxml2-dev, libgssdp-1.0-dev (>= 0.7.1), libdbus-glib-1-dev, shared-mime-info, xsltproc, docbook-xsl (>= 1.75.2+dfsg-5)
+Build-Depends: debhelper (>= 5),
+               cdbs,
+               uuid-dev,
+               libglib2.0-dev (>= 2.18),
+               libsoup2.4-dev,
+               libxml2-dev,
+               libgssdp-1.0-dev (>= 0.7.1),
+               libdbus-glib-1-dev,
+               shared-mime-info,
+               xsltproc,
+               docbook-xsl (>= 1.75.2+dfsg-5),
+               gobject-introspection
 Standards-Version: 3.8.3
 
 Package: libgupnp-1.0-3
@@ -12,12 +23,25 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, shared-mime-info
 Description: GObject-based library for UPnP
  A GObject-based API for doing UPnP transparently.
 
+Package: gir1.0-gupnp-1.0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, ${gir:Depends}
+Description: GObject introspection data for the GUPnP library
+ This package contains introspection data for GUPnP, a UPnP
+ library.
+ .
+ It can be used by packages using the GIRepository format to generate
+ dynamic bindings.
+Homepage: http://live.gnome.org/GObjectIntrospection
+
 Package: libgupnp-1.0-dev
 Section: libdevel
 Architecture: any
 Depends: libgupnp-1.0-3 (= ${binary:Version}), libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
 Recommends: python
 Suggests: libgupnp-doc
+Replaces: gir-repository-dev (<= 0.6.5-5)
 Description: GObject-based library for UPnP (development files)
  A GObject-based API for doing UPnP transparently.
  .
@@ -43,3 +67,4 @@ Description: GObject-based library for UPnP (documentation)
  A GObject-based API for doing UPnP transparently.
  .
  This package contains the documentation.
+

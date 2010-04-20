@@ -2,3 +2,4 @@ usr/bin/gupnp-binding-tool
 usr/include/gupnp-1.0/*
 usr/lib/*.{a,so}
 usr/lib/pkgconfig/*
+usr/share/gir-1.0/GUPnP-1.0.gir
