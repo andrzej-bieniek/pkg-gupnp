@@ -67,6 +67,8 @@ struct _GUPnPContextPrivate {
 
         SoupServer  *server; /* Started on demand */
         char        *server_url;
+
+        GList       *host_path_datas;
 };
 
 enum {
@@ -79,7 +81,15 @@ enum {
 
 typedef struct {
         char *local_path;
+
+        GRegex *regex;
+} UserAgent;
+
+typedef struct {
+        char *local_path;
         char *server_path;
+
+        GList *user_agents;
 } HostPathData;
 
 /*
@@ -120,6 +130,7 @@ gupnp_context_constructor (GType                  type,
 {
 	GObject *object;
 	GUPnPContext *context;
+        char *user_agent;
 
 	object = G_OBJECT_CLASS (gupnp_context_parent_class)->constructor
                 (type, n_props, props);
@@ -131,6 +142,14 @@ gupnp_context_constructor (GType                  type,
                  SOUP_SESSION_ASYNC_CONTEXT,
                  gssdp_client_get_main_context (GSSDP_CLIENT (context)),
                  NULL);
+
+        user_agent = g_strdup_printf ("%s GUPnP/" VERSION " DLNADOC/1.50",
+                                      g_get_application_name ()? : "");
+        g_object_set (context->priv->session,
+                      SOUP_SESSION_USER_AGENT,
+                      user_agent,
+                      NULL);
+        g_free (user_agent);
 
 	if (g_getenv ("GUPNP_DEBUG")) {
 		SoupLogger *logger;
@@ -214,6 +233,14 @@ gupnp_context_dispose (GObject *object)
         if (context->priv->server) {
                 g_object_unref (context->priv->server);
                 context->priv->server = NULL;
+        }
+
+        while (context->priv->host_path_datas) {
+                HostPathData *data;
+
+                data = (HostPathData *) context->priv->host_path_datas->data;
+
+                gupnp_context_unhost_path (context, data->server_path);
         }
 
         /* Call super */
@@ -371,12 +398,21 @@ gupnp_context_get_server (GUPnPContext *context)
         g_return_val_if_fail (GUPNP_IS_CONTEXT (context), NULL);
 
         if (context->priv->server == NULL) {
+                const char *ip;
+
+                ip =  gssdp_client_get_host_ip (GSSDP_CLIENT (context));
+                SoupAddress *addr = soup_address_new (ip, context->priv->port);
+                soup_address_resolve_sync (addr, NULL);
+
                 context->priv->server = soup_server_new
                         (SOUP_SERVER_PORT,
                          context->priv->port,
                          SOUP_SERVER_ASYNC_CONTEXT,
                          gssdp_client_get_main_context (GSSDP_CLIENT (context)),
+                         SOUP_SERVER_INTERFACE,
+                         addr,
                          NULL);
+                g_object_unref (addr);
 
                 soup_server_add_handler (context->priv->server, NULL,
                                          default_server_handler, context,
@@ -521,18 +557,44 @@ gupnp_context_get_subscription_timeout (GUPnPContext *context)
  * if any to make sure we append the locale suffix in a canonical way. */
 static char *
 construct_local_path (const char   *requested_path,
+                      const char   *user_agent,
                       HostPathData *host_path_data)
 {
         GString *str;
+        char *local_path;
         int len;
 
+        local_path = NULL;
+
+        if (user_agent != NULL) {
+                GList *node;
+
+                for (node = host_path_data->user_agents;
+                     node;
+                     node = node->next) {
+                        UserAgent *agent;
+
+                        agent = node->data;
+
+                        if (g_regex_match (agent->regex,
+                                           user_agent,
+                                           0,
+                                           NULL)) {
+                                local_path = agent->local_path;
+                        }
+                }
+        }
+
+        if (local_path == NULL)
+                local_path = host_path_data->local_path;
+
         if (!requested_path || *requested_path == 0)
-                return g_strdup (host_path_data->local_path);
+                return g_strdup (local_path);
 
         if (*requested_path != '/')
                 return NULL; /* Absolute paths only */
 
-        str = g_string_new (host_path_data->local_path);
+        str = g_string_new (local_path);
 
         /* Skip the length of the path relative to which @requested_path
          * is specified. */
@@ -596,11 +658,14 @@ host_path_handler (SoupServer        *server,
         GList *locales, *orig_locales;
         GMappedFile *mapped_file;
         GError *error;
+        HostPathData *host_path_data;
+        const char *user_agent;
 
         orig_locales = NULL;
         locales      = NULL;
         local_path   = NULL;
         path_to_open = NULL;
+        host_path_data = (HostPathData *) user_data;
 
         if (msg->method != SOUP_METHOD_GET &&
             msg->method != SOUP_METHOD_HEAD) {
@@ -609,8 +674,11 @@ host_path_handler (SoupServer        *server,
                 goto DONE;
         }
 
+        user_agent = soup_message_headers_get_one (msg->request_headers,
+                                                   "User-Agent");
+
         /* Construct base local path */
-        local_path = construct_local_path (path, (HostPathData *) user_data);
+        local_path = construct_local_path (path, user_agent, host_path_data);
         if (!local_path) {
                 soup_message_set_status (msg, SOUP_STATUS_BAD_REQUEST);
 
@@ -706,10 +774,9 @@ host_path_handler (SoupServer        *server,
                         goto DONE;
                 }
 
-                if (have_range && (length < 0                   ||
-                                   offset < 0                   ||
-                                   length > st.st_size - offset ||
-                                   offset >= st.st_size)) {
+                if (have_range && (length > st.st_size - offset ||
+                                   st.st_size < 0 ||
+                                   (off_t) offset >= st.st_size)) {
                         soup_message_set_status
                                 (msg,
                                  SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE);
@@ -784,13 +851,36 @@ host_path_handler (SoupServer        *server,
         }
 }
 
-HostPathData *
+static UserAgent *
+user_agent_new (const char *local_path,
+                GRegex     *regex)
+{
+        UserAgent *agent;
+
+        agent = g_slice_new0 (UserAgent);
+
+        agent->local_path = g_strdup (local_path);
+        agent->regex = g_regex_ref (regex);
+
+        return agent;
+}
+
+static void
+user_agent_free (UserAgent *agent)
+{
+        g_free (agent->local_path);
+        g_regex_unref (agent->regex);
+
+        g_slice_free (UserAgent, agent);
+}
+
+static HostPathData *
 host_path_data_new (const char *local_path,
                     const char *server_path)
 {
         HostPathData *path_data;
 
-        path_data = g_slice_new (HostPathData);
+        path_data = g_slice_new0 (HostPathData);
 
         path_data->local_path  = g_strdup (local_path);
         path_data->server_path = g_strdup (server_path);
@@ -798,11 +888,22 @@ host_path_data_new (const char *local_path,
         return path_data;
 }
 
-void
+static void
 host_path_data_free (HostPathData *path_data)
 {
         g_free (path_data->local_path);
         g_free (path_data->server_path);
+        while (path_data->user_agents) {
+                UserAgent *agent;
+
+                agent = path_data->user_agents->data;
+
+                user_agent_free (agent);
+
+                path_data->user_agents = g_list_delete_link (
+                                path_data->user_agents,
+                                path_data->user_agents);
+        }
 
         g_slice_free (HostPathData, path_data);
 }
@@ -831,13 +932,68 @@ gupnp_context_host_path (GUPnPContext *context,
 
         server = gupnp_context_get_server (context);
 
-        path_data = host_path_data_new (local_path, server_path);
+        path_data = host_path_data_new (local_path,
+                                        server_path);
 
         soup_server_add_handler (server,
                                  server_path,
                                  host_path_handler,
                                  path_data,
-                                 (GDestroyNotify) host_path_data_free);
+                                 NULL);
+
+        context->priv->host_path_datas =
+                g_list_append (context->priv->host_path_datas,
+                               path_data);
+}
+
+static unsigned int
+path_compare_func (HostPathData *path_data,
+                   const char   *server_path)
+{
+        return strcmp (path_data->server_path, server_path);
+}
+
+/**
+ * gupnp_context_host_path_for_agent
+ * @context: A #GUPnPContext
+ * @local_path: Path to the local file or folder to be hosted
+ * @server_path: Web server path already being hosted
+ * @user_agent: The user-agent as a #GRegex.
+ *
+ * Use this method to serve different local path to specific user-agent(s). The
+ * path @server_path must already be hosted by @context.
+ *
+ * Return value: %TRUE on success, %FALSE otherwise.
+ **/
+gboolean
+gupnp_context_host_path_for_agent (GUPnPContext *context,
+                                   const char   *local_path,
+                                   const char   *server_path,
+                                   GRegex       *user_agent)
+{
+        GList *node;
+
+        g_return_val_if_fail (GUPNP_IS_CONTEXT (context), FALSE);
+        g_return_val_if_fail (local_path != NULL, FALSE);
+        g_return_val_if_fail (server_path != NULL, FALSE);
+        g_return_val_if_fail (user_agent != NULL, FALSE);
+
+        node = g_list_find_custom (context->priv->host_path_datas,
+                                   server_path,
+                                   (GCompareFunc) path_compare_func);
+        if (node != NULL) {
+                HostPathData *path_data;
+                UserAgent *agent;
+
+                path_data = (HostPathData *) node->data;
+                agent = user_agent_new (local_path, user_agent);
+
+                path_data->user_agents = g_list_append (path_data->user_agents,
+                                                        agent);
+
+                return TRUE;
+        } else
+                return FALSE;
 }
 
 /**
@@ -852,11 +1008,24 @@ gupnp_context_unhost_path (GUPnPContext *context,
                            const char   *server_path)
 {
         SoupServer *server;
+        HostPathData *path_data;
+        GList *node;
 
         g_return_if_fail (GUPNP_IS_CONTEXT (context));
         g_return_if_fail (server_path != NULL);
 
         server = gupnp_context_get_server (context);
 
+        node = g_list_find_custom (context->priv->host_path_datas,
+                                   server_path,
+                                   (GCompareFunc) path_compare_func);
+        g_return_if_fail (node != NULL);
+
+        path_data = (HostPathData *) node->data;
+        context->priv->host_path_datas = g_list_delete_link (
+                        context->priv->host_path_datas,
+                        node);
+
         soup_server_remove_handler (server, server_path);
+        host_path_data_free (path_data);
 }

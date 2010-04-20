@@ -17,6 +17,9 @@ GUPnPService
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT GUPnPService ##### -->
 <para>
 
@@ -106,6 +109,28 @@ GUPnPService
 @value: 
 
 
+<!-- ##### FUNCTION gupnp_service_action_get_gvalue ##### -->
+<para>
+
+</para>
+
+@action: 
+@argument: 
+@type: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gupnp_service_action_get_values ##### -->
+<para>
+
+</para>
+
+@action: 
+@arg_names: 
+@arg_types: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gupnp_service_action_set ##### -->
 <para>
 
@@ -132,6 +157,16 @@ GUPnPService
 @action: 
 @argument: 
 @value: 
+
+
+<!-- ##### FUNCTION gupnp_service_action_set_values ##### -->
+<para>
+
+</para>
+
+@action: 
+@arg_names: 
+@arg_values: 
 
 
 <!-- ##### FUNCTION gupnp_service_action_return ##### -->

@@ -277,7 +277,7 @@ gupnp_root_device_constructor (GType                  type,
         GUPnPContext *context;
         const char *description_path, *description_dir, *udn;
         char *desc_path, *location, *usn, *relative_location;
-        int i;
+        unsigned int i;
         GUPnPXMLDoc *description_doc;
         xmlNode *root_element, *element;
         SoupURI *url_base;
@@ -416,9 +416,7 @@ gupnp_root_device_constructor (GType                  type,
                                        NULL);
 
         /* Host the description file and dir */
-        gupnp_context_host_path (context,
-                                 desc_path,
-                                 relative_location);
+        gupnp_context_host_path (context, desc_path, relative_location);
         gupnp_context_host_path (context, device->priv->description_dir, "");
 
         /* Generate full location */

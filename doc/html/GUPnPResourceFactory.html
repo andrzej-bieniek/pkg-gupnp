@@ -3,28 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPResourceFactory</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-utility.html" title="Utility Functions">
 <link rel="prev" href="GUPnPContextManager.html" title="GUPnPContextManager">
 <link rel="next" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">
-<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.14 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
-<link rel="part" href="tutorial.html" title="Part I. Tutorial">
-<link rel="chapter" href="overview.html" title="Overview">
-<link rel="chapter" href="client-tutorial.html" title="Writing a UPnP Client">
-<link rel="chapter" href="server-tutorial.html" title="Writing a UPnP Service">
-<link rel="part" href="api.html" title="Part II. Reference">
-<link rel="chapter" href="api-device-info.html" title="Device Information">
-<link rel="chapter" href="api-device-control.html" title="Device Control">
-<link rel="chapter" href="api-device-impl.html" title="Device Implementation">
-<link rel="chapter" href="api-utility.html" title="Utility Functions">
-<link rel="chapter" href="api-tools.html" title="Tools">
-<link rel="part" href="schemas.html" title="Part III. XML Schemas">
-<link rel="chapter" href="schemas-device.html" title="Device Description">
-<link rel="chapter" href="schemas-service.html" title="Service Description">
-<link rel="glossary" href="glossary.html" title="Glossary">
-<link rel="index" href="ix01.html" title="Index">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
@@ -37,10 +22,10 @@
 </tr>
 <tr><td colspan="5" class="shortcuts">
 <a href="#GUPnPResourceFactory.synopsis" class="shortcut">Top</a>
-                 | 
-                <a href="#GUPnPResourceFactory.description" class="shortcut">Description</a>
-                 | 
-                <a href="#GUPnPResourceFactory.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GUPnPResourceFactory.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPResourceFactory.object-hierarchy" class="shortcut">Object Hierarchy</a>
 </td></tr>
 </table>
 <div class="refentry" title="GUPnPResourceFactory">
@@ -54,41 +39,30 @@
 </tr></table></div>
 <div class="refsynopsisdiv" title="Synopsis">
 <a name="GUPnPResourceFactory.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">
-                    <a class="link" href="GUPnPResourceFactory.html#GUPnPResourceFactory-struct" title="GUPnPResourceFactory">GUPnPResourceFactory</a>;
-<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-new" title="gupnp_resource_factory_new ()">gupnp_resource_factory_new</a>       (void);
-<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-get-default" title="gupnp_resource_factory_get_default ()">gupnp_resource_factory_get_default</a>
-                                                        (void);
-void                <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-type" title="gupnp_resource_factory_register_resource_type ()">gupnp_resource_factory_register_resource_type</a>
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type,
-                                                         <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
->GType</a> type);
-<a
-href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
->gboolean</a>            <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-type" title="gupnp_resource_factory_unregister_resource_type ()">gupnp_resource_factory_unregister_resource_type</a>
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type);
-void                <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-proxy-type" title="gupnp_resource_factory_register_resource_proxy_type ()">gupnp_resource_factory_register_resource_proxy_type</a>
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type,
-                                                         <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
->GType</a> type);
-<a
-href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
->gboolean</a>            <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-proxy-type" title="gupnp_resource_factory_unregister_resource_proxy_type ()">gupnp_resource_factory_unregister_resource_proxy_type</a>
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type);
+<pre class="synopsis">                    <a class="link" href="GUPnPResourceFactory.html#GUPnPResourceFactory-struct" title="GUPnPResourceFactory">GUPnPResourceFactory</a>;
+<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-new" title="gupnp_resource_factory_new ()">gupnp_resource_factory_new</a>       (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-get-default" title="gupnp_resource_factory_get_default ()">gupnp_resource_factory_get_default</a>
+                                                        (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-type" title="gupnp_resource_factory_register_resource_type ()">gupnp_resource_factory_register_resource_type</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-type" title="gupnp_resource_factory_unregister_resource_type ()">gupnp_resource_factory_unregister_resource_type</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-register-resource-proxy-type" title="gupnp_resource_factory_register_resource_proxy_type ()">gupnp_resource_factory_register_resource_proxy_type</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPResourceFactory.html#gupnp-resource-factory-unregister-resource-proxy-type" title="gupnp_resource_factory_unregister_resource_proxy_type ()">gupnp_resource_factory_unregister_resource_proxy_type</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>);
 </pre>
 </div>
 <div class="refsect1" title="Object Hierarchy">
 <a name="GUPnPResourceFactory.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
->GObject</a>
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----GUPnPResourceFactory
 </pre>
 </div>
@@ -97,18 +71,11 @@ href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Ty
 <p>
 <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> objects are used by <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a>,
 <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a> and <a class="link" href="GUPnPDevice.html" title="GUPnPDevice"><span class="type">GUPnPDevice</span></a> to create resource proxy and resource
-objects. Register UPnP type - <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
-><span class="type">GType</span></a> pairs to have resource or resource proxy
-objects created with the specified <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
-><span class="type">GType</span></a> whenever an object for a resource
-of the specified UPnP type is requested. The <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
-><span class="type">GType</span></a>s need
+objects. Register UPnP type - <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> pairs to have resource or resource proxy
+objects created with the specified <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> whenever an object for a resource
+of the specified UPnP type is requested. The <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>s need
 to be derived from the relevant resource or resource proxy type (e.g.
-a device proxy type needs to be derived from <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a>).</p>
-<p>
+a device proxy type needs to be derived from <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a>).
 </p>
 </div>
 <div class="refsect1" title="Details">
@@ -118,17 +85,15 @@ a device proxy type needs to be derived from <a class="link" href="GUPnPDevicePr
 <pre class="programlisting">typedef struct _GUPnPResourceFactory GUPnPResourceFactory;</pre>
 <p>
 This struct contains private data only, and should be accessed using the
-functions below.</p>
-<p>
+functions below.
 </p>
 </div>
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_new ()">
 <a name="gupnp-resource-factory-new"></a><h3>gupnp_resource_factory_new ()</h3>
-<pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * gupnp_resource_factory_new       (void);</pre>
+<pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * gupnp_resource_factory_new       (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
-Create a new <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.</p>
-<p>
+Create a new <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -142,11 +107,10 @@ Create a new <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResour
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_get_default ()">
 <a name="gupnp-resource-factory-get-default"></a><h3>gupnp_resource_factory_get_default ()</h3>
-<pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> * gupnp_resource_factory_get_default
-                                                        (void);</pre>
+<pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * gupnp_resource_factory_get_default
+                                                        (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
-Get the default singleton <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.</p>
-<p>
+Get the default singleton <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -160,12 +124,10 @@ Get the default singleton <a class="link" href="GUPnPResourceFactory.html" title
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_register_resource_type ()">
 <a name="gupnp-resource-factory-register-resource-type"></a><h3>gupnp_resource_factory_register_resource_type ()</h3>
-<pre class="programlisting">void                gupnp_resource_factory_register_resource_type
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type,
-                                                         <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
->GType</a> type);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_resource_factory_register_resource_type
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);</pre>
 <p>
 Registers the GType <em class="parameter"><code>type</code></em> for the resource of UPnP type <em class="parameter"><code>upnp_type</code></em>. After
 this call, the factory <em class="parameter"><code>factory</code></em> will create object of GType <em class="parameter"><code>type</code></em> each time
@@ -173,25 +135,24 @@ it is asked to create a resource object for UPnP type <em class="parameter"><cod
 </p>
 <p>
 Note: GType <em class="parameter"><code>type</code></em> must be a derived type of <span class="type">GUPNP_TYPE_DEVICE</span> if resource is
-a device or <span class="type">GUPNP_TYPE_SERVICE</span> if its a service.</p>
-<p>
+a device or <span class="type">GUPNP_TYPE_SERVICE</span> if its a service.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
-<td> A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
+<td>A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>upnp_type</code></em> :</span></p></td>
-<td> The UPnP type name of the resource.
+<td>The UPnP type name of the resource.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
-<td> The requested GType assignment for the resource.
+<td>The requested GType assignment for the resource.
 </td>
 </tr>
 </tbody>
@@ -200,35 +161,28 @@ a device or <span class="type">GUPNP_TYPE_SERVICE</span> if its a service.</p>
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_unregister_resource_type ()">
 <a name="gupnp-resource-factory-unregister-resource-type"></a><h3>gupnp_resource_factory_unregister_resource_type ()</h3>
-<pre class="programlisting"><a
-href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
->gboolean</a>            gupnp_resource_factory_unregister_resource_type
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_resource_factory_unregister_resource_type
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>);</pre>
 <p>
-Unregisters the GType assignment for the resource of UPnP type <em class="parameter"><code>upnp_type</code></em>.</p>
-<p>
+Unregisters the GType assignment for the resource of UPnP type <em class="parameter"><code>upnp_type</code></em>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
-<td> A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
+<td>A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>upnp_type</code></em> :</span></p></td>
-<td> The UPnP type name of the resource.
+<td>The UPnP type name of the resource.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a
-href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
-><code class="literal">TRUE</code></a> if GType assignment was removed successfully, <a
-href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
-><code class="literal">FALSE</code></a>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if GType assignment was removed successfully, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>
 otherwise.
 </td>
 </tr>
@@ -238,12 +192,10 @@ otherwise.
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_register_resource_proxy_type ()">
 <a name="gupnp-resource-factory-register-resource-proxy-type"></a><h3>gupnp_resource_factory_register_resource_proxy_type ()</h3>
-<pre class="programlisting">void                gupnp_resource_factory_register_resource_proxy_type
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type,
-                                                         <a
-href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"
->GType</a> type);</pre>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_resource_factory_register_resource_proxy_type
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);</pre>
 <p>
 Registers the GType <em class="parameter"><code>type</code></em> for the proxy of resource of UPnP type <em class="parameter"><code>upnp_type</code></em>.
 After this call, the factory <em class="parameter"><code>factory</code></em> will create object of GType <em class="parameter"><code>type</code></em> each
@@ -251,25 +203,24 @@ time it is asked to create a resource proxy object for UPnP type <em class="para
 </p>
 <p>
 Note: GType <em class="parameter"><code>type</code></em> must be a derived type of <span class="type">GUPNP_TYPE_DEVICE_PROXY</span> if
-resource is a device or <span class="type">GUPNP_TYPE_SERVICE_PROXY</span> if its a service.</p>
-<p>
+resource is a device or <span class="type">GUPNP_TYPE_SERVICE_PROXY</span> if its a service.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
-<td> A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
+<td>A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>upnp_type</code></em> :</span></p></td>
-<td> The UPnP type name of the resource.
+<td>The UPnP type name of the resource.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
-<td> The requested GType assignment for the resource proxy.
+<td>The requested GType assignment for the resource proxy.
 </td>
 </tr>
 </tbody>
@@ -278,36 +229,29 @@ resource is a device or <span class="type">GUPNP_TYPE_SERVICE_PROXY</span> if it
 <hr>
 <div class="refsect2" title="gupnp_resource_factory_unregister_resource_proxy_type ()">
 <a name="gupnp-resource-factory-unregister-resource-proxy-type"></a><h3>gupnp_resource_factory_unregister_resource_proxy_type ()</h3>
-<pre class="programlisting"><a
-href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
->gboolean</a>            gupnp_resource_factory_unregister_resource_proxy_type
-                                                        (<a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">GUPnPResourceFactory</a> *factory,
-                                                         const char *upnp_type);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_resource_factory_unregister_resource_proxy_type
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>);</pre>
 <p>
 Unregisters the GType assignment for the proxy of resource of UPnP type
-<em class="parameter"><code>upnp_type</code></em>.</p>
-<p>
+<em class="parameter"><code>upnp_type</code></em>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
-<td> A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
+<td>A <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a>.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>upnp_type</code></em> :</span></p></td>
-<td> The UPnP type name of the resource.
+<td>The UPnP type name of the resource.
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a
-href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
-><code class="literal">TRUE</code></a> if GType assignment was removed successfully, <a
-href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
-><code class="literal">FALSE</code></a>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if GType assignment was removed successfully, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>
 otherwise.
 </td>
 </tr>
@@ -318,6 +262,6 @@ otherwise.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.11</div>
+          Generated by GTK-Doc V1.14</div>
 </body>
 </html>
