@@ -14,7 +14,9 @@ Build-Depends: debhelper (>= 5),
                shared-mime-info,
                xsltproc,
                docbook-xsl (>= 1.75.2+dfsg-5),
-               gobject-introspection
+               gobject-introspection,
+               libgirepository1.0-dev,
+               gir-repository-dev
 Standards-Version: 3.8.4
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
