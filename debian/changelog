@@ -1,3 +1,10 @@
+gupnp (0.13.3-2) unstable; urgency=low
+
+  * Call dh_girepository
+  * Add missing build-dependency on several gir1.0-* packages.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 26 Apr 2010 12:54:04 +0200
+
 gupnp (0.13.3-1) unstable; urgency=low
 
   * Acknowledge NMU (thanks Andrew Lee)
