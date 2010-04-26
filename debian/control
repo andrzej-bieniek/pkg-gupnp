@@ -16,7 +16,11 @@ Build-Depends: debhelper (>= 5),
                docbook-xsl (>= 1.75.2+dfsg-5),
                gobject-introspection,
                libgirepository1.0-dev,
-               gir-repository-dev
+               gir-repository-dev,
+               gir1.0-freedesktop,
+               gir1.0-glib-2.0,
+               gir1.0-gssdp-1.0,
+               gir1.0-soup-2.4
 Standards-Version: 3.8.4
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
