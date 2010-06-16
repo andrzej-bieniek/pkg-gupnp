@@ -1,3 +1,9 @@
+gupnp (0.13.4-1) UNRELEASED; urgency=low
+
+  * Imported Upstream version 0.13.4
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 16 Jun 2010 11:20:16 +0200
+
 gupnp (0.13.3-2) unstable; urgency=low
 
   * Call dh_girepository
