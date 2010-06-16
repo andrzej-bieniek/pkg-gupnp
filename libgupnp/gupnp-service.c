@@ -42,6 +42,8 @@
 #include "xml-util.h"
 #include "gvalue-util.h"
 
+#define SUBSCRIPTION_TIMEOUT 300 /* DLNA (7.2.22.1) enforced */
+
 G_DEFINE_TYPE (GUPnPService,
                gupnp_service,
                GUPNP_TYPE_SERVICE_INFO);
@@ -293,7 +295,7 @@ finalize_action (GUPnPServiceAction *action)
 }
 
 /**
- * gupnp_service_action_get_name
+ * gupnp_service_action_get_name:
  * @action: A #GUPnPServiceAction
  *
  * Get the name of @action.
@@ -327,7 +329,7 @@ gupnp_service_action_get_locales (GUPnPServiceAction *action)
 }
 
 /**
- * gupnp_service_action_get
+ * gupnp_service_action_get:
  * @action: A #GUPnPServiceAction
  * @Varargs: tuples of argument name, argument type, and argument value
  * location, terminated with %NULL.
@@ -348,7 +350,7 @@ gupnp_service_action_get (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_get_valist
+ * gupnp_service_action_get_valist:
  * @action: A #GUPnPServiceAction
  * @var_args: va_list of tuples of argument name, argument type, and argument
  * value location.
@@ -500,7 +502,7 @@ gupnp_service_action_get_gvalue (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_set
+ * gupnp_service_action_set:
  * @action: A #GUPnPServiceAction
  * @Varargs: tuples of return value name, return value type, and
  * actual return value, terminated with %NULL.
@@ -521,7 +523,7 @@ gupnp_service_action_set (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_set_valist
+ * gupnp_service_action_set_valist:
  * @action: A #GUPnPServiceAction
  * @var_args: va_list of tuples of return value name, return value type, and
  * actual return value.
@@ -547,7 +549,8 @@ gupnp_service_action_set_valist (GUPnPServiceAction *action,
                 arg_type = va_arg (var_args, GType);
                 g_value_init (&value, arg_type);
 
-                G_VALUE_COLLECT (&value, var_args, 0, &collect_error);
+                G_VALUE_COLLECT (&value, var_args, G_VALUE_NOCOPY_CONTENTS,
+                                 &collect_error);
                 if (!collect_error) {
                         gupnp_service_action_set_value (action,
                                                         arg_name, &value);
@@ -611,7 +614,7 @@ gupnp_service_action_set_values (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_set_value
+ * gupnp_service_action_set_value:
  * @action: A #GUPnPServiceAction
  * @argument: The name of the return value to retrieve
  * @value: The #GValue to store the return value
@@ -642,7 +645,7 @@ gupnp_service_action_set_value (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_return
+ * gupnp_service_action_return:
  * @action: A #GUPnPServiceAction
  *
  * Return succesfully.
@@ -658,7 +661,7 @@ gupnp_service_action_return (GUPnPServiceAction *action)
 }
 
 /**
- * gupnp_service_action_return_error
+ * gupnp_service_action_return_error:
  * @action: A #GUPnPServiceAction
  * @error_code: The error code
  * @error_description: The error description, or %NULL if @error_code is
@@ -741,7 +744,7 @@ gupnp_service_action_return_error (GUPnPServiceAction *action,
 }
 
 /**
- * gupnp_service_action_get_message
+ * gupnp_service_action_get_message:
  * @action: A #GUPnPServiceAction
  *
  * Get the #SoupMessage associated with @action. Mainly intended for
@@ -1040,26 +1043,6 @@ subscription_timeout (gpointer user_data)
         return FALSE;
 }
 
-/* Parse timeout header and return its value in seconds, or 0
- * if infinite */
-static int
-parse_and_limit_timeout (const char *timeout)
-{
-        int timeout_seconds;
-
-        timeout_seconds = 0;
-
-        if (timeout && strncmp (timeout, "Second-", strlen ("Second-")) == 0) {
-                /* We have a finite timeout */
-                timeout_seconds = CLAMP (atoi (timeout + strlen ("Second-")),
-                                         GENA_MIN_TIMEOUT,
-                                         GENA_MAX_TIMEOUT);
-        } else
-                timeout_seconds = GENA_MAX_TIMEOUT;
-
-        return timeout_seconds;
-}
-
 static void
 send_initial_state (SubscriptionData *data)
 {
@@ -1106,12 +1089,12 @@ send_initial_state (SubscriptionData *data)
 static void
 subscribe (GUPnPService *service,
            SoupMessage  *msg,
-           const char   *callback,
-           const char   *timeout)
+           const char   *callback)
 {
         SubscriptionData *data;
         char *start, *end, *uri;
-        int timeout_seconds;
+        GUPnPContext *context;
+        GMainContext *main_context;
 
         data = g_slice_new0 (SubscriptionData);
 
@@ -1147,26 +1130,17 @@ subscribe (GUPnPService *service,
         data->sid     = generate_sid ();
 
         /* Add timeout */
-        timeout_seconds = parse_and_limit_timeout (timeout);
-        if (timeout_seconds > 0) {
-                GUPnPContext *context;
-                GMainContext *main_context;
+	data->timeout_src = g_timeout_source_new_seconds (SUBSCRIPTION_TIMEOUT);
+	g_source_set_callback (data->timeout_src,
+                               subscription_timeout,
+                               data,
+                               NULL);
 
-	        data->timeout_src =
-                        g_timeout_source_new_seconds (timeout_seconds);
-	        g_source_set_callback (data->timeout_src,
-                                       subscription_timeout,
-                                       data,
-                                       NULL);
+        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
+        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
+        g_source_attach (data->timeout_src, main_context);
 
-                context = gupnp_service_info_get_context
-                        (GUPNP_SERVICE_INFO (service));
-                main_context = gssdp_client_get_main_context
-                        (GSSDP_CLIENT (context));
-	        g_source_attach (data->timeout_src, main_context);
-
-                g_source_unref (data->timeout_src);
-        }
+        g_source_unref (data->timeout_src);
 
         /* Add to hash */
         g_hash_table_insert (service->priv->subscriptions,
@@ -1174,7 +1148,7 @@ subscribe (GUPnPService *service,
                              data);
 
         /* Respond */
-        subscription_response (service, msg, data->sid, timeout_seconds);
+        subscription_response (service, msg, data->sid, SUBSCRIPTION_TIMEOUT);
 
         send_initial_state (data);
 }
@@ -1183,11 +1157,11 @@ subscribe (GUPnPService *service,
 static void
 resubscribe (GUPnPService *service,
              SoupMessage  *msg,
-             const char   *sid,
-             const char   *timeout)
+             const char   *sid)
 {
         SubscriptionData *data;
-        int timeout_seconds;
+        GUPnPContext *context;
+        GMainContext *main_context;
 
         data = g_hash_table_lookup (service->priv->subscriptions, sid);
         if (!data) {
@@ -1202,28 +1176,20 @@ resubscribe (GUPnPService *service,
                 data->timeout_src = NULL;
         }
 
-        timeout_seconds = parse_and_limit_timeout (timeout);
-        if (timeout_seconds > 0) {
-                GUPnPContext *context;
-                GMainContext *main_context;
+        data->timeout_src = g_timeout_source_new_seconds (SUBSCRIPTION_TIMEOUT);
+        g_source_set_callback (data->timeout_src,
+                               subscription_timeout,
+                               data,
+                               NULL);
 
-	        data->timeout_src = g_timeout_source_new_seconds
-                        (timeout_seconds);
-	        g_source_set_callback(data->timeout_src,
-				      subscription_timeout,
-				      data, NULL);
+        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
+        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
+        g_source_attach (data->timeout_src, main_context);
 
-                context = gupnp_service_info_get_context
-                        (GUPNP_SERVICE_INFO (service));
-                main_context = gssdp_client_get_main_context
-                        (GSSDP_CLIENT (context));
-	        g_source_attach (data->timeout_src, main_context);
-
-                g_source_unref (data->timeout_src);
-	}
+        g_source_unref (data->timeout_src);
 
         /* Respond */
-        subscription_response (service, msg, sid, timeout_seconds);
+        subscription_response (service, msg, sid, SUBSCRIPTION_TIMEOUT);
 }
 
 /* Unsubscription request */
@@ -1248,13 +1214,12 @@ subscription_server_handler (SoupServer        *server,
                              gpointer           user_data)
 {
         GUPnPService *service;
-        const char *callback, *nt, *timeout, *sid;
+        const char *callback, *nt, *sid;
 
         service = GUPNP_SERVICE (user_data);
 
         callback = soup_message_headers_get (msg->request_headers, "Callback");
         nt       = soup_message_headers_get (msg->request_headers, "NT");
-        timeout  = soup_message_headers_get (msg->request_headers, "Timeout");
         sid      = soup_message_headers_get (msg->request_headers, "SID");
 
         /* Choose appropriate handler */
@@ -1269,7 +1234,7 @@ subscription_server_handler (SoupServer        *server,
                                         (msg, SOUP_STATUS_PRECONDITION_FAILED);
 
                         } else {
-                                subscribe (service, msg, callback, timeout);
+                                subscribe (service, msg, callback);
 
                         }
 
@@ -1279,7 +1244,7 @@ subscription_server_handler (SoupServer        *server,
                                         (msg, SOUP_STATUS_BAD_REQUEST);
 
                         } else {
-                                resubscribe (service, msg, sid, timeout);
+                                resubscribe (service, msg, sid);
 
                         }
 
@@ -1357,6 +1322,19 @@ got_introspection (GUPnPServiceInfo          *info,
         g_object_unref (service);
 }
 
+static char *
+path_from_url (const char *url)
+{
+        SoupURI *uri;
+        gchar   *path;
+
+        uri = soup_uri_new (url);
+        path = soup_uri_to_string (uri, TRUE);
+        soup_uri_free (uri);
+
+        return path;
+}
+
 static GObject *
 gupnp_service_constructor (GType                  type,
                            guint                  n_construct_params,
@@ -1368,8 +1346,8 @@ gupnp_service_constructor (GType                  type,
         GUPnPServiceInfo *info;
         GUPnPContext *context;
         SoupServer *server;
-        SoupURI *uri;
         char *url;
+        char *path;
 
         object_class = G_OBJECT_CLASS (gupnp_service_parent_class);
 
@@ -1393,26 +1371,18 @@ gupnp_service_constructor (GType                  type,
 
         /* Run listener on controlURL */
         url = gupnp_service_info_get_control_url (info);
-        uri = soup_uri_new (url);
-        g_free (url);
-
-        url = soup_uri_to_string (uri, TRUE);
-        soup_uri_free (uri);
-
-        soup_server_add_handler (server, url,
+        path = path_from_url (url);
+        soup_server_add_handler (server, path,
                                  control_server_handler, object, NULL);
+        g_free (path);
         g_free (url);
 
         /* Run listener on eventSubscriptionURL */
         url = gupnp_service_info_get_event_subscription_url (info);
-        uri = soup_uri_new (url);
-        g_free (url);
-
-        url = soup_uri_to_string (uri, TRUE);
-        soup_uri_free (uri);
-
-        soup_server_add_handler (server, url,
+        path = path_from_url (url);
+        soup_server_add_handler (server, path,
                                  subscription_server_handler, object, NULL);
+        g_free (path);
         g_free (url);
 
         return object;
@@ -1506,8 +1476,32 @@ gupnp_service_dispose (GObject *object)
 {
         GUPnPService *service;
         GObjectClass *object_class;
+        GUPnPServiceInfo *info;
+        GUPnPContext *context;
+        SoupServer *server;
+        char *url;
+        char *path;
 
         service = GUPNP_SERVICE (object);
+
+        /* Get server */
+        info = GUPNP_SERVICE_INFO (service);
+        context = gupnp_service_info_get_context (info);
+        server = gupnp_context_get_server (context);
+
+        /* Remove listener on controlURL */
+        url = gupnp_service_info_get_control_url (info);
+        path = path_from_url (url);
+        soup_server_remove_handler (server, path);
+        g_free (path);
+        g_free (url);
+
+        /* Remove listener on eventSubscriptionURL */
+        url = gupnp_service_info_get_event_subscription_url (info);
+        path = path_from_url (url);
+        soup_server_remove_handler (server, path);
+        g_free (path);
+        g_free (url);
 
         if (service->priv->root_device) {
                 GUPnPRootDevice **dev = &(service->priv->root_device);
@@ -1590,7 +1584,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         g_type_class_add_private (klass, sizeof (GUPnPServicePrivate));
 
         /**
-         * GUPnPService:root-device
+         * GUPnPService:root-device:
          *
          * The containing #GUPnPRootDevice.
          **/
@@ -1608,7 +1602,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
                                       G_PARAM_STATIC_BLURB));
 
         /**
-         * GUPnPService::action-invoked
+         * GUPnPService::action-invoked:
          * @service: The #GUPnPService that received the signal
          * @action: The invoked #GUPnPAction
          *
@@ -1624,13 +1618,13 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
                                                action_invoked),
                               NULL,
                               NULL,
-                              g_cclosure_marshal_VOID__POINTER,
+                              g_cclosure_marshal_VOID__BOXED,
                               G_TYPE_NONE,
                               1,
                               GUPNP_TYPE_SERVICE_ACTION);
 
         /**
-         * GUPnPService::query-variable
+         * GUPnPService::query-variable:
          * @service: The #GUPnPService that received the signal
          * @variable: The variable that is being queried
          * @value: The location of the #GValue of the variable
@@ -1654,7 +1648,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
                                                 is an outward argument! */);
 
         /**
-         * GUPnPService::notify-failed
+         * GUPnPService::notify-failed:
          * @service: The #GUPnPService that received the signal
          * @callback_url: The callback URL
          * @reason: A pointer to a #GError describing why the notify failed
@@ -1677,7 +1671,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
 }
 
 /**
- * gupnp_service_notify
+ * gupnp_service_notify:
  * @service: A #GUPnPService
  * @Varargs: Tuples of variable name, variable type, and variable value,
  * terminated with %NULL.
@@ -1699,7 +1693,7 @@ gupnp_service_notify (GUPnPService *service,
 }
 
 /**
- * gupnp_service_notify_valist
+ * gupnp_service_notify_valist:
  * @service: A #GUPnPService
  * @var_args: A va_list of tuples of variable name, variable type, and variable
  * value, terminated with %NULL.
@@ -1725,7 +1719,8 @@ gupnp_service_notify_valist (GUPnPService *service,
                 var_type = va_arg (var_args, GType);
                 g_value_init (&value, var_type);
 
-                G_VALUE_COLLECT (&value, var_args, 0, &collect_error);
+                G_VALUE_COLLECT (&value, var_args, G_VALUE_NOCOPY_CONTENTS,
+                                 &collect_error);
                 if (!collect_error) {
                         gupnp_service_notify_value (service, var_name, &value);
 
@@ -1890,22 +1885,21 @@ create_property_set (GQueue *queue)
         g_string_append (str,
                          "<?xml version=\"1.0\"?>"
                          "<e:propertyset xmlns:e="
-                                "\"urn:schemas-upnp-org:event-1-0\">"
-                         "<e:property>");
+                                "\"urn:schemas-upnp-org:event-1-0\">");
 
         /* Add variables */
         while ((data = g_queue_pop_head (queue))) {
+                xml_util_start_element (str, "e:property");
                 xml_util_start_element (str, data->variable);
                 gvalue_util_value_append_to_xml_string (&data->value, str);
                 xml_util_end_element (str, data->variable);
+                xml_util_end_element (str, "e:property");
 
                 /* Cleanup */
                 notify_data_free (data);
         }
 
-        g_string_append (str,
-                         "</e:property>"
-                         "</e:propertyset>");
+        g_string_append (str, "</e:propertyset>");
 
         /* Cleanup & return */
         return g_string_free (str, FALSE);
@@ -1930,7 +1924,7 @@ flush_notifications (GUPnPService *service)
 }
 
 /**
- * gupnp_service_notify_value
+ * gupnp_service_notify_value:
  * @service: A #GUPnPService
  * @variable: The name of the variable to notify
  * @value: The value of the variable
@@ -1964,7 +1958,7 @@ gupnp_service_notify_value (GUPnPService *service,
 }
 
 /**
- * gupnp_service_freeze_notify
+ * gupnp_service_freeze_notify:
  * @service: A #GUPnPService
  *
  * Causes new notifications to be queued up until gupnp_service_thaw_notify()
@@ -1979,7 +1973,7 @@ gupnp_service_freeze_notify (GUPnPService *service)
 }
 
 /**
- * gupnp_service_thaw_notify
+ * gupnp_service_thaw_notify:
  * @service: A #GUPnPService
  *
  * Sends out any pending notifications, and stops queuing of new ones.
@@ -2116,7 +2110,7 @@ connect_names_to_signal_handlers (GUPnPService *service,
 }
 
 /**
- * gupnp_service_signals_autoconnect
+ * gupnp_service_signals_autoconnect:
  * @service: A #GUPnPService
  * @user_data: the data to pass to each of the callbacks
  * @error: return location for a #GError, or %NULL

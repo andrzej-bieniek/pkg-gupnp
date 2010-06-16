@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Writing a UPnP Service</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="tutorial.html" title="Part I. Tutorial">
 <link rel="prev" href="client-tutorial.html" title="Writing a UPnP Client">
@@ -24,7 +24,7 @@
 <a name="server-tutorial"></a>Writing a UPnP Service</h2></div></div></div>
 <div class="simplesect" title="Introduction">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2876933"></a>Introduction</h2></div></div></div>
+<a name="id3083086"></a>Introduction</h2></div></div></div>
 <p>
       This chapter explains how to implement a UPnP service using GUPnP. For
       this example we will create a virtual UPnP-enabled light bulb.
@@ -41,7 +41,7 @@
 </div>
 <div class="simplesect" title="Defining the Device">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2869190"></a>Defining the Device</h2></div></div></div>
+<a name="id3114814"></a>Defining the Device</h2></div></div></div>
 <p>
       The first step is to write the <em class="firstterm">device description</em>
       file.  This is a short XML document which describes the device and what
@@ -117,7 +117,7 @@
 </div>
 <div class="simplesect" title="Defining Services">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2920080"></a>Defining Services</h2></div></div></div>
+<a name="id3114757"></a>Defining Services</h2></div></div></div>
 <p>
       Becase we are using a standard service we can use the service description
       from the specification.  This is the <code class="literal">SwitchPower1</code>
@@ -210,7 +210,7 @@
 </div>
 <div class="simplesect" title="Implementing the Device">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2919619"></a>Implementing the Device</h2></div></div></div>
+<a name="id3107882"></a>Implementing the Device</h2></div></div></div>
 <p>
       Before starting to implement the device, some boilerplate code is needed
       to initialise GUPnP.  GLib types and threading needs to be initialised,
@@ -247,7 +247,7 @@ gupnp_root_device_set_available (dev, TRUE);</pre>
 </div>
 <div class="simplesect" title="Implementing a Service">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2919625"></a>Implementing a Service</h2></div></div></div>
+<a name="id3114825"></a>Implementing a Service</h2></div></div></div>
 <p>
       To implement a service we first fetch the #GUPnPService from the root
       device using gupnp_device_info_get_service() (#GUPnPRootDevice is a
@@ -356,7 +356,7 @@ g_signal_connect (service, "query-variable::Status", G_CALLBACK (query_status_cb
 </div>
 <div class="simplesect" title="Generating Service-specific Wrappers">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id2872296"></a>Generating Service-specific Wrappers</h2></div></div></div>
+<a name="id3119910"></a>Generating Service-specific Wrappers</h2></div></div></div>
 <p>
       Using service-specific wrappers can simplify the implementation of a service.
       Wrappers can be generated with <a class="xref" href="gupnp-binding-tool.html" title="gupnp-binding-tool"><span class="refentrytitle">gupnp-binding-tool</span>(1)</a>
