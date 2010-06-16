@@ -328,7 +328,7 @@ gupnp_service_proxy_class_init (GUPnPServiceProxyClass *klass)
         g_type_class_add_private (klass, sizeof (GUPnPServiceProxyPrivate));
 
         /**
-         * GUPnPServiceProxy:subscribed
+         * GUPnPServiceProxy:subscribed:
          *
          * Whether we are subscribed to this service.
          **/
@@ -346,7 +346,7 @@ gupnp_service_proxy_class_init (GUPnPServiceProxyClass *klass)
                                        G_PARAM_STATIC_BLURB));
 
         /**
-         * GUPnPServiceProxy::subscription-lost
+         * GUPnPServiceProxy::subscription-lost:
          * @proxy: The #GUPnPServiceProxy that received the signal
          * @error: A pointer to a #GError describing why the subscription has
          * been lost
@@ -369,7 +369,7 @@ gupnp_service_proxy_class_init (GUPnPServiceProxyClass *klass)
 }
 
 /**
- * gupnp_service_proxy_send_action
+ * gupnp_service_proxy_send_action:
  * @proxy: A #GUPnPServiceProxy
  * @action: An action
  * @error: The location where to store any error, or %NULL
@@ -411,7 +411,7 @@ stop_main_loop (GUPnPServiceProxy       *proxy,
 }
 
 /**
- * gupnp_service_proxy_send_action_valist
+ * gupnp_service_proxy_send_action_valist:
  * @proxy: A #GUPnPServiceProxy
  * @action: An action
  * @error: The location where to store any error, or %NULL
@@ -596,10 +596,10 @@ gupnp_service_proxy_send_action_list (GUPnPServiceProxy *proxy,
 }
 
 /**
- * gupnp_service_proxy_begin_action
+ * gupnp_service_proxy_begin_action:
  * @proxy: A #GUPnPServiceProxy
  * @action: An action
- * @callback: The callback to call when sending the action has succeeded
+ * @callback: (scope async): The callback to call when sending the action has succeeded
  * or failed
  * @user_data: User data for @callback
  * @Varargs: tuples of in parameter name, in parameter type, and in parameter
@@ -817,10 +817,10 @@ write_in_parameter (const char *arg_name,
 }
 
 /**
- * gupnp_service_proxy_begin_action_valist
+ * gupnp_service_proxy_begin_action_valist:
  * @proxy: A #GUPnPServiceProxy
  * @action: An action
- * @callback: The callback to call when sending the action has succeeded
+ * @callback: (scope async) : The callback to call when sending the action has succeeded
  * or failed
  * @user_data: User data for @callback
  * @var_args: A va_list of tuples of in parameter name, in parameter type, and
@@ -867,7 +867,8 @@ gupnp_service_proxy_begin_action_valist
                 arg_type = va_arg (var_args, GType);
                 g_value_init (&value, arg_type);
 
-                G_VALUE_COLLECT (&value, var_args, 0, &collect_error);
+                G_VALUE_COLLECT (&value, var_args, G_VALUE_NOCOPY_CONTENTS,
+                                 &collect_error);
                 if (!collect_error) {
                         write_in_parameter (arg_name, &value, ret->msg_str);
 
@@ -904,7 +905,7 @@ gupnp_service_proxy_begin_action_valist
  * names (as strings)
  * @in_values: (element-type GValue) (transfer none): #GList of values (as
  * #GValue) that line up with @in_names
- * @callback: The callback to call when sending the action has succeeded or
+ * @callback: (scope async) : The callback to call when sending the action has succeeded or
  * failed
  * @user_data: User data for @callback
  *
@@ -964,10 +965,10 @@ gupnp_service_proxy_begin_action_list
 }
 
 /**
- * gupnp_service_proxy_begin_action_hash
+ * gupnp_service_proxy_begin_action_hash:
  * @proxy: A #GUPnPServiceProxy
  * @action: An action
- * @callback: The callback to call when sending the action has succeeded
+ * @callback: (scope async): The callback to call when sending the action has succeeded
  * or failed
  * @user_data: User data for @callback
  * @hash: A #GHashTable of in parameter name and #GValue pairs
@@ -1012,7 +1013,7 @@ gupnp_service_proxy_begin_action_hash
 }
 
 /**
- * gupnp_service_proxy_end_action
+ * gupnp_service_proxy_end_action:
  * @proxy: A #GUPnPServiceProxy
  * @action: A #GUPnPServiceProxyAction handle
  * @error: The location where to store any error, or %NULL
@@ -1198,7 +1199,7 @@ read_out_parameter (const char *arg_name,
 }
 
 /**
- * gupnp_service_proxy_end_action_valist
+ * gupnp_service_proxy_end_action_valist:
  * @proxy: A #GUPnPServiceProxy
  * @action: A #GUPnPServiceProxyAction handle
  * @error: The location where to store any error, or %NULL
@@ -1418,7 +1419,7 @@ gupnp_service_proxy_end_action_hash (GUPnPServiceProxy       *proxy,
 }
 
 /**
- * gupnp_service_proxy_cancel_action
+ * gupnp_service_proxy_cancel_action:
  * @proxy: A #GUPnPServiceProxy
  * @action: A #GUPnPServiceProxyAction handle
  *
@@ -1451,11 +1452,11 @@ gupnp_service_proxy_cancel_action (GUPnPServiceProxy       *proxy,
 }
 
 /**
- * gupnp_service_proxy_add_notify
+ * gupnp_service_proxy_add_notify:
  * @proxy: A #GUPnPServiceProxy
  * @variable: The variable to add notification for
  * @type: The type of the variable
- * @callback: The callback to call when @variable changes
+ * @callback: (scope async): The callback to call when @variable changes
  * @user_data: User data for @callback
  *
  * Sets up @callback to be called whenever a change notification for
@@ -1515,7 +1516,7 @@ gupnp_service_proxy_add_notify (GUPnPServiceProxy              *proxy,
 }
 
 /**
- * gupnp_service_proxy_remove_notify
+ * gupnp_service_proxy_remove_notify:
  * @proxy: A #GUPnPServiceProxy
  * @variable: The variable to add notification for
  * @callback: The callback to call when @variable changes
@@ -1581,8 +1582,46 @@ gupnp_service_proxy_remove_notify (GUPnPServiceProxy              *proxy,
         return found;
 }
 
-static void emit_notification (GUPnPServiceProxy *proxy,
-                               xmlDoc            *doc)
+static void
+emit_notification (GUPnPServiceProxy *proxy,
+                   xmlNode           *var_node)
+{
+        NotifyData *data;
+        GValue value = {0, };
+        GList *l;
+
+        data = g_hash_table_lookup (proxy->priv->notify_hash, var_node->name);
+        if (data == NULL)
+                return;
+
+        /* Make a GValue of the desired type */
+        g_value_init (&value, data->type);
+
+        if (!gvalue_util_set_value_from_xml_node (&value, var_node)) {
+                g_value_unset (&value);
+
+                return;
+        }
+
+        /* Call callbacks */
+        for (l = data->callbacks; l; l = l->next) {
+                CallbackData *callback_data;
+
+                callback_data = l->data;
+
+                callback_data->callback (proxy,
+                                         (const char *) var_node->name,
+                                         &value,
+                                         callback_data->user_data);
+        }
+
+        /* Cleanup */
+        g_value_unset (&value);
+}
+
+static void
+emit_notifications_for_doc (GUPnPServiceProxy *proxy,
+                            xmlDoc            *doc)
 {
         xmlNode *node;
 
@@ -1591,45 +1630,18 @@ static void emit_notification (GUPnPServiceProxy *proxy,
         /* Iterate over all provided properties */
         for (node = node->children; node; node = node->next) {
                 xmlNode *var_node;
-                NotifyData *data;
-                GValue value = {0, };
-                GList *l;
 
-                /* variableName node */
-                var_node = node->children;
-
-                if (var_node == NULL ||
-                    strcmp ((char *) node->name, "property") != 0)
-                        continue;
-
-                data = g_hash_table_lookup (proxy->priv->notify_hash,
-                                            var_node->name);
-                if (data == NULL)
-                        continue;
-
-                /* Make a GValue of the desired type */
-                g_value_init (&value, data->type);
-
-                if (!gvalue_util_set_value_from_xml_node (&value, var_node)) {
-                        g_value_unset (&value);
-
-                        continue;
+                /* Although according to the UPnP specs, there should be only
+                 * one variable node inside a 'property' node, we still need to
+                 * entertain the possibility of multiple variables inside it to
+                 * be compatible with implementations using older GUPnP.
+                 */
+                for (var_node = node->children;
+                     var_node;
+                     var_node = var_node->next) {
+                        if (strcmp ((char *) node->name, "property") == 0)
+                                emit_notification (proxy, var_node);
                 }
-
-                /* Call callbacks */
-                for (l = data->callbacks; l; l = l->next) {
-                        CallbackData *callback_data;
-
-                        callback_data = l->data;
-
-                        callback_data->callback (proxy,
-                                                 (const char *) var_node->name,
-                                                 &value,
-                                                 callback_data->user_data);
-                }
-
-                /* Cleanup */
-                g_value_unset (&value);
         }
 }
 
@@ -1673,7 +1685,8 @@ emit_notifications (gpointer user_data)
                               strcmp (emit_notify_data->sid,
                                       proxy->priv->sid) == 0))
                         /* Our SID, entertain! */
-                        emit_notification (proxy, emit_notify_data->doc);
+                        emit_notifications_for_doc (proxy,
+                                                    emit_notify_data->doc);
         }
 
         /* Cleanup */
@@ -2153,7 +2166,7 @@ unsubscribe (GUPnPServiceProxy *proxy)
 }
 
 /**
- * gupnp_service_proxy_set_subscribed
+ * gupnp_service_proxy_set_subscribed:
  * @proxy: A #GUPnPServiceProxy
  * @subscribed: %TRUE to subscribe to this service
  *
@@ -2184,7 +2197,7 @@ gupnp_service_proxy_set_subscribed (GUPnPServiceProxy *proxy,
 }
 
 /**
- * gupnp_service_proxy_get_subscribed
+ * gupnp_service_proxy_get_subscribed:
  * @proxy: A #GUPnPServiceProxy
  *
  * Returns if we are subscribed to this service.
