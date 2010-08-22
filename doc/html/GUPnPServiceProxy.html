@@ -8,7 +8,7 @@
 <link rel="up" href="api-device-control.html" title="Device Control">
 <link rel="prev" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy">
 <link rel="next" href="api-device-impl.html" title="Device Implementation">
-<meta name="generator" content="GTK-Doc V1.14 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -32,7 +32,7 @@
                   <a href="#GUPnPServiceProxy.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry" title="GUPnPServiceProxy">
+<div class="refentry">
 <a name="GUPnPServiceProxy"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -41,122 +41,122 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="GUPnPServiceProxy.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-struct" title="GUPnPServiceProxy">GUPnPServiceProxy</a>;
                     <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()">*GUPnPServiceProxyActionCallback</a>)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
 <span class="returnvalue">void</span>                (<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()">*GUPnPServiceProxyNotifyCallback</a>)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()">gupnp_service_proxy_send_action</a>     (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()">gupnp_service_proxy_send_action</a>     (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-valist" title="gupnp_service_proxy_send_action_valist ()">gupnp_service_proxy_send_action_valist</a>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-valist" title="gupnp_service_proxy_send_action_valist ()">gupnp_service_proxy_send_action_valist</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-hash" title="gupnp_service_proxy_send_action_hash ()">gupnp_service_proxy_send_action_hash</a>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-hash" title="gupnp_service_proxy_send_action_hash ()">gupnp_service_proxy_send_action_hash</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *in_hash</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *out_hash</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-list" title="gupnp_service_proxy_send_action_list ()">gupnp_service_proxy_send_action_list</a>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *in_hash</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *out_hash</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action-list" title="gupnp_service_proxy_send_action_list ()">gupnp_service_proxy_send_action_list</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);
 <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()">gupnp_service_proxy_begin_action</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
 <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-valist" title="gupnp_service_proxy_begin_action_valist ()">gupnp_service_proxy_begin_action_valist</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
 <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-hash" title="gupnp_service_proxy_begin_action_hash ()">gupnp_service_proxy_begin_action_hash</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);
 <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-list" title="gupnp_service_proxy_begin_action_list ()">gupnp_service_proxy_begin_action_list</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()">gupnp_service_proxy_end_action</a>      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()">gupnp_service_proxy_end_action</a>      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist" title="gupnp_service_proxy_end_action_valist ()">gupnp_service_proxy_end_action_valist</a>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-valist" title="gupnp_service_proxy_end_action_valist ()">gupnp_service_proxy_end_action_valist</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()">gupnp_service_proxy_end_action_hash</a> (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()">gupnp_service_proxy_end_action_hash</a> (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()">gupnp_service_proxy_end_action_list</a> (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()">gupnp_service_proxy_end_action_list</a> (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()">gupnp_service_proxy_cancel_action</a>   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify" title="gupnp_service_proxy_add_notify ()">gupnp_service_proxy_add_notify</a>      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify" title="gupnp_service_proxy_add_notify ()">gupnp_service_proxy_add_notify</a>      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()"><span class="type">GUPnPServiceProxyNotifyCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-remove-notify" title="gupnp_service_proxy_remove_notify ()">gupnp_service_proxy_remove_notify</a>   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-remove-notify" title="gupnp_service_proxy_remove_notify ()">gupnp_service_proxy_remove_notify</a>   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()"><span class="type">GUPnPServiceProxyNotifyCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-set-subscribed" title="gupnp_service_proxy_set_subscribed ()">gupnp_service_proxy_set_subscribed</a>  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> subscribed</code></em>);
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-get-subscribed" title="gupnp_service_proxy_get_subscribed ()">gupnp_service_proxy_get_subscribed</a>  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> subscribed</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-get-subscribed" title="gupnp_service_proxy_get_subscribed ()">gupnp_service_proxy_get_subscribed</a>  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a>
          +----GUPnPServiceProxy
 </pre>
 </div>
-<div class="refsect1" title="Properties">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy--subscribed" title='The "subscribed" property'>subscribed</a>"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
+  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy--subscribed" title='The "subscribed" property'>subscribed</a>"               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
 </pre>
 </div>
-<div class="refsect1" title="Signals">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
   "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-subscription-lost" title='The "subscription-lost" signal'>subscription-lost</a>"                              : Run Last
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.description"></a><h2>Description</h2>
 <p>
 <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> sends commands to a remote UPnP service and handles
@@ -164,9 +164,9 @@ incoming event notifications. <a class="link" href="GUPnPServiceProxy.html" titl
 <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> interface.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.details"></a><h2>Details</h2>
-<div class="refsect2" title="GUPnPServiceProxy">
+<div class="refsect2">
 <a name="GUPnPServiceProxy-struct"></a><h3>GUPnPServiceProxy</h3>
 <pre class="programlisting">typedef struct _GUPnPServiceProxy GUPnPServiceProxy;</pre>
 <p>
@@ -175,7 +175,7 @@ functions below.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceProxyAction">
+<div class="refsect2">
 <a name="GUPnPServiceProxyAction"></a><h3>GUPnPServiceProxyAction</h3>
 <pre class="programlisting">typedef struct _GUPnPServiceProxyAction GUPnPServiceProxyAction;</pre>
 <p>
@@ -183,11 +183,11 @@ Opaque structure for holding in-progress action data.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceProxyActionCallback ()">
+<div class="refsect2">
 <a name="GUPnPServiceProxyActionCallback"></a><h3>GUPnPServiceProxyActionCallback ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                (*GUPnPServiceProxyActionCallback)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Callback notifying that <em class="parameter"><code>action</code></em> on <em class="parameter"><code>proxy</code></em> has returned and
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a> etc can be called.
@@ -214,12 +214,12 @@ Callback notifying that <em class="parameter"><code>action</code></em> on <em cl
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceProxyNotifyCallback ()">
+<div class="refsect2">
 <a name="GUPnPServiceProxyNotifyCallback"></a><h3>GUPnPServiceProxyNotifyCallback ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                (*GUPnPServiceProxyNotifyCallback)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Callback notifying that the state variable <em class="parameter"><code>variable</code></em> on <em class="parameter"><code>proxy</code></em> has changed to
 <em class="parameter"><code>value</code></em>.
@@ -239,7 +239,7 @@ Callback notifying that the state variable <em class="parameter"><code>variable<
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>The <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> of the variable being notified
+<td>The <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> of the variable being notified
 </td>
 </tr>
 <tr>
@@ -251,11 +251,11 @@ Callback notifying that the state variable <em class="parameter"><code>variable<
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_send_action ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-send-action"></a><h3>gupnp_service_proxy_send_action ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action     (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action     (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code>...</code></em>);</pre>
 <p>
 Sends action <em class="parameter"><code>action</code></em> with parameters <em class="parameter"><code>Varargs</code></em> to the service exposed by
@@ -277,31 +277,31 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
 <td>tuples of in parameter name, in parameter type, and in parameter
-value, followed by <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>, and then tuples of out parameter name,
-out parameter type, and out parameter value location, terminated with <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+value, followed by <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, and then tuples of out parameter name,
+out parameter type, and out parameter value location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_send_action_valist ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-send-action-valist"></a><h3>gupnp_service_proxy_send_action_valist ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_valist
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a va_list for
@@ -322,36 +322,36 @@ use by language bindings.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>var_args</code></em> :</span></p></td>
 <td>va_list of tuples of in parameter name, in parameter type, and in
-parameter value, followed by <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>, and then tuples of out parameter name,
+parameter value, followed by <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, and then tuples of out parameter name,
 out parameter type, and out parameter value location
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_send_action_hash ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-send-action-hash"></a><h3>gupnp_service_proxy_send_action_hash ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_hash
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_hash
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *in_hash</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *out_hash</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *in_hash</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *out_hash</code></em>);</pre>
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a pair of
-<a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>s for runtime determined parameter lists.
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>s for runtime determined parameter lists.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -368,39 +368,41 @@ See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_hash</code></em> :</span></p></td>
-<td> A <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in
-parameter name and <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue. </td>
+<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in
+parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_hash</code></em> :</span></p></td>
-<td> A <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
-of out parameter name and initialized <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue. <acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8 GValue. </td>
+<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
+of out parameter name and initialized <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8 GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_send_action_list ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-send-action-list"></a><h3>gupnp_service_proxy_send_action_list ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_list
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_list
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);</pre>
 <p>
 The synchronous variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-list" title="gupnp_service_proxy_begin_action_list ()"><span class="type">gupnp_service_proxy_begin_action_list</span></a> and
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()"><span class="type">gupnp_service_proxy_end_action_list</span></a>.
@@ -420,50 +422,55 @@ The synchronous variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-se
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="/usr/share/gtk-doc/html/gobject/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
+that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>.. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue. <acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue. <acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_begin_action ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-begin-action"></a><h3>gupnp_service_proxy_begin_action ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
                                                          <em class="parameter"><code>...</code></em>);</pre>
 <p>
 Sends action <em class="parameter"><code>action</code></em> with parameters <em class="parameter"><code>Varargs</code></em> to the service exposed by
@@ -487,7 +494,8 @@ values, and to free the <a class="link" href="GUPnPServiceProxy.html#GUPnPServic
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td> The callback to call when sending the action has succeeded
-or failed. scope async</td>
+or failed. <span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -497,7 +505,7 @@ or failed. scope async</td>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
 <td>tuples of in parameter name, in parameter type, and in parameter
-value, terminated with <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
@@ -511,13 +519,13 @@ value, terminated with <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><cod
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_begin_action_valist ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-begin-action-valist"></a><h3>gupnp_service_proxy_begin_action_valist ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a va_list for
@@ -564,16 +572,16 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_begin_action_hash ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-begin-action-hash"></a><h3>gupnp_service_proxy_begin_action_hash ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_hash
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);</pre>
 <p>
-See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
 for runtime generated parameter lists.
 </p>
 <div class="variablelist"><table border="0">
@@ -592,7 +600,8 @@ for runtime generated parameter lists.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
 <td> The callback to call when sending the action has succeeded
-or failed. scope async</td>
+or failed. <span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -601,28 +610,29 @@ or failed. scope async</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
-<td>A <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in parameter name and <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will
 be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><code class="function">gupnp_service_proxy_cancel_action()</code></a> or
-<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()"><code class="function">gupnp_service_proxy_end_action_hash()</code></a>.. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>. </td>
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-hash" title="gupnp_service_proxy_end_action_hash ()"><code class="function">gupnp_service_proxy_end_action_hash()</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_begin_action_list ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-begin-action-list"></a><h3>gupnp_service_proxy_begin_action_list ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_list
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *in_values</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyActionCallback" title="GUPnPServiceProxyActionCallback ()"><span class="type">GUPnPServiceProxyActionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 A variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><span class="type">gupnp_service_proxy_begin_action</span></a> that takes lists of
 in-parameter names, types and values.
@@ -632,7 +642,8 @@ in-parameter names, types and values.
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>proxy</code></em> :</span></p></td>
-<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>. </td>
+<td> A <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
@@ -641,13 +652,15 @@ in-parameter names, types and values.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
@@ -664,17 +677,18 @@ failed
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td> A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will
 be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><span class="type">gupnp_service_proxy_cancel_action</span></a> or
-<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()"><span class="type">gupnp_service_proxy_end_action_list</span></a>.. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>. </td>
+<a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()"><span class="type">gupnp_service_proxy_end_action_list</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_end_action ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-end-action"></a><h3>gupnp_service_proxy_end_action ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code>...</code></em>);</pre>
 <p>
 Retrieves the result of <em class="parameter"><code>action</code></em>. The out parameters in <em class="parameter"><code>Varargs</code></em> will be
@@ -696,31 +710,31 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
 <td>tuples of out parameter name, out parameter type, and out parameter
-value location, terminated with <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. The out parameter values should be
+value location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. The out parameter values should be
 freed after use
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_end_action_valist ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-end-action-valist"></a><h3>gupnp_service_proxy_end_action_valist ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_valist
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a va_list for
@@ -741,7 +755,7 @@ use by language bindings.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
@@ -753,21 +767,21 @@ freed after use
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_end_action_hash ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-end-action-hash"></a><h3>gupnp_service_proxy_end_action_hash ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_hash (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_hash (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *hash</code></em>);</pre>
 <p>
-See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> for
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> for
 runtime generated parameter lists.
 </p>
 <div class="variablelist"><table border="0">
@@ -785,39 +799,40 @@ runtime generated parameter lists.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
-<td> A <a href="/usr/share/gtk-doc/html/glib/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of
-out parameter name and initialised <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue. <acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym> utf8 GValue. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue. </td>
+<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of
+out parameter name and initialised <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_end_action_list ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-end-action-list"></a><h3>gupnp_service_proxy_end_action_list ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_list (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_list (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *out_types</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> **out_values</code></em>);</pre>
 <p>
 A variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><span class="type">gupnp_service_proxy_end_action</span></a> that takes lists of
 out-parameter names, types and place-holders for values. The returned list
-in <em class="parameter"><code>out_values</code></em> must be freed using <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#g-list-free"><span class="type">g_list_free</span></a> and each element in it using
-<a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="/usr/share/gtk-doc/html/glib/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a>.
+in <em class="parameter"><code>out_values</code></em> must be freed using <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><span class="type">g_list_free</span></a> and each element in it using
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a>.
 </p>
 <p>
-Return value : <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+Return value : <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -834,23 +849,26 @@ Return value : <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#T
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The location where to store any error, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>The location where to store any error, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="/usr/share/gtk-doc/html/gobject/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType. <acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
+that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="/usr/share/gtk-doc/html/gobject/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>.. <acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue. <acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue. <acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue. </td>
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
@@ -861,7 +879,7 @@ that line up with <em class="parameter"><code>out_names</code></em>. <acronym ti
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_cancel_action ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-cancel-action"></a><h3>gupnp_service_proxy_cancel_action ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_proxy_cancel_action   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>);</pre>
@@ -885,13 +903,13 @@ Cancels <em class="parameter"><code>action</code></em>, freeing the <em class="p
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_add_notify ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-add-notify"></a><h3>gupnp_service_proxy_add_notify ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_add_notify      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_add_notify      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gobject/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()"><span class="type">GUPnPServiceProxyNotifyCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Sets up <em class="parameter"><code>callback</code></em> to be called whenever a change notification for
 <em class="parameter"><code>variable</code></em> is recieved.
@@ -916,7 +934,8 @@ Sets up <em class="parameter"><code>callback</code></em> to be called whenever a
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
-<td> The callback to call when <em class="parameter"><code>variable</code></em> changes. scope async</td>
+<td> The callback to call when <em class="parameter"><code>variable</code></em> changes. <span class="annotation">[<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -925,19 +944,19 @@ Sets up <em class="parameter"><code>callback</code></em> to be called whenever a
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_remove_notify ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-remove-notify"></a><h3>gupnp_service_proxy_remove_notify ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_remove_notify   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_remove_notify   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()"><span class="type">GUPnPServiceProxyNotifyCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Cancels the variable change notification for <em class="parameter"><code>callback</code></em> and <em class="parameter"><code>user_data</code></em>.
 </p>
@@ -966,17 +985,17 @@ Cancels the variable change notification for <em class="parameter"><code>callbac
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_set_subscribed ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-set-subscribed"></a><h3>gupnp_service_proxy_set_subscribed ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_proxy_set_subscribed  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
-                                                         <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> subscribed</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> subscribed</code></em>);</pre>
 <p>
 (Un)subscribes to this service.
 </p>
@@ -997,16 +1016,16 @@ destruction instead.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>subscribed</code></em> :</span></p></td>
 <td>
-<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to subscribe to this service
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to subscribe to this service
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_proxy_get_subscribed ()">
+<div class="refsect2">
 <a name="gupnp-service-proxy-get-subscribed"></a><h3>gupnp_service_proxy_get_subscribed ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_get_subscribed  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_get_subscribed  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);</pre>
 <p>
 Returns if we are subscribed to this service.
 </p>
@@ -1020,31 +1039,31 @@ Returns if we are subscribed to this service.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if we are subscribed to this service, otherwise <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.
+<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if we are subscribed to this service, otherwise <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Property Details">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "subscribed" property'>
+<div class="refsect2">
 <a name="GUPnPServiceProxy--subscribed"></a><h3>The <code class="literal">"subscribed"</code> property</h3>
-<pre class="programlisting">  "subscribed"               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
+<pre class="programlisting">  "subscribed"               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
 <p>
 Whether we are subscribed to this service.
 </p>
 <p>Default value: FALSE</p>
 </div>
 </div>
-<div class="refsect1" title="Signal Details">
+<div class="refsect1">
 <a name="GUPnPServiceProxy.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2" title='The "subscription-lost" signal'>
+<div class="refsect2">
 <a name="GUPnPServiceProxy-subscription-lost"></a><h3>The <code class="literal">"subscription-lost"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy,
-                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           error,
-                                                        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)      : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           error,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)      : Run Last</pre>
 <p>
 Emitted whenever the subscription to this service has been lost due
 to an error condition.
@@ -1059,7 +1078,7 @@ to an error condition.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>A pointer to a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> describing why the subscription has
+<td>A pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> describing why the subscription has
 been lost
 </td>
 </tr>
@@ -1074,6 +1093,6 @@ been lost
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.14</div>
+          Generated by GTK-Doc V1.15.1</div>
 </body>
 </html>
