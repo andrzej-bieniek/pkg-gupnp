@@ -1,2 +1,4 @@
-version=2
-http://gupnp.org/sources/gupnp/gupnp-(.*).tar.gz
+version=3
+http://gupnp.org/download \
+  http://gupnp.org/sites/all/files/sources/gupnp-([0-9\.]*).tar.gz
+
