@@ -21,7 +21,7 @@ Build-Depends: debhelper (>= 5),
                gir1.0-glib-2.0,
                gir1.0-gssdp-1.0,
                gir1.0-soup-2.4
-Standards-Version: 3.8.4
+Standards-Version: 3.9.1
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/gupnp.git
