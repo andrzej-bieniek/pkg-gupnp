@@ -1,3 +1,11 @@
+gupnp (0.13.5-1) experimental; urgency=low
+
+  * debian/watch: fix for new gupnp.org site layout.
+  * Imported Upstream version 0.13.5
+  * debian/control: Bump policy version to 3.9.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 22 Aug 2010 16:19:04 +0200
+
 gupnp (0.13.4-1) unstable; urgency=low
 
   * Imported Upstream version 0.13.4
