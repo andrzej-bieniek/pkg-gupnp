@@ -1,3 +1,9 @@
+gupnp (0.14.0-1) UNRELEASED; urgency=low
+
+  * Imported Upstream version 0.14.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 16 Sep 2010 16:12:04 +0200
+
 gupnp (0.13.5-1) experimental; urgency=low
 
   * debian/watch: fix for new gupnp.org site layout.
