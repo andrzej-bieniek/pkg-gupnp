@@ -693,7 +693,7 @@ begin_action_msg (GUPnPServiceProxy              *proxy,
         /* Specify action */
         full_action = g_strdup_printf ("\"%s#%s\"", service_type, action);
         soup_message_headers_append (ret->msg->request_headers,
-				     "SOAPAction",
+                                     "SOAPAction",
                                      full_action);
         g_free (full_action);
 
@@ -743,8 +743,9 @@ action_got_response (SoupSession             *session,
                          "\"http://schemas.xmlsoap.org/soap/envelope/\"; ns=s");
 
                 /* Rename "SOAPAction" to "s-SOAPAction" */
-                full_action = soup_message_headers_get (msg->request_headers,
-                                                        "SOAPAction");
+                full_action = soup_message_headers_get_one
+                        (msg->request_headers,
+                         "SOAPAction");
                 soup_message_headers_append (msg->request_headers,
                                              "s-SOAPAction",
                                              full_action);
@@ -881,8 +882,8 @@ gupnp_service_proxy_begin_action_valist
                         g_free (collect_error);
 
                         /* we purposely leak the value here, it might not be
-	                 * in a sane state if an error condition occoured
-	                 */
+                         * in a sane state if an error condition occoured
+                         */
                 }
 
                 arg_name = va_arg (var_args, const char *);
@@ -1072,7 +1073,7 @@ check_action_response (GUPnPServiceProxy       *proxy,
         response = xmlRecoverMemory (action->msg->response_body->data,
                                      action->msg->response_body->length);
 
-	if (!response) {
+        if (!response) {
                 if (action->msg->status_code == SOUP_STATUS_OK) {
                         g_set_error (error,
                                      GUPNP_SERVER_ERROR,
@@ -1087,7 +1088,7 @@ check_action_response (GUPnPServiceProxy       *proxy,
                 }
 
                 return NULL;
-	}
+        }
 
         /* Get parameter list */
         *params = xml_util_get_element ((xmlNode *) response,
@@ -1705,7 +1706,7 @@ emit_notifications (gpointer user_data)
                 subscribe (proxy);
         }
 
-	return FALSE;
+        return FALSE;
 }
 
 /*
@@ -1736,7 +1737,7 @@ server_handler (SoupServer        *soup_server,
                 return;
         }
 
-        hdr = soup_message_headers_get (msg->request_headers, "NT");
+        hdr = soup_message_headers_get_one (msg->request_headers, "NT");
         if (hdr == NULL || strcmp (hdr, "upnp:event") != 0) {
                 /* Proper NT header lacking */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
@@ -1744,7 +1745,7 @@ server_handler (SoupServer        *soup_server,
                 return;
         }
 
-        hdr = soup_message_headers_get (msg->request_headers, "NTS");
+        hdr = soup_message_headers_get_one (msg->request_headers, "NTS");
         if (hdr == NULL || strcmp (hdr, "upnp:propchange") != 0) {
                 /* Proper NTS header lacking */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
@@ -1752,7 +1753,7 @@ server_handler (SoupServer        *soup_server,
                 return;
         }
 
-        hdr = soup_message_headers_get (msg->request_headers, "SEQ");
+        hdr = soup_message_headers_get_one (msg->request_headers, "SEQ");
         if (hdr == NULL) {
                 /* No SEQ header */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
@@ -1762,7 +1763,7 @@ server_handler (SoupServer        *soup_server,
 
         seq = atoi (hdr);
 
-        hdr = soup_message_headers_get (msg->request_headers, "SID");
+        hdr = soup_message_headers_get_one (msg->request_headers, "SID");
         if (hdr == NULL) {
                 /* No SID */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
@@ -1793,33 +1794,33 @@ server_handler (SoupServer        *soup_server,
 
                 return;
         }
-	
-	/*
-	 * Some UPnP stacks (hello, myigd/1.0) block when sending a NOTIFY, so
-	 * call the callbacks in an idle handler so that if the client calls the
-	 * device in the notify callback the server can actually respond.
-	 */
+
+        /*
+         * Some UPnP stacks (hello, myigd/1.0) block when sending a NOTIFY, so
+         * call the callbacks in an idle handler so that if the client calls the
+         * device in the notify callback the server can actually respond.
+         */
         emit_notify_data = emit_notify_data_new (hdr, seq, doc);
 
         proxy->priv->pending_notifies =
                 g_list_append (proxy->priv->pending_notifies, emit_notify_data);
         if (!proxy->priv->notify_idle_src) {
-	        GUPnPContext *context;
-	        GMainContext *main_context;
+                GUPnPContext *context;
+                GMainContext *main_context;
 
-	        context = gupnp_service_info_get_context
+                context = gupnp_service_info_get_context
                         (GUPNP_SERVICE_INFO (proxy));
-	        main_context = gssdp_client_get_main_context
+                main_context = gssdp_client_get_main_context
                         (GSSDP_CLIENT (context));
 
-	        proxy->priv->notify_idle_src = g_idle_source_new();
-	        g_source_set_callback (proxy->priv->notify_idle_src,
-				       emit_notifications,
+                proxy->priv->notify_idle_src = g_idle_source_new();
+                g_source_set_callback (proxy->priv->notify_idle_src,
+                                       emit_notifications,
                                        proxy, NULL);
-	        g_source_attach (proxy->priv->notify_idle_src, main_context);
+                g_source_attach (proxy->priv->notify_idle_src, main_context);
 
                 g_source_unref (proxy->priv->notify_idle_src);
-	}
+        }
         
         /* Everything went OK */
         soup_message_set_status (msg, SOUP_STATUS_OK);
@@ -1930,7 +1931,8 @@ subscribe_got_response (SoupSession       *session,
                 int timeout;
 
                 /* Save SID. */
-                hdr = soup_message_headers_get (msg->response_headers, "SID");
+                hdr = soup_message_headers_get_one (msg->response_headers,
+                                                    "SID");
                 if (hdr == NULL) {
                         error = g_error_new
                                         (GUPNP_EVENTING_ERROR,
@@ -1943,8 +1945,8 @@ subscribe_got_response (SoupSession       *session,
                 proxy->priv->sid = g_strdup (hdr);
 
                 /* Figure out when the subscription times out */
-                hdr = soup_message_headers_get (msg->response_headers,
-                                                "Timeout");
+                hdr = soup_message_headers_get_one (msg->response_headers,
+                                                    "Timeout");
                 if (hdr == NULL) {
                         g_warning ("No Timeout in SUBSCRIBE response.");
 
@@ -1977,13 +1979,13 @@ subscribe_got_response (SoupSession       *session,
 
                         /* Add actual timeout */
                         proxy->priv->subscription_timeout_src =
-			        g_timeout_source_new_seconds (timeout);
-			g_source_set_callback
+                                g_timeout_source_new_seconds (timeout);
+                        g_source_set_callback
                                 (proxy->priv->subscription_timeout_src,
                                  subscription_expire,
                                  proxy, NULL);
-			g_source_attach (proxy->priv->subscription_timeout_src,
-					 main_context);
+                        g_source_attach (proxy->priv->subscription_timeout_src,
+                                         main_context);
 
                         g_source_unref (proxy->priv->subscription_timeout_src);
                 }

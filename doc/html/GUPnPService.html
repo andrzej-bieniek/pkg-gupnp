@@ -177,8 +177,8 @@ the client. Free list and elements after use.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <span class="type">char</span>*
-locale names. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8]</span>
+<td> (element-type utf8) (transfer full): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <span class="type">char</span>*
+locale names.
 </td>
 </tr>
 </tbody>
@@ -334,9 +334,9 @@ A variant of <a class="link" href="GUPnPService.html#gupnp-service-action-get" t
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The values as <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
+<td> (element-type GValue) (transfer full): The values as <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
 <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>. <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><span class="type">g_list_free</span></a> the returned list and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a>
-each element. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue]</span>
+each element.
 </td>
 </tr>
 </tbody>
@@ -442,13 +442,13 @@ Sets the specified action return values.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_names</code></em> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of argument names. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][transfer-none]</span>
+<td>(element-type utf8) (transfer-none): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of argument names
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_values</code></em> :</span></p></td>
-<td> The <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValues</span></a>) that line up with <em class="parameter"><code>arg_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][transfer-none]</span>
+<td>(element-type GValue) (transfer-none): The <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValues</span></a>) that line up with <em class="parameter"><code>arg_names</code></em>.
 </td>
 </tr>
 </tbody>

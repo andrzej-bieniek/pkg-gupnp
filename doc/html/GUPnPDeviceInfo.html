@@ -532,8 +532,8 @@ will be returned. The returned strings should be freed.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>requested_mime_type</code></em> :</span></p></td>
-<td> The requested file
-format, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> for any. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+<td>(allow-none) (transfer none): The requested file
+format, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> for any
 </td>
 </tr>
 <tr>
@@ -560,9 +560,9 @@ returned if no exact match could be found
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>mime_type</code></em> :</span></p></td>
-<td> The location where to store the the format
+<td>(out) (allow-none): The location where to store the the format
 of the returned icon, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. The returned string should be freed after
-use. <span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+use
 </td>
 </tr>
 <tr>
@@ -675,8 +675,8 @@ them.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
-new <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> objects. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.DeviceInfo][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GUPnP.DeviceInfo]</span>
+<td> (element-type GUPnP.DeviceInfo) (transfer full): a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
+new <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> objects.
 </td>
 </tr>
 </tbody>
@@ -700,8 +700,8 @@ directly contained in <em class="parameter"><code>info</code></em>.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings. The
-elements should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>'d and the list should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><code class="function">g_list_free()</code></a>'d. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8]</span>
+<td> (element-type utf8) (transfer full): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings. The
+elements should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>'d and the list should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><code class="function">g_list_free()</code></a>'d.
 </td>
 </tr>
 </tbody>
@@ -793,8 +793,8 @@ directly contained in <em class="parameter"><code>info</code></em>.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings. The
-elements should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>'d and the list should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><code class="function">g_list_free()</code></a>'d. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8]</span>
+<td> (element-type utf8) (transfer full): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings. The
+elements should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>'d and the list should be <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><code class="function">g_list_free()</code></a>'d.
 </td>
 </tr>
 </tbody>

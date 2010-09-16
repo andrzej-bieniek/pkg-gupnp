@@ -242,19 +242,6 @@ gupnp_context_manager_dispose (GObject *object)
 }
 
 static void
-gupnp_context_manager_finalize (GObject *object)
-{
-        GUPnPContextManager *manager;
-        GObjectClass *object_class;
-
-        manager = GUPNP_CONTEXT_MANAGER (object);
-
-        /* Call super */
-        object_class = G_OBJECT_CLASS (gupnp_context_manager_parent_class);
-        object_class->finalize (object);
-}
-
-static void
 gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
 {
         GObjectClass *object_class;
@@ -264,7 +251,6 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
         object_class->set_property = gupnp_context_manager_set_property;
         object_class->get_property = gupnp_context_manager_get_property;
         object_class->dispose      = gupnp_context_manager_dispose;
-        object_class->finalize     = gupnp_context_manager_finalize;
 
         g_type_class_add_private (klass, sizeof (GUPnPContextManagerPrivate));
 
@@ -322,7 +308,6 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
                                       GUPNP_TYPE_CONTEXT_MANAGER,
                                       G_PARAM_WRITABLE |
                                       G_PARAM_CONSTRUCT_ONLY |
-                                      G_PARAM_PRIVATE |
                                       G_PARAM_STATIC_NAME |
                                       G_PARAM_STATIC_NICK |
                                       G_PARAM_STATIC_BLURB));
