@@ -128,13 +128,13 @@ gupnp_context_constructor (GType                  type,
                            guint                  n_props,
                            GObjectConstructParam *props)
 {
-	GObject *object;
-	GUPnPContext *context;
+        GObject *object;
+        GUPnPContext *context;
         char *user_agent;
 
-	object = G_OBJECT_CLASS (gupnp_context_parent_class)->constructor
+        object = G_OBJECT_CLASS (gupnp_context_parent_class)->constructor
                 (type, n_props, props);
-	context = GUPNP_CONTEXT (object);
+        context = GUPNP_CONTEXT (object);
 
         context->priv->session = soup_session_async_new_with_options
                 (SOUP_SESSION_IDLE_TIMEOUT,
@@ -151,13 +151,14 @@ gupnp_context_constructor (GType                  type,
                       NULL);
         g_free (user_agent);
 
-	if (g_getenv ("GUPNP_DEBUG")) {
-		SoupLogger *logger;
-		logger = soup_logger_new (SOUP_LOGGER_LOG_BODY, -1);
-		soup_logger_attach (logger, context->priv->session);
-	}
+        if (g_getenv ("GUPNP_DEBUG")) {
+                SoupLogger *logger;
+                logger = soup_logger_new (SOUP_LOGGER_LOG_BODY, -1);
+                soup_session_add_feature (context->priv->session,
+                                          SOUP_SESSION_FEATURE (logger));
+        }
 
-	return object;
+        return object;
 }
 
 static void
@@ -789,7 +790,7 @@ host_path_handler (SoupServer        *server,
                              (g_mapped_file_get_contents (mapped_file) + offset,
                               length,
                               mapped_file,
-                              (GDestroyNotify) g_mapped_file_free);
+                              (GDestroyNotify) g_mapped_file_unref);
 
                 soup_message_body_append_buffer (msg->response_body, buffer);
 
@@ -809,7 +810,7 @@ host_path_handler (SoupServer        *server,
                 char *length;
 
                 length = g_strdup_printf ("%lu", (gulong) st.st_size);
-	        soup_message_headers_append (msg->response_headers,
+                soup_message_headers_append (msg->response_headers,
                                              "Content-Length",
                                              length);
                 g_free (length);

@@ -156,7 +156,7 @@ create_loopback_context (gpointer data)
                                 NULL);
         if (error) {
                 g_warning ("Error creating GUPnP context: %s\n",
-			   error->message);
+                           error->message);
 
                 g_error_free (error);
                 return FALSE;
@@ -189,7 +189,7 @@ create_context_for_device (NMDevice *nm_device, const char *iface)
                                            NULL);
         if (error) {
                 g_warning ("Error creating GUPnP context: %s\n",
-			   error->message);
+                           error->message);
 
                 g_error_free (error);
 
@@ -421,31 +421,51 @@ schedule_loopback_context_creation (GUPnPNetworkManager *manager)
         g_source_unref (manager->priv->idle_context_creation_src);
 }
 
+static DBusGConnection *
+connect_to_system_bus (GMainContext    *main_context,
+                       DBusConnection **connection)
+{
+        DBusGConnection *gconnection = NULL;
+        DBusError derror;
+
+        /* Do fake open to initialize types */
+        dbus_g_connection_open ("", NULL);
+        dbus_error_init (&derror);
+        *connection = dbus_bus_get_private (DBUS_BUS_SYSTEM, &derror);
+        if (*connection == NULL) {
+                g_message ("Failed to connect to System Bus: %s",
+                           derror.message);
+                dbus_error_free (&derror);
+
+                return NULL;
+        }
+
+        dbus_connection_setup_with_g_main (*connection, main_context);
+        gconnection = dbus_connection_get_g_connection (*connection);
+        if (G_UNLIKELY (gconnection == NULL)) {
+                g_message ("Failed to connect to System Bus.");
+
+                return NULL;
+        }
+
+        return gconnection;
+}
+
 static void
 init_network_manager (GUPnPNetworkManager *manager)
 {
         GUPnPNetworkManagerPrivate *priv;
-        DBusError derror;
         GMainContext *main_context;
 
         priv = manager->priv;
 
         g_object_get (manager, "main-context", &main_context, NULL);
 
-        /* Do fake open to initialize types */
-        dbus_g_connection_open ("", NULL);
-        dbus_error_init (&derror);
-        priv->dbus_connection = dbus_bus_get_private (DBUS_BUS_SYSTEM, &derror);
-        if (priv->dbus_connection == NULL) {
-                g_message ("Failed to connect to System Bus: %s",
-                           derror.message);
+        priv->connection = connect_to_system_bus (main_context,
+                                                  &priv->dbus_connection);
+        if (G_UNLIKELY (priv->connection == NULL)) {
                 return;
         }
-
-        dbus_connection_setup_with_g_main (priv->dbus_connection, main_context);
-
-        priv->connection =
-            dbus_connection_get_g_connection (priv->dbus_connection);
 
         priv->manager_proxy = dbus_g_proxy_new_for_name (priv->connection,
                                                          DBUS_SERVICE_NM,
@@ -541,8 +561,8 @@ gupnp_network_manager_dispose (GObject *object)
         if (priv->connection)  {
           dbus_connection_close (priv->dbus_connection);
           dbus_g_connection_unref (priv->connection);
+          priv->connection = NULL;
         }
-        priv->connection = NULL;
 
         /* Call super */
         object_class = G_OBJECT_CLASS (gupnp_network_manager_parent_class);
@@ -573,24 +593,14 @@ gboolean
 gupnp_network_manager_is_available (GMainContext *main_context)
 {
         DBusConnection *connection;
-        DBusError derror;
         DBusGConnection *gconnection;
         DBusGProxy *dbus_proxy;
         GError *error = NULL;
         gboolean ret = FALSE;
 
-        /* Do fake open to initialize types */
-        dbus_g_connection_open ("", NULL);
-        dbus_error_init (&derror);
-        connection = dbus_bus_get_private (DBUS_BUS_SYSTEM, &derror);
-        if (connection == NULL) {
-                g_message ("Failed to connect to System Bus: %s",
-                           derror.message);
-                return FALSE;
-        }
-
-        dbus_connection_setup_with_g_main (connection, main_context);
-        gconnection = dbus_connection_get_g_connection (connection);
+        gconnection = connect_to_system_bus (main_context, &connection);
+        if (gconnection == NULL)
+                return ret;
 
         dbus_proxy = dbus_g_proxy_new_for_name (gconnection,
                                                 DBUS_SERVICE_DBUS,

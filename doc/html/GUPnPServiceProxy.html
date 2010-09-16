@@ -373,14 +373,14 @@ See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_hash</code></em> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in
-parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
+<td>(element-type utf8 GValue) (transfer none): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in
+parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_hash</code></em> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
-of out parameter name and initialized <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8 GValue]</span>
+<td>(inout) (element-type utf8 GValue) (transfer full): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
+of out parameter name and initialized <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs
 </td>
 </tr>
 <tr>
@@ -427,32 +427,32 @@ The synchronous variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-se
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+<td>(element-type utf8) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
+names (as strings)
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
+<td>(element-type GValue) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+<td>(element-type utf8) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
+names (as strings)
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
+<td>(element-type GType) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
+that line up with <em class="parameter"><code>out_names</code></em>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
+<td>(element-type GValue) (transfer full) (out): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>.
 </td>
 </tr>
 <tr>
@@ -652,14 +652,14 @@ in-parameter names, types and values.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+<td>(element-type utf8) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
+names (as strings)
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
+<td>(element-type GValue) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>
 </td>
 </tr>
 <tr>
@@ -804,8 +804,8 @@ runtime generated parameter lists.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of
-out parameter name and initialised <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
+<td>(element-type utf8 GValue) (inout) (transfer none): A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of
+out parameter name and initialised <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs
 </td>
 </tr>
 <tr>
@@ -854,20 +854,20 @@ Return value : <a href="http://library.gnome.org/devel/glib/unstable/glib-Standa
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+<td>(element-type utf8) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
+names (as strings)
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
+<td>(element-type GType) (transfer none): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
+that line up with <em class="parameter"><code>out_names</code></em>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
+<td>(element-type GValue) (transfer full) (out): <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>.
 </td>
 </tr>
 <tr>

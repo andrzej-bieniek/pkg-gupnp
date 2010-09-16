@@ -125,7 +125,9 @@ gupnp_service_get_session (GUPnPService *service)
                 if (g_getenv ("GUPNP_DEBUG")) {
                         SoupLogger *logger;
                         logger = soup_logger_new (SOUP_LOGGER_LOG_BODY, -1);
-                        soup_logger_attach (logger, service->priv->session);
+                        soup_session_add_feature (
+                                        service->priv->session,
+                                        SOUP_SESSION_FEATURE (logger));
                 }
         }
 
@@ -164,7 +166,7 @@ subscription_data_free (SubscriptionData *data)
         g_free (data->sid);
 
         if (data->timeout_src)
-	        g_source_destroy (data->timeout_src);
+                g_source_destroy (data->timeout_src);
 
         g_slice_free (SubscriptionData, data);
 }
@@ -892,8 +894,8 @@ control_server_handler (SoupServer        *server,
         context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
 
         /* Get action name */
-        soap_action = soup_message_headers_get (msg->request_headers,
-                                                "SOAPAction");
+        soap_action = soup_message_headers_get_one (msg->request_headers,
+                                                    "SOAPAction");
         if (!soap_action) {
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
                 return;
@@ -1128,8 +1130,8 @@ subscribe (GUPnPService *service,
         data->sid     = generate_sid ();
 
         /* Add timeout */
-	data->timeout_src = g_timeout_source_new_seconds (SUBSCRIPTION_TIMEOUT);
-	g_source_set_callback (data->timeout_src,
+        data->timeout_src = g_timeout_source_new_seconds (SUBSCRIPTION_TIMEOUT);
+        g_source_set_callback (data->timeout_src,
                                subscription_timeout,
                                data,
                                NULL);
@@ -1216,9 +1218,10 @@ subscription_server_handler (SoupServer        *server,
 
         service = GUPNP_SERVICE (user_data);
 
-        callback = soup_message_headers_get (msg->request_headers, "Callback");
-        nt       = soup_message_headers_get (msg->request_headers, "NT");
-        sid      = soup_message_headers_get (msg->request_headers, "SID");
+        callback = soup_message_headers_get_one (msg->request_headers,
+                                                 "Callback");
+        nt       = soup_message_headers_get_one (msg->request_headers, "NT");
+        sid      = soup_message_headers_get_one (msg->request_headers, "SID");
 
         /* Choose appropriate handler */
         if (strcmp (msg->method, GENA_METHOD_SUBSCRIBE) == 0) {
@@ -1281,7 +1284,7 @@ got_introspection (GUPnPServiceInfo          *info,
                    const GError              *error,
                    gpointer                   user_data)
 {
-        GUPnPService *service = user_data;
+        GUPnPService *service;
         const GList *state_variables, *l;
         GHashTableIter iter;
         gpointer data;
@@ -1340,7 +1343,6 @@ gupnp_service_constructor (GType                  type,
 {
         GObjectClass *object_class;
         GObject *object;
-        GUPnPService *service;
         GUPnPServiceInfo *info;
         GUPnPContext *context;
         SoupServer *server;
@@ -1354,7 +1356,6 @@ gupnp_service_constructor (GType                  type,
                                             n_construct_params,
                                             construct_params);
 
-        service = GUPNP_SERVICE (object);
         info    = GUPNP_SERVICE_INFO (object);
 
         /* Get introspection and save state variable names */
@@ -1386,14 +1387,6 @@ gupnp_service_constructor (GType                  type,
         return object;
 }
 
-static gboolean
-say_yes (gpointer key,
-         gpointer value,
-         gpointer user_data)
-{
-        return TRUE;
-}
-
 /* Root device availability changed. */
 static void
 notify_available_cb (GObject *object,
@@ -1406,9 +1399,7 @@ notify_available_cb (GObject *object,
 
         if (!gupnp_root_device_get_available (GUPNP_ROOT_DEVICE (object))) {
                 /* Root device now unavailable: Purge subscriptions */
-                g_hash_table_foreach_remove (service->priv->subscriptions,
-                                             say_yes,
-                                             NULL);
+                g_hash_table_remove_all (service->priv->subscriptions);
         }
 }
 
@@ -1567,7 +1558,6 @@ static void
 gupnp_service_class_init (GUPnPServiceClass *klass)
 {
         GObjectClass *object_class;
-        GUPnPServiceInfoClass *info_class;
 
         object_class = G_OBJECT_CLASS (klass);
 
@@ -1576,8 +1566,6 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         object_class->constructor  = gupnp_service_constructor;
         object_class->dispose      = gupnp_service_dispose;
         object_class->finalize     = gupnp_service_finalize;
-
-        info_class = GUPNP_SERVICE_INFO_CLASS (klass);
 
         g_type_class_add_private (klass, sizeof (GUPnPServicePrivate));
 

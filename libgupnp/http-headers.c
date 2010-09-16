@@ -128,7 +128,8 @@ http_request_get_range (SoupMessage *message,
         const char *header;
         char **v;
 
-        header = soup_message_headers_get (message->request_headers, "Range");
+        header = soup_message_headers_get_one (message->request_headers,
+                                               "Range");
         if (header == NULL) {
                 *have_range = FALSE;
 
@@ -204,7 +205,7 @@ http_request_set_accept_language (SoupMessage *message)
         g_free (lang);
 
         soup_message_headers_append (message->request_headers,
-				     "Accept-Language",
+                                     "Accept-Language",
                                      tmp->str);
 
         g_string_free (tmp, TRUE);
@@ -231,8 +232,8 @@ http_request_get_accept_locales (SoupMessage *message)
         int i, j;
         GList *locales;
 
-        header = soup_message_headers_get (message->request_headers,
-                                           "Accept-Language");
+        header = soup_message_headers_get_one (message->request_headers,
+                                               "Accept-Language");
         if (header == NULL)
                 return NULL;
 
@@ -294,7 +295,7 @@ http_response_set_content_locale (SoupMessage *msg,
         http_language_from_locale (lang);
 
         soup_message_headers_append (msg->response_headers,
-				     "Content-Language",
+                                     "Content-Language",
                                      lang);
 
         g_free (lang);
@@ -318,6 +319,10 @@ http_response_set_content_type (SoupMessage  *msg,
         mime = g_content_type_get_mime_type (content_type);
         if (mime == NULL)
                 mime = g_strdup ("application/octet-stream");
+        else if (strcmp (mime, "application/xml") == 0) {
+                g_free (mime);
+                mime = g_strdup ("text/xml; charset=\"utf-8\"");
+        }
 
         soup_message_headers_append (msg->response_headers,
                                      "Content-Type",
