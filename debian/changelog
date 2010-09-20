@@ -1,8 +1,8 @@
-gupnp (0.14.0-1) UNRELEASED; urgency=low
+gupnp (0.14.0-1) experimental; urgency=low
 
   * Imported Upstream version 0.14.0
 
- -- Andreas Henriksson <andreas@fatal.se>  Thu, 16 Sep 2010 16:12:04 +0200
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 20 Sep 2010 19:55:35 +0200
 
 gupnp (0.13.5-1) experimental; urgency=low
 
