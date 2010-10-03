@@ -1,3 +1,10 @@
+gupnp (0.14.0-2) unstable; urgency=low
+
+  * Add symbols file for libgupnp-1.0-3
+  * Upload to unstable
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 03 Oct 2010 16:57:22 +0200
+
 gupnp (0.14.0-1) experimental; urgency=low
 
   * Imported Upstream version 0.14.0
