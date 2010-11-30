@@ -1,3 +1,9 @@
+gupnp (0.14.1-1) UNRELEASED; urgency=low
+
+  * Imported Upstream version 0.14.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 30 Nov 2010 22:42:26 +0100
+
 gupnp (0.14.0-2) unstable; urgency=low
 
   * Add symbols file for libgupnp-1.0-3
