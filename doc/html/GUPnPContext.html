@@ -93,6 +93,8 @@ GUPnP classes. It automatically starts a web server on demand.
 For debugging, it is possible to see the messages being sent and received by
 exporting <span class="type">GUPNP_DEBUG</span>.
 </p>
+<p>
+</p>
 </div>
 <div class="refsect1">
 <a name="GUPnPContext.details"></a><h2>Details</h2>
@@ -102,6 +104,8 @@ exporting <span class="type">GUPNP_DEBUG</span>.
 <p>
 This struct contains private data only, and should be accessed using the
 functions below.
+</p>
+<p>
 </p>
 </div>
 <hr>
@@ -114,6 +118,8 @@ functions below.
 <p>
 Create a new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> with the specified <em class="parameter"><code>main_context</code></em>, <em class="parameter"><code>interface</code></em> and
 <em class="parameter"><code>port</code></em>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -159,6 +165,8 @@ Create a new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span
 <p>
 Get the IP address we advertise ourselves as using.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -183,6 +191,8 @@ Get the IP address we advertise ourselves as using.
 <p>
 Get the port that the SOAP server is running on.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -206,6 +216,8 @@ Get the port that the SOAP server is running on.
 <p>
 Get the <span class="type">SoupServer</span> HTTP server that GUPnP is using.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -228,6 +240,8 @@ Get the <span class="type">SoupServer</span> HTTP server that GUPnP is using.
 <pre class="programlisting"><span class="returnvalue">SoupSession</span> *       gupnp_context_get_session           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
 <p>
 Get the <span class="type">SoupSession</span> object that GUPnP is using.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -257,6 +271,8 @@ Sets the event subscription timeout to <em class="parameter"><code>timeout</code
 want subscriptions to time out. Note that any client side subscriptions
 will automatically be renewed.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -281,6 +297,8 @@ will automatically be renewed.
 <p>
 Get the event subscription timeout (in seconds), or 0 meaning there is no
 timeout.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -308,6 +326,8 @@ timeout.
 Start hosting <em class="parameter"><code>local_path</code></em> at <em class="parameter"><code>server_path</code></em>. Files with the path
 <em class="parameter"><code>local_path.LOCALE</code></em> (if they exist) will be served up when LOCALE is
 specified in the request's Accept-Language header.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -340,6 +360,8 @@ specified in the request's Accept-Language header.
 <p>
 Use this method to serve different local path to specific user-agent(s). The
 path <em class="parameter"><code>server_path</code></em> must already be hosted by <em class="parameter"><code>context</code></em>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -380,6 +402,8 @@ path <em class="parameter"><code>server_path</code></em> must already be hosted 
 <p>
 Stop hosting the file or folder at <em class="parameter"><code>server_path</code></em>.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -405,6 +429,8 @@ Stop hosting the file or folder at <em class="parameter"><code>server_path</code
 <p>
 The port to run on. Set to 0 if you don't care what port to run on.
 </p>
+<p>
+</p>
 <p>Default value: 0</p>
 </div>
 <hr>
@@ -414,6 +440,8 @@ The port to run on. Set to 0 if you don't care what port to run on.
 <p>
 The <span class="type">SoupServer</span> HTTP server used by GUPnP.
 </p>
+<p>
+</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -421,6 +449,8 @@ The <span class="type">SoupServer</span> HTTP server used by GUPnP.
 <pre class="programlisting">  "session"                  <span class="type">SoupSession</span>*          : Read</pre>
 <p>
 The <span class="type">SoupSession</span> object used by GUPnP.
+</p>
+<p>
 </p>
 </div>
 <hr>
@@ -431,6 +461,8 @@ The <span class="type">SoupSession</span> object used by GUPnP.
 The preferred subscription timeout: the number of seconds after
 which subscriptions are renewed. Set to '0' if subscriptions
 are never to time out.
+</p>
+<p>
 </p>
 <p>Allowed values: &lt;= 604800</p>
 <p>Default value: 1800</p>
