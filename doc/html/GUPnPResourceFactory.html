@@ -77,6 +77,8 @@ of the specified UPnP type is requested. The <a href="http://library.gnome.org/d
 to be derived from the relevant resource or resource proxy type (e.g.
 a device proxy type needs to be derived from <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a>).
 </p>
+<p>
+</p>
 </div>
 <div class="refsect1">
 <a name="GUPnPResourceFactory.details"></a><h2>Details</h2>
@@ -87,6 +89,8 @@ a device proxy type needs to be derived from <a class="link" href="GUPnPDevicePr
 This struct contains private data only, and should be accessed using the
 functions below.
 </p>
+<p>
+</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -94,6 +98,8 @@ functions below.
 <pre class="programlisting"><a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * gupnp_resource_factory_new       (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
 Create a new <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -111,6 +117,8 @@ Create a new <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResour
                                                         (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
 <p>
 Get the default singleton <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="type">GUPnPResourceFactory</span></a> object.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -136,6 +144,8 @@ it is asked to create a resource object for UPnP type <em class="parameter"><cod
 <p>
 Note: GType <em class="parameter"><code>type</code></em> must be a derived type of <span class="type">GUPNP_TYPE_DEVICE</span> if resource is
 a device or <span class="type">GUPNP_TYPE_SERVICE</span> if its a service.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -166,6 +176,8 @@ a device or <span class="type">GUPNP_TYPE_SERVICE</span> if its a service.
                                                          <em class="parameter"><code>const <span class="type">char</span> *upnp_type</code></em>);</pre>
 <p>
 Unregisters the GType assignment for the resource of UPnP type <em class="parameter"><code>upnp_type</code></em>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -205,6 +217,8 @@ time it is asked to create a resource proxy object for UPnP type <em class="para
 Note: GType <em class="parameter"><code>type</code></em> must be a derived type of <span class="type">GUPNP_TYPE_DEVICE_PROXY</span> if
 resource is a device or <span class="type">GUPNP_TYPE_SERVICE_PROXY</span> if its a service.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -235,6 +249,8 @@ resource is a device or <span class="type">GUPNP_TYPE_SERVICE_PROXY</span> if it
 <p>
 Unregisters the GType assignment for the proxy of resource of UPnP type
 <em class="parameter"><code>upnp_type</code></em>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">

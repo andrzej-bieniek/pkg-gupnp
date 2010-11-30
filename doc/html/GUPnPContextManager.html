@@ -72,8 +72,8 @@
 <div class="refsect1">
 <a name="GUPnPContextManager.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'>context-available</a>"                              : Run Last
-  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-unavailable" title='The "context-unavailable" signal'>context-unavailable</a>"                            : Run Last
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'>context-available</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-unavailable" title='The "context-unavailable" signal'>context-unavailable</a>"                            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
 </pre>
 </div>
 <div class="refsect1">
@@ -82,6 +82,8 @@
 A Utility class that takes care of creation and destruction of
 <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> objects for all available network interfaces as they go up
 (connect) and down (disconnect), respectively.
+</p>
+<p>
 </p>
 </div>
 <div class="refsect1">
@@ -93,6 +95,8 @@ A Utility class that takes care of creation and destruction of
 This struct contains private data only, and should be accessed using the
 functions below.
 </p>
+<p>
+</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -101,6 +105,8 @@ functions below.
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);</pre>
 <p>
 Create a new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -136,6 +142,8 @@ You usually want to call this function from
 <a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'><span class="type">"context-available"</span></a> handler after you create a
 <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> object for the newly available context.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -165,6 +173,8 @@ usually want to call this function from
 <a class="link" href="GUPnPContextManager.html#GUPnPContextManager-context-available" title='The "context-available" signal'><span class="type">"context-available"</span></a> handler after you create a
 <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> object for the newly available context.
 </p>
+<p>
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -192,6 +202,8 @@ The actual GUPnPContextManager implementation used. This is an
 internal property and therefore Application developer should just
 ignore it.
 </p>
+<p>
+</p>
 </div>
 <hr>
 <div class="refsect2">
@@ -207,6 +219,8 @@ ignore it.
 <em class="parameter"><code>port</code></em>: Port to create contexts for, or 0 if you don't care what
 port is used by <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> objects created by this object.
 </p>
+<p>
+</p>
 <p>Default value: 0</p>
 </div>
 </div>
@@ -216,9 +230,11 @@ port is used by <a class="link" href="GUPnPContext.html" title="GUPnPContext"><s
 <a name="GUPnPContextManager-context-available"></a><h3>The <code class="literal">"context-available"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *context_manager,
                                                         <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>        *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>             user_data)            : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>             user_data)            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Signals the availability of new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -245,9 +261,11 @@ Signals the availability of new <a class="link" href="GUPnPContext.html" title="
 <a name="GUPnPContextManager-context-unavailable"></a><h3>The <code class="literal">"context-unavailable"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *context_manager,
                                                         <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>        *context,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>             user_data)            : Run Last</pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>             user_data)            : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Signals the unavailability of a <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.
+</p>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
