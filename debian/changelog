@@ -8,7 +8,15 @@ gupnp (0.14.1-1) UNRELEASED; urgency=low
   * Drop unnecessary and obsolete gir-repository-dev build dependency.
     (LP: #677382)
 
- -- Andreas Henriksson <andreas@fatal.se>  Mon, 13 Dec 2010 11:50:59 +0100
+  [ Andreas Henriksson ]
+  * Update to new gir policy (gir 1.2):
+    - Rename gir1.0-gupnp-1.0 to gir1.2-gupnp-1.0
+      (and conflict/replace the old name)
+    - Bump gobject-introspection build dependency to (>= 0.9.12-4~)
+      and libgirepository1.0-dev to (>= 0.9.12)
+    - Build-depend on gir1.2-* instead of gir1.0-*
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 13 Dec 2010 14:20:08 +0100
 
 gupnp (0.14.0-2) unstable; urgency=low
 
