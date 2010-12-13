@@ -1,8 +1,14 @@
 gupnp (0.14.1-1) UNRELEASED; urgency=low
 
+  [ Andreas Henriksson ]
   * Imported Upstream version 0.14.1
+  * Only watch for stable releases
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 30 Nov 2010 22:42:26 +0100
+  [ Martin Pitt ]
+  * Drop unnecessary and obsolete gir-repository-dev build dependency.
+    (LP: #677382)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 13 Dec 2010 11:50:59 +0100
 
 gupnp (0.14.0-2) unstable; urgency=low
 
