@@ -1,3 +1,15 @@
+gupnp (0.14.1-2) unstable; urgency=low
+
+  * Re-add gir-repository-dev to build-dependencies
+    - We need libsoup2.4-dev (>= 2.32.2-1) for the 1.2 gir of soup,
+      which is not yet available in unstable.
+    - gir-repository-dev 0.6.5-9 is now gir1.2 and still contains
+      the Soup-2.4.gir file, so add a (versioned) build-dependency
+      on that for now.
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 24 Mar 2011 14:11:53 +0100
+
 gupnp (0.14.1-1) experimental; urgency=low
 
   [ Andreas Henriksson ]
