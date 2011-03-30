@@ -50,7 +50,7 @@ Homepage: http://live.gnome.org/GObjectIntrospection
 Package: libgupnp-1.0-dev
 Section: libdevel
 Architecture: any
-Depends: libgupnp-1.0-3 (= ${binary:Version}), libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
+Depends: libgupnp-1.0-3 (= ${binary:Version}), gir1.2-gupnp-1.0, libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
 Recommends: python
 Suggests: libgupnp-doc
 Replaces: gir-repository-dev (<= 0.6.5-5)
