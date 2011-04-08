@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(gupnp, 0.14.1, http://www.gupnp.org/)
+AC_INIT(gupnp, 0.16.0, http://www.gupnp.org/)
 AM_INIT_AUTOMAKE()
 AC_CONFIG_SRCDIR(libgupnp/gupnp.h)
 AM_CONFIG_HEADER(config.h)
@@ -32,11 +32,11 @@ case "$host_os" in
         ;;
 esac
 
-PKG_CHECK_MODULES(LIBGUPNP, glib-2.0 >= 2.18 \
-                            gobject-2.0 >= 2.18 \
+PKG_CHECK_MODULES(LIBGUPNP, glib-2.0 >= 2.24.0 \
+                            gio-2.0 \
                             gmodule-2.0 \
-                            gssdp-1.0 >= 0.7.1 \
-                            libsoup-2.4 >= 2.4.1 \
+                            gssdp-1.0 >= 0.9.2 \
+                            libsoup-2.4 >= 2.28.2 \
                             libxml-2.0 \
                             $UUID)
 
@@ -74,7 +74,8 @@ AC_SUBST(USE_CONIC)
 if test "x$with_context_manager" = "xnetwork-manager" -o \
         "x$with_context_manager" = "xunix" -a \
         "x$USE_CONIC" = "xyes"; then
-        PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1 >= 0.76)
+        # We need gio >= 2.26 to use GDBus
+        PKG_CHECK_MODULES(GIO, gio-2.0 >= 2.26)
 fi
 
 # glib-genmarshal

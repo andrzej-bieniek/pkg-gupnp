@@ -77,7 +77,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libgupnp_1_0_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1)
 am__libgupnp_1_0_la_SOURCES_DIST = http-headers.c http-headers.h \
 	gupnp-context.c gupnp-context-private.h \
 	gupnp-context-manager.c gupnp-network-manager.c \
@@ -157,8 +157,6 @@ CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CYGPATH_W = @CYGPATH_W@
-DBUS_GLIB_CFLAGS = @DBUS_GLIB_CFLAGS@
-DBUS_GLIB_LIBS = @DBUS_GLIB_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
 DSYMUTIL = @DSYMUTIL@
@@ -169,6 +167,8 @@ ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
+GIO_CFLAGS = @GIO_CFLAGS@
+GIO_LIBS = @GIO_LIBS@
 GLIB_GENMARSHAL = @GLIB_GENMARSHAL@
 GREP = @GREP@
 GTHREAD_CFLAGS = @GTHREAD_CFLAGS@

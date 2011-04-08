@@ -213,7 +213,7 @@ find_service_node (GUPnPControlPoint *control_point,
 
                 info = GUPNP_SERVICE_INFO (l->data);
 
-                if ((strcmp (gupnp_service_info_get_udn (info), udn) == 0) ||
+                if ((strcmp (gupnp_service_info_get_udn (info), udn) == 0) &&
                     (strcmp (gupnp_service_info_get_service_type (info),
                              service_type) == 0))
                         break;
@@ -470,9 +470,6 @@ description_loaded (GUPnPControlPoint *control_point,
 
                 return;
         }
-
-        if (element == NULL)
-                return;
 
         url_base = xml_util_get_child_element_content_uri (element,
                                                            "URLBase",
@@ -749,7 +746,6 @@ gupnp_control_point_resource_unavailable
 {
         GUPnPControlPoint *control_point;
         char *udn, *service_type;
-        GList *l, *cur_l;
 
         control_point = GUPNP_CONTROL_POINT (resource_browser);
 
@@ -759,7 +755,7 @@ gupnp_control_point_resource_unavailable
 
         /* Find proxy */
         if (service_type) {
-                l = find_service_node (control_point, udn, service_type);
+                GList *l = find_service_node (control_point, udn, service_type);
 
                 if (l) {
                         GUPnPServiceProxy *proxy;
@@ -767,12 +763,9 @@ gupnp_control_point_resource_unavailable
                         /* Remove proxy */
                         proxy = GUPNP_SERVICE_PROXY (l->data);
 
-                        cur_l = l;
-                        l = l->next;
-
                         control_point->priv->services =
                                 g_list_delete_link
-                                        (control_point->priv->services, cur_l);
+                                        (control_point->priv->services, l);
 
                         g_signal_emit (control_point,
                                        signals[SERVICE_PROXY_UNAVAILABLE],
@@ -782,7 +775,7 @@ gupnp_control_point_resource_unavailable
                         g_object_unref (proxy);
                 }
         } else {
-                l = find_device_node (control_point, udn);
+                GList *l = find_device_node (control_point, udn);
 
                 if (l) {
                         GUPnPDeviceProxy *proxy;
@@ -790,12 +783,9 @@ gupnp_control_point_resource_unavailable
                         /* Remove proxy */
                         proxy = GUPNP_DEVICE_PROXY (l->data);
 
-                        cur_l = l;
-                        l = l->next;
-
                         control_point->priv->devices =
                                  g_list_delete_link
-                                        (control_point->priv->devices, cur_l);
+                                        (control_point->priv->devices, l);
 
                         g_signal_emit (control_point,
                                        signals[DEVICE_PROXY_UNAVAILABLE],

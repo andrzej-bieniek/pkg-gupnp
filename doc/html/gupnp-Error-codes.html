@@ -8,7 +8,7 @@
 <link rel="up" href="api-utility.html" title="Utility Functions">
 <link rel="prev" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc">
 <link rel="next" href="gupnp-Special-UPnP-types.html" title="Special UPnP types">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -26,7 +26,7 @@
                   <a href="#gupnp-Error-codes.description" class="shortcut">Description</a>
 </td></tr>
 </table>
-<div class="refentry">
+<div class="refentry" title="Error codes">
 <a name="gupnp-Error-codes"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -35,7 +35,7 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv">
+<div class="refsynopsisdiv" title="Synopsis">
 <a name="gupnp-Error-codes.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">#define             <a class="link" href="gupnp-Error-codes.html#GUPNP-SERVER-ERROR:CAPS" title="GUPNP_SERVER_ERROR">GUPNP_SERVER_ERROR</a>
 enum                <a class="link" href="gupnp-Error-codes.html#GUPnPServerError" title="enum GUPnPServerError">GUPnPServerError</a>;
@@ -47,21 +47,17 @@ enum                <a class="link" href="gupnp-Error-codes.html#GUPnPControlErr
 enum                <a class="link" href="gupnp-Error-codes.html#GUPnPXMLError" title="enum GUPnPXMLError">GUPnPXMLError</a>;
 </pre>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Description">
 <a name="gupnp-Error-codes.description"></a><h2>Description</h2>
-<p>
-</p>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Details">
 <a name="gupnp-Error-codes.details"></a><h2>Details</h2>
-<div class="refsect2">
+<div class="refsect2" title="GUPNP_SERVER_ERROR">
 <a name="GUPNP-SERVER-ERROR:CAPS"></a><h3>GUPNP_SERVER_ERROR</h3>
 <pre class="programlisting">#define GUPNP_SERVER_ERROR (gupnp_server_error_quark ())
 </pre>
 <p>
 The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> uniquely used by GUPnP's server errors.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -73,7 +69,7 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="enum GUPnPServerError">
 <a name="GUPnPServerError"></a><h3>enum GUPnPServerError</h3>
 <pre class="programlisting">typedef enum {
         GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR,
@@ -87,8 +83,6 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 <p>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> codes used for errors in the <a class="link" href="gupnp-Error-codes.html#GUPNP-SERVER-ERROR:CAPS" title="GUPNP_SERVER_ERROR"><span class="type">GUPNP_SERVER_ERROR</span></a> domain, when there
 is communication with another server.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -127,14 +121,12 @@ is communication with another server.
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPNP_EVENTING_ERROR">
 <a name="GUPNP-EVENTING-ERROR:CAPS"></a><h3>GUPNP_EVENTING_ERROR</h3>
 <pre class="programlisting">#define GUPNP_EVENTING_ERROR (gupnp_eventing_error_quark ())
 </pre>
 <p>
 The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> uniquely used by GUPnP's eventing errors.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -146,7 +138,7 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="enum GUPnPEventingError">
 <a name="GUPnPEventingError"></a><h3>enum GUPnPEventingError</h3>
 <pre class="programlisting">typedef enum {
         GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED,
@@ -157,8 +149,6 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 <p>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> codes used for errors in the <a class="link" href="gupnp-Error-codes.html#GUPNP-EVENTING-ERROR:CAPS" title="GUPNP_EVENTING_ERROR"><span class="type">GUPNP_EVENTING_ERROR</span></a> domain, during
 eventing of state variables.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -182,14 +172,12 @@ eventing of state variables.
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPNP_CONTROL_ERROR">
 <a name="GUPNP-CONTROL-ERROR:CAPS"></a><h3>GUPNP_CONTROL_ERROR</h3>
 <pre class="programlisting">#define GUPNP_CONTROL_ERROR (gupnp_control_error_quark ())
 </pre>
 <p>
 The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> uniquely used by GUPnP's control errors.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -201,7 +189,7 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="enum GUPnPControlError">
 <a name="GUPnPControlError"></a><h3>enum GUPnPControlError</h3>
 <pre class="programlisting">typedef enum {
         GUPNP_CONTROL_ERROR_INVALID_ACTION = 401,
@@ -213,8 +201,6 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 <p>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> codes used for errors in the <a class="link" href="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR:CAPS" title="GUPNP_CONTROL_ERROR"><span class="type">GUPNP_CONTROL_ERROR</span></a> domain, during
 invocation of service actions.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -243,14 +229,12 @@ invocation of service actions.
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPNP_XML_ERROR">
 <a name="GUPNP-XML-ERROR:CAPS"></a><h3>GUPNP_XML_ERROR</h3>
 <pre class="programlisting">#define GUPNP_XML_ERROR (gupnp_xml_error_quark ())
 </pre>
 <p>
 The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuark"><span class="type">GQuark</span></a> uniquely used by GUPnP XML processing errors.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -262,7 +246,7 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="enum GUPnPXMLError">
 <a name="GUPnPXMLError"></a><h3>enum GUPnPXMLError</h3>
 <pre class="programlisting">typedef enum {
         GUPNP_XML_ERROR_PARSE,
@@ -274,8 +258,6 @@ The <a href="http://library.gnome.org/devel/glib/unstable/glib-Quarks.html#GQuar
 <p>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> codes used for errors in the <a class="link" href="gupnp-Error-codes.html#GUPNP-XML-ERROR:CAPS" title="GUPNP_XML_ERROR"><span class="type">GUPNP_XML_ERROR</span></a> domain, during
 processing of XML data.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -307,6 +289,6 @@ processing of XML data.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.15</div>
 </body>
 </html>
