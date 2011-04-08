@@ -59,7 +59,7 @@ libgupnp-1.0.so.3 libgupnp-1.0-3 #MINVER#
  gupnp_eventing_error_quark@Base 0.14.0
  gupnp_marshal_VOID__POINTER_POINTER@Base 0.14.0
  gupnp_marshal_VOID__STRING_POINTER@Base 0.14.0
- gupnp_marshal_VOID__UINT_UINT_UINT@Base 0.14.0
+#MISSING: 0.16.0-1# gupnp_marshal_VOID__UINT_UINT_UINT@Base 0.14.0
  gupnp_network_manager_get_type@Base 0.14.0
  gupnp_network_manager_is_available@Base 0.14.0
  gupnp_resource_factory_get_default@Base 0.14.0
