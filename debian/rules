@@ -21,6 +21,6 @@ build/libgupnp-1.0-dev::
 
 common-binary-predeb-arch:: list-missing
 
-binary-predeb/gir1.0-gupnp-1.0::
+binary-predeb/gir1.2-gupnp-1.0::
 	dh_girepository -p$(cdbs_curpkg)
 
