@@ -8,7 +8,7 @@
 <link rel="up" href="api-device-control.html" title="Device Control">
 <link rel="prev" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy">
 <link rel="next" href="api-device-impl.html" title="Device Implementation">
-<meta name="generator" content="GTK-Doc V1.15.1 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -32,7 +32,7 @@
                   <a href="#GUPnPServiceProxy.signals" class="shortcut">Signals</a>
 </td></tr>
 </table>
-<div class="refentry">
+<div class="refentry" title="GUPnPServiceProxy">
 <a name="GUPnPServiceProxy"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -41,7 +41,7 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv">
+<div class="refsynopsisdiv" title="Synopsis">
 <a name="GUPnPServiceProxy.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-struct" title="GUPnPServiceProxy">GUPnPServiceProxy</a>;
                     <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction">GUPnPServiceProxyAction</a>;
@@ -136,7 +136,7 @@
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-get-subscribed" title="gupnp_service_proxy_get_subscribed ()">gupnp_service_proxy_get_subscribed</a>  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);
 </pre>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Object Hierarchy">
 <a name="GUPnPServiceProxy.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
@@ -144,52 +144,46 @@
          +----GUPnPServiceProxy
 </pre>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Properties">
 <a name="GUPnPServiceProxy.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
   "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy--subscribed" title='The "subscribed" property'>subscribed</a>"               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write
 </pre>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Signals">
 <a name="GUPnPServiceProxy.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-subscription-lost" title='The "subscription-lost" signal'>subscription-lost</a>"                              : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxy-subscription-lost" title='The "subscription-lost" signal'>subscription-lost</a>"                              : Run Last
 </pre>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Description">
 <a name="GUPnPServiceProxy.description"></a><h2>Description</h2>
 <p>
 <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> sends commands to a remote UPnP service and handles
 incoming event notifications. <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> implements the
 <a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> interface.
 </p>
-<p>
-</p>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Details">
 <a name="GUPnPServiceProxy.details"></a><h2>Details</h2>
-<div class="refsect2">
+<div class="refsect2" title="GUPnPServiceProxy">
 <a name="GUPnPServiceProxy-struct"></a><h3>GUPnPServiceProxy</h3>
 <pre class="programlisting">typedef struct _GUPnPServiceProxy GUPnPServiceProxy;</pre>
 <p>
 This struct contains private data only, and should be accessed using the
 functions below.
 </p>
-<p>
-</p>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPnPServiceProxyAction">
 <a name="GUPnPServiceProxyAction"></a><h3>GUPnPServiceProxyAction</h3>
 <pre class="programlisting">typedef struct _GUPnPServiceProxyAction GUPnPServiceProxyAction;</pre>
 <p>
 Opaque structure for holding in-progress action data.
 </p>
-<p>
-</p>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPnPServiceProxyActionCallback ()">
 <a name="GUPnPServiceProxyActionCallback"></a><h3>GUPnPServiceProxyActionCallback ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                (*GUPnPServiceProxyActionCallback)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
@@ -197,8 +191,6 @@ Opaque structure for holding in-progress action data.
 <p>
 Callback notifying that <em class="parameter"><code>action</code></em> on <em class="parameter"><code>proxy</code></em> has returned and
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a> etc can be called.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -222,7 +214,7 @@ Callback notifying that <em class="parameter"><code>action</code></em> on <em cl
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="GUPnPServiceProxyNotifyCallback ()">
 <a name="GUPnPServiceProxyNotifyCallback"></a><h3>GUPnPServiceProxyNotifyCallback ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                (*GUPnPServiceProxyNotifyCallback)  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
@@ -231,8 +223,6 @@ Callback notifying that <em class="parameter"><code>action</code></em> on <em cl
 <p>
 Callback notifying that the state variable <em class="parameter"><code>variable</code></em> on <em class="parameter"><code>proxy</code></em> has changed to
 <em class="parameter"><code>value</code></em>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -261,7 +251,7 @@ Callback notifying that the state variable <em class="parameter"><code>variable<
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_send_action ()">
 <a name="gupnp-service-proxy-send-action"></a><h3>gupnp_service_proxy_send_action ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action     (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *action</code></em>,
@@ -271,8 +261,6 @@ Callback notifying that the state variable <em class="parameter"><code>variable<
 Sends action <em class="parameter"><code>action</code></em> with parameters <em class="parameter"><code>Varargs</code></em> to the service exposed by
 <em class="parameter"><code>proxy</code></em> synchronously. If an error occurred, <em class="parameter"><code>error</code></em> will be set. In case of
 a UPnPError the error code will be the same in <em class="parameter"><code>error</code></em>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -308,7 +296,7 @@ out parameter type, and out parameter value location, terminated with <a href="h
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_send_action_valist ()">
 <a name="gupnp-service-proxy-send-action-valist"></a><h3>gupnp_service_proxy_send_action_valist ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -318,8 +306,6 @@ out parameter type, and out parameter value location, terminated with <a href="h
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a va_list for
 use by language bindings.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -355,7 +341,7 @@ out parameter type, and out parameter value location
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_send_action_hash ()">
 <a name="gupnp-service-proxy-send-action-hash"></a><h3>gupnp_service_proxy_send_action_hash ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_hash
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -366,8 +352,6 @@ out parameter type, and out parameter value location
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a pair of
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>s for runtime determined parameter lists.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -390,13 +374,13 @@ See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_hash</code></em> :</span></p></td>
 <td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of in
-parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+parameter name and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_hash</code></em> :</span></p></td>
 <td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
-of out parameter name and initialized <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+of out parameter name and initialized <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> utf8 GValue]</span>
 </td>
 </tr>
 <tr>
@@ -408,7 +392,7 @@ of out parameter name and initialized <a href="http://library.gnome.org/devel/go
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_send_action_list ()">
 <a name="gupnp-service-proxy-send-action-list"></a><h3>gupnp_service_proxy_send_action_list ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_send_action_list
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -422,8 +406,6 @@ of out parameter name and initialized <a href="http://library.gnome.org/devel/go
 <p>
 The synchronous variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action-list" title="gupnp_service_proxy_begin_action_list ()"><span class="type">gupnp_service_proxy_begin_action_list</span></a> and
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action-list" title="gupnp_service_proxy_end_action_list ()"><span class="type">gupnp_service_proxy_end_action_list</span></a>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -446,31 +428,31 @@ The synchronous variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-se
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span>
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
 </td>
 </tr>
 <tr>
@@ -482,7 +464,7 @@ that line up with <em class="parameter"><code>out_names</code></em>. <span class
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_begin_action ()">
 <a name="gupnp-service-proxy-begin-action"></a><h3>gupnp_service_proxy_begin_action ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -495,8 +477,6 @@ Sends action <em class="parameter"><code>action</code></em> with parameters <em 
 <em class="parameter"><code>proxy</code></em> asynchronously, calling <em class="parameter"><code>callback</code></em> on completion. From <em class="parameter"><code>callback</code></em>, call
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a> to check for errors, to retrieve return
 values, and to free the <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -539,7 +519,7 @@ value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/gli
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_begin_action_valist ()">
 <a name="gupnp-service-proxy-begin-action-valist"></a><h3>gupnp_service_proxy_begin_action_valist ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -550,8 +530,6 @@ value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/gli
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a va_list for
 use by language bindings.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -594,7 +572,7 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_begin_action_hash ()">
 <a name="gupnp-service-proxy-begin-action-hash"></a><h3>gupnp_service_proxy_begin_action_hash ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_hash
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -605,8 +583,6 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a>
 for runtime generated parameter lists.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -648,7 +624,7 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_begin_action_list ()">
 <a name="gupnp-service-proxy-begin-action-list"></a><h3>gupnp_service_proxy_begin_action_list ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="returnvalue">GUPnPServiceProxyAction</span></a> * gupnp_service_proxy_begin_action_list
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -660,8 +636,6 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 <p>
 A variant of <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><span class="type">gupnp_service_proxy_begin_action</span></a> that takes lists of
 in-parameter names, types and values.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -679,13 +653,13 @@ in-parameter names, types and values.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_names</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'in' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>in_values</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
-<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>in_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GValue]</span>
 </td>
 </tr>
 <tr>
@@ -710,7 +684,7 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_end_action ()">
 <a name="gupnp-service-proxy-end-action"></a><h3>gupnp_service_proxy_end_action ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
@@ -720,8 +694,6 @@ be freed when calling <a class="link" href="GUPnPServiceProxy.html#gupnp-service
 Retrieves the result of <em class="parameter"><code>action</code></em>. The out parameters in <em class="parameter"><code>Varargs</code></em> will be
 filled in, and if an error occurred, <em class="parameter"><code>error</code></em> will be set. In case of
 a UPnPError the error code will be the same in <em class="parameter"><code>error</code></em>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -757,7 +729,7 @@ freed after use
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_end_action_valist ()">
 <a name="gupnp-service-proxy-end-action-valist"></a><h3>gupnp_service_proxy_end_action_valist ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_valist
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
@@ -767,8 +739,6 @@ freed after use
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a va_list for
 use by language bindings.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -804,7 +774,7 @@ freed after use
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_end_action_hash ()">
 <a name="gupnp-service-proxy-end-action-hash"></a><h3>gupnp_service_proxy_end_action_hash ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_hash (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
@@ -813,8 +783,6 @@ freed after use
 <p>
 See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> for
 runtime generated parameter lists.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -837,7 +805,7 @@ runtime generated parameter lists.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>hash</code></em> :</span></p></td>
 <td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> of
-out parameter name and initialised <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+out parameter name and initialised <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> pairs. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GValue][<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym> utf8 GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8 GValue]</span>
 </td>
 </tr>
 <tr>
@@ -849,7 +817,7 @@ out parameter name and initialised <a href="http://library.gnome.org/devel/gobje
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_end_action_list ()">
 <a name="gupnp-service-proxy-end-action-list"></a><h3>gupnp_service_proxy_end_action_list ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_end_action_list (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>,
@@ -865,8 +833,6 @@ in <em class="parameter"><code>out_values</code></em> must be freed using <a hre
 </p>
 <p>
 Return value : <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -889,19 +855,19 @@ Return value : <a href="http://library.gnome.org/devel/glib/unstable/glib-Standa
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_names</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of 'out' parameter
-names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+names (as strings). <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_types</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of types (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>)
-that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+that line up with <em class="parameter"><code>out_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GType]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>out_values</code></em> :</span></p></td>
 <td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
-(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span>
+(as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym> GValue][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym> GValue]</span>
 </td>
 </tr>
 <tr>
@@ -913,14 +879,12 @@ that line up with <em class="parameter"><code>out_names</code></em>. <span class
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_cancel_action ()">
 <a name="gupnp-service-proxy-cancel-action"></a><h3>gupnp_service_proxy_cancel_action ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_proxy_cancel_action   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> *action</code></em>);</pre>
 <p>
 Cancels <em class="parameter"><code>action</code></em>, freeing the <em class="parameter"><code>action</code></em> handle.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -939,7 +903,7 @@ Cancels <em class="parameter"><code>action</code></em>, freeing the <em class="p
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_add_notify ()">
 <a name="gupnp-service-proxy-add-notify"></a><h3>gupnp_service_proxy_add_notify ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_add_notify      (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
@@ -949,8 +913,6 @@ Cancels <em class="parameter"><code>action</code></em>, freeing the <em class="p
 <p>
 Sets up <em class="parameter"><code>callback</code></em> to be called whenever a change notification for
 <em class="parameter"><code>variable</code></em> is recieved.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -989,7 +951,7 @@ Sets up <em class="parameter"><code>callback</code></em> to be called whenever a
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_remove_notify ()">
 <a name="gupnp-service-proxy-remove-notify"></a><h3>gupnp_service_proxy_remove_notify ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_remove_notify   (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
@@ -997,8 +959,6 @@ Sets up <em class="parameter"><code>callback</code></em> to be called whenever a
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Cancels the variable change notification for <em class="parameter"><code>callback</code></em> and <em class="parameter"><code>user_data</code></em>.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -1032,7 +992,7 @@ Cancels the variable change notification for <em class="parameter"><code>callbac
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_set_subscribed ()">
 <a name="gupnp-service-proxy-set-subscribed"></a><h3>gupnp_service_proxy_set_subscribed ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_proxy_set_subscribed  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> subscribed</code></em>);</pre>
@@ -1044,8 +1004,6 @@ Note that the relevant messages are not immediately sent but queued.
 If you want to unsubcribe from this service because the application
 is quitting, rely on automatic synchronised unsubscription on object
 destruction instead.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -1065,13 +1023,11 @@ destruction instead.
 </table></div>
 </div>
 <hr>
-<div class="refsect2">
+<div class="refsect2" title="gupnp_service_proxy_get_subscribed ()">
 <a name="gupnp-service-proxy-get-subscribed"></a><h3>gupnp_service_proxy_get_subscribed ()</h3>
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_service_proxy_get_subscribed  (<em class="parameter"><code><a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy</code></em>);</pre>
 <p>
 Returns if we are subscribed to this service.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -1090,31 +1046,27 @@ Returns if we are subscribed to this service.
 </table></div>
 </div>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Property Details">
 <a name="GUPnPServiceProxy.property-details"></a><h2>Property Details</h2>
-<div class="refsect2">
+<div class="refsect2" title='The "subscribed" property'>
 <a name="GUPnPServiceProxy--subscribed"></a><h3>The <code class="literal">"subscribed"</code> property</h3>
 <pre class="programlisting">  "subscribed"               <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a>              : Read / Write</pre>
 <p>
 Whether we are subscribed to this service.
 </p>
-<p>
-</p>
 <p>Default value: FALSE</p>
 </div>
 </div>
-<div class="refsect1">
+<div class="refsect1" title="Signal Details">
 <a name="GUPnPServiceProxy.signal-details"></a><h2>Signal Details</h2>
-<div class="refsect2">
+<div class="refsect2" title='The "subscription-lost" signal'>
 <a name="GUPnPServiceProxy-subscription-lost"></a><h3>The <code class="literal">"subscription-lost"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy,
                                                         <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           error,
-                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)      : Run Last</pre>
 <p>
 Emitted whenever the subscription to this service has been lost due
 to an error condition.
-</p>
-<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -1141,6 +1093,6 @@ been lost
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15.1</div>
+          Generated by GTK-Doc V1.15</div>
 </body>
 </html>
