@@ -1,3 +1,15 @@
+gupnp (0.16.0-1) experimental; urgency=low
+
+  * Make -dev package depend or gir1.2- package.
+  * debian/rules: fix dh_girepository hook for gir1.2
+  * Imported Upstream version 0.16.0
+  * Bump (build) dependencies according to configure.ac
+  * Update symbols file for 0.16 release.
+  * Upload to experimental for now to avoid disrupting
+    the gobject-introspection transition.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 08 Apr 2011 15:46:42 +0200
+
 gupnp (0.14.1-2) unstable; urgency=low
 
   * Re-add gir-repository-dev to build-dependencies
