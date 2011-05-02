@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPContext</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-utility.html" title="Utility Functions">
 <link rel="prev" href="api-utility.html" title="Utility Functions">
 <link rel="next" href="GUPnPContextManager.html" title="GUPnPContextManager">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -30,7 +30,7 @@
                   <a href="#GUPnPContext.properties" class="shortcut">Properties</a>
 </td></tr>
 </table>
-<div class="refentry" title="GUPnPContext">
+<div class="refentry">
 <a name="GUPnPContext"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -39,51 +39,51 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="GUPnPContext.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="GUPnPContext.html#GUPnPContext-struct" title="GUPnPContext">GUPnPContext</a>;
-<a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      <a class="link" href="GUPnPContext.html#gupnp-context-new" title="gupnp_context_new ()">gupnp_context_new</a>                   (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"><span class="type">GMainContext</span></a> *main_context</code></em>,
+<a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      <a class="link" href="GUPnPContext.html#gupnp-context-new" title="gupnp_context_new ()">gupnp_context_new</a>                   (<em class="parameter"><code><span class="type">GMainContext</span> *main_context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *interface</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+                                                         <em class="parameter"><code><span class="type">guint</span> port</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
 const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPContext.html#gupnp-context-get-host-ip" title="gupnp_context_get_host_ip ()">gupnp_context_get_host_ip</a>           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="GUPnPContext.html#gupnp-context-get-port" title="gupnp_context_get_port ()">gupnp_context_get_port</a>              (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="GUPnPContext.html#gupnp-context-get-port" title="gupnp_context_get_port ()">gupnp_context_get_port</a>              (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
 <span class="returnvalue">SoupServer</span> *        <a class="link" href="GUPnPContext.html#gupnp-context-get-server" title="gupnp_context_get_server ()">gupnp_context_get_server</a>            (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
 <span class="returnvalue">SoupSession</span> *       <a class="link" href="GUPnPContext.html#gupnp-context-get-session" title="gupnp_context_get_session ()">gupnp_context_get_session</a>           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPContext.html#gupnp-context-set-subscription-timeout" title="gupnp_context_set_subscription_timeout ()">gupnp_context_set_subscription_timeout</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="GUPnPContext.html#gupnp-context-get-subscription-timeout" title="gupnp_context_get_subscription_timeout ()">gupnp_context_get_subscription_timeout</a>
+                                                         <em class="parameter"><code><span class="type">guint</span> timeout</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="GUPnPContext.html#gupnp-context-get-subscription-timeout" title="gupnp_context_get_subscription_timeout ()">gupnp_context_get_subscription_timeout</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPContext.html#gupnp-context-host-path" title="gupnp_context_host_path ()">gupnp_context_host_path</a>             (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *local_path</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *server_path</code></em>);
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPContext.html#gupnp-context-host-path-for-agent" title="gupnp_context_host_path_for_agent ()">gupnp_context_host_path_for_agent</a>   (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
+<span class="returnvalue">gboolean</span>            <a class="link" href="GUPnPContext.html#gupnp-context-host-path-for-agent" title="gupnp_context_host_path_for_agent ()">gupnp_context_host_path_for_agent</a>   (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *local_path</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *server_path</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Perl-compatible-regular-expressions.html#GRegex"><span class="type">GRegex</span></a> *user_agent</code></em>);
+                                                         <em class="parameter"><code><span class="type">GRegex</span> *user_agent</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPContext.html#gupnp-context-unhost-path" title="gupnp_context_unhost_path ()">gupnp_context_unhost_path</a>           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *server_path</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="GUPnPContext.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
-   +----<a href="/opt/gnome2/share/gtk-doc/html/gssdp/GSSDPClient.html">GSSDPClient</a>
+  GObject
+   +----GSSDPClient
          +----GUPnPContext
 </pre>
 </div>
-<div class="refsect1" title="Properties">
+<div class="refsect1">
 <a name="GUPnPContext.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPContext.html#GUPnPContext--port" title='The "port" property'>port</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only
+  "<a class="link" href="GUPnPContext.html#GUPnPContext--port" title='The "port" property'>port</a>"                     <span class="type">guint</span>                 : Read / Write / Construct Only
   "<a class="link" href="GUPnPContext.html#GUPnPContext--server" title='The "server" property'>server</a>"                   <span class="type">SoupServer</span>*           : Read
   "<a class="link" href="GUPnPContext.html#GUPnPContext--session" title='The "session" property'>session</a>"                  <span class="type">SoupSession</span>*          : Read
-  "<a class="link" href="GUPnPContext.html#GUPnPContext--subscription-timeout" title='The "subscription-timeout" property'>subscription-timeout</a>"     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only
+  "<a class="link" href="GUPnPContext.html#GUPnPContext--subscription-timeout" title='The "subscription-timeout" property'>subscription-timeout</a>"     <span class="type">guint</span>                 : Read / Write / Construct Only
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="GUPnPContext.description"></a><h2>Description</h2>
 <p>
 <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> wraps the networking bits that are used by the various
@@ -94,9 +94,9 @@ For debugging, it is possible to see the messages being sent and received by
 exporting <span class="type">GUPNP_DEBUG</span>.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="GUPnPContext.details"></a><h2>Details</h2>
-<div class="refsect2" title="GUPnPContext">
+<div class="refsect2">
 <a name="GUPnPContext-struct"></a><h3>GUPnPContext</h3>
 <pre class="programlisting">typedef struct _GUPnPContext GUPnPContext;</pre>
 <p>
@@ -105,12 +105,12 @@ functions below.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_new ()">
+<div class="refsect2">
 <a name="gupnp-context-new"></a><h3>gupnp_context_new ()</h3>
-<pre class="programlisting"><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      gupnp_context_new                   (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"><span class="type">GMainContext</span></a> *main_context</code></em>,
+<pre class="programlisting"><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      gupnp_context_new                   (<em class="parameter"><code><span class="type">GMainContext</span> *main_context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *interface</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+                                                         <em class="parameter"><code><span class="type">guint</span> port</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
 <p>
 Create a new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> with the specified <em class="parameter"><code>main_context</code></em>, <em class="parameter"><code>interface</code></em> and
 <em class="parameter"><code>port</code></em>.
@@ -120,41 +120,37 @@ Create a new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>main_context</code></em> :</span></p></td>
-<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"><span class="type">GMainContext</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to use the default one
-</td>
+<td>A <span class="type">GMainContext</span>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> to use the default one</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
-<td>The network interface to use, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to auto-detect.
-</td>
+<td>The network interface to use, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> to auto-detect.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>port</code></em> :</span></p></td>
-<td>Port to run on, or 0 if you don't care what port is used.
-</td>
+<td>Port to run on, or 0 if you don't care what port is used.</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>A location to store a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+<td>A location to store a <span class="type">GError</span>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> object, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on an error
-</td>
+<td>A new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> object, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> on an error</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_get_host_ip ()">
+<div class="refsect2">
 <a name="gupnp-context-get-host-ip"></a><h3>gupnp_context_get_host_ip ()</h3>
 <pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_context_get_host_ip           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
-<div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Warning</h3>
 <p><code class="literal">gupnp_context_get_host_ip</code> has been deprecated since version 0.12.7 and should not be used in newly-written code. The "host-ip" property has moved to the base class
-<a href="/opt/gnome2/share/gtk-doc/html/gssdp/GSSDPClient.html"><span class="type">GSSDPClient</span></a> so newer applications should use
-<a href="/opt/gnome2/share/gtk-doc/html/gssdp/GSSDPClient.html#gssdp-client-get-host-ip"><span class="type">gssdp_client_get_host_ip</span></a> instead.</p>
+<span class="type">GSSDPClient</span> so newer applications should use
+<span class="type">gssdp_client_get_host_ip</span> instead.</p>
 </div>
 <p>
 Get the IP address we advertise ourselves as using.
@@ -169,17 +165,15 @@ Get the IP address we advertise ourselves as using.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The IP address. This string should not be freed.
-
-</td>
+<td>The IP address. This string should not be freed.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_get_port ()">
+<div class="refsect2">
 <a name="gupnp-context-get-port"></a><h3>gupnp_context_get_port ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               gupnp_context_get_port              (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
+<pre class="programlisting"><span class="returnvalue">guint</span>               gupnp_context_get_port              (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
 <p>
 Get the port that the SOAP server is running on.
 </p>
@@ -193,14 +187,13 @@ Get the port that the SOAP server is running on.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The port the SOAP server is running on.
-</td>
+<td>The port the SOAP server is running on.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_get_server ()">
+<div class="refsect2">
 <a name="gupnp-context-get-server"></a><h3>gupnp_context_get_server ()</h3>
 <pre class="programlisting"><span class="returnvalue">SoupServer</span> *        gupnp_context_get_server            (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
 <p>
@@ -216,14 +209,13 @@ Get the <span class="type">SoupServer</span> HTTP server that GUPnP is using.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The <span class="type">SoupServer</span> used by GUPnP. Do not unref this when finished.
-</td>
+<td>The <span class="type">SoupServer</span> used by GUPnP. Do not unref this when finished.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_get_session ()">
+<div class="refsect2">
 <a name="gupnp-context-get-session"></a><h3>gupnp_context_get_session ()</h3>
 <pre class="programlisting"><span class="returnvalue">SoupSession</span> *       gupnp_context_get_session           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
 <p>
@@ -239,7 +231,7 @@ Get the <span class="type">SoupSession</span> object that GUPnP is using.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The <span class="type">SoupSession</span> used by GUPnP. Do not unref
+<td>The <span class="type">SoupSession</span> used by GUPnP. Do not unref
 this when finished. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
@@ -247,11 +239,11 @@ this when finished. <span class="annotation">[<acronym title="Don't free data af
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_set_subscription_timeout ()">
+<div class="refsect2">
 <a name="gupnp-context-set-subscription-timeout"></a><h3>gupnp_context_set_subscription_timeout ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_context_set_subscription_timeout
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout</code></em>);</pre>
+                                                         <em class="parameter"><code><span class="type">guint</span> timeout</code></em>);</pre>
 <p>
 Sets the event subscription timeout to <em class="parameter"><code>timeout</code></em>. Use 0 if you don't
 want subscriptions to time out. Note that any client side subscriptions
@@ -267,16 +259,15 @@ will automatically be renewed.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>timeout</code></em> :</span></p></td>
-<td>Event subscription timeout in seconds
-</td>
+<td>Event subscription timeout in seconds</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_get_subscription_timeout ()">
+<div class="refsect2">
 <a name="gupnp-context-get-subscription-timeout"></a><h3>gupnp_context_get_subscription_timeout ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               gupnp_context_get_subscription_timeout
+<pre class="programlisting"><span class="returnvalue">guint</span>               gupnp_context_get_subscription_timeout
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>);</pre>
 <p>
 Get the event subscription timeout (in seconds), or 0 meaning there is no
@@ -292,14 +283,13 @@ timeout.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> The event subscription timeout in seconds.
-</td>
+<td>The event subscription timeout in seconds.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_host_path ()">
+<div class="refsect2">
 <a name="gupnp-context-host-path"></a><h3>gupnp_context_host_path ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_context_host_path             (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *local_path</code></em>,
@@ -319,24 +309,22 @@ specified in the request's Accept-Language header.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>local_path</code></em> :</span></p></td>
-<td>Path to the local file or folder to be hosted
-</td>
+<td>Path to the local file or folder to be hosted</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>server_path</code></em> :</span></p></td>
-<td>Web server path where <em class="parameter"><code>local_path</code></em> should be hosted
-</td>
+<td>Web server path where <em class="parameter"><code>local_path</code></em> should be hosted</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_host_path_for_agent ()">
+<div class="refsect2">
 <a name="gupnp-context-host-path-for-agent"></a><h3>gupnp_context_host_path_for_agent ()</h3>
-<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_context_host_path_for_agent   (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gupnp_context_host_path_for_agent   (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *local_path</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *server_path</code></em>,
-                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Perl-compatible-regular-expressions.html#GRegex"><span class="type">GRegex</span></a> *user_agent</code></em>);</pre>
+                                                         <em class="parameter"><code><span class="type">GRegex</span> *user_agent</code></em>);</pre>
 <p>
 Use this method to serve different local path to specific user-agent(s). The
 path <em class="parameter"><code>server_path</code></em> must already be hosted by <em class="parameter"><code>context</code></em>.
@@ -351,29 +339,26 @@ path <em class="parameter"><code>server_path</code></em> must already be hosted 
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>local_path</code></em> :</span></p></td>
-<td>Path to the local file or folder to be hosted
-</td>
+<td>Path to the local file or folder to be hosted</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>server_path</code></em> :</span></p></td>
-<td>Web server path already being hosted
-</td>
+<td>Web server path already being hosted</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_agent</code></em> :</span></p></td>
-<td>The user-agent as a <a href="http://library.gnome.org/devel/glib/unstable/glib-Perl-compatible-regular-expressions.html#GRegex"><span class="type">GRegex</span></a>.
-</td>
+<td>The user-agent as a <span class="type">GRegex</span>.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.
-</td>
+<td>
+<code class="literal">TRUE</code> on success, <code class="literal">FALSE</code> otherwise.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_context_unhost_path ()">
+<div class="refsect2">
 <a name="gupnp-context-unhost-path"></a><h3>gupnp_context_unhost_path ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_context_unhost_path           (<em class="parameter"><code><a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a> *context</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *server_path</code></em>);</pre>
@@ -390,25 +375,24 @@ Stop hosting the file or folder at <em class="parameter"><code>server_path</code
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>server_path</code></em> :</span></p></td>
-<td>Web server path where the file or folder is hosted
-</td>
+<td>Web server path where the file or folder is hosted</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Property Details">
+<div class="refsect1">
 <a name="GUPnPContext.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "port" property'>
+<div class="refsect2">
 <a name="GUPnPContext--port"></a><h3>The <code class="literal">"port"</code> property</h3>
-<pre class="programlisting">  "port"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "port"                     <span class="type">guint</span>                 : Read / Write / Construct Only</pre>
 <p>
 The port to run on. Set to 0 if you don't care what port to run on.
 </p>
 <p>Default value: 0</p>
 </div>
 <hr>
-<div class="refsect2" title='The "server" property'>
+<div class="refsect2">
 <a name="GUPnPContext--server"></a><h3>The <code class="literal">"server"</code> property</h3>
 <pre class="programlisting">  "server"                   <span class="type">SoupServer</span>*           : Read</pre>
 <p>
@@ -416,7 +400,7 @@ The <span class="type">SoupServer</span> HTTP server used by GUPnP.
 </p>
 </div>
 <hr>
-<div class="refsect2" title='The "session" property'>
+<div class="refsect2">
 <a name="GUPnPContext--session"></a><h3>The <code class="literal">"session"</code> property</h3>
 <pre class="programlisting">  "session"                  <span class="type">SoupSession</span>*          : Read</pre>
 <p>
@@ -424,9 +408,9 @@ The <span class="type">SoupSession</span> object used by GUPnP.
 </p>
 </div>
 <hr>
-<div class="refsect2" title='The "subscription-timeout" property'>
+<div class="refsect2">
 <a name="GUPnPContext--subscription-timeout"></a><h3>The <code class="literal">"subscription-timeout"</code> property</h3>
-<pre class="programlisting">  "subscription-timeout"     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a>                 : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "subscription-timeout"     <span class="type">guint</span>                 : Read / Write / Construct Only</pre>
 <p>
 The preferred subscription timeout: the number of seconds after
 which subscriptions are renewed. Set to '0' if subscriptions
@@ -439,6 +423,6 @@ are never to time out.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17.1</div>
 </body>
 </html>

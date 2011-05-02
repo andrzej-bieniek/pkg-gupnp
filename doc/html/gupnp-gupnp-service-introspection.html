@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPServiceIntrospection</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-device-info.html" title="Device Information">
 <link rel="prev" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">
 <link rel="next" href="api-device-control.html" title="Device Control">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -30,7 +30,7 @@
                   <a href="#gupnp-gupnp-service-introspection.properties" class="shortcut">Properties</a>
 </td></tr>
 </table>
-<div class="refentry" title="GUPnPServiceIntrospection">
+<div class="refentry">
 <a name="gupnp-gupnp-service-introspection"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -39,43 +39,43 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="gupnp-gupnp-service-introspection.synopsis"></a><h2>Synopsis</h2>
 <a name="GUPnPServiceIntrospection"></a><pre class="synopsis">enum                <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgDirection" title="enum GUPnPServiceActionArgDirection">GUPnPServiceActionArgDirection</a>;
                     <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgInfo" title="GUPnPServiceActionArgInfo">GUPnPServiceActionArgInfo</a>;
                     <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo" title="GUPnPServiceActionInfo">GUPnPServiceActionInfo</a>;
                     <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceStateVariableInfo" title="GUPnPServiceStateVariableInfo">GUPnPServiceStateVariableInfo</a>;
                     <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection-struct" title="GUPnPServiceIntrospection">GUPnPServiceIntrospection</a>;
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-action-names" title="gupnp_service_introspection_list_action_names ()">gupnp_service_introspection_list_action_names</a>
+const <span class="returnvalue">GList</span> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-action-names" title="gupnp_service_introspection_list_action_names ()">gupnp_service_introspection_list_action_names</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-actions" title="gupnp_service_introspection_list_actions ()">gupnp_service_introspection_list_actions</a>
+const <span class="returnvalue">GList</span> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-actions" title="gupnp_service_introspection_list_actions ()">gupnp_service_introspection_list_actions</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);
 const <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo" title="GUPnPServiceActionInfo"><span class="returnvalue">GUPnPServiceActionInfo</span></a> * <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-get-action" title="gupnp_service_introspection_get_action ()">gupnp_service_introspection_get_action</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *action_name</code></em>);
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variable-names" title="gupnp_service_introspection_list_state_variable_names ()">gupnp_service_introspection_list_state_variable_names</a>
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *action_name</code></em>);
+const <span class="returnvalue">GList</span> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variable-names" title="gupnp_service_introspection_list_state_variable_names ()">gupnp_service_introspection_list_state_variable_names</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);
-const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variables" title="gupnp_service_introspection_list_state_variables ()">gupnp_service_introspection_list_state_variables</a>
+const <span class="returnvalue">GList</span> *       <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-list-state-variables" title="gupnp_service_introspection_list_state_variables ()">gupnp_service_introspection_list_state_variables</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);
 const <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceStateVariableInfo" title="GUPnPServiceStateVariableInfo"><span class="returnvalue">GUPnPServiceStateVariableInfo</span></a> * <a class="link" href="gupnp-gupnp-service-introspection.html#gupnp-service-introspection-get-state-variable" title="gupnp_service_introspection_get_state_variable ()">gupnp_service_introspection_get_state_variable</a>
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *variable_name</code></em>);
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *variable_name</code></em>);
 </pre>
 </div>
-<div class="refsect1" title="Object Hierarchy">
+<div class="refsect1">
 <a name="gupnp-gupnp-service-introspection.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+  GObject
    +----GUPnPServiceIntrospection
 </pre>
 </div>
-<div class="refsect1" title="Properties">
+<div class="refsect1">
 <a name="gupnp-gupnp-service-introspection.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
-  "<a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection--scpd" title='The "scpd" property'>scpd</a>"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Write / Construct Only
+  "<a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection--scpd" title='The "scpd" property'>scpd</a>"                     <span class="type">gpointer</span>              : Write / Construct Only
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="gupnp-gupnp-service-introspection.description"></a><h2>Description</h2>
 <p>
 The <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> class provides methods for service
@@ -97,9 +97,9 @@ This class exposes internals of the UPnP protocol and should not need
 to be used for regular device or control point development.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="gupnp-gupnp-service-introspection.details"></a><h2>Details</h2>
-<div class="refsect2" title="enum GUPnPServiceActionArgDirection">
+<div class="refsect2">
 <a name="GUPnPServiceActionArgDirection"></a><h3>enum GUPnPServiceActionArgDirection</h3>
 <pre class="programlisting">typedef enum
 {
@@ -127,7 +127,7 @@ Represents the direction of a service state variable.
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceActionArgInfo">
+<div class="refsect2">
 <a name="GUPnPServiceActionArgInfo"></a><h3>GUPnPServiceActionArgInfo</h3>
 <pre class="programlisting">typedef struct {
         char                          *name;
@@ -144,30 +144,26 @@ This structure contains information about the argument of service action.
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">char</span> *<em class="structfield"><code><a name="GUPnPServiceActionArgInfo.name"></a>name</code></em>;</span></p></td>
-<td>The name of the action argument.
-</td>
+<td>The name of the action argument.</td>
 </tr>
 <tr>
 <td><p><span class="term"><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgDirection" title="enum GUPnPServiceActionArgDirection"><span class="type">GUPnPServiceActionArgDirection</span></a> <em class="structfield"><code><a name="GUPnPServiceActionArgInfo.direction"></a>direction</code></em>;</span></p></td>
-<td>The direction of the action argument.
-</td>
+<td>The direction of the action argument.</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="type">char</span> *<em class="structfield"><code><a name="GUPnPServiceActionArgInfo.related-state-variable"></a>related_state_variable</code></em>;</span></p></td>
 <td>The name of the state variable associated with this
-argument.
-</td>
+argument.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="GUPnPServiceActionArgInfo.retval"></a>retval</code></em>;</span></p></td>
-<td>Whether this argument is the return value of the action.
-</td>
+<td><p><span class="term"><span class="type">gboolean</span> <em class="structfield"><code><a name="GUPnPServiceActionArgInfo.retval"></a>retval</code></em>;</span></p></td>
+<td>Whether this argument is the return value of the action.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceActionInfo">
+<div class="refsect2">
 <a name="GUPnPServiceActionInfo"></a><h3>GUPnPServiceActionInfo</h3>
 <pre class="programlisting">typedef struct {
         char  *name;
@@ -182,20 +178,18 @@ This structure contains information about a service action.
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">char</span> *<em class="structfield"><code><a name="GUPnPServiceActionInfo.name"></a>name</code></em>;</span></p></td>
-<td>The name of the action argument.
-</td>
+<td>The name of the action argument.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="GUPnPServiceActionInfo.arguments"></a>arguments</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">GList</span> *<em class="structfield"><code><a name="GUPnPServiceActionInfo.arguments"></a>arguments</code></em>;</span></p></td>
 <td>A GList of all the arguments
-(of type <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgInfo" title="GUPnPServiceActionArgInfo"><span class="type">GUPnPServiceActionArgInfo</span></a>) of this action.
-</td>
+(of type <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionArgInfo" title="GUPnPServiceActionArgInfo"><span class="type">GUPnPServiceActionArgInfo</span></a>) of this action.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceStateVariableInfo">
+<div class="refsect2">
 <a name="GUPnPServiceStateVariableInfo"></a><h3>GUPnPServiceStateVariableInfo</h3>
 <pre class="programlisting">typedef struct {
         char    *name;
@@ -217,60 +211,51 @@ This structure contains information about service state variable.
 <tbody>
 <tr>
 <td><p><span class="term"><span class="type">char</span> *<em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.name"></a>name</code></em>;</span></p></td>
-<td>The name of the state variable.
-</td>
+<td>The name of the state variable.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.send-events"></a>send_events</code></em>;</span></p></td>
-<td>Whether this state variable can source events.
-</td>
+<td><p><span class="term"><span class="type">gboolean</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.send-events"></a>send_events</code></em>;</span></p></td>
+<td>Whether this state variable can source events.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.is-numeric"></a>is_numeric</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">gboolean</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.is-numeric"></a>is_numeric</code></em>;</span></p></td>
 <td>Wether this state variable is a numeric type (integer and
-float).
-</td>
+float).</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.type"></a>type</code></em>;</span></p></td>
-<td>The GType of this state variable.
-</td>
+<td><p><span class="term"><span class="type">GType</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.type"></a>type</code></em>;</span></p></td>
+<td>The GType of this state variable.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.default-value"></a>default_value</code></em>;</span></p></td>
-<td>The default value of this state variable.
-</td>
+<td><p><span class="term"><span class="type">GValue</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.default-value"></a>default_value</code></em>;</span></p></td>
+<td>The default value of this state variable.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.minimum"></a>minimum</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">GValue</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.minimum"></a>minimum</code></em>;</span></p></td>
 <td>The minimum value of this state variable. Only applies to numeric
-data types.
-</td>
+data types.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.maximum"></a>maximum</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">GValue</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.maximum"></a>maximum</code></em>;</span></p></td>
 <td>The maximum value of this state variable. Only applies to numeric
-data types.
-</td>
+data types.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.step"></a>step</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">GValue</span> <em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.step"></a>step</code></em>;</span></p></td>
 <td>The step value of this state variable. Only applies to numeric
-data types.
-</td>
+data types.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.allowed-values"></a>allowed_values</code></em>;</span></p></td>
+<td><p><span class="term"><span class="type">GList</span> *<em class="structfield"><code><a name="GUPnPServiceStateVariableInfo.allowed-values"></a>allowed_values</code></em>;</span></p></td>
 <td>The allowed values of this state variable. Only applies to
 string data types. Unlike the other fields in this structure, this field
-contains a list of (char *) strings rather than GValues.
-</td>
+contains a list of (char *) strings rather than GValues.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="GUPnPServiceIntrospection">
+<div class="refsect2">
 <a name="GUPnPServiceIntrospection-struct"></a><h3>GUPnPServiceIntrospection</h3>
 <pre class="programlisting">typedef struct _GUPnPServiceIntrospection GUPnPServiceIntrospection;</pre>
 <p>
@@ -279,9 +264,9 @@ functions below.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_list_action_names ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-list-action-names"></a><h3>gupnp_service_introspection_list_action_names ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_service_introspection_list_action_names
+<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_service_introspection_list_action_names
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);</pre>
 <p>
 Returns a GList of names of all the actions in this service.
@@ -296,20 +281,19 @@ Returns a GList of names of all the actions in this service.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> (transfer none) (element-type utf8) : A GList of names of all
-the actions or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its contents.
-</td>
+<td>(transfer none) (element-type utf8) : A GList of names of all
+the actions or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its contents.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_list_actions ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-list-actions"></a><h3>gupnp_service_introspection_list_actions ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_service_introspection_list_actions
+<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_service_introspection_list_actions
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);</pre>
 <p>
-Returns a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of all the actions (of type <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo" title="GUPnPServiceActionInfo"><span class="type">GUPnPServiceActionInfo</span></a>) in
+Returns a <span class="type">GList</span> of all the actions (of type <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo" title="GUPnPServiceActionInfo"><span class="type">GUPnPServiceActionInfo</span></a>) in
 this service.
 </p>
 <div class="variablelist"><table border="0">
@@ -322,20 +306,20 @@ this service.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A
-<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of all the actions or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its
-contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceActionInfo*][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GUPnP.ServiceActionInfo*]</span>
+<td>A
+<span class="type">GList</span> of all the actions or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its
+contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceActionInfo*][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_get_action ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-get-action"></a><h3>gupnp_service_introspection_get_action ()</h3>
 <pre class="programlisting">const <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceActionInfo" title="GUPnPServiceActionInfo"><span class="returnvalue">GUPnPServiceActionInfo</span></a> * gupnp_service_introspection_get_action
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *action_name</code></em>);</pre>
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *action_name</code></em>);</pre>
 <p>
 Returns the action by the name <em class="parameter"><code>action_name</code></em> in this service.
 </p>
@@ -349,12 +333,11 @@ Returns the action by the name <em class="parameter"><code>action_name</code></e
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>action_name</code></em> :</span></p></td>
-<td>The name of the action to retreive
-</td>
+<td>The name of the action to retreive</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the action or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free
+<td>the action or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free
 it. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
@@ -362,12 +345,12 @@ it. <span class="annotation">[<acronym title="Don't free data after the code is 
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_list_state_variable_names ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-list-state-variable-names"></a><h3>gupnp_service_introspection_list_state_variable_names ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_service_introspection_list_state_variable_names
+<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_service_introspection_list_state_variable_names
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);</pre>
 <p>
-Returns a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of names of all the state variables in this service.
+Returns a <span class="type">GList</span> of names of all the state variables in this service.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -379,17 +362,17 @@ Returns a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Link
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of names of all
-the state variables or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> utf8]</span>
+<td>A <span class="type">GList</span> of names of all
+the state variables or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or its contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_list_state_variables ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-list-state-variables"></a><h3>gupnp_service_introspection_list_state_variables ()</h3>
-<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_service_introspection_list_state_variables
+<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_service_introspection_list_state_variables
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>);</pre>
 <p>
 Returns a GList of all the state variables (of type
@@ -405,20 +388,19 @@ Returns a GList of all the state variables (of type
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>
-A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of all the state variables or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or
-its contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceStateVariableInfo][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym> GUPnP.ServiceStateVariableInfo]</span>
+<td>A <span class="type">GList</span> of all the state variables or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free it or
+its contents. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceStateVariableInfo][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <hr>
-<div class="refsect2" title="gupnp_service_introspection_get_state_variable ()">
+<div class="refsect2">
 <a name="gupnp-service-introspection-get-state-variable"></a><h3>gupnp_service_introspection_get_state_variable ()</h3>
 <pre class="programlisting">const <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceStateVariableInfo" title="GUPnPServiceStateVariableInfo"><span class="returnvalue">GUPnPServiceStateVariableInfo</span></a> * gupnp_service_introspection_get_state_variable
                                                         (<em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *variable_name</code></em>);</pre>
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *variable_name</code></em>);</pre>
 <p>
 Returns the state variable by the name <em class="parameter"><code>variable_name</code></em> in this service.
 </p>
@@ -432,23 +414,21 @@ Returns the state variable by the name <em class="parameter"><code>variable_name
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>variable_name</code></em> :</span></p></td>
-<td>The name of the variable to retreive
-</td>
+<td>The name of the variable to retreive</td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td> the state variable or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Do not modify or free it.
-</td>
+<td>the state variable or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Do not modify or free it.</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div class="refsect1" title="Property Details">
+<div class="refsect1">
 <a name="gupnp-gupnp-service-introspection.property-details"></a><h2>Property Details</h2>
-<div class="refsect2" title='The "scpd" property'>
+<div class="refsect2">
 <a name="GUPnPServiceIntrospection--scpd"></a><h3>The <code class="literal">"scpd"</code> property</h3>
-<pre class="programlisting">  "scpd"                     <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Write / Construct Only</pre>
+<pre class="programlisting">  "scpd"                     <span class="type">gpointer</span>              : Write / Construct Only</pre>
 <p>
 The scpd of the device description file.
 </p>
@@ -457,6 +437,6 @@ The scpd of the device description file.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17.1</div>
 </body>
 </html>

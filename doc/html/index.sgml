@@ -177,13 +177,14 @@
 <ANCHOR id="GUPnPRootDevice--description-path" href="gupnp/GUPnPRootDevice.html#GUPnPRootDevice--description-path">
 <ANCHOR id="GUPnPService" href="gupnp/GUPnPService.html">
 <ANCHOR id="GUPnPService.synopsis" href="gupnp/GUPnPService.html#GUPnPService.synopsis">
+<ANCHOR id="GUPnPServiceAction" href="gupnp/GUPnPService.html#GUPnPServiceAction">
 <ANCHOR id="GUPnPService.object-hierarchy" href="gupnp/GUPnPService.html#GUPnPService.object-hierarchy">
 <ANCHOR id="GUPnPService.properties" href="gupnp/GUPnPService.html#GUPnPService.properties">
 <ANCHOR id="GUPnPService.signals" href="gupnp/GUPnPService.html#GUPnPService.signals">
 <ANCHOR id="GUPnPService.description" href="gupnp/GUPnPService.html#GUPnPService.description">
 <ANCHOR id="GUPnPService.details" href="gupnp/GUPnPService.html#GUPnPService.details">
 <ANCHOR id="GUPnPService-struct" href="gupnp/GUPnPService.html#GUPnPService-struct">
-<ANCHOR id="GUPnPServiceAction" href="gupnp/GUPnPService.html#GUPnPServiceAction">
+<ANCHOR id="GUPnPServiceAction-struct" href="gupnp/GUPnPService.html#GUPnPServiceAction-struct">
 <ANCHOR id="gupnp-service-action-get-name" href="gupnp/GUPnPService.html#gupnp-service-action-get-name">
 <ANCHOR id="gupnp-service-action-get-locales" href="gupnp/GUPnPService.html#gupnp-service-action-get-locales">
 <ANCHOR id="gupnp-service-action-get" href="gupnp/GUPnPService.html#gupnp-service-action-get">
