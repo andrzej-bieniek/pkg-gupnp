@@ -1,3 +1,9 @@
+gupnp (0.16.1-1) unstable; urgency=low
+
+  * Imported Upstream version 0.16.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 02 May 2011 10:32:40 +0200
+
 gupnp (0.16.0-2) unstable; urgency=low
 
   * Drop gir-repository-dev build-dep and bump libsoup2.4-dev
