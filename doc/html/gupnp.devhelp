@@ -161,7 +161,7 @@
     <function name="The &quot;description-doc&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-doc"/>
     <function name="The &quot;description-path&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-path"/>
     <function name="GUPnPService" link="GUPnPService.html#GUPnPService-struct"/>
-    <function name="GUPnPServiceAction" link="GUPnPService.html#GUPnPServiceAction"/>
+    <function name="GUPnPServiceAction" link="GUPnPService.html#GUPnPServiceAction-struct"/>
     <function name="gupnp_service_action_get_name ()" link="GUPnPService.html#gupnp-service-action-get-name"/>
     <function name="gupnp_service_action_get_locales ()" link="GUPnPService.html#gupnp-service-action-get-locales"/>
     <function name="gupnp_service_action_get ()" link="GUPnPService.html#gupnp-service-action-get"/>

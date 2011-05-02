@@ -161,7 +161,7 @@
     <keyword type="property" name="The &quot;description-doc&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-doc"/>
     <keyword type="property" name="The &quot;description-path&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-path"/>
     <keyword type="struct" name="GUPnPService" link="GUPnPService.html#GUPnPService-struct"/>
-    <keyword type="struct" name="GUPnPServiceAction" link="GUPnPService.html#GUPnPServiceAction"/>
+    <keyword type="struct" name="GUPnPServiceAction" link="GUPnPService.html#GUPnPServiceAction-struct"/>
     <keyword type="function" name="gupnp_service_action_get_name ()" link="GUPnPService.html#gupnp-service-action-get-name"/>
     <keyword type="function" name="gupnp_service_action_get_locales ()" link="GUPnPService.html#gupnp-service-action-get-locales"/>
     <keyword type="function" name="gupnp_service_action_get ()" link="GUPnPService.html#gupnp-service-action-get"/>

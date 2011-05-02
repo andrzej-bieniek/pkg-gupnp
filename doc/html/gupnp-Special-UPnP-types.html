@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Special UPnP types</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-utility.html" title="Utility Functions">
 <link rel="prev" href="gupnp-Error-codes.html" title="Error codes">
 <link rel="next" href="api-tools.html" title="Tools">
-<meta name="generator" content="GTK-Doc V1.15 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.17.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -26,7 +26,7 @@
                   <a href="#gupnp-Special-UPnP-types.description" class="shortcut">Description</a>
 </td></tr>
 </table>
-<div class="refentry" title="Special UPnP types">
+<div class="refentry">
 <a name="gupnp-Special-UPnP-types"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
 <td valign="top">
@@ -35,7 +35,7 @@
 </td>
 <td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsynopsisdiv" title="Synopsis">
+<div class="refsynopsisdiv">
 <a name="gupnp-Special-UPnP-types.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">#define             <a class="link" href="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-BASE64:CAPS" title="GUPNP_TYPE_BIN_BASE64">GUPNP_TYPE_BIN_BASE64</a>
 #define             <a class="link" href="gupnp-Special-UPnP-types.html#GUPNP-TYPE-BIN-HEX:CAPS" title="GUPNP_TYPE_BIN_HEX">GUPNP_TYPE_BIN_HEX</a>
@@ -48,16 +48,16 @@
 #define             <a class="link" href="gupnp-Special-UPnP-types.html#GUPNP-TYPE-UUID:CAPS" title="GUPNP_TYPE_UUID">GUPNP_TYPE_UUID</a>
 </pre>
 </div>
-<div class="refsect1" title="Description">
+<div class="refsect1">
 <a name="gupnp-Special-UPnP-types.description"></a><h2>Description</h2>
 <p>
 These GTypes are used to marshal to and from string data to particular UPnP
 types when invoking actions on a <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a>.
 </p>
 </div>
-<div class="refsect1" title="Details">
+<div class="refsect1">
 <a name="gupnp-Special-UPnP-types.details"></a><h2>Details</h2>
-<div class="refsect2" title="GUPNP_TYPE_BIN_BASE64">
+<div class="refsect2">
 <a name="GUPNP-TYPE-BIN-BASE64:CAPS"></a><h3>GUPNP_TYPE_BIN_BASE64</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_BIN_BASE64</pre>
 <p>
@@ -65,7 +65,7 @@ A string type containing Base-64 encoded binary data.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_BIN_HEX">
+<div class="refsect2">
 <a name="GUPNP-TYPE-BIN-HEX:CAPS"></a><h3>GUPNP_TYPE_BIN_HEX</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_BIN_HEX</pre>
 <p>
@@ -73,7 +73,7 @@ A string type containing binary hexadecimal encoded binary data.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_DATE">
+<div class="refsect2">
 <a name="GUPNP-TYPE-DATE:CAPS"></a><h3>GUPNP_TYPE_DATE</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_DATE</pre>
 <p>
@@ -81,7 +81,7 @@ A string type representing a date in ISO 8601 format with no time or timezone.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_DATE_TIME">
+<div class="refsect2">
 <a name="GUPNP-TYPE-DATE-TIME:CAPS"></a><h3>GUPNP_TYPE_DATE_TIME</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_DATE_TIME</pre>
 <p>
@@ -89,7 +89,7 @@ A string type representing a date in ISO 8601 format with optional time but no t
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_DATE_TIME_TZ">
+<div class="refsect2">
 <a name="GUPNP-TYPE-DATE-TIME-TZ:CAPS"></a><h3>GUPNP_TYPE_DATE_TIME_TZ</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_DATE_TIME_TZ</pre>
 <p>
@@ -97,7 +97,7 @@ A string type representing a date in ISO 8601 format with optional time and time
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_TIME">
+<div class="refsect2">
 <a name="GUPNP-TYPE-TIME:CAPS"></a><h3>GUPNP_TYPE_TIME</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_TIME</pre>
 <p>
@@ -105,7 +105,7 @@ A string type representing a time in ISO 8601 format with no date or timezone.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_TIME_TZ">
+<div class="refsect2">
 <a name="GUPNP-TYPE-TIME-TZ:CAPS"></a><h3>GUPNP_TYPE_TIME_TZ</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_TIME_TZ</pre>
 <p>
@@ -113,7 +113,7 @@ A string type representing a time in ISO 8601 format with optional timezone and 
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_URI">
+<div class="refsect2">
 <a name="GUPNP-TYPE-URI:CAPS"></a><h3>GUPNP_TYPE_URI</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_URI</pre>
 <p>
@@ -121,7 +121,7 @@ A string type representing a Universal Resource Indentifier.
 </p>
 </div>
 <hr>
-<div class="refsect2" title="GUPNP_TYPE_UUID">
+<div class="refsect2">
 <a name="GUPNP-TYPE-UUID:CAPS"></a><h3>GUPNP_TYPE_UUID</h3>
 <pre class="programlisting">#define             GUPNP_TYPE_UUID</pre>
 <p>
@@ -132,6 +132,6 @@ A Universally Unique ID represented as a hexadecimal-encoded string.
 </div>
 <div class="footer">
 <hr>
-          Generated by GTK-Doc V1.15</div>
+          Generated by GTK-Doc V1.17.1</div>
 </body>
 </html>
