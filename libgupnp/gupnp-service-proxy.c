@@ -430,17 +430,14 @@ gupnp_service_proxy_send_action_valist (GUPnPServiceProxy *proxy,
                                         GError           **error,
                                         va_list            var_args)
 {
-        GUPnPContext *context;
-        GMainContext *main_context;
         GMainLoop *main_loop;
         GUPnPServiceProxyAction *handle;
 
         g_return_val_if_fail (GUPNP_IS_SERVICE_PROXY (proxy), FALSE);
         g_return_val_if_fail (action, FALSE);
 
-        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (proxy));
-        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
-        main_loop = g_main_loop_new (main_context, TRUE);
+        main_loop = g_main_loop_new (g_main_context_get_thread_default (),
+                                     TRUE);
 
         handle = gupnp_service_proxy_begin_action_valist (proxy,
                                                           action,
@@ -485,17 +482,14 @@ gupnp_service_proxy_send_action_hash (GUPnPServiceProxy *proxy,
                                       GHashTable        *in_hash,
                                       GHashTable        *out_hash)
 {
-        GUPnPContext *context;
-        GMainContext *main_context;
         GMainLoop *main_loop;
         GUPnPServiceProxyAction *handle;
 
         g_return_val_if_fail (GUPNP_IS_SERVICE_PROXY (proxy), FALSE);
         g_return_val_if_fail (action, FALSE);
 
-        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (proxy));
-        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
-        main_loop = g_main_loop_new (main_context, TRUE);
+        main_loop = g_main_loop_new (g_main_context_get_thread_default (),
+                                     TRUE);
 
         handle = gupnp_service_proxy_begin_action_hash (proxy,
                                                         action,
@@ -554,17 +548,14 @@ gupnp_service_proxy_send_action_list (GUPnPServiceProxy *proxy,
                                       GList             *out_types,
                                       GList            **out_values)
 {
-        GUPnPContext *context;
-        GMainContext *main_context;
         GMainLoop *main_loop;
         GUPnPServiceProxyAction *handle;
 
         g_return_val_if_fail (GUPNP_IS_SERVICE_PROXY (proxy), FALSE);
         g_return_val_if_fail (action, FALSE);
 
-        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (proxy));
-        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
-        main_loop = g_main_loop_new (main_context, TRUE);
+        main_loop = g_main_loop_new (g_main_context_get_thread_default (),
+                                     TRUE);
 
         handle = gupnp_service_proxy_begin_action_list (proxy,
                                                         action,
@@ -610,7 +601,7 @@ gupnp_service_proxy_send_action_list (GUPnPServiceProxy *proxy,
  * gupnp_service_proxy_end_action() to check for errors, to retrieve return
  * values, and to free the #GUPnPServiceProxyAction.
  *
- * Return value: A #GUPnPServiceProxyAction handle. This will be freed when
+ * Returns: (transfer none): A #GUPnPServiceProxyAction handle. This will be freed when
  * gupnp_service_proxy_cancel_action() or
  * gupnp_service_proxy_end_action_valist().
  **/
@@ -834,7 +825,7 @@ write_in_parameter (const char *arg_name,
  * See gupnp_service_proxy_begin_action(); this version takes a va_list for
  * use by language bindings.
  *
- * Return value: A #GUPnPServiceProxyAction handle. This will
+ * Returns: (transfer none): A #GUPnPServiceProxyAction handle. This will
  * be freed when calling gupnp_service_proxy_cancel_action() or
  * gupnp_service_proxy_end_action_valist().
  **/
@@ -1528,7 +1519,7 @@ gupnp_service_proxy_add_notify (GUPnPServiceProxy              *proxy,
  * gupnp_service_proxy_remove_notify:
  * @proxy: A #GUPnPServiceProxy
  * @variable: The variable to add notification for
- * @callback: The callback to call when @variable changes
+ * @callback: (scope call): The callback to call when @variable changes
  * @user_data: User data for @callback
  *
  * Cancels the variable change notification for @callback and @user_data.
@@ -1813,19 +1804,12 @@ server_handler (SoupServer        *soup_server,
         proxy->priv->pending_notifies =
                 g_list_append (proxy->priv->pending_notifies, emit_notify_data);
         if (!proxy->priv->notify_idle_src) {
-                GUPnPContext *context;
-                GMainContext *main_context;
-
-                context = gupnp_service_info_get_context
-                        (GUPNP_SERVICE_INFO (proxy));
-                main_context = gssdp_client_get_main_context
-                        (GSSDP_CLIENT (context));
-
                 proxy->priv->notify_idle_src = g_idle_source_new();
                 g_source_set_callback (proxy->priv->notify_idle_src,
                                        emit_notifications,
                                        proxy, NULL);
-                g_source_attach (proxy->priv->notify_idle_src, main_context);
+                g_source_attach (proxy->priv->notify_idle_src,
+                                 g_main_context_get_thread_default ());
 
                 g_source_unref (proxy->priv->notify_idle_src);
         }
@@ -1962,14 +1946,6 @@ subscribe_got_response (SoupSession       *session,
                 }
 
                 if (strncmp (hdr, "Second-", strlen ("Second-")) == 0) {
-                        GUPnPContext *context;
-                        GMainContext *main_context;
-
-                        context = gupnp_service_info_get_context
-                                (GUPNP_SERVICE_INFO (proxy));
-                        main_context = gssdp_client_get_main_context
-                                (GSSDP_CLIENT (context));
-
                         /* We have a finite timeout */
                         timeout = atoi (hdr + strlen ("Second-"));
 
@@ -1993,7 +1969,7 @@ subscribe_got_response (SoupSession       *session,
                                  subscription_expire,
                                  proxy, NULL);
                         g_source_attach (proxy->priv->subscription_timeout_src,
-                                         main_context);
+                                         g_main_context_get_thread_default ());
 
                         g_source_unref (proxy->priv->subscription_timeout_src);
                 }

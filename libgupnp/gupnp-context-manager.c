@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 Nokia Corporation, all rights reserved.
+ * Copyright (C) 2009 Nokia Corporation.
  * Copyright (C) 2006, 2007, 2008 OpenedHand Ltd.
  *
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
@@ -44,13 +44,11 @@
 
 #include "gupnp-unix-context-manager.h"
 
-G_DEFINE_TYPE (GUPnPContextManager,
-               gupnp_context_manager,
-               G_TYPE_OBJECT);
+G_DEFINE_ABSTRACT_TYPE (GUPnPContextManager,
+                        gupnp_context_manager,
+                        G_TYPE_OBJECT);
 
 struct _GUPnPContextManagerPrivate {
-        GMainContext      *main_context;
-
         guint              port;
 
         GUPnPContextManager *impl;
@@ -62,7 +60,6 @@ enum {
         PROP_0,
         PROP_MAIN_CONTEXT,
         PROP_PORT,
-        PROP_CONTEXT_MANAGER
 };
 
 enum {
@@ -74,28 +71,11 @@ enum {
 static guint signals[SIGNAL_LAST];
 
 static void
-on_context_available (GUPnPContextManager *impl,
-                      GUPnPContext        *context,
-                      gpointer            *user_data)
-{
-        GUPnPContextManager *manager = GUPNP_CONTEXT_MANAGER (user_data);
-
-        /* Just proxy the signal */
-        g_signal_emit (manager,
-                       signals[CONTEXT_AVAILABLE],
-                       0,
-                       context);
-}
-
-static void
-on_context_unavailable (GUPnPContextManager *impl,
+on_context_unavailable (GUPnPContextManager *manager,
                         GUPnPContext        *context,
                         gpointer            *user_data)
 {
-        GUPnPContextManager *manager;
         GList *l;
-
-        manager = GUPNP_CONTEXT_MANAGER (user_data);
 
         /* Make sure we don't send anything on now unavailable network */
         g_object_set (context, "active", FALSE, NULL);
@@ -132,12 +112,6 @@ on_context_unavailable (GUPnPContextManager *impl,
                         l = l->next;
                 }
         }
-
-        /* Just proxy the signal */
-        g_signal_emit (manager,
-                       signals[CONTEXT_UNAVAILABLE],
-                       0,
-                       context);
 }
 
 static void
@@ -166,22 +140,11 @@ gupnp_context_manager_set_property (GObject      *object,
                 priv->port = g_value_get_uint (value);
                 break;
         case PROP_MAIN_CONTEXT:
-                priv->main_context = g_value_get_pointer (value);
-                break;
-        case PROP_CONTEXT_MANAGER:
-                priv->impl = g_value_get_object (value);
-                if (priv->impl != NULL) {
-                        priv->impl = g_object_ref (priv->impl);
-
-                        g_signal_connect (priv->impl,
-                                          "context-available",
-                                          G_CALLBACK (on_context_available),
-                                          manager);
-                        g_signal_connect (priv->impl,
-                                          "context-unavailable",
-                                          G_CALLBACK (on_context_unavailable),
-                                          manager);
-                }
+                if (g_value_get_pointer (value) != NULL)
+                        g_warning ("GUPnPContextManager:main-context is "
+                                   "deprecated. Use "
+                                   "g_main_context_push_thread_default()"
+                                   "instead.");
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -204,10 +167,11 @@ gupnp_context_manager_get_property (GObject    *object,
                 g_value_set_uint (value, manager->priv->port);
                 break;
         case PROP_MAIN_CONTEXT:
-                g_value_set_pointer (value, manager->priv->main_context);
-                break;
-        case PROP_CONTEXT_MANAGER:
-                g_value_set_object (value, manager->priv->impl);
+                g_warning ("GUPnPContextManager:main-context is deprecated. "
+                           "Use g_main_context_push_thread_default()"
+                           "instead.");
+                g_value_set_pointer (value,
+                                     g_main_context_get_thread_default ());
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -222,15 +186,6 @@ gupnp_context_manager_dispose (GObject *object)
         GObjectClass *object_class;
 
         manager = GUPNP_CONTEXT_MANAGER (object);
-
-        if (manager->priv->impl != NULL) {
-                g_signal_handlers_disconnect_by_func (manager->priv->impl,
-                    on_context_available, manager);
-                g_signal_handlers_disconnect_by_func (manager->priv->impl,
-                    on_context_unavailable, manager);
-                g_object_unref (manager->priv->impl);
-                manager->priv->impl = NULL;
-        }
 
         g_list_foreach (manager->priv->objects, (GFunc) g_object_unref, NULL);
         g_list_free (manager->priv->objects);
@@ -259,6 +214,9 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
          *
          * The #GMainContext to pass to created #GUPnPContext objects. Set to
          * NULL to use the default.
+         *
+         * Deprecated: 0.17.2: Use g_main_context_push_thread_default()
+         *             instead.
          **/
         g_object_class_install_property
                 (object_class,
@@ -292,27 +250,6 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
                                     G_PARAM_STATIC_BLURB));
 
         /**
-         * GUPnPContextManager:context-manager:
-         *
-         * The actual GUPnPContextManager implementation used. This is an
-         * internal property and therefore Application developer should just
-         * ignore it.
-         *
-         **/
-        g_object_class_install_property
-                (object_class,
-                 PROP_CONTEXT_MANAGER,
-                 g_param_spec_object ("context-manager",
-                                      "ContextManager",
-                                      "ContextManager implemention",
-                                      GUPNP_TYPE_CONTEXT_MANAGER,
-                                      G_PARAM_WRITABLE |
-                                      G_PARAM_CONSTRUCT_ONLY |
-                                      G_PARAM_STATIC_NAME |
-                                      G_PARAM_STATIC_NICK |
-                                      G_PARAM_STATIC_BLURB));
-
-        /**
          * GUPnPContextManager::context-available:
          * @context_manager: The #GUPnPContextManager that received the signal
          * @context: The now available #GUPnPContext
@@ -340,57 +277,80 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
          *
          **/
         signals[CONTEXT_UNAVAILABLE] =
-                g_signal_new ("context-unavailable",
-                              GUPNP_TYPE_CONTEXT_MANAGER,
-                              G_SIGNAL_RUN_LAST,
-                              0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__OBJECT,
-                              G_TYPE_NONE,
-                              1,
-                              GUPNP_TYPE_CONTEXT);
+                g_signal_new_class_handler
+                                        ("context-unavailable",
+                                         GUPNP_TYPE_CONTEXT_MANAGER,
+                                         G_SIGNAL_RUN_FIRST,
+                                         G_CALLBACK (on_context_unavailable),
+                                         NULL, NULL,
+                                         g_cclosure_marshal_VOID__OBJECT,
+                                         G_TYPE_NONE,
+                                         1,
+                                         GUPNP_TYPE_CONTEXT);
 }
 
 /**
  * gupnp_context_manager_new:
- * @main_context: (allow-none): GMainContext to pass to created GUPnPContext objects.
+ * @main_context: (allow-none): Deprecated: 0.17.2: %NULL. If you want to use
+ *                a different main context use
+ *                g_main_context_push_thread_default() instead.
  * @port: Port to create contexts for, or 0 if you don't care what port is used.
  *
- * Create a new #GUPnPContextManager.
+ * Factory-method to create a new #GUPnPContextManager. The final type of the
+ * #GUPnPContextManager depends on the compile-time selection or - in case of
+ * NetworkManager - on its availability during runtime. If it is not available,
+ * the implementation falls back to the basic Unix context manager instead.
  *
- * Return value: A new #GUPnPContextManager object.
+ * Returns: (transfer full): A new #GUPnPContextManager object.
+ * Deprecated: 0.17.2: Use gupnp_context_manager_create().
  **/
+
 GUPnPContextManager *
 gupnp_context_manager_new (GMainContext *main_context,
                            guint         port)
 {
-        GUPnPContextManager *manager;
+    if (main_context)
+            g_warning ("gupnp_context_manager_new::main_context is"
+                       " deprecated. Use "
+                       " g_main_context_push_thread_default() instead");
+
+    return gupnp_context_manager_create (port);
+}
+/**
+ * gupnp_context_manager_create:
+ * @port: Port to create contexts for, or 0 if you don't care what port is used.
+ *
+ * Factory-method to create a new #GUPnPContextManager. The final type of the
+ * #GUPnPContextManager depends on the compile-time selection or - in case of
+ * NetworkManager - on its availability during runtime. If it is not available,
+ * the implementation falls back to the basic Unix context manager instead.
+ *
+ * Returns: (transfer full): A new #GUPnPContextManager object.
+ **/
+GUPnPContextManager *
+gupnp_context_manager_create (guint port)
+{
         GUPnPContextManager *impl;
         GType impl_type = G_TYPE_INVALID;
 
 #ifdef USE_NETWORK_MANAGER
 #include "gupnp-network-manager.h"
 
-        if (gupnp_network_manager_is_available (main_context))
+        if (gupnp_network_manager_is_available ())
                 impl_type = GUPNP_TYPE_NETWORK_MANAGER;
+#elif USE_NETLINK
+#include "gupnp-linux-context-manager.h"
+        impl_type = GUPNP_TYPE_LINUX_CONTEXT_MANAGER;
 #endif
 
         if (impl_type == G_TYPE_INVALID)
                 impl_type = GUPNP_TYPE_UNIX_CONTEXT_MANAGER;
 
         impl = g_object_new (impl_type,
-                             "main-context", main_context,
                              "port", port,
                              NULL);
 
-        manager = g_object_new (GUPNP_TYPE_CONTEXT_MANAGER,
-                                "main-context", main_context,
-                                "port", port,
-                                "context-manager", impl,
-                                NULL);
-        g_object_unref (impl);
-
-        return manager;
+        return impl;
 }
 
 /**

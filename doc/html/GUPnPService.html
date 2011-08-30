@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPService</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-device-impl.html" title="Device Implementation">
 <link rel="prev" href="GUPnPRootDevice.html" title="GUPnPRootDevice">
@@ -43,56 +43,58 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="GUPnPService.synopsis"></a><h2>Synopsis</h2>
-<a name="GUPnPServiceAction"></a><pre class="synopsis">                    <a class="link" href="GUPnPService.html#GUPnPService-struct" title="GUPnPService">GUPnPService</a>;
+<a name="GUPnPServiceAction"></a><pre class="synopsis">struct              <a class="link" href="GUPnPService.html#GUPnPService-struct" title="struct GUPnPService">GUPnPService</a>;
                     <a class="link" href="GUPnPService.html#GUPnPServiceAction-struct" title="GUPnPServiceAction">GUPnPServiceAction</a>;
 const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPService.html#gupnp-service-action-get-name" title="gupnp_service_action_get_name ()">gupnp_service_action_get_name</a>       (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
-<span class="returnvalue">GList</span> *             <a class="link" href="GUPnPService.html#gupnp-service-action-get-locales" title="gupnp_service_action_get_locales ()">gupnp_service_action_get_locales</a>    (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="GUPnPService.html#gupnp-service-action-get-locales" title="gupnp_service_action_get_locales ()">gupnp_service_action_get_locales</a>    (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-get" title="gupnp_service_action_get ()">gupnp_service_action_get</a>            (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-get-valist" title="gupnp_service_action_get_valist ()">gupnp_service_action_get_valist</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-get-value" title="gupnp_service_action_get_value ()">gupnp_service_action_get_value</a>      (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code><span class="type">GValue</span> *value</code></em>);
-<span class="returnvalue">GValue</span> *            <a class="link" href="GUPnPService.html#gupnp-service-action-get-gvalue" title="gupnp_service_action_get_gvalue ()">gupnp_service_action_get_gvalue</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="returnvalue">GValue</span></a> *            <a class="link" href="GUPnPService.html#gupnp-service-action-get-gvalue" title="gupnp_service_action_get_gvalue ()">gupnp_service_action_get_gvalue</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code><span class="type">GType</span> type</code></em>);
-<span class="returnvalue">GList</span> *             <a class="link" href="GUPnPService.html#gupnp-service-action-get-values" title="gupnp_service_action_get_values ()">gupnp_service_action_get_values</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_names</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_types</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="GUPnPService.html#gupnp-service-action-get-values" title="gupnp_service_action_get_values ()">gupnp_service_action_get_values</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_types</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-set" title="gupnp_service_action_set ()">gupnp_service_action_set</a>            (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-set-valist" title="gupnp_service_action_set_valist ()">gupnp_service_action_set_valist</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-set-value" title="gupnp_service_action_set_value ()">gupnp_service_action_set_value</a>      (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GValue</span> *value</code></em>);
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-set-values" title="gupnp_service_action_set_values ()">gupnp_service_action_set_values</a>     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_names</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_values</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_values</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-return" title="gupnp_service_action_return ()">gupnp_service_action_return</a>         (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-action-return-error" title="gupnp_service_action_return_error ()">gupnp_service_action_return_error</a>   (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">guint</span> error_code</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> error_code</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *error_description</code></em>);
 <span class="returnvalue">SoupMessage</span> *       <a class="link" href="GUPnPService.html#gupnp-service-action-get-message" title="gupnp_service_action_get_message ()">gupnp_service_action_get_message</a>    (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               <a class="link" href="GUPnPService.html#gupnp-service-action-get-argument-count" title="gupnp_service_action_get_argument_count ()">gupnp_service_action_get_argument_count</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-notify" title="gupnp_service_notify ()">gupnp_service_notify</a>                (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
                                                          <em class="parameter"><code>...</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-notify-valist" title="gupnp_service_notify_valist ()">gupnp_service_notify_valist</a>         (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-notify-value" title="gupnp_service_notify_value ()">gupnp_service_notify_value</a>          (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GValue</span> *value</code></em>);
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-freeze-notify" title="gupnp_service_freeze_notify ()">gupnp_service_freeze_notify</a>         (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-thaw-notify" title="gupnp_service_thaw_notify ()">gupnp_service_thaw_notify</a>           (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPService.html#gupnp-service-signals-autoconnect" title="gupnp_service_signals_autoconnect ()">gupnp_service_signals_autoconnect</a>   (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 </pre>
 </div>
 <div class="refsect1">
 <a name="GUPnPService.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  GObject
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----<a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo">GUPnPServiceInfo</a>
          +----GUPnPService
 </pre>
@@ -110,9 +112,9 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
 <div class="refsect1">
 <a name="GUPnPService.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPService.html#GUPnPService-action-invoked" title='The "action-invoked" signal'>action-invoked</a>"                                 : <code class="literal">Has Details</code>
-  "<a class="link" href="GUPnPService.html#GUPnPService-notify-failed" title='The "notify-failed" signal'>notify-failed</a>"                                  : <code class="literal">Run Last</code>
-  "<a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'>query-variable</a>"                                 : <code class="literal">Has Details</code>
+  "<a class="link" href="GUPnPService.html#GUPnPService-action-invoked" title='The "action-invoked" signal'>action-invoked</a>"                                 : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-DETAILED:CAPS"><code class="literal">Has Details</code></a>
+  "<a class="link" href="GUPnPService.html#GUPnPService-notify-failed" title='The "notify-failed" signal'>notify-failed</a>"                                  : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'>query-variable</a>"                                 : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-DETAILED:CAPS"><code class="literal">Has Details</code></a>
 </pre>
 </div>
 <div class="refsect1">
@@ -125,8 +127,8 @@ notification. <a class="link" href="GUPnPService.html" title="GUPnPService"><spa
 <div class="refsect1">
 <a name="GUPnPService.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="GUPnPService-struct"></a><h3>GUPnPService</h3>
-<pre class="programlisting">typedef struct _GUPnPService GUPnPService;</pre>
+<a name="GUPnPService-struct"></a><h3>struct GUPnPService</h3>
+<pre class="programlisting">struct GUPnPService;</pre>
 <p>
 This struct contains private data only, and should be accessed using the
 functions below.
@@ -166,9 +168,9 @@ Get the name of <em class="parameter"><code>action</code></em>.
 <hr>
 <div class="refsect2">
 <a name="gupnp-service-action-get-locales"></a><h3>gupnp_service_action_get_locales ()</h3>
-<pre class="programlisting"><span class="returnvalue">GList</span> *             gupnp_service_action_get_locales    (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             gupnp_service_action_get_locales    (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);</pre>
 <p>
-Get an ordered (preferred first) <span class="type">GList</span> of locales preferred by
+Get an ordered (preferred first) <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of locales preferred by
 the client. Free list and elements after use.
 </p>
 <div class="variablelist"><table border="0">
@@ -181,7 +183,7 @@ the client. Free list and elements after use.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A <span class="type">GList</span> of <span class="type">char</span>*
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <span class="type">char</span>*
 locale names. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
@@ -198,11 +200,18 @@ Retrieves the specified action arguments.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of argument name, argument type, and argument value
+location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -235,7 +244,7 @@ value location.</td>
 <a name="gupnp-service-action-get-value"></a><h3>gupnp_service_action_get_value ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_action_get_value      (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code><span class="type">GValue</span> *value</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
 <p>
 Retrieves the value of <em class="parameter"><code>argument</code></em> into <em class="parameter"><code>value</code></em>.
 </p>
@@ -253,7 +262,7 @@ Retrieves the value of <em class="parameter"><code>argument</code></em> into <em
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>The <span class="type">GValue</span> to store the value of the argument, initialized
+<td>The <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> to store the value of the argument, initialized
 to the correct type.</td>
 </tr>
 </tbody>
@@ -262,9 +271,9 @@ to the correct type.</td>
 <hr>
 <div class="refsect2">
 <a name="gupnp-service-action-get-gvalue"></a><h3>gupnp_service_action_get_gvalue ()</h3>
-<pre class="programlisting"><span class="returnvalue">GValue</span> *            gupnp_service_action_get_gvalue     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
+<pre class="programlisting"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="returnvalue">GValue</span></a> *            gupnp_service_action_get_gvalue     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code><span class="type">GType</span> type</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a> type</code></em>);</pre>
 <p>
 Rename To: gupnp_service_action_get_value
 Retrieves the value of <em class="parameter"><code>argument</code></em> into a GValue of type <em class="parameter"><code>type</code></em> and returns it.
@@ -289,8 +298,8 @@ The method exists only and only to satify PyGI, please use
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>Value as <span class="type">GValue</span> associated with <em class="parameter"><code>action</code></em>.
-<span class="type">g_value_unset</span> and <span class="type">g_slice_free</span> it after usage. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+<td>Value as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> associated with <em class="parameter"><code>action</code></em>.
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a> it after usage. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -299,11 +308,11 @@ The method exists only and only to satify PyGI, please use
 <hr>
 <div class="refsect2">
 <a name="gupnp-service-action-get-values"></a><h3>gupnp_service_action_get_values ()</h3>
-<pre class="programlisting"><span class="returnvalue">GList</span> *             gupnp_service_action_get_values     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_names</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_types</code></em>);</pre>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             gupnp_service_action_get_values     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_types</code></em>);</pre>
 <p>
-A variant of <a class="link" href="GUPnPService.html#gupnp-service-action-get" title="gupnp_service_action_get ()"><span class="type">gupnp_service_action_get</span></a> that uses <span class="type">GList</span> instead of varargs.
+A variant of <a class="link" href="GUPnPService.html#gupnp-service-action-get" title="gupnp_service_action_get ()"><span class="type">gupnp_service_action_get</span></a> that uses <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> instead of varargs.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -315,17 +324,17 @@ A variant of <a class="link" href="GUPnPService.html#gupnp-service-action-get" t
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_names</code></em> :</span></p></td>
-<td>(element-type utf8) : A <span class="type">GList</span> of argument names as string</td>
+<td>(element-type utf8) : A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of argument names as string</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_types</code></em> :</span></p></td>
-<td>A <span class="type">GList</span> of argument types as <span class="type">GType</span>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType]</span>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of argument types as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Type-Information.html#GType"><span class="type">GType</span></a>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GType]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>The values as <span class="type">GList</span> of
-<span class="type">GValue</span>. <span class="type">g_list_free</span> the returned list and <span class="type">g_value_unset</span> and <span class="type">g_slice_free</span>
+<td>The values as <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>. <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><span class="type">g_list_free</span></a> the returned list and <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a>
 each element. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
@@ -342,11 +351,18 @@ Sets the specified action return values.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of return value name, return value type, and
+actual return value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -379,7 +395,7 @@ actual return value.</td>
 <a name="gupnp-service-action-set-value"></a><h3>gupnp_service_action_set_value ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_action_set_value      (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *argument</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GValue</span> *value</code></em>);</pre>
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
 <p>
 Sets the value of <em class="parameter"><code>argument</code></em> to <em class="parameter"><code>value</code></em>.
 </p>
@@ -397,7 +413,7 @@ Sets the value of <em class="parameter"><code>argument</code></em> to <em class=
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>The <span class="type">GValue</span> to store the return value</td>
+<td>The <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> to store the return value</td>
 </tr>
 </tbody>
 </table></div>
@@ -406,8 +422,8 @@ Sets the value of <em class="parameter"><code>argument</code></em> to <em class=
 <div class="refsect2">
 <a name="gupnp-service-action-set-values"></a><h3>gupnp_service_action_set_values ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_action_set_values     (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_names</code></em>,
-                                                         <em class="parameter"><code><span class="type">GList</span> *arg_values</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_names</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *arg_values</code></em>);</pre>
 <p>
 Sets the specified action return values.
 </p>
@@ -421,13 +437,13 @@ Sets the specified action return values.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_names</code></em> :</span></p></td>
-<td>A <span class="type">GList</span> of argument names. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][transfer-none]</span>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of argument names. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>arg_values</code></em> :</span></p></td>
-<td>The <span class="type">GList</span> of values (as
-<span class="type">GValues</span>) that line up with <em class="parameter"><code>arg_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][transfer-none]</span>
+<td>The <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values (as
+<a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValues</span></a>) that line up with <em class="parameter"><code>arg_names</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -453,7 +469,7 @@ Return succesfully.
 <div class="refsect2">
 <a name="gupnp-service-action-return-error"></a><h3>gupnp_service_action_return_error ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_action_return_error   (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>,
-                                                         <em class="parameter"><code><span class="type">guint</span> error_code</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> error_code</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *error_description</code></em>);</pre>
 <p>
 Return <em class="parameter"><code>error_code</code></em>.
@@ -472,7 +488,7 @@ Return <em class="parameter"><code>error_code</code></em>.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error_description</code></em> :</span></p></td>
-<td>The error description, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>error_code</code></em> is
+<td>The error description, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>error_code</code></em> is
 one of <a class="link" href="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ACTION:CAPS"><span class="type">GUPNP_CONTROL_ERROR_INVALID_ACTION</span></a>,
 <a class="link" href="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-INVALID-ARGS:CAPS"><span class="type">GUPNP_CONTROL_ERROR_INVALID_ARGS</span></a>, <a class="link" href="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-OUT-OF-SYNC:CAPS"><span class="type">GUPNP_CONTROL_ERROR_OUT_OF_SYNC</span></a> or
 <a class="link" href="gupnp-Error-codes.html#GUPNP-CONTROL-ERROR-ACTION-FAILED:CAPS"><span class="type">GUPNP_CONTROL_ERROR_ACTION_FAILED</span></a>, in which case a description is
@@ -509,6 +525,29 @@ after using it. <span class="annotation">[<acronym title="Free data after the co
 </div>
 <hr>
 <div class="refsect2">
+<a name="gupnp-service-action-get-argument-count"></a><h3>gupnp_service_action_get_argument_count ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>               gupnp_service_action_get_argument_count
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action</code></em>);</pre>
+<p>
+Get the number of IN arguments from the <em class="parameter"><code>action</code></em> and return it.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The number of IN arguments from the <em class="parameter"><code>action</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
 <a name="gupnp-service-notify"></a><h3>gupnp_service_notify ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_notify                (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
                                                          <em class="parameter"><code>...</code></em>);</pre>
@@ -518,11 +557,18 @@ have changed to the specified values.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Tuples of variable name, variable type, and variable value,
+terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -545,7 +591,7 @@ use by language bindings.
 <tr>
 <td><p><span class="term"><em class="parameter"><code>var_args</code></em> :</span></p></td>
 <td>A va_list of tuples of variable name, variable type, and variable
-value, terminated with <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.</td>
+value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -555,7 +601,7 @@ value, terminated with <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/l
 <a name="gupnp-service-notify-value"></a><h3>gupnp_service_notify_value ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_notify_value          (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *variable</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GValue</span> *value</code></em>);</pre>
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> *value</code></em>);</pre>
 <p>
 Notifies listening clients that <em class="parameter"><code>variable</code></em> has changed to <em class="parameter"><code>value</code></em>.
 </p>
@@ -615,8 +661,8 @@ Sends out any pending notifications, and stops queuing of new ones.
 <div class="refsect2">
 <a name="gupnp-service-signals-autoconnect"></a><h3>gupnp_service_signals_autoconnect ()</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_signals_autoconnect   (<em class="parameter"><code><a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 A convenience function that attempts to connect all possible
 <a class="link" href="GUPnPService.html#GUPnPService-action-invoked" title='The "action-invoked" signal'><span class="type">"action-invoked"</span></a> and <a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'><span class="type">"query-variable"</span></a> signals to
@@ -659,7 +705,7 @@ particular naming schemes described above.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>return location for a <span class="type">GError</span>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 </tbody>
@@ -682,7 +728,7 @@ The containing <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevic
 <a name="GUPnPService-action-invoked"></a><h3>The <code class="literal">"action-invoked"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a>       *service,
                                                         <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a> *action,
-                                                        <span class="type">gpointer</span>            user_data)      : <code class="literal">Has Details</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>            user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-DETAILED:CAPS"><code class="literal">Has Details</code></a></pre>
 <p>
 Emitted whenever an action is invoked. Handler should process
 <em class="parameter"><code>action</code></em> and must call either <a class="link" href="GUPnPService.html#gupnp-service-action-return" title="gupnp_service_action_return ()"><code class="function">gupnp_service_action_return()</code></a> or
@@ -711,9 +757,9 @@ Emitted whenever an action is invoked. Handler should process
 <div class="refsect2">
 <a name="GUPnPService-notify-failed"></a><h3>The <code class="literal">"notify-failed"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service,
-                                                        <span class="type">gpointer</span>      callback_url,
-                                                        <span class="type">gpointer</span>      reason,
-                                                        <span class="type">gpointer</span>      user_data)         : <code class="literal">Run Last</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      callback_url,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      reason,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)         : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 Emitted whenever notification of a client fails.
 </p>
@@ -730,7 +776,7 @@ Emitted whenever notification of a client fails.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>reason</code></em> :</span></p></td>
-<td>A pointer to a <span class="type">GError</span> describing why the notify failed</td>
+<td>A pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> describing why the notify failed</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -743,9 +789,9 @@ Emitted whenever notification of a client fails.
 <div class="refsect2">
 <a name="GUPnPService-query-variable"></a><h3>The <code class="literal">"query-variable"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> *service,
-                                                        <span class="type">gchar</span>        *variable,
-                                                        <span class="type">gpointer</span>      value,
-                                                        <span class="type">gpointer</span>      user_data)      : <code class="literal">Has Details</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>        *variable,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      value,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>      user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-DETAILED:CAPS"><code class="literal">Has Details</code></a></pre>
 <p>
 Emitted whenever <em class="parameter"><code>service</code></em> needs to know the value of <em class="parameter"><code>variable</code></em>.
 Handler should fill <em class="parameter"><code>value</code></em> with the value of <em class="parameter"><code>variable</code></em>.
@@ -763,7 +809,7 @@ Handler should fill <em class="parameter"><code>value</code></em> with the value
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>The location of the <span class="type">GValue</span> of the variable</td>
+<td>The location of the <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> of the variable</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>

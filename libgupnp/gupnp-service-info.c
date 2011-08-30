@@ -195,7 +195,6 @@ gupnp_service_info_dispose (GObject *object)
                                                      data->message,
                                                      SOUP_STATUS_CANCELLED);
 
-                        g_object_unref (data->message);
                         get_scpd_url_data_free (data);
 
                         info->priv->pending_gets =
@@ -384,7 +383,7 @@ gupnp_service_info_class_init (GUPnPServiceInfoClass *klass)
  *
  * Get the #GUPnPContext associated with @info.
  *
- * Returns: A #GUPnPContext.
+ * Returns: (transfer none): A #GUPnPContext.
  **/
 GUPnPContext *
 gupnp_service_info_get_context (GUPnPServiceInfo *info)
