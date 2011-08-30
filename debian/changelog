@@ -1,3 +1,17 @@
+gupnp (0.18.0-1) experimental; urgency=low
+
+  * Imported Upstream version 0.18.0
+  * Update debian/watch for ftp.gnome.org
+  * Switch to debian source format 3.0 (quilt)
+    - needed for xz orig tarball
+  * Bump gssdp build dependency to >= 0.11.2 according to configure.ac
+  * Rename library package to match new soname.
+    - also update symbols
+  * Bump standards version to 3.9.2
+  * Fix lintian warning about bracket expansion in debhelper install file
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 30 Aug 2011 16:38:41 +0200
+
 gupnp (0.16.1-1) unstable; urgency=low
 
   * Imported Upstream version 0.16.1
