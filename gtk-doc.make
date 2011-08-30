@@ -35,7 +35,7 @@ EXTRA_DIST = 				\
 
 DOC_STAMPS=setup-build.stamp scan-build.stamp tmpl-build.stamp sgml-build.stamp \
 	html-build.stamp pdf-build.stamp \
-	tmpl.stamp sgml.stamp html.stamp pdf.stamp
+	setup.stamp tmpl.stamp sgml.stamp html.stamp pdf.stamp
 
 SCANOBJ_FILES = 		 \
 	$(DOC_MODULE).args 	 \
@@ -76,7 +76,7 @@ $(REPORT_FILES): sgml-build.stamp
 
 setup-build.stamp:
 	-@if test "$(abs_srcdir)" != "$(abs_builddir)" ; then \
-	   echo '  DOC   Preparing build'; \
+	   echo 'gtk-doc: Preparing build'; \
 	   files=`echo $(SETUP_FILES) $(expand_content_files) $(DOC_MODULE).types`; \
 	   if test "x$$files" != "x" ; then \
 	       for file in $$files ; do \
@@ -90,29 +90,24 @@ setup-build.stamp:
 	@touch setup-build.stamp
 
 
+setup.stamp: setup-build.stamp
+	@true
+
+
 #### scan ####
 
 scan-build.stamp: $(HFILE_GLOB) $(CFILE_GLOB)
-	@echo '  DOC   Scanning header files'
+	@echo 'gtk-doc: Scanning header files'
 	@_source_dir='' ; \
 	for i in $(DOC_SOURCE_DIR) ; do \
 	    _source_dir="$${_source_dir} --source-dir=$$i" ; \
 	done ; \
 	gtkdoc-scan --module=$(DOC_MODULE) --ignore-headers="$(IGNORE_HFILES)" $${_source_dir} $(SCAN_OPTIONS) $(EXTRA_HFILES)
 	@if grep -l '^..*$$' $(DOC_MODULE).types > /dev/null 2>&1 ; then \
-	    echo "  DOC   Introspecting gobjects"; \
-	    scanobj_options=""; \
-	    gtkdoc-scangobj 2>&1 --help | grep  >/dev/null "\-\-verbose"; \
-	    if test "$(?)" = "0"; then \
-	        if test "x$(V)" = "x1"; then \
-	            scanobj_options="--verbose"; \
-	        fi; \
-	    fi; \
-	    CC="$(GTKDOC_CC)" LD="$(GTKDOC_LD)" RUN="$(GTKDOC_RUN)" CFLAGS="$(GTKDOC_CFLAGS) $(CFLAGS)" LDFLAGS="$(GTKDOC_LIBS) $(LDFLAGS)" \
-	    gtkdoc-scangobj $(SCANGOBJ_OPTIONS) $$scanobj_options --module=$(DOC_MODULE); \
+	    CC="$(GTKDOC_CC)" LD="$(GTKDOC_LD)" RUN="$(GTKDOC_RUN)" CFLAGS="$(GTKDOC_CFLAGS) $(CFLAGS)" LDFLAGS="$(GTKDOC_LIBS) $(LDFLAGS)" gtkdoc-scangobj $(SCANGOBJ_OPTIONS) --module=$(DOC_MODULE) ; \
 	else \
 	    for i in $(SCANOBJ_FILES) ; do \
-	        test -f $$i || touch $$i ; \
+               test -f $$i || touch $$i ; \
 	    done \
 	fi
 	@touch scan-build.stamp
@@ -122,8 +117,8 @@ $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)
 
 #### templates ####
 
-tmpl-build.stamp: setup-build.stamp $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)-overrides.txt
-	@echo '  DOC   Rebuilding template files'
+tmpl-build.stamp: setup.stamp $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)-overrides.txt
+	@echo 'gtk-doc: Rebuilding template files'
 	@gtkdoc-mktmpl --module=$(DOC_MODULE) $(MKTMPL_OPTIONS)
 	@if test "$(abs_srcdir)" != "$(abs_builddir)" ; then \
 	  if test -w $(abs_srcdir) ; then \
@@ -141,7 +136,7 @@ $(srcdir)/tmpl/*.sgml:
 #### xml ####
 
 sgml-build.stamp: tmpl.stamp $(DOC_MODULE)-sections.txt $(srcdir)/tmpl/*.sgml $(expand_content_files)
-	@echo '  DOC   Building XML'
+	@echo 'gtk-doc: Building XML'
 	@-chmod -R u+w $(srcdir)
 	@_source_dir='' ; \
 	for i in $(DOC_SOURCE_DIR) ; do \
@@ -156,19 +151,13 @@ sgml.stamp: sgml-build.stamp
 #### html ####
 
 html-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
-	@echo '  DOC   Building HTML'
+	@echo 'gtk-doc: Building HTML'
 	@rm -rf html
 	@mkdir html
 	@mkhtml_options=""; \
-	gtkdoc-mkhtml 2>&1 --help | grep  >/dev/null "\-\-verbose"; \
-	if test "$(?)" = "0"; then \
-	  if test "x$(AM_DEFAULT_VERBOSITY)" = "x1"; then \
-	    mkhtml_options="$$mkhtml_options --verbose"; \
-	  fi; \
-	fi; \
 	gtkdoc-mkhtml 2>&1 --help | grep  >/dev/null "\-\-path"; \
 	if test "$(?)" = "0"; then \
-	  mkhtml_options="$$mkhtml_options --path=\"$(abs_srcdir)\""; \
+	  mkhtml_options=--path="$(abs_srcdir)"; \
 	fi; \
 	cd html && gtkdoc-mkhtml $$mkhtml_options $(MKHTML_OPTIONS) $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
 	-@test "x$(HTML_IMAGES)" = "x" || \
@@ -180,55 +169,49 @@ html-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
 	    cp $(abs_builddir)/$$file $(abs_builddir)/html; \
 	  fi; \
 	done;
-	@echo '  DOC   Fixing cross-references'
+	@echo 'gtk-doc: Fixing cross-references'
 	@gtkdoc-fixxref --module=$(DOC_MODULE) --module-dir=html --html-dir=$(HTML_DIR) $(FIXXREF_OPTIONS)
 	@touch html-build.stamp
 
 #### pdf ####
 
 pdf-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
-	@echo '  DOC   Building PDF'
-	@rm -f $(DOC_MODULE).pdf
-	@mkpdf_options=""; \
-	gtkdoc-mkpdf 2>&1 --help | grep  >/dev/null "\-\-verbose"; \
-	if test "$(?)" = "0"; then \
-	  if test "x$(V)" = "x1"; then \
-	    mkpdf_options="$$mkpdf_options --verbose"; \
-	  fi; \
-	fi; \
+	@echo 'gtk-doc: Building PDF'
+	@rm -rf $(DOC_MODULE).pdf
+	@mkpdf_imgdirs=""; \
 	if test "x$(HTML_IMAGES)" != "x"; then \
 	  for img in $(HTML_IMAGES); do \
 	    part=`dirname $$img`; \
-	    echo $$mkpdf_options | grep >/dev/null "\-\-imgdir=$$part "; \
+	    echo $$mkpdf_imgdirs | grep >/dev/null "\-\-imgdir=$$part "; \
 	    if test $$? != 0; then \
-	      mkpdf_options="$$mkpdf_options --imgdir=$$part"; \
+	      mkpdf_imgdirs="$$mkpdf_imgdirs --imgdir=$$part"; \
 	    fi; \
 	  done; \
 	fi; \
-	gtkdoc-mkpdf --path="$(abs_srcdir)" $$mkpdf_options $(DOC_MODULE) $(DOC_MAIN_SGML_FILE) $(MKPDF_OPTIONS)
+	gtkdoc-mkpdf --path="$(abs_srcdir)" $$mkpdf_imgdirs $(DOC_MODULE) $(DOC_MAIN_SGML_FILE) $(MKPDF_OPTIONS)
 	@touch pdf-build.stamp
 
 ##############
 
 clean-local:
-	@rm -f *~ *.bak
-	@rm -rf .libs
+	rm -f *~ *.bak
+	rm -rf .libs
 
 distclean-local:
-	@rm -rf xml html $(REPORT_FILES) $(DOC_MODULE).pdf \
+	rm -rf xml html $(REPORT_FILES) $(DOC_MODULE).pdf \
 	    $(DOC_MODULE)-decl-list.txt $(DOC_MODULE)-decl.txt
-	@if test "$(abs_srcdir)" != "$(abs_builddir)" ; then \
+	if test "$(abs_srcdir)" != "$(abs_builddir)" ; then \
 	    rm -f $(SETUP_FILES) $(expand_content_files) $(DOC_MODULE).types; \
 	    rm -rf tmpl; \
 	fi
 
 maintainer-clean-local: clean
-	@rm -rf xml html
+	rm -rf xml html
 
 install-data-local:
 	@installfiles=`echo $(srcdir)/html/*`; \
 	if test "$$installfiles" = '$(srcdir)/html/*'; \
-	then echo 1>&2 'Nothing to install' ; \
+	then echo '-- Nothing to install' ; \
 	else \
 	  if test -n "$(DOC_MODULE_VERSION)"; then \
 	    installdir="$(DESTDIR)$(TARGET_DIR)-$(DOC_MODULE_VERSION)"; \
@@ -237,7 +220,7 @@ install-data-local:
 	  fi; \
 	  $(mkinstalldirs) $${installdir} ; \
 	  for i in $$installfiles; do \
-	    echo ' $(INSTALL_DATA) '$$i ; \
+	    echo '-- Installing '$$i ; \
 	    $(INSTALL_DATA) $$i $${installdir}; \
 	  done; \
 	  if test -n "$(DOC_MODULE_VERSION)"; then \
@@ -269,14 +252,14 @@ dist-check-gtkdoc:
 endif
 
 dist-hook: dist-check-gtkdoc dist-hook-local
-	@mkdir $(distdir)/tmpl
-	@mkdir $(distdir)/html
-	@-cp ./tmpl/*.sgml $(distdir)/tmpl
-	@cp ./html/* $(distdir)/html
-	@-cp ./$(DOC_MODULE).pdf $(distdir)/
-	@-cp ./$(DOC_MODULE).types $(distdir)/
-	@-cp ./$(DOC_MODULE)-sections.txt $(distdir)/
-	@cd $(distdir) && rm -f $(DISTCLEANFILES)
-	@$(GTKDOC_REBASE) --online --relative --html-dir=$(distdir)/html
+	mkdir $(distdir)/tmpl
+	mkdir $(distdir)/html
+	-cp $(build)/tmpl/*.sgml $(distdir)/tmpl
+	cp $(builddir)/html/* $(distdir)/html
+	-cp $(builddir)/$(DOC_MODULE).pdf $(distdir)/
+	-cp $(build)/$(DOC_MODULE).types $(distdir)/
+	-cp $(build)/$(DOC_MODULE)-sections.txt $(distdir)/
+	cd $(distdir) && rm -f $(DISTCLEANFILES)
+	$(GTKDOC_REBASE) --online --relative --html-dir=$(distdir)/html
 
 .PHONY : dist-hook-local docs

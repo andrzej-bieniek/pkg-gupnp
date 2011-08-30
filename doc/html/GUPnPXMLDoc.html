@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPXMLDoc</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-utility.html" title="Utility Functions">
 <link rel="prev" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory">
@@ -39,16 +39,16 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="GUPnPXMLDoc.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="GUPnPXMLDoc.html#GUPnPXMLDoc-struct" title="GUPnPXMLDoc">GUPnPXMLDoc</a>;
+<pre class="synopsis">struct              <a class="link" href="GUPnPXMLDoc.html#GUPnPXMLDoc-struct" title="struct GUPnPXMLDoc">GUPnPXMLDoc</a>;
 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="returnvalue">GUPnPXMLDoc</span></a> *       <a class="link" href="GUPnPXMLDoc.html#gupnp-xml-doc-new" title="gupnp_xml_doc_new ()">gupnp_xml_doc_new</a>                   (<em class="parameter"><code><span class="type">xmlDoc</span> *xml_doc</code></em>);
 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="returnvalue">GUPnPXMLDoc</span></a> *       <a class="link" href="GUPnPXMLDoc.html#gupnp-xml-doc-new-from-path" title="gupnp_xml_doc_new_from_path ()">gupnp_xml_doc_new_from_path</a>         (<em class="parameter"><code>const <span class="type">char</span> *path</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 </pre>
 </div>
 <div class="refsect1">
 <a name="GUPnPXMLDoc.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  GObject
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----GUPnPXMLDoc
 </pre>
 </div>
@@ -62,10 +62,10 @@ references.
 <div class="refsect1">
 <a name="GUPnPXMLDoc.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="GUPnPXMLDoc-struct"></a><h3>GUPnPXMLDoc</h3>
-<pre class="programlisting">typedef struct {
+<a name="GUPnPXMLDoc-struct"></a><h3>struct GUPnPXMLDoc</h3>
+<pre class="programlisting">struct GUPnPXMLDoc {
         xmlDoc *doc;
-} GUPnPXMLDoc;
+};
 </pre>
 <p>
 </p>
@@ -86,7 +86,7 @@ Create a new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span c
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> on an error</td>
+<td>A new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on an error</td>
 </tr>
 </tbody>
 </table></div>
@@ -95,7 +95,7 @@ Create a new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span c
 <div class="refsect2">
 <a name="gupnp-xml-doc-new-from-path"></a><h3>gupnp_xml_doc_new_from_path ()</h3>
 <pre class="programlisting"><a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="returnvalue">GUPnPXMLDoc</span></a> *       gupnp_xml_doc_new_from_path         (<em class="parameter"><code>const <span class="type">char</span> *path</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 Create a new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a> for the XML document at <em class="parameter"><code>path</code></em>.
 </p>
@@ -112,7 +112,7 @@ Create a new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span c
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> on an error</td>
+<td>A new <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on an error</td>
 </tr>
 </tbody>
 </table></div>

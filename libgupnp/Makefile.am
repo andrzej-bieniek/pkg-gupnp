@@ -1,4 +1,4 @@
-LTVERSION = 3:0:0
+LTVERSION = 4:0:0
 
 if USE_NETWORK_MANAGER
 CONTEXT_MANAGER_IMPL = gupnp-network-manager.c  \
@@ -9,15 +9,18 @@ CONTEXT_MANAGER_IMPL =
 CONTEXT_MANAGER_CFLAGS =
 endif
 
-if USE_CONIC
-CONIC_CFLAGS = $(LIBCONIC_CFLAGS) -DUSE_CONIC
+if USE_NETLINK
+NETLINK_CFLAGS = -DUSE_NETLINK
+CONTEXT_MANAGER_IMPL += \
+			  gupnp-linux-context-manager.c		\
+			  gupnp-linux-context-manager.h
 else
-CONIC_CFLAGS =
+NETLINK_CFLAGS =
 endif
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(DBUS_GLIB_CFLAGS) \
-	    $(CONIC_CFLAGS) \
+	    $(NETLINK_CFLAGS) \
 	    -I$(top_srcdir) \
 	    $(CONTEXT_MANAGER_CFLAGS)
 
@@ -30,17 +33,35 @@ libgupnpinc_HEADERS = gupnp-context.h			\
 		      gupnp-control-point.h		\
 		      gupnp-device.h			\
 		      gupnp-device-info.h		\
-	              gupnp-device-proxy.h		\
+		      gupnp-device-proxy.h		\
 		      gupnp-error.h			\
 		      gupnp-resource-factory.h		\
 		      gupnp-root-device.h		\
 		      gupnp-service.h			\
 		      gupnp-service-info.h		\
 		      gupnp-service-proxy.h		\
-	              gupnp-service-introspection.h	\
+		      gupnp-service-introspection.h	\
 		      gupnp-xml-doc.h	                \
-	              gupnp-types.h			\
+		      gupnp-types.h			\
 		      gupnp.h
+
+introspection_sources = $(libgupnpinc_HEADERS) \
+			gupnp-context.c			\
+			gupnp-context-manager.c		\
+			gupnp-control-point.c		\
+			gupnp-device.c			\
+			gupnp-device-info.c		\
+			gupnp-device-proxy.c		\
+			gupnp-error.c			\
+			gupnp-resource-factory.c	\
+			gupnp-root-device.c		\
+			gupnp-service.c			\
+			gupnp-service-info.c		\
+			gupnp-service-proxy.c		\
+			gupnp-service-introspection.c	\
+			gupnp-xml-doc.c			\
+			gupnp-types.c
+
 
 gupnp-marshal.c: gupnp-marshal.list
 	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=gupnp_marshal $(srcdir)/gupnp-marshal.list --header --body > gupnp-marshal.c
@@ -52,32 +73,18 @@ BUILT_SOURCES = gupnp-marshal.c gupnp-marshal.h
 
 libgupnp_1_0_la_LDFLAGS = -version-info $(LTVERSION)
 
-libgupnp_1_0_la_SOURCES = http-headers.c			\
+libgupnp_1_0_la_SOURCES = $(introspection_sources)		\
+			  http-headers.c			\
 			  http-headers.h			\
-			  gupnp-context.c			\
 			  gupnp-context-private.h		\
-		     	  gupnp-context-manager.c		\
-		     	  $(CONTEXT_MANAGER_IMPL) 		\
+			  $(CONTEXT_MANAGER_IMPL) 		\
 			  gupnp-unix-context-manager.c  	\
 			  gupnp-unix-context-manager.h		\
-			  gupnp-control-point.c			\
-			  gupnp-device.c			\
-			  gupnp-device-info.c			\
 			  gupnp-device-info-private.h		\
-			  gupnp-device-proxy.c			\
-			  gupnp-error.c				\
 			  gupnp-error-private.h			\
-			  gupnp-resource-factory.c		\
-		      	  gupnp-resource-factory-private.h	\
-			  gupnp-root-device.c			\
-		          gupnp-service.c			\
-			  gupnp-service-info.c			\
-			  gupnp-service-proxy.c			\
-	                  gupnp-service-introspection.c		\
-	                  gupnp-service-introspection-private.h	\
-		      	  gupnp-xml-doc.c	                \
-	                  gupnp-types.c				\
-	                  gupnp-types-private.h			\
+			  gupnp-resource-factory-private.h	\
+			  gupnp-service-introspection-private.h	\
+			  gupnp-types-private.h			\
 			  gvalue-util.c				\
 			  gvalue-util.h				\
 			  xml-util.c				\
@@ -90,58 +97,35 @@ libgupnp_1_0_la_LIBADD = $(LIBGUPNP_LIBS) $(DBUS_GLIB_LIBS) $(LIBCONIC_LIBS)
 EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-network-manager.c   	   \
 	     gupnp-network-manager.h       \
+	     gupnp-linux-context-manager.c \
+	     gupnp-linux-context-manager.h \
 	     gupnp-unix-context-manager.c  \
 	     gupnp-unix-context-manager.h
 
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ARGS = --warn-all			\
+			     --symbol-prefix=gupnp	\
+			     --identifier-prefix=GUPnP	\
+			     --add-include-path=$(top_srcdir)
+INTROSPECTION_COMPILER_ARGS = --includedir=$(top_srcdir)
 
 if HAVE_INTROSPECTION
+GUPnP-1.0.gir: libgupnp-1.0.la
+GUPnP_1_0_gir_INCLUDES = libxml2-2.0 GObject-2.0 Soup-2.4 GSSDP-1.0
+GUPnP_1_0_gir_CFLAGS = -DGOBJECT_INTROSPECTION_SKIP $(INCLUDES) $(AM_CFLAGS)
+GUPnP_1_0_gir_LIBS = libgupnp-1.0.la
+GUPnP_1_0_gir_FILES = $(introspection_sources)
+GUPnP_1_0_gir_NAMESPACE = GUPnP
+GUPnP_1_0_gir_VERSION = 1.0
 
-GUPnP-1.0.gir: libgupnp-1.0.la $(INTROSPECTION_SCANNER)
-	$(AM_V_GEN) \
-	$(INTROSPECTION_SCANNER) -v \
-		--namespace=GUPnP --nsversion=1.0 \
-		--include=libxml2-2.0 \
-		--include=GObject-2.0 \
-		--include=Soup-2.4 \
-		--include=GSSDP-1.0 \
-		--library=$< \
-		--libtool="$(top_builddir)/libtool" \
-		--pkg libxml-2.0 \
-		--pkg gobject-2.0 \
-		--pkg gssdp-1.0 \
-		--pkg libsoup-2.4 \
-		--output $@ \
-		-I$(top_srcdir) \
-		$(addprefix $(top_srcdir)/libgupnp/, $(libgupnpinc_HEADERS)) \
-		$(top_srcdir)/libgupnp/gupnp-context.c \
-		$(top_srcdir)/libgupnp/gupnp-context-manager.c	\
-		$(top_srcdir)/libgupnp/gupnp-control-point.c \
-		$(top_srcdir)/libgupnp/gupnp-device.c \
-		$(top_srcdir)/libgupnp/gupnp-device-info.c \
-		$(top_srcdir)/libgupnp/gupnp-device-proxy.c \
-		$(top_srcdir)/libgupnp/gupnp-error.c \
-		$(top_srcdir)/libgupnp/gupnp-resource-factory.c \
-		$(top_srcdir)/libgupnp/gupnp-root-device.c \
-		$(top_srcdir)/libgupnp/gupnp-service.c	\
-		$(top_srcdir)/libgupnp/gupnp-service-info.c \
-		$(top_srcdir)/libgupnp/gupnp-service-proxy.c \
-		$(top_srcdir)/libgupnp/gupnp-service-introspection.c \
-		$(top_srcdir)/libgupnp/gupnp-xml-doc.c	\
-		$(top_srcdir)/libgupnp/gupnp-types.c
+INTROSPECTION_GIRS += GUPnP-1.0.gir
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = GUPnP-1.0.gir
 
 typelibdir = $(libdir)/girepository-1.0/
 typelib_DATA = $(gir_DATA:.gir=.typelib)
-
-%.typelib: %.gir $(INTROSPECTION_COMPILER)
-	$(AM_V_GEN) \
-	$(INTROSPECTION_COMPILER) \
-		--includedir=$(srcdir) \
-		--includedir=. \
-		$(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
-
 endif
 
 CLEANFILES = $(BUILT_SOURCES) $(gir_DATA) $(typelib_DATA)

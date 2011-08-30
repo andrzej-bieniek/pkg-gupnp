@@ -1,23 +1,34 @@
-AC_PREREQ(2.53)
-AC_INIT(gupnp, 0.16.1, http://www.gupnp.org/)
-AM_INIT_AUTOMAKE()
-AC_CONFIG_SRCDIR(libgupnp/gupnp.h)
-AM_CONFIG_HEADER(config.h)
-AM_MAINTAINER_MODE
-AC_CANONICAL_HOST
+AC_PREREQ([2.64])
+AC_INIT([gupnp],
+        [0.18.0],
+        [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
+        [gupnp],
+        [http://www.gupnp.org/])
 
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
-
-AC_ISC_POSIX
-AC_PROG_CC
-AC_STDC_HEADERS
-AC_PROG_LIBTOOL
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([libgupnp/gupnp.h])
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
+
+AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz])
+AM_MAINTAINER_MODE([enable])
+
+AM_SILENT_RULES([yes])
+
+# Check for programs
+AC_PROG_CC
 AC_FUNC_MMAP
 AC_SYS_LARGEFILE
 
+# Initialize libtool
+LT_PREREQ([2.2])
+LT_INIT
+
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+
 AC_MSG_CHECKING([operating system])
-case "$host_os" in
+case "$target_os" in
      mingw*|cygwin*)
         AC_MSG_RESULT(Win32)
         UUID=uuid
@@ -27,7 +38,7 @@ case "$host_os" in
         UUID=
         ;;
      *)
-        AC_MSG_RESULT($host_os)
+        AC_MSG_RESULT($target_os)
         UUID=uuid
         ;;
 esac
@@ -35,7 +46,7 @@ esac
 PKG_CHECK_MODULES(LIBGUPNP, glib-2.0 >= 2.24.0 \
                             gio-2.0 \
                             gmodule-2.0 \
-                            gssdp-1.0 >= 0.9.2 \
+                            gssdp-1.0 >= 0.11.2 \
                             libsoup-2.4 >= 2.28.2 \
                             libxml-2.0 \
                             $UUID)
@@ -44,7 +55,7 @@ PKG_CHECK_MODULES(GTHREAD, gthread-2.0)
 
 AC_ARG_WITH([context_manager],
             AS_HELP_STRING(
-                        [--with-context-manager=@<:@network-manager/unix@:>@],
+                        [--with-context-manager=@<:@network-manager/unix/linux@:>@],
                         [Context Manager backend to use]),,
             [with_context_manager="unix"])
 
@@ -54,29 +65,31 @@ AC_MSG_RESULT([${with_context_manager}])
 AM_CONDITIONAL([USE_NETWORK_MANAGER],
                [test "x$with_context_manager" = "xnetwork-manager"])
 
-USE_CONIC=no
-if test "x$with_context_manager" = "xunix"; then
-        dnl Use libconic if it's available
-        PKG_CHECK_MODULES(LIBCONIC, conic >= 0.13,
-                          [ USE_CONIC=yes
-                            AC_SUBST(LIBCONIC_CFLAGS)
-                            AC_SUBST(LIBCONIC_LIBS)
-                          ],
-                          [ USE_CONIC=no
-                            AC_MSG_WARN([conic 0.13 or greater not found.])
-                          ])
+USE_NETLINK=no
+if test "x$with_context_manager" = "xlinux"; then
+       dnl check for netlink (Linux)
+       AC_CHECK_HEADERS([sys/socket.h linux/rtnetlink.h],
+                        [ USE_NETLINK=yes ],
+                        [ USE_NETLINK=no ],
+                        [ #ifdef HAVE_SYS_SOCKET_H
+                          #include <sys/socket.h>
+                          #endif
+                        ])
+       if test "x$USE_NETLINK" = "xno"
+       then
+               AC_MSG_NOTICE([No rtnetlink found, falling back to unix context
+                              manager])
+       else
+               AC_CHECK_HEADERS([linux/wireless.h], [], [],
+                                [ #ifdef HAVE_SYS_SOCKET_H
+                                  #include <sys/socket.h>
+                                  #endif
+                                ])
+       fi
 fi
 
-AM_CONDITIONAL(USE_CONIC, test x$USE_CONIC = xyes)
-AC_SUBST(USE_CONIC)
-
-# We need dbus-glib if either NetworkManager or libconic is used
-if test "x$with_context_manager" = "xnetwork-manager" -o \
-        "x$with_context_manager" = "xunix" -a \
-        "x$USE_CONIC" = "xyes"; then
-        # We need gio >= 2.26 to use GDBus
-        PKG_CHECK_MODULES(GIO, gio-2.0 >= 2.26)
-fi
+AM_CONDITIONAL(USE_NETLINK, test "x$USE_NETLINK" = "xyes")
+AC_SUBST(USE_NETLINK)
 
 # glib-genmarshal
 GLIB_GENMARSHAL=`pkg-config --variable=glib_genmarshal glib-2.0`
@@ -95,7 +108,7 @@ GOBJECT_INTROSPECTION_CHECK([0.6.4])
 # Gtk-doc
 GTK_DOC_CHECK([1.0])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 libgupnp/Makefile
 examples/Makefile
@@ -106,3 +119,4 @@ doc/version.xml
 gupnp-1.0.pc
 gupnp-1.0-uninstalled.pc
 ])
+AC_OUTPUT

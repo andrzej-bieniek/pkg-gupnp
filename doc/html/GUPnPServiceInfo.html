@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GUPnPServiceInfo</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="index.html" title="GUPnP Reference Manual">
 <link rel="up" href="api-device-info.html" title="Device Information">
 <link rel="prev" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo">
@@ -41,12 +41,12 @@
 </tr></table></div>
 <div class="refsynopsisdiv">
 <a name="GUPnPServiceInfo.synopsis"></a><h2>Synopsis</h2>
-<pre class="synopsis">                    <a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo-struct" title="GUPnPServiceInfo">GUPnPServiceInfo</a>;
+<pre class="synopsis">struct              <a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo-struct" title="struct GUPnPServiceInfo">GUPnPServiceInfo</a>;
 <span class="returnvalue">void</span>                (<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()">*GUPnPServiceIntrospectionCallback</a>)
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
 <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-context" title="gupnp_service_info_get_context ()">gupnp_service_info_get_context</a>      (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);
 const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-location" title="gupnp_service_info_get_location ()">gupnp_service_info_get_location</a>     (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);
 const <span class="returnvalue">SoupURI</span> *     <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-url-base" title="gupnp_service_info_get_url_base ()">gupnp_service_info_get_url_base</a>     (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);
@@ -59,17 +59,17 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);
 <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="returnvalue">GUPnPServiceIntrospection</span></a> * <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-introspection" title="gupnp_service_info_get_introspection ()">gupnp_service_info_get_introspection</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPServiceInfo.html#gupnp-service-info-get-introspection-async" title="gupnp_service_info_get_introspection_async ()">gupnp_service_info_get_introspection_async</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()"><span class="type">GUPnPServiceIntrospectionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);
 </pre>
 </div>
 <div class="refsect1">
 <a name="GUPnPServiceInfo.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  GObject
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----GUPnPServiceInfo
          +----<a class="link" href="GUPnPService.html" title="GUPnPService">GUPnPService</a>
          +----<a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy">GUPnPServiceProxy</a>
@@ -80,11 +80,11 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
 <pre class="synopsis">
   "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--context" title='The "context" property'>context</a>"                  <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>*         : Read / Write / Construct Only
   "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--document" title='The "document" property'>document</a>"                 <a class="link" href="GUPnPXMLDoc.html" title="GUPnPXMLDoc"><span class="type">GUPnPXMLDoc</span></a>*          : Write / Construct Only
-  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--element" title='The "element" property'>element</a>"                  <span class="type">gpointer</span>              : Write / Construct Only
-  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--location" title='The "location" property'>location</a>"                 <span class="type">gchar</span>*                : Read / Write / Construct Only
-  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--service-type" title='The "service-type" property'>service-type</a>"             <span class="type">gchar</span>*                : Read / Write / Construct Only
-  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--udn" title='The "udn" property'>udn</a>"                      <span class="type">gchar</span>*                : Read / Write / Construct Only
-  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--url-base" title='The "url-base" property'>url-base</a>"                 <span class="type">gpointer</span>              : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--element" title='The "element" property'>element</a>"                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--location" title='The "location" property'>location</a>"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--service-type" title='The "service-type" property'>service-type</a>"             <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--udn" title='The "udn" property'>udn</a>"                      <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPServiceInfo.html#GUPnPServiceInfo--url-base" title='The "url-base" property'>url-base</a>"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write / Construct Only
 </pre>
 </div>
 <div class="refsect1">
@@ -97,8 +97,8 @@ service information.
 <div class="refsect1">
 <a name="GUPnPServiceInfo.details"></a><h2>Details</h2>
 <div class="refsect2">
-<a name="GUPnPServiceInfo-struct"></a><h3>GUPnPServiceInfo</h3>
-<pre class="programlisting">typedef struct _GUPnPServiceInfo GUPnPServiceInfo;</pre>
+<a name="GUPnPServiceInfo-struct"></a><h3>struct GUPnPServiceInfo</h3>
+<pre class="programlisting">struct GUPnPServiceInfo;</pre>
 <p>
 This struct contains private data only, and should be accessed using the
 functions below.
@@ -110,8 +110,8 @@ functions below.
 <pre class="programlisting"><span class="returnvalue">void</span>                (*GUPnPServiceIntrospectionCallback)
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> *introspection</code></em>,
-                                                         <em class="parameter"><code>const <span class="type">GError</span> *error</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Callback notifying that <em class="parameter"><code>introspection</code></em> for <em class="parameter"><code>info</code></em> has been obtained.
 </p>
@@ -128,7 +128,7 @@ Callback notifying that <em class="parameter"><code>introspection</code></em> fo
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>The <span class="type">GError</span> that occurred, or NULL</td>
+<td>The <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> that occurred, or NULL</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -154,7 +154,8 @@ Get the <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span clas
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>.</td>
+<td>A <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -230,7 +231,7 @@ Get the Unique Device Name of the containing device.
 <a name="gupnp-service-info-get-service-type"></a><h3>gupnp_service_info_get_service_type ()</h3>
 <pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_service_info_get_service_type (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get the UPnP service type, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
+Get the UPnP service type, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -252,7 +253,7 @@ Get the UPnP service type, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/l
 <a name="gupnp-service-info-get-id"></a><h3>gupnp_service_info_get_id ()</h3>
 <pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_service_info_get_id           (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get the ID of this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if there is no ID.
+Get the ID of this service, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if there is no ID.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -264,7 +265,7 @@ Get the ID of this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A string. This string should be freed with <code class="function">g_free()</code> after use.</td>
+<td>A string. This string should be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.</td>
 </tr>
 </tbody>
 </table></div>
@@ -274,7 +275,7 @@ Get the ID of this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/
 <a name="gupnp-service-info-get-scpd-url"></a><h3>gupnp_service_info_get_scpd_url ()</h3>
 <pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_service_info_get_scpd_url     (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get the SCPD URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a> if there is no SCPD.
+Get the SCPD URL for this service, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if there is no SCPD.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -286,7 +287,7 @@ Get the SCPD URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk-do
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A string. This string should be freed with <code class="function">g_free()</code> after use.</td>
+<td>A string. This string should be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.</td>
 </tr>
 </tbody>
 </table></div>
@@ -296,7 +297,7 @@ Get the SCPD URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk-do
 <a name="gupnp-service-info-get-control-url"></a><h3>gupnp_service_info_get_control_url ()</h3>
 <pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_service_info_get_control_url  (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get the control URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>..
+Get the control URL for this service, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>..
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -308,7 +309,7 @@ Get the control URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A string. This string should be freed with <code class="function">g_free()</code> after use.</td>
+<td>A string. This string should be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.</td>
 </tr>
 </tbody>
 </table></div>
@@ -319,7 +320,7 @@ Get the control URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk
 <pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_service_info_get_event_subscription_url
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get the event subscription URL for this service, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>.
+Get the event subscription URL for this service, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -331,7 +332,7 @@ Get the event subscription URL for this service, or <a href="/home/zeenix/jhbuil
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>A string. This string should be freed with <code class="function">g_free()</code> after use.</td>
+<td>A string. This string should be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.</td>
 </tr>
 </tbody>
 </table></div>
@@ -341,7 +342,7 @@ Get the event subscription URL for this service, or <a href="/home/zeenix/jhbuil
 <a name="gupnp-service-info-get-introspection"></a><h3>gupnp_service_info_get_introspection ()</h3>
 <pre class="programlisting"><a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="returnvalue">GUPnPServiceIntrospection</span></a> * gupnp_service_info_get_introspection
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 Note that introspection object is created from the information in service
 description document (SCPD) provided by the service so it can not be created
@@ -361,13 +362,13 @@ instead, this function re-enter the GMainloop before returning.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
-<td>return location for a <span class="type">GError</span>, or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
 </td>
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A new <a class="link" href="gupnp-gupnp-service-introspection.html#GUPnPServiceIntrospection"><span class="type">GUPnPServiceIntrospection</span></a> for this
-service or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL--CAPS"><code class="literal">NULL</code></a>. Unref after use. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+service or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. Unref after use. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
 </td>
 </tr>
 </tbody>
@@ -379,7 +380,7 @@ service or <a href="/home/zeenix/jhbuild/share/gtk-doc/html/liboil/liboil-liboil
 <pre class="programlisting"><span class="returnvalue">void</span>                gupnp_service_info_get_introspection_async
                                                         (<em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html" title="GUPnPServiceInfo"><span class="type">GUPnPServiceInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPServiceInfo.html#GUPnPServiceIntrospectionCallback" title="GUPnPServiceIntrospectionCallback ()"><span class="type">GUPnPServiceIntrospectionCallback</span></a> callback</code></em>,
-                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
 <p>
 Note that introspection object is created from the information in service
 description document (SCPD) provided by the service so it can not be created
@@ -426,7 +427,7 @@ Private property.
 <hr>
 <div class="refsect2">
 <a name="GUPnPServiceInfo--element"></a><h3>The <code class="literal">"element"</code> property</h3>
-<pre class="programlisting">  "element"                  <span class="type">gpointer</span>              : Write / Construct Only</pre>
+<pre class="programlisting">  "element"                  <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Write / Construct Only</pre>
 <p>
 Private property.
 </p>
@@ -435,7 +436,7 @@ Private property.
 <hr>
 <div class="refsect2">
 <a name="GUPnPServiceInfo--location"></a><h3>The <code class="literal">"location"</code> property</h3>
-<pre class="programlisting">  "location"                 <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "location"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
 The location of the device description file.
 </p>
@@ -444,7 +445,7 @@ The location of the device description file.
 <hr>
 <div class="refsect2">
 <a name="GUPnPServiceInfo--service-type"></a><h3>The <code class="literal">"service-type"</code> property</h3>
-<pre class="programlisting">  "service-type"             <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "service-type"             <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
 The service type.
 </p>
@@ -453,7 +454,7 @@ The service type.
 <hr>
 <div class="refsect2">
 <a name="GUPnPServiceInfo--udn"></a><h3>The <code class="literal">"udn"</code> property</h3>
-<pre class="programlisting">  "udn"                      <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "udn"                      <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
 <p>
 The UDN of the containing device.
 </p>
@@ -462,7 +463,7 @@ The UDN of the containing device.
 <hr>
 <div class="refsect2">
 <a name="GUPnPServiceInfo--url-base"></a><h3>The <code class="literal">"url-base"</code> property</h3>
-<pre class="programlisting">  "url-base"                 <span class="type">gpointer</span>              : Read / Write / Construct Only</pre>
+<pre class="programlisting">  "url-base"                 <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>              : Read / Write / Construct Only</pre>
 <p>
 The URL base (<span class="type">SoupURI</span>).
 </p>

@@ -65,6 +65,8 @@ gupnp_service_action_get_type (void) G_GNUC_CONST;
 #define GUPNP_TYPE_SERVICE_ACTION (gupnp_service_action_get_type ())
 
 typedef struct _GUPnPServicePrivate GUPnPServicePrivate;
+typedef struct _GUPnPService GUPnPService;
+typedef struct _GUPnPServiceClass GUPnPServiceClass;
 
 /**
  * GUPnPService:
@@ -72,13 +74,13 @@ typedef struct _GUPnPServicePrivate GUPnPServicePrivate;
  * This struct contains private data only, and should be accessed using the
  * functions below.
  */
-typedef struct {
+struct _GUPnPService {
         GUPnPServiceInfo parent;
 
         GUPnPServicePrivate *priv;
-} GUPnPService;
+};
 
-typedef struct {
+struct _GUPnPServiceClass {
         GUPnPServiceInfoClass parent_class;
 
         void (* action_invoked) (GUPnPService       *service,
@@ -97,11 +99,8 @@ typedef struct {
         void (* _gupnp_reserved2) (void);
         void (* _gupnp_reserved3) (void);
         void (* _gupnp_reserved4) (void);
-} GUPnPServiceClass;
+};
 
-
-GType
-gupnp_service_action_get_type (void);
 
 const char *
 gupnp_service_action_get_name     (GUPnPServiceAction *action);
@@ -160,6 +159,10 @@ gupnp_service_action_return_error (GUPnPServiceAction *action,
 
 SoupMessage *
 gupnp_service_action_get_message  (GUPnPServiceAction *action);
+
+guint
+gupnp_service_action_get_argument_count
+                                  (GUPnPServiceAction *action);
 
 void
 gupnp_service_notify              (GUPnPService *service,

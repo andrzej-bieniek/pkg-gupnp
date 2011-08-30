@@ -107,9 +107,6 @@ static SoupSession *
 gupnp_service_get_session (GUPnPService *service)
 {
         if (! service->priv->session) {
-                GUPnPContext *context =
-                  gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
-
                 /* Create a dedicated session for this service to
                  * ensure that notifications are sent in the proper
                  * order. The session from GUPnPContext may use
@@ -118,7 +115,7 @@ gupnp_service_get_session (GUPnPService *service)
                 service->priv->session = soup_session_async_new_with_options
                   (SOUP_SESSION_IDLE_TIMEOUT, 60,
                    SOUP_SESSION_ASYNC_CONTEXT,
-                   gssdp_client_get_main_context (GSSDP_CLIENT (context)),
+                   g_main_context_get_thread_default (),
                    SOUP_SESSION_MAX_CONNS_PER_HOST, 1,
                    NULL);
 
@@ -199,6 +196,8 @@ struct _GUPnPServiceAction {
         xmlNode      *node;
 
         GString      *response_str;
+
+        guint         argument_count;
 };
 
 GUPnPServiceAction *
@@ -289,6 +288,8 @@ finalize_action (GUPnPServiceAction *action)
                                           action->response_str->len);
                 g_string_free (action->response_str, FALSE);
         }
+
+        soup_message_headers_append (action->msg->response_headers, "Ext", "");
 
         /* Server header on response */
         soup_message_headers_append
@@ -513,6 +514,20 @@ gupnp_service_action_get_gvalue (GUPnPServiceAction *action,
 }
 
 /**
+ * gupnp_service_action_get_argument_count:
+ * @action: A #GUPnPServiceAction
+ *
+ * Get the number of IN arguments from the @action and return it.
+ *
+ * Return value: The number of IN arguments from the @action.
+ */
+guint
+gupnp_service_action_get_argument_count (GUPnPServiceAction *action)
+{
+    return action->argument_count;
+}
+
+/**
  * gupnp_service_action_set:
  * @action: A #GUPnPServiceAction
  * @Varargs: tuples of return value name, return value type, and
@@ -582,8 +597,8 @@ gupnp_service_action_set_valist (GUPnPServiceAction *action,
 /**
  * gupnp_service_action_set_values:
  * @action: A #GUPnPServiceAction
- * @arg_names: (element-type utf8) (transfer-none): A #GList of argument names
- * @arg_values: (element-type GValue) (transfer-none): The #GList of values (as
+ * @arg_names: (element-type utf8) (transfer none): A #GList of argument names
+ * @arg_values: (element-type GValue) (transfer none): The #GList of values (as
  * #GValues) that line up with @arg_names.
  *
  * Sets the specified action return values.
@@ -880,7 +895,7 @@ control_server_handler (SoupServer        *server,
         GUPnPService *service;
         GUPnPContext *context;
         xmlDoc *doc;
-        xmlNode *action_node;
+        xmlNode *action_node, *node;
         const char *soap_action;
         const char *accept_encoding;
         char *action_name;
@@ -950,14 +965,19 @@ control_server_handler (SoupServer        *server,
         /* Create action structure */
         action = g_slice_new0 (GUPnPServiceAction);
 
-        action->ref_count    = 1;
-        action->name         = g_strdup (action_name);
-        action->msg          = g_object_ref (msg);
-        action->doc          = gupnp_xml_doc_new(doc);
-        action->node         = action_node;
-        action->response_str = new_action_response_str (action_name,
+        action->ref_count      = 1;
+        action->name           = g_strdup (action_name);
+        action->msg            = g_object_ref (msg);
+        action->doc            = gupnp_xml_doc_new(doc);
+        action->node           = action_node;
+        action->response_str   = new_action_response_str (action_name,
                                                         soap_action);
-        action->context      = g_object_ref (context);
+        action->context        = g_object_ref (context);
+        action->argument_count = 0;
+
+        for (node = action->node->children; node; node = node->next)
+                if (node->type == XML_ELEMENT_NODE)
+                        action->argument_count++;
 
         /* Get accepted encodings */
         accept_encoding = soup_message_headers_get_list (msg->request_headers,
@@ -1122,7 +1142,6 @@ subscribe (GUPnPService *service,
         SubscriptionData *data;
         char *start, *end, *uri;
         GUPnPContext *context;
-        GMainContext *main_context;
 
         data = g_slice_new0 (SubscriptionData);
 
@@ -1165,8 +1184,8 @@ subscribe (GUPnPService *service,
                                NULL);
 
         context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
-        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
-        g_source_attach (data->timeout_src, main_context);
+        g_source_attach (data->timeout_src,
+                         g_main_context_get_thread_default ());
 
         g_source_unref (data->timeout_src);
 
@@ -1189,7 +1208,6 @@ resubscribe (GUPnPService *service,
 {
         SubscriptionData *data;
         GUPnPContext *context;
-        GMainContext *main_context;
 
         data = g_hash_table_lookup (service->priv->subscriptions, sid);
         if (!data) {
@@ -1211,8 +1229,8 @@ resubscribe (GUPnPService *service,
                                NULL);
 
         context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
-        main_context = gssdp_client_get_main_context (GSSDP_CLIENT (context));
-        g_source_attach (data->timeout_src, main_context);
+        g_source_attach (data->timeout_src,
+                         g_main_context_get_thread_default ());
 
         g_source_unref (data->timeout_src);
 
@@ -1279,7 +1297,7 @@ subscription_server_handler (SoupServer        *server,
 
                 } else {
                         soup_message_set_status
-                                (msg, SOUP_STATUS_BAD_REQUEST);
+                                (msg, SOUP_STATUS_PRECONDITION_FAILED);
 
                 }
 
@@ -1312,12 +1330,10 @@ got_introspection (GUPnPServiceInfo          *info,
                    const GError              *error,
                    gpointer                   user_data)
 {
-        GUPnPService *service;
+        GUPnPService *service = GUPNP_SERVICE (info);
         const GList *state_variables, *l;
         GHashTableIter iter;
         gpointer data;
-
-        service = GUPNP_SERVICE (user_data);
 
         if (introspection) {
                 state_variables =
@@ -1347,8 +1363,6 @@ got_introspection (GUPnPServiceInfo          *info,
 
         while (g_hash_table_iter_next (&iter, NULL, &data))
                 send_initial_state ((SubscriptionData *) data);
-
-        g_object_unref (service);
 }
 
 static char *
@@ -1389,8 +1403,7 @@ gupnp_service_constructor (GType                  type,
         /* Get introspection and save state variable names */
         gupnp_service_info_get_introspection_async (info,
                                                     got_introspection,
-                                                    object);
-        g_object_ref (object);
+                                                    NULL);
 
         /* Get server */
         context = gupnp_service_info_get_context (info);
