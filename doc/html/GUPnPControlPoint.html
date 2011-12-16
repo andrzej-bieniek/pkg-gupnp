@@ -62,7 +62,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-L
 <a name="GUPnPControlPoint.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
   <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
-   +----<a href="http://developer.gnome.org/gssdp/unstable/GSSDPResourceBrowser.html">GSSDPResourceBrowser</a>
+   +----<a href="http://developer.gnome.org/gssdp/stable/GSSDPResourceBrowser.html">GSSDPResourceBrowser</a>
          +----GUPnPControlPoint
 </pre>
 </div>
@@ -85,7 +85,7 @@ const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-L
 <a name="GUPnPControlPoint.description"></a><h2>Description</h2>
 <p>
 <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> handles device and service discovery. After creating
-a control point and activating it using <a href="http://developer.gnome.org/gssdp/unstable/GSSDPResourceBrowser.html#gssdp-resource-browser-set-active"><code class="function">gssdp_resource_browser_set_active()</code></a>,
+a control point and activating it using <a href="http://developer.gnome.org/gssdp/stable/GSSDPResourceBrowser.html#gssdp-resource-browser-set-active"><code class="function">gssdp_resource_browser_set_active()</code></a>,
 the ::device-proxy-available, ::service-proxy-available,
 ::device-proxy-unavailable and ::service-proxy-unavailable signals will
 be emitted whenever the availability of a device or service matching
@@ -266,7 +266,7 @@ list nor its elements.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>
-of <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> objects. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym>][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+of <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> objects. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceProxy][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>

@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.18.0],
+        [0.18.1],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -9,6 +9,9 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([libgupnp/gupnp.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
+
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz])
 AM_MAINTAINER_MODE([enable])
@@ -24,8 +27,6 @@ AC_SYS_LARGEFILE
 LT_PREREQ([2.2])
 LT_INIT
 
-AC_CANONICAL_HOST
-AC_CANONICAL_TARGET
 
 AC_MSG_CHECKING([operating system])
 case "$target_os" in

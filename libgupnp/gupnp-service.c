@@ -98,7 +98,14 @@ typedef struct {
 
         GList        *pending_messages; /* Pending SoupMessages from this
                                            subscription */
+        gboolean      initial_state_sent;
+        gboolean      to_delete;
 } SubscriptionData;
+
+static gboolean
+subscription_data_can_delete (SubscriptionData *data) {
+    return data->initial_state_sent && data->to_delete;
+}
 
 static void
 send_initial_state (SubscriptionData *data);
@@ -252,6 +259,10 @@ static void
 finalize_action (GUPnPServiceAction *action)
 {
         SoupServer *server;
+        GHashTable *params;
+
+        params = g_hash_table_new (g_str_hash, g_str_equal);
+        g_hash_table_insert (params, "charset", "utf-8");
 
         /* Embed action->response_str in a SOAP document */
         g_string_prepend (action->response_str,
@@ -272,9 +283,9 @@ finalize_action (GUPnPServiceAction *action)
                          "</s:Body>"
                          "</s:Envelope>");
 
-        soup_message_headers_replace (action->msg->response_headers,
-                                      "Content-Type",
-                                      "text/xml; charset=\"utf-8\"");
+        soup_message_headers_set_content_type (action->msg->response_headers,
+                                               "text/xml",
+                                               params);
 
         if (action->accept_gzip && action->response_str->len > 1024) {
                 http_response_set_body_gzip (action->msg,
@@ -304,6 +315,8 @@ finalize_action (GUPnPServiceAction *action)
 
         /* Cleanup */
         gupnp_service_action_unref (action);
+
+        g_hash_table_destroy (params);
 }
 
 /**
@@ -1141,7 +1154,6 @@ subscribe (GUPnPService *service,
 {
         SubscriptionData *data;
         char *start, *end, *uri;
-        GUPnPContext *context;
 
         data = g_slice_new0 (SubscriptionData);
 
@@ -1183,7 +1195,6 @@ subscribe (GUPnPService *service,
                                data,
                                NULL);
 
-        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
         g_source_attach (data->timeout_src,
                          g_main_context_get_thread_default ());
 
@@ -1207,7 +1218,6 @@ resubscribe (GUPnPService *service,
              const char   *sid)
 {
         SubscriptionData *data;
-        GUPnPContext *context;
 
         data = g_hash_table_lookup (service->priv->subscriptions, sid);
         if (!data) {
@@ -1228,7 +1238,6 @@ resubscribe (GUPnPService *service,
                                data,
                                NULL);
 
-        context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
         g_source_attach (data->timeout_src,
                          g_main_context_get_thread_default ());
 
@@ -1244,9 +1253,17 @@ unsubscribe (GUPnPService *service,
              SoupMessage  *msg,
              const char   *sid)
 {
-        if (g_hash_table_remove (service->priv->subscriptions, sid))
+        SubscriptionData *data;
+
+        data = g_hash_table_lookup (service->priv->subscriptions, sid);
+        if (data) {
+                if (data->initial_state_sent)
+                        g_hash_table_remove (service->priv->subscriptions,
+                                             sid);
+                else
+                        data->to_delete = TRUE;
                 soup_message_set_status (msg, SOUP_STATUS_OK);
-        else
+        } else
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
 }
 
@@ -1361,8 +1378,11 @@ got_introspection (GUPnPServiceInfo          *info,
 
         g_hash_table_iter_init (&iter, service->priv->subscriptions);
 
-        while (g_hash_table_iter_next (&iter, NULL, &data))
+        while (g_hash_table_iter_next (&iter, NULL, &data)) {
                 send_initial_state ((SubscriptionData *) data);
+                if (subscription_data_can_delete ((SubscriptionData *) data))
+                        g_hash_table_iter_remove (&iter);
+        }
 }
 
 static char *
@@ -1631,7 +1651,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         /**
          * GUPnPService::action-invoked:
          * @service: The #GUPnPService that received the signal
-         * @action: The invoked #GUPnPAction
+         * @action: The invoked #GUPnPServiceAction
          *
          * Emitted whenever an action is invoked. Handler should process
          * @action and must call either gupnp_service_action_return() or
@@ -1782,6 +1802,8 @@ notify_got_response (SoupSession *session,
         data->pending_messages = g_list_remove (data->pending_messages, msg);
 
         if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {
+                data->initial_state_sent = TRUE;
+
                 /* Success: reset callbacks pointer */
                 data->callbacks = g_list_first (data->callbacks);
 
@@ -1847,6 +1869,10 @@ notify_subscriber (gpointer key,
 
         data = value;
         property_set = user_data;
+
+        /* Subscriber called unsubscribe */
+        if (subscription_data_can_delete (data))
+                return;
 
         /* Create message */
         msg = soup_message_new (GENA_METHOD_NOTIFY, data->callbacks->data);
@@ -2146,7 +2172,7 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * #GUPnPService::action-invoked and #GUPnPService::query-variable signals to
  * appropriate callbacks for the service @service. It uses service introspection
  * and GModule's introspective features. It is very simillar to
- * glade_xml_signal_autoconnect() except that it attempts to guess the names of
+ * gtk_builder_connect_signals() except that it attempts to guess the names of
  * the signal handlers on its own.
  *
  * For this function to do its magic, the application must name the callback

@@ -207,6 +207,7 @@
     <function name="The &quot;subscription-timeout&quot; property" link="GUPnPContext.html#GUPnPContext--subscription-timeout"/>
     <function name="struct GUPnPContextManager" link="GUPnPContextManager.html#GUPnPContextManager-struct"/>
     <function name="gupnp_context_manager_new ()" link="GUPnPContextManager.html#gupnp-context-manager-new"/>
+    <function name="gupnp_context_manager_create ()" link="GUPnPContextManager.html#gupnp-context-manager-create"/>
     <function name="gupnp_context_manager_manage_control_point ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-control-point"/>
     <function name="gupnp_context_manager_manage_root_device ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-root-device"/>
     <function name="The &quot;main-context&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--main-context"/>

@@ -46,6 +46,7 @@
 <pre class="synopsis">struct              <a class="link" href="GUPnPContextManager.html#GUPnPContextManager-struct" title="struct GUPnPContextManager">GUPnPContextManager</a>;
 <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="returnvalue">GUPnPContextManager</span></a> * <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-new" title="gupnp_context_manager_new ()">gupnp_context_manager_new</a>         (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"><span class="type">GMainContext</span></a> *main_context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);
+<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="returnvalue">GUPnPContextManager</span></a> * <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-create" title="gupnp_context_manager_create ()">gupnp_context_manager_create</a>      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-manage-control-point" title="gupnp_context_manager_manage_control_point ()">gupnp_context_manager_manage_control_point</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *manager</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
@@ -100,13 +101,10 @@ functions below.
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);</pre>
 <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
 <h3 class="title">Warning</h3>
-<p><code class="literal">gupnp_context_manager_new</code> has been deprecated since version 0.17.2 and should not be used in newly-written code. Use <code class="function">gupnp_context_manager_create()</code>.</p>
+<p><code class="literal">gupnp_context_manager_new</code> has been deprecated since version 0.17.2 and should not be used in newly-written code. Use <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-create" title="gupnp_context_manager_create ()"><code class="function">gupnp_context_manager_create()</code></a>.</p>
 </div>
 <p>
-Factory-method to create a new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>. The final type of the
-<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> depends on the compile-time selection or - in case of
-NetworkManager - on its availability during runtime. If it is not available,
-the implementation falls back to the basic Unix context manager instead.
+Same as <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-create" title="gupnp_context_manager_create ()"><code class="function">gupnp_context_manager_create()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -118,6 +116,31 @@ a different main context use
 <a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#g-main-context-push-thread-default"><code class="function">g_main_context_push_thread_default()</code></a> instead. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
 </td>
 </tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>port</code></em> :</span></p></td>
+<td>Port to create contexts for, or 0 if you don't care what port is used.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> object. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-context-manager-create"></a><h3>gupnp_context_manager_create ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="returnvalue">GUPnPContextManager</span></a> * gupnp_context_manager_create      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);</pre>
+<p>
+Factory-method to create a new <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>. The final type of the
+<a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> depends on the compile-time selection or - in case of
+NetworkManager - on its availability during runtime. If it is not available,
+the implementation falls back to the basic Unix context manager instead.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>port</code></em> :</span></p></td>
 <td>Port to create contexts for, or 0 if you don't care what port is used.</td>
