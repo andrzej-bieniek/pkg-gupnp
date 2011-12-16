@@ -1,3 +1,9 @@
+gupnp (0.18.1-1) experimental; urgency=low
+
+  * Imported Upstream version 0.18.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 16 Dec 2011 13:34:28 +0100
+
 gupnp (0.18.0-1) experimental; urgency=low
 
   * Imported Upstream version 0.18.0
