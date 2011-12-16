@@ -33,7 +33,7 @@ Description: GObject-based library for UPnP
  A GObject-based API for doing UPnP transparently.
 
 Package: gir1.2-gupnp-1.0
-Section: libs
+Section: introspection
 Architecture: any
 Depends: ${misc:Depends}, ${gir:Depends}
 Conflicts: gir1.0-gupnp-1.0
