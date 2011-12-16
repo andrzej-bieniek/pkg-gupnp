@@ -1,3 +1,4 @@
+<ONLINE href="http://developer.gnome.org/gupnp/stable">
 <ANCHOR id="GUPnPDeviceInfo" href="gupnp/GUPnPDeviceInfo.html">
 <ANCHOR id="GUPnPDeviceInfo.synopsis" href="gupnp/GUPnPDeviceInfo.html#GUPnPDeviceInfo.synopsis">
 <ANCHOR id="GUPnPDeviceInfo.object-hierarchy" href="gupnp/GUPnPDeviceInfo.html#GUPnPDeviceInfo.object-hierarchy">
@@ -247,6 +248,7 @@
 <ANCHOR id="GUPnPContextManager.details" href="gupnp/GUPnPContextManager.html#GUPnPContextManager.details">
 <ANCHOR id="GUPnPContextManager-struct" href="gupnp/GUPnPContextManager.html#GUPnPContextManager-struct">
 <ANCHOR id="gupnp-context-manager-new" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-new">
+<ANCHOR id="gupnp-context-manager-create" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-create">
 <ANCHOR id="gupnp-context-manager-manage-control-point" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-manage-control-point">
 <ANCHOR id="gupnp-context-manager-manage-root-device" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-manage-root-device">
 <ANCHOR id="GUPnPContextManager.property-details" href="gupnp/GUPnPContextManager.html#GUPnPContextManager.property-details">
