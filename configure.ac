@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.18.1],
+        [0.18.2],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -27,6 +27,9 @@ AC_SYS_LARGEFILE
 LT_PREREQ([2.2])
 LT_INIT
 
+
+PKG_CHECK_MODULES(GTest, glib-2.0 >= 2.16, [gtest=yes], [gtest=no])
+AM_CONDITIONAL(HAVE_GTEST, [test x$gtest = xyes])
 
 AC_MSG_CHECKING([operating system])
 case "$target_os" in
@@ -115,6 +118,7 @@ libgupnp/Makefile
 examples/Makefile
 tools/Makefile
 tests/Makefile
+tests/gtest/Makefile
 doc/Makefile
 doc/version.xml
 gupnp-1.0.pc
