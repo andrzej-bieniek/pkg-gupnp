@@ -1,3 +1,9 @@
+gupnp (0.18.2-1) unstable; urgency=low
+
+  * Imported Upstream version 0.18.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Mar 2012 14:15:14 +0100
+
 gupnp (0.18.1-2) unstable; urgency=low
 
   * Move gir package to introspection section
