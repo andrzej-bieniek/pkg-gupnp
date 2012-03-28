@@ -6,7 +6,11 @@ include /usr/share/cdbs/1/rules/utils.mk
 
 export LDFLAGS += -Wl,--as-needed
 
-DEB_CONFIGURE_EXTRA_FLAGS += --with-context-manager=network-manager
+ifeq ($(DEB_BUILD_ARCH_OS),linux)
+DEB_CONFIGURE_EXTRA_FLAGS += --with-context-manager=linux
+else
+DEB_CONFIGURE_EXTRA_FLAGS += --with-context-manager=unix
+endif
 
 DEB_DH_INSTALL_ARGS := --sourcedir=debian/tmp
 
