@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Ross Burton <ross@debian.org>
 Uploaders: Andreas Henriksson <andreas@fatal.se>
-Build-Depends: debhelper (>= 5),
+Build-Depends: debhelper (>= 9),
                cdbs,
                uuid-dev,
                libglib2.0-dev (>= 2.26),
