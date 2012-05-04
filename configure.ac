@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.18.2],
+        [0.18.3],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -59,7 +59,7 @@ PKG_CHECK_MODULES(GTHREAD, gthread-2.0)
 
 AC_ARG_WITH([context_manager],
             AS_HELP_STRING(
-                        [--with-context-manager=@<:@network-manager/unix/linux@:>@],
+                        [--with-context-manager=@<:@network-manager/connman/unix/linux@:>@],
                         [Context Manager backend to use]),,
             [with_context_manager="unix"])
 
@@ -68,6 +68,15 @@ AC_MSG_RESULT([${with_context_manager}])
 
 AM_CONDITIONAL([USE_NETWORK_MANAGER],
                [test "x$with_context_manager" = "xnetwork-manager"])
+AS_IF([test "x$with_context_manager" = "xnetwork-manager"],
+      [PKG_CHECK_MODULES(GIO, gio-2.0 >= 2.26)])
+
+AM_CONDITIONAL([USE_CONNMAN],
+               [test "x$with_context_manager" = "xconnman"])
+
+if test "x$with_context_manager" = "xconnman"; then
+        PKG_CHECK_MODULES(CONNMAN, glib-2.0 >= 2.28 connman >= 0.80)
+fi
 
 USE_NETLINK=no
 if test "x$with_context_manager" = "xlinux"; then
