@@ -1,3 +1,12 @@
+gupnp (0.18.3-1) unstable; urgency=low
+
+  * Switch to linux context manager (on Linux and unix for others)
+  * Bump to debhelper compatibility level 9
+  * Drop context manager symbols that should have been hidden
+  * Imported Upstream version 0.18.3
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 04 May 2012 12:15:39 +0200
+
 gupnp (0.18.2-1) unstable; urgency=low
 
   * Imported Upstream version 0.18.2
