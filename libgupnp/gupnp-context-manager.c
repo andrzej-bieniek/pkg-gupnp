@@ -233,7 +233,7 @@ gupnp_context_manager_class_init (GUPnPContextManagerClass *klass)
         /**
          * GUPnPContextManager:port:
          *
-         * @port: Port to create contexts for, or 0 if you don't care what
+         * Port the contexts listen on, or 0 if you don't care what
          * port is used by #GUPnPContext objects created by this object.
          **/
         g_object_class_install_property
@@ -327,14 +327,25 @@ gupnp_context_manager_new (GMainContext *main_context,
 GUPnPContextManager *
 gupnp_context_manager_create (guint port)
 {
+#if defined(USE_NETWORK_MANAGER) || defined (USE_CONNMAN)
+        GDBusConnection *system_bus;
+#endif
         GUPnPContextManager *impl;
         GType impl_type = G_TYPE_INVALID;
 
 #ifdef USE_NETWORK_MANAGER
 #include "gupnp-network-manager.h"
+        system_bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, NULL);
 
         if (gupnp_network_manager_is_available ())
                 impl_type = GUPNP_TYPE_NETWORK_MANAGER;
+#elif USE_CONNMAN
+#include "gupnp-connman-manager.h"
+        system_bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, NULL);
+
+       if (gupnp_connman_manager_is_available ())
+                impl_type = GUPNP_TYPE_CONNMAN_MANAGER;
+
 #elif USE_NETLINK
 #include "gupnp-linux-context-manager.h"
         impl_type = GUPNP_TYPE_LINUX_CONTEXT_MANAGER;
@@ -347,6 +358,9 @@ gupnp_context_manager_create (guint port)
                              "port", port,
                              NULL);
 
+#if defined(USE_NETWORK_MANAGER) || defined(USE_CONNMAN)
+        g_object_unref (system_bus);
+#endif
         return impl;
 }
 
