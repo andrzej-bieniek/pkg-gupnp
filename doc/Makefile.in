@@ -104,6 +104,7 @@ GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 GTest_CFLAGS = @GTest_CFLAGS@
 GTest_LIBS = @GTest_LIBS@
+HAVE_NETLINK = @HAVE_NETLINK@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -699,7 +700,7 @@ distclean-local:
 	    rm -rf tmpl; \
 	fi
 
-maintainer-clean-local: clean
+maintainer-clean-local:
 	@rm -rf xml html
 
 install-data-local:
@@ -735,7 +736,7 @@ uninstall-local:
 #
 # Require gtk-doc when making dist
 #
-@ENABLE_GTK_DOC_TRUE@dist-check-gtkdoc:
+@ENABLE_GTK_DOC_TRUE@dist-check-gtkdoc: docs
 @ENABLE_GTK_DOC_FALSE@dist-check-gtkdoc:
 @ENABLE_GTK_DOC_FALSE@	@echo "*** gtk-doc must be installed and enabled in order to make dist"
 @ENABLE_GTK_DOC_FALSE@	@false

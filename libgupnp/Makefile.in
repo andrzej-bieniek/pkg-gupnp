@@ -37,9 +37,9 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-@USE_NETLINK_TRUE@am__append_1 = \
-@USE_NETLINK_TRUE@			  gupnp-linux-context-manager.c		\
-@USE_NETLINK_TRUE@			  gupnp-linux-context-manager.h
+@HAVE_NETLINK_TRUE@am__append_1 = \
+@HAVE_NETLINK_TRUE@	gupnp-linux-context-manager.c \
+@HAVE_NETLINK_TRUE@	gupnp-linux-context-manager.h
 
 @HAVE_INTROSPECTION_TRUE@am__append_2 = GUPnP-1.0.gir
 subdir = libgupnp
@@ -117,7 +117,7 @@ am__objects_2 = $(am__objects_1) gupnp-context.lo \
 	gupnp-error.lo gupnp-resource-factory.lo gupnp-root-device.lo \
 	gupnp-service.lo gupnp-service-info.lo gupnp-service-proxy.lo \
 	gupnp-service-introspection.lo gupnp-xml-doc.lo gupnp-types.lo
-@USE_NETLINK_TRUE@am__objects_3 = gupnp-linux-context-manager.lo
+@HAVE_NETLINK_TRUE@am__objects_3 = gupnp-linux-context-manager.lo
 @USE_CONNMAN_FALSE@@USE_NETWORK_MANAGER_FALSE@am__objects_4 = $(am__objects_3)
 @USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@am__objects_4 = gupnp-connman-manager.lo \
 @USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@	$(am__objects_3)
@@ -208,6 +208,7 @@ GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 GTest_CFLAGS = @GTest_CFLAGS@
 GTest_LIBS = @GTest_LIBS@
+HAVE_NETLINK = @HAVE_NETLINK@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
