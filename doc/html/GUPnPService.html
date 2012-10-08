@@ -256,7 +256,8 @@ Retrieves the value of <em class="parameter"><code>argument</code></em> into <em
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
 <td>The <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> to store the value of the argument, initialized
-to the correct type.</td>
+to the correct type. <span class="annotation">[<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>]</span>
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -647,7 +648,7 @@ A convenience function that attempts to connect all possible
 <a class="link" href="GUPnPService.html#GUPnPService-action-invoked" title='The "action-invoked" signal'><span class="type">"action-invoked"</span></a> and <a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'><span class="type">"query-variable"</span></a> signals to
 appropriate callbacks for the service <em class="parameter"><code>service</code></em>. It uses service introspection
 and GModule's introspective features. It is very simillar to
-<a href="http://developer.gnome.org/devel/gtk/GtkBuilder.html#gtk-builder-connect-signals"><code class="function">gtk_builder_connect_signals()</code></a> except that it attempts to guess the names of
+<code class="function">glade_xml_signal_autoconnect()</code> except that it attempts to guess the names of
 the signal handlers on its own.
 </p>
 <p>
@@ -722,7 +723,7 @@ Emitted whenever an action is invoked. Handler should process
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
-<td>The invoked <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
+<td>The invoked <span class="type">GUPnPAction</span>
 </td>
 </tr>
 <tr>
@@ -751,11 +752,13 @@ Emitted whenever notification of a client fails.
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>callback_url</code></em> :</span></p></td>
-<td>The callback URL</td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of callback URLs. <span class="annotation">[<acronym title="Override the parsed C type with given type."><span class="acronym">type</span></acronym> GList][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> SoupURI]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>reason</code></em> :</span></p></td>
-<td>A pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> describing why the notify failed</td>
+<td>A pointer to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> describing why the notify failed. <span class="annotation">[<acronym title="Override the parsed C type with given type."><span class="acronym">type</span></acronym> GError]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
@@ -788,7 +791,8 @@ Handler should fill <em class="parameter"><code>value</code></em> with the value
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
-<td>The location of the <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> of the variable</td>
+<td>The location of the <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> of the variable. <span class="annotation">[<acronym title="Override the parsed C type with given type."><span class="acronym">type</span></acronym> GValue][<acronym title="Parameter for input and for returning results. Default is transfer full."><span class="acronym">inout</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>

@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -458,7 +458,7 @@ gupnp_service_action_get_values (GUPnPServiceAction *action,
  * gupnp_service_action_get_value: (skip)
  * @action: A #GUPnPServiceAction
  * @argument: The name of the argument to retrieve
- * @value: The #GValue to store the value of the argument, initialized
+ * @value: (inout):The #GValue to store the value of the argument, initialized
  * to the correct type.
  *
  * Retrieves the value of @argument into @value.
@@ -1646,7 +1646,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         /**
          * GUPnPService::action-invoked:
          * @service: The #GUPnPService that received the signal
-         * @action: The invoked #GUPnPServiceAction
+         * @action: The invoked #GUPnPAction
          *
          * Emitted whenever an action is invoked. Handler should process
          * @action and must call either gupnp_service_action_return() or
@@ -1669,7 +1669,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
          * GUPnPService::query-variable:
          * @service: The #GUPnPService that received the signal
          * @variable: The variable that is being queried
-         * @value: The location of the #GValue of the variable
+         * @value: (type GValue)(inout):The location of the #GValue of the variable
          *
          * Emitted whenever @service needs to know the value of @variable.
          * Handler should fill @value with the value of @variable.
@@ -1692,8 +1692,8 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         /**
          * GUPnPService::notify-failed:
          * @service: The #GUPnPService that received the signal
-         * @callback_url: The callback URL
-         * @reason: A pointer to a #GError describing why the notify failed
+         * @callback_url: (type GList)(element-type SoupURI):A #GList of callback URLs
+         * @reason: (type GError): A pointer to a #GError describing why the notify failed
          *
          * Emitted whenever notification of a client fails.
          **/
@@ -2168,7 +2168,7 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * #GUPnPService::action-invoked and #GUPnPService::query-variable signals to
  * appropriate callbacks for the service @service. It uses service introspection
  * and GModule's introspective features. It is very simillar to
- * gtk_builder_connect_signals() except that it attempts to guess the names of
+ * glade_xml_signal_autoconnect() except that it attempts to guess the names of
  * the signal handlers on its own.
  *
  * For this function to do its magic, the application must name the callback

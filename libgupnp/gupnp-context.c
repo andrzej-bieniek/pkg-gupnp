@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -30,7 +30,7 @@
  * GUPnP classes. It automatically starts a web server on demand.
  *
  * For debugging, it is possible to see the messages being sent and received by
- * exporting %GUPNP_DEBUG.
+ * exporting #GUPNP_DEBUG.
  */
 
 #include <config.h>
@@ -545,9 +545,10 @@ _gupnp_context_get_server_url (GUPnPContext *context)
 
 /**
  * gupnp_context_new:
- * @main_context: Deprecated: 0.17.2: Always set to %NULL. If you want to use
- *                a different context, use g_main_context_push_thread_default().
- * @interface: The network interface to use, or %NULL to auto-detect.
+ * @main_context: (allow-none): Deprecated: 0.17.2: Always set to %NULL. If you
+ * want to use a different context, use g_main_context_push_thread_default().
+ * @interface: (allow-none): The network interface to use, or %NULL to
+ * auto-detect.
  * @port: Port to run on, or 0 if you don't care what port is used.
  * @error: A location to store a #GError, or %NULL
  *

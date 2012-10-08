@@ -17,8 +17,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #ifndef __GUPNP_SERVICE_INTROSPECTION_H__
@@ -85,7 +85,7 @@ typedef struct {
 /**
  * GUPnPServiceActionInfo:
  * @name: The name of the action argument.
- * @arguments: A GList of all the arguments
+ * @arguments: (type GList) (element-type GUPnP.ServiceActionArgInfo):A GList of all the arguments
  * (of type #GUPnPServiceActionArgInfo) of this action.
  *
  * This structure contains information about a service action.
@@ -109,7 +109,7 @@ typedef struct {
  * data types.
  * @step: The step value of this state variable. Only applies to numeric
  * data types.
- * @allowed_values: The allowed values of this state variable. Only applies to
+ * @allowed_values: (element-type utf8): The allowed values of this state variable. Only applies to
  * string data types. Unlike the other fields in this structure, this field
  * contains a list of (char *) strings rather than GValues.
  *
