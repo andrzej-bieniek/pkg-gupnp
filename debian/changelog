@@ -1,3 +1,22 @@
+gupnp (0.19.0-3) experimental; urgency=low
+
+  * Imported Upstream version 0.19.0
+    - Beware! This version stops leaking gssdp, libxml and libsoup
+      linker flags!
+    - If you use symbols from a library, you need to link to it!
+    - Also link your modules with "-Wl,-z,defs" in LDFLAGS to
+      catch errors at build time!
+  * Add vapigen-m4-macro.patch from upstream.
+  * Bump gssdp build-dependency to 0.13.0 according to configure.ac
+  * Bump gobject-introspection build-dep to 1.33.4 according to configure.ac
+  * Drop dbus-glib build-dependency
+    - gupnp was ported to GDBus in 0.15.0 already.
+  * Build-dep on valac (>= 0.14.0) to get vapigen
+  * Install vapi and deps in libgupnp-1.0-dev
+  * Change pattern so list-missing doesn't complain
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 09 Oct 2012 22:54:53 +0200
+
 gupnp (0.18.4-1) unstable; urgency=low
 
   * Imported Upstream version 0.18.4
