@@ -103,7 +103,7 @@ GUPnP classes. It automatically starts a web server on demand.
 </p>
 <p>
 For debugging, it is possible to see the messages being sent and received by
-exporting <code class="literal">GUPNP_DEBUG</code>.
+exporting <span class="type">GUPNP_DEBUG</span>.
 </p>
 </div>
 <div class="refsect1">
@@ -132,12 +132,15 @@ Create a new <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span
 <tbody>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>main_context</code></em> :</span></p></td>
-<td>Deprecated: 0.17.2: Always set to <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If you want to use
-a different context, use <a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#g-main-context-push-thread-default"><code class="function">g_main_context_push_thread_default()</code></a>.</td>
+<td>Deprecated: 0.17.2: Always set to <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. If you
+want to use a different context, use <a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#g-main-context-push-thread-default"><code class="function">g_main_context_push_thread_default()</code></a>. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>interface</code></em> :</span></p></td>
-<td>The network interface to use, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to auto-detect.</td>
+<td>The network interface to use, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to
+auto-detect. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
 </tr>
 <tr>
 <td><p><span class="term"><em class="parameter"><code>port</code></em> :</span></p></td>

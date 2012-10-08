@@ -17,8 +17,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -786,7 +786,7 @@ gupnp_service_introspection_list_action_names
  * Returns a #GList of all the actions (of type #GUPnPServiceActionInfo) in
  * this service.
  *
- * Return value: (element-type GUPnP.ServiceActionInfo*) (transfer none): A
+ * Return value: (element-type GUPnP.ServiceActionInfo) (transfer none): A
  * #GList of all the actions or %NULL. Do not modify or free it or its
  * contents.
  **/
@@ -855,7 +855,8 @@ state_variable_search_func (GUPnPServiceStateVariableInfo *variable,
  *
  * Returns the state variable by the name @variable_name in this service.
  *
- * Return value: the state variable or %NULL. Do not modify or free it.
+ * Return value: (transfer none): the state variable or %NULL. Do not modify or
+ * free it.
  **/
 const GUPnPServiceStateVariableInfo *
 gupnp_service_introspection_get_state_variable

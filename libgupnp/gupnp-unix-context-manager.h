@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #ifndef __GUPNP_UNIX_CONTEXT_MANAGER_H__
 #define __GUPNP_UNIX_CONTEXT_MANAGER_H__
 
-#include "gupnp-context-manager.h"
+#include "gupnp-simple-context-manager.h"
 
 G_BEGIN_DECLS
 
@@ -55,13 +55,11 @@ gupnp_unix_context_manager_get_type (void) G_GNUC_CONST;
 typedef struct _GUPnPUnixContextManagerPrivate GUPnPUnixContextManagerPrivate;
 
 typedef struct {
-        GUPnPContextManager parent;
-
-        GUPnPUnixContextManagerPrivate *priv;
+        GUPnPSimpleContextManager parent;
 } GUPnPUnixContextManager;
 
 typedef struct {
-        GUPnPContextManagerClass parent_class;
+        GUPnPSimpleContextManagerClass parent_class;
 
         /* future padding */
         void (* _gupnp_reserved1) (void);
