@@ -52,7 +52,7 @@ Architecture: any
 Depends: libgupnp-1.0-4 (= ${binary:Version}), gir1.2-gupnp-1.0, libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
 Recommends: python
 Suggests: libgupnp-doc
-Replaces: gir-repository-dev (<= 0.6.5-5)
+Replaces: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
 Description: GObject-based library for UPnP (development files)
  A GObject-based API for doing UPnP transparently.
  .
