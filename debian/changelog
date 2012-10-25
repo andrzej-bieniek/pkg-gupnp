@@ -1,3 +1,15 @@
+gupnp (0.19.1-1) experimental; urgency=low
+
+  * Replace gupnp-vala before 0.10.5 to avoid conflicts
+  * Imported Upstream version 0.19.1
+  * Revert "Bump gobject-introspection build-dep to 1.33.4 ..."
+    - upstream lowered the requirement again in 0.19.1.
+  * Revert "Add vapigen-m4-macro.patch from upstream"
+    - now included in upstream release.
+  * Update symbols file with new gupnp_context_manager_get_port
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 25 Oct 2012 13:43:57 +0200
+
 gupnp (0.19.0-3) experimental; urgency=low
 
   * Imported Upstream version 0.19.0
