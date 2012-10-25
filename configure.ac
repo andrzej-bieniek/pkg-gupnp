@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.19.0],
+        [0.19.1],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -127,7 +127,7 @@ if test "x$enable_debug" = "xyes"; then
         CFLAGS="$CFLAGS -g -Wall -Werror"
 fi
 
-GOBJECT_INTROSPECTION_CHECK([1.33.4])
+GOBJECT_INTROSPECTION_CHECK([0.6.4])
 
 # vapigen
 AS_IF([test "x$found_introspection" = "xyes"],
