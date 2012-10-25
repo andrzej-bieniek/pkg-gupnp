@@ -11,6 +11,7 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_context_host_path@Base 0.18.0
  gupnp_context_host_path_for_agent@Base 0.18.0
  gupnp_context_manager_create@Base 0.18.0
+ gupnp_context_manager_get_port@Base 0.19.1
  gupnp_context_manager_get_type@Base 0.18.0
  gupnp_context_manager_manage_control_point@Base 0.18.0
  gupnp_context_manager_manage_root_device@Base 0.18.0
