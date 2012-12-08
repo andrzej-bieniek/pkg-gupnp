@@ -9,10 +9,12 @@ GUPnPRootDevice
 
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -107,6 +109,15 @@ GUPnPRootDevice
 
 
 <!-- ##### FUNCTION gupnp_root_device_get_description_path ##### -->
+<para>
+
+</para>
+
+@root_device: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gupnp_root_device_get_ssdp_resource_group ##### -->
 <para>
 
 </para>

@@ -59,6 +59,8 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
                                                         (<em class="parameter"><code><a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> *root_device</code></em>);
 const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPRootDevice.html#gupnp-root-device-get-description-path" title="gupnp_root_device_get_description_path ()">gupnp_root_device_get_description_path</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> *root_device</code></em>);
+<span class="returnvalue">GSSDPResourceGroup</span> * <a class="link" href="GUPnPRootDevice.html#gupnp-root-device-get-ssdp-resource-group" title="gupnp_root_device_get_ssdp_resource_group ()">gupnp_root_device_get_ssdp_resource_group</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> *root_device</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -290,6 +292,30 @@ Get the path to the device description document of <em class="parameter"><code>r
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The path to device description document of <em class="parameter"><code>root_device</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-root-device-get-ssdp-resource-group"></a><h3>gupnp_root_device_get_ssdp_resource_group ()</h3>
+<pre class="programlisting"><span class="returnvalue">GSSDPResourceGroup</span> * gupnp_root_device_get_ssdp_resource_group
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> *root_device</code></em>);</pre>
+<p>
+Get the <span class="type">GSSDPResourceGroup</span> used by <em class="parameter"><code>root_device</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>root_device</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The <span class="type">GSSDPResourceGroup</span> of <em class="parameter"><code>root_device</code></em>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
 </tr>
 </tbody>
 </table></div>
