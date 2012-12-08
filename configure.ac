@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.19.1],
+        [0.19.3],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -32,10 +32,12 @@ PKG_CHECK_MODULES(GTest, glib-2.0 >= 2.16, [gtest=yes], [gtest=no])
 AM_CONDITIONAL(HAVE_GTEST, [test x$gtest = xyes])
 
 AC_MSG_CHECKING([operating system])
+os_win32=no
 case "$target_os" in
      mingw*|cygwin*)
+        os_win32=yes
         AC_MSG_RESULT(Win32)
-        UUID=uuid
+        UUID=
         ;;
      darwin*)
         AC_MSG_RESULT(Darwin)
@@ -54,14 +56,19 @@ PKG_CHECK_MODULES(LIBGUPNP, glib-2.0 >= 2.24.0 \
                             libsoup-2.4 >= 2.28.2 \
                             libxml-2.0 \
                             $UUID)
-
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0)
 
-AC_ARG_WITH([context_manager],
+AM_CONDITIONAL(OS_WIN32, test "x$os_win32" = "xyes")
+if test "x$os_win32" = "xno"; then
+    AC_ARG_WITH([context_manager],
             AS_HELP_STRING(
                         [--with-context-manager=@<:@network-manager/connman/unix/linux@:>@],
                         [Context Manager backend to use]),,
             [with_context_manager="none"])
+else
+    LIBGUPNP_LIBS="$LIBGUPNP_LIBS -lrpcrt4"
+    with_context_manager="windows"
+fi
 
 if test "x$with_context_manager" = "xnone"; then
         case "$target_os" in

@@ -9,10 +9,12 @@ GUPnPContext
 
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -57,7 +59,7 @@ GUPnPContext
 </para>
 
 @main_context: 
-@interface: 
+@iface: 
 @port: 
 @error: 
 @Returns: 

@@ -9,10 +9,12 @@ GUPnPContextManager
 
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -87,5 +89,14 @@ GUPnPContextManager
 
 @manager: 
 @root_device: 
+
+
+<!-- ##### FUNCTION gupnp_context_manager_get_port ##### -->
+<para>
+
+</para>
+
+@manager: 
+@Returns: 
 
 

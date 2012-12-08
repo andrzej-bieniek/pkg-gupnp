@@ -243,7 +243,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @HAVE_GTEST_TRUE@TESTS_ENVIRONMENT = G_SLICE=debug-blocks \
-@HAVE_GTEST_TRUE@		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs
+@HAVE_GTEST_TRUE@		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs:$(LD_LIBRARY_PATH)
 
 @HAVE_GTEST_TRUE@TESTS = $(check_PROGRAMS)
 @HAVE_GTEST_TRUE@test_context_SOURCES = test-context.c

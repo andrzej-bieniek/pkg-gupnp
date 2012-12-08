@@ -37,11 +37,11 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-@USE_NETWORK_MANAGER_TRUE@am__append_1 = gupnp-network-manager.c  \
-@USE_NETWORK_MANAGER_TRUE@		        gupnp-network-manager.h
+@OS_WIN32_FALSE@@USE_NETWORK_MANAGER_TRUE@am__append_1 = gupnp-network-manager.c  \
+@OS_WIN32_FALSE@@USE_NETWORK_MANAGER_TRUE@		        gupnp-network-manager.h
 
-@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@am__append_2 = gupnp-connman-manager.c  \
-@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@			gupnp-connman-manager.h
+@OS_WIN32_FALSE@@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@am__append_2 = gupnp-connman-manager.c  \
+@OS_WIN32_FALSE@@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@			gupnp-connman-manager.h
 
 @HAVE_NETLINK_TRUE@am__append_3 = \
 @HAVE_NETLINK_TRUE@	gupnp-linux-context-manager.c \
@@ -111,7 +111,8 @@ am__libgupnp_1_0_la_SOURCES_DIST = gupnp-context.h \
 	gupnp-unix-context-manager.h gupnp-network-manager.c \
 	gupnp-network-manager.h gupnp-connman-manager.c \
 	gupnp-connman-manager.h gupnp-linux-context-manager.c \
-	gupnp-linux-context-manager.h gupnp-simple-context-manager.h \
+	gupnp-linux-context-manager.h gupnp-windows-context-manager.c \
+	gupnp-windows-context-manager.h gupnp-simple-context-manager.h \
 	gupnp-simple-context-manager.c gupnp-device-info-private.h \
 	gupnp-error-private.h gupnp-resource-factory-private.h \
 	gupnp-service-introspection-private.h gupnp-types-private.h \
@@ -124,11 +125,15 @@ am__objects_2 = $(am__objects_1) gupnp-context.lo \
 	gupnp-error.lo gupnp-resource-factory.lo gupnp-root-device.lo \
 	gupnp-service.lo gupnp-service-info.lo gupnp-service-proxy.lo \
 	gupnp-service-introspection.lo gupnp-xml-doc.lo gupnp-types.lo
-@USE_NETWORK_MANAGER_TRUE@am__objects_3 = gupnp-network-manager.lo
-@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@am__objects_4 = gupnp-connman-manager.lo
+@OS_WIN32_FALSE@@USE_NETWORK_MANAGER_TRUE@am__objects_3 = gupnp-network-manager.lo
+@OS_WIN32_FALSE@@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@am__objects_4 = gupnp-connman-manager.lo
 @HAVE_NETLINK_TRUE@am__objects_5 = gupnp-linux-context-manager.lo
-am__objects_6 = gupnp-unix-context-manager.lo $(am__objects_3) \
-	$(am__objects_4) $(am__objects_5)
+@OS_WIN32_FALSE@am__objects_6 = gupnp-unix-context-manager.lo \
+@OS_WIN32_FALSE@	$(am__objects_3) $(am__objects_4) \
+@OS_WIN32_FALSE@	$(am__objects_5)
+@OS_WIN32_TRUE@am__objects_6 = gupnp-windows-context-manager.lo \
+@OS_WIN32_TRUE@	$(am__objects_3) $(am__objects_4) \
+@OS_WIN32_TRUE@	$(am__objects_5)
 am__objects_7 = gupnp-marshal.lo
 am_libgupnp_1_0_la_OBJECTS = $(am__objects_2) http-headers.lo \
 	$(am__objects_6) gupnp-simple-context-manager.lo \
@@ -325,11 +330,17 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 LTVERSION = 4:0:0
-CONTEXT_MANAGER_IMPL = gupnp-unix-context-manager.c \
-	gupnp-unix-context-manager.h $(am__append_1) $(am__append_2) \
-	$(am__append_3)
-@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@CONTEXT_MANAGER_CFLAGS = -DUSE_CONNMAN
-@USE_NETWORK_MANAGER_TRUE@CONTEXT_MANAGER_CFLAGS = -DUSE_NETWORK_MANAGER
+@OS_WIN32_FALSE@CONTEXT_MANAGER_IMPL = gupnp-unix-context-manager.c \
+@OS_WIN32_FALSE@	gupnp-unix-context-manager.h $(am__append_1) \
+@OS_WIN32_FALSE@	$(am__append_2) $(am__append_3)
+@OS_WIN32_TRUE@CONTEXT_MANAGER_IMPL = gupnp-windows-context-manager.c \
+@OS_WIN32_TRUE@	gupnp-windows-context-manager.h $(am__append_1) \
+@OS_WIN32_TRUE@	$(am__append_2) $(am__append_3)
+@OS_WIN32_FALSE@@USE_CONNMAN_TRUE@@USE_NETWORK_MANAGER_FALSE@CONTEXT_MANAGER_CFLAGS = -DUSE_CONNMAN
+@OS_WIN32_FALSE@@USE_NETWORK_MANAGER_TRUE@CONTEXT_MANAGER_CFLAGS = -DUSE_NETWORK_MANAGER
+@OS_WIN32_TRUE@CONTEXT_MANAGER_CFLAGS = 
+@OS_WIN32_TRUE@CONTEXT_MANAGER_LIBS = -lws2_32 -liphlpapi
+@OS_WIN32_TRUE@WIN32_LDFLAGS = -no-undefined
 @USE_NETLINK_FALSE@NETLINK_CFLAGS = 
 @USE_NETLINK_TRUE@NETLINK_CFLAGS = -DUSE_NETLINK
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
@@ -375,7 +386,7 @@ introspection_sources = $(libgupnpinc_HEADERS) \
 			gupnp-types.c
 
 BUILT_SOURCES = gupnp-marshal.c gupnp-marshal.h
-libgupnp_1_0_la_LDFLAGS = -version-info $(LTVERSION)
+libgupnp_1_0_la_LDFLAGS = -version-info $(LTVERSION) $(WIN32_LDFLAGS)
 libgupnp_1_0_la_SOURCES = $(introspection_sources)		\
 			  http-headers.c			\
 			  http-headers.h			\
@@ -395,7 +406,7 @@ libgupnp_1_0_la_SOURCES = $(introspection_sources)		\
 			  gena-protocol.h			\
 			  $(BUILT_SOURCES)
 
-libgupnp_1_0_la_LIBADD = $(LIBGUPNP_LIBS) $(DBUS_GLIB_LIBS) $(LIBCONIC_LIBS)
+libgupnp_1_0_la_LIBADD = $(LIBGUPNP_LIBS) $(DBUS_GLIB_LIBS)
 EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-network-manager.c   	   \
 	     gupnp-network-manager.h       \
@@ -404,7 +415,9 @@ EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-linux-context-manager.c \
 	     gupnp-linux-context-manager.h \
 	     gupnp-unix-context-manager.c  \
-	     gupnp-unix-context-manager.h
+	     gupnp-unix-context-manager.h  \
+	     gupnp-windows-context-manager.c \
+	     gupnp-windows-context-manager.h
 
 INTROSPECTION_GIRS = $(am__append_4)
 INTROSPECTION_SCANNER_ARGS = --warn-all			\
@@ -522,6 +535,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-simple-context-manager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-types.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-unix-context-manager.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-windows-context-manager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-xml-doc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gvalue-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/http-headers.Plo@am__quote@
