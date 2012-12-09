@@ -79,6 +79,7 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_root_device_get_description_dir@Base 0.18.0
  gupnp_root_device_get_description_path@Base 0.18.0
  gupnp_root_device_get_relative_location@Base 0.18.0
+ gupnp_root_device_get_ssdp_resource_group@Base 0.19.3
  gupnp_root_device_get_type@Base 0.18.0
  gupnp_root_device_new@Base 0.18.0
  gupnp_root_device_new_full@Base 0.18.0
