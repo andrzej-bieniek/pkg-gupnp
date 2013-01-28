@@ -1,3 +1,11 @@
+gupnp (0.19.4-1) experimental; urgency=low
+
+  * Tighten dev -> gir package dependency
+  * Imported Upstream version 0.19.4
+  * Bump standards version to 3.9.4
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 28 Jan 2013 23:12:27 +0100
+
 gupnp (0.19.3-1) experimental; urgency=low
 
   * Imported Upstream version 0.19.3
