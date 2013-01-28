@@ -918,6 +918,11 @@ Sets up <em class="parameter"><code>callback</code></em> to be called whenever a
 <p>
 Cancels the variable change notification for <em class="parameter"><code>callback</code></em> and <em class="parameter"><code>user_data</code></em>.
 </p>
+<p>
+This function must not be called directly or indirectly from a
+<a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyNotifyCallback" title="GUPnPServiceProxyNotifyCallback ()"><span class="type">GUPnPServiceProxyNotifyCallback</span></a> associated with this service proxy, even
+if it is for another variable.
+</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>

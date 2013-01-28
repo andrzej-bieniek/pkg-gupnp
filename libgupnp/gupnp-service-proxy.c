@@ -1524,6 +1524,10 @@ gupnp_service_proxy_add_notify (GUPnPServiceProxy              *proxy,
  *
  * Cancels the variable change notification for @callback and @user_data.
  *
+ * This function must not be called directly or indirectly from a
+ * #GUPnPServiceProxyNotifyCallback associated with this service proxy, even
+ * if it is for another variable.
+ *
  * Return value: %TRUE on success.
  **/
 gboolean
@@ -1567,7 +1571,7 @@ gupnp_service_proxy_remove_notify (GUPnPServiceProxy              *proxy,
                         if (data->callbacks == NULL) {
                                 /* No callbacks left: Remove from hash */
                                 g_hash_table_remove (proxy->priv->notify_hash,
-                                                     data);
+                                                     variable);
                         }
 
                         found = TRUE;
