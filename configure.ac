@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([gupnp],
-        [0.18.3],
+        [0.18.4],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp],
         [gupnp],
         [http://www.gupnp.org/])
@@ -61,7 +61,34 @@ AC_ARG_WITH([context_manager],
             AS_HELP_STRING(
                         [--with-context-manager=@<:@network-manager/connman/unix/linux@:>@],
                         [Context Manager backend to use]),,
-            [with_context_manager="unix"])
+            [with_context_manager="none"])
+
+if test "x$with_context_manager" = "xnone"; then
+        case "$target_os" in
+        linux*)
+                with_context_manager="linux"
+                ;;
+        *)
+                with_context_manager="unix"
+                ;;
+        esac
+fi
+
+AC_CHECK_HEADERS([sys/socket.h linux/rtnetlink.h],
+                [ HAVE_NETLINK=yes ],
+                [ HAVE_NETLINK=no ],
+                [ #ifdef HAVE_SYS_SOCKET_H
+                  #include <sys/socket.h>
+                  #endif
+                ])
+AM_CONDITIONAL([HAVE_NETLINK], [test "x$HAVE_NETLINK" = "xyes"])
+AC_SUBST(HAVE_NETLINK)
+
+AC_CHECK_HEADERS([linux/wireless.h], [], [],
+                [ #ifdef HAVE_SYS_SOCKET_H
+                  #include <sys/socket.h>
+                  #endif
+                ])
 
 AC_MSG_CHECKING([Context Manager backend to use])
 AC_MSG_RESULT([${with_context_manager}])
@@ -79,27 +106,11 @@ if test "x$with_context_manager" = "xconnman"; then
 fi
 
 USE_NETLINK=no
-if test "x$with_context_manager" = "xlinux"; then
-       dnl check for netlink (Linux)
-       AC_CHECK_HEADERS([sys/socket.h linux/rtnetlink.h],
-                        [ USE_NETLINK=yes ],
-                        [ USE_NETLINK=no ],
-                        [ #ifdef HAVE_SYS_SOCKET_H
-                          #include <sys/socket.h>
-                          #endif
-                        ])
-       if test "x$USE_NETLINK" = "xno"
-       then
-               AC_MSG_NOTICE([No rtnetlink found, falling back to unix context
-                              manager])
-       else
-               AC_CHECK_HEADERS([linux/wireless.h], [], [],
-                                [ #ifdef HAVE_SYS_SOCKET_H
-                                  #include <sys/socket.h>
-                                  #endif
-                                ])
-       fi
-fi
+AS_IF([test "x$with_context_manager" = "xlinux"],
+      [AS_IF([test "x$HAVE_NETLINK" = "xno"],
+             [AC_MSG_NOTICE([No rtnetlink found, falling back to static context manager])],
+             [USE_NETLINK=yes])
+      ],[])
 
 AM_CONDITIONAL(USE_NETLINK, test "x$USE_NETLINK" = "xyes")
 AC_SUBST(USE_NETLINK)
@@ -110,7 +121,7 @@ AC_SUBST(GLIB_GENMARSHAL)
 
 # Debugging
 AC_ARG_ENABLE(debug,
-	[  --enable-debug          enable debugging],,
+        AS_HELP_STRING([--enable-debug], [enable debugging]),,
         enable_debug=no)
 if test "x$enable_debug" = "xyes"; then
         CFLAGS="$CFLAGS -g -Wall -Werror"
