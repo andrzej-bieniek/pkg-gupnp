@@ -118,7 +118,13 @@ http_request_set_accept_language (SoupMessage *message)
         int dash_index;
         GString *tmp;
 
-        locale = setlocale (LC_ALL, NULL);
+#ifdef G_OS_WIN32
+        /* TODO: Use GetSystemDefaultLangID or similar */
+        return;
+#else
+
+        locale = setlocale (LC_MESSAGES, NULL);
+
         if (locale == NULL)
                 return;
 
@@ -149,6 +155,7 @@ http_request_set_accept_language (SoupMessage *message)
                                      tmp->str);
 
         g_string_free (tmp, TRUE);
+#endif
 }
 
 static double
