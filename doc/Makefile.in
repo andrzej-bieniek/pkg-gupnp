@@ -365,7 +365,7 @@ GTK_DOC_V_TMPL_0 = @echo "  DOC   Rebuilding template files";
 #### xml ####
 GTK_DOC_V_XML = $(GTK_DOC_V_XML_$(V))
 GTK_DOC_V_XML_ = $(GTK_DOC_V_XML_$(AM_DEFAULT_VERBOSITY))
-GTK_DOC_V_XML_0 = @echo "  DOC   Building XML":
+GTK_DOC_V_XML_0 = @echo "  DOC   Building XML";
 
 #### html ####
 GTK_DOC_V_HTML = $(GTK_DOC_V_HTML_$(V))
