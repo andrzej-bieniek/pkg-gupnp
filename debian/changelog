@@ -1,3 +1,10 @@
+gupnp (0.20.0-1) experimental; urgency=low
+
+  * drop DEB_DH_INSTALL_ARGS usage from debian/rules
+  * Imported Upstream version 0.20.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 20 Feb 2013 15:05:38 +0100
+
 gupnp (0.19.4-1) experimental; urgency=low
 
   * Tighten dev -> gir package dependency
