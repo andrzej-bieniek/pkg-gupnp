@@ -58,6 +58,7 @@ Depends: libgupnp-1.0-4 (= ${binary:Version}),
 Recommends: python
 Suggests: libgupnp-doc
 Replaces: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
+Breaks: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
 Description: GObject-based library for UPnP (development files)
  A GObject-based API for doing UPnP transparently.
  .
