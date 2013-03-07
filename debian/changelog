@@ -1,3 +1,11 @@
+gupnp (0.20.1-1) experimental; urgency=low
+
+  * Make libgupnp-1.0-dev break packages it replaces files in
+    for policy compliance
+  * Imported Upstream version 0.20.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 07 Mar 2013 16:43:50 +0100
+
 gupnp (0.20.0-1) experimental; urgency=low
 
   * drop DEB_DH_INSTALL_ARGS usage from debian/rules
