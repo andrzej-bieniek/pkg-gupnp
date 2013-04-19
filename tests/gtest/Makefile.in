@@ -51,7 +51,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-@HAVE_GTEST_TRUE@check_PROGRAMS = test-context$(EXEEXT)
+@HAVE_GTEST_TRUE@check_PROGRAMS = test-context$(EXEEXT) \
+@HAVE_GTEST_TRUE@	test-bugs$(EXEEXT)
 subdir = tests/gtest
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -66,16 +67,22 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__test_context_SOURCES_DIST = test-context.c
-@HAVE_GTEST_TRUE@am_test_context_OBJECTS = test-context.$(OBJEXT)
-test_context_OBJECTS = $(am_test_context_OBJECTS)
-test_context_LDADD = $(LDADD)
+am__test_bugs_SOURCES_DIST = test-bugs.c
+@HAVE_GTEST_TRUE@am_test_bugs_OBJECTS = test-bugs.$(OBJEXT)
+test_bugs_OBJECTS = $(am_test_bugs_OBJECTS)
+test_bugs_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
-test_context_DEPENDENCIES = $(top_builddir)/libgupnp/libgupnp-1.0.la \
+test_bugs_DEPENDENCIES = $(top_builddir)/libgupnp/libgupnp-1.0.la \
 	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
+am__test_context_SOURCES_DIST = test-context.c
+@HAVE_GTEST_TRUE@am_test_context_OBJECTS = test-context.$(OBJEXT)
+test_context_OBJECTS = $(am_test_context_OBJECTS)
+test_context_LDADD = $(LDADD)
+test_context_DEPENDENCIES = $(top_builddir)/libgupnp/libgupnp-1.0.la \
+	$(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__depfiles_maybe = depfiles
@@ -102,8 +109,9 @@ am__v_CCLD_0 = @echo "  CCLD  " $@;
 AM_V_GEN = $(am__v_GEN_@AM_V@)
 am__v_GEN_ = $(am__v_GEN_@AM_DEFAULT_V@)
 am__v_GEN_0 = @echo "  GEN   " $@;
-SOURCES = $(test_context_SOURCES)
-DIST_SOURCES = $(am__test_context_SOURCES_DIST)
+SOURCES = $(test_bugs_SOURCES) $(test_context_SOURCES)
+DIST_SOURCES = $(am__test_bugs_SOURCES_DIST) \
+	$(am__test_context_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -269,6 +277,7 @@ top_srcdir = @top_srcdir@
 
 @HAVE_GTEST_TRUE@TESTS = $(check_PROGRAMS)
 @HAVE_GTEST_TRUE@test_context_SOURCES = test-context.c
+@HAVE_GTEST_TRUE@test_bugs_SOURCES = test-bugs.c
 LDADD = \
 	$(top_builddir)/libgupnp/libgupnp-1.0.la \
 	$(LIBGUPNP_LIBS)
@@ -278,7 +287,7 @@ AM_CFLAGS = \
 	    -I $(top_srcdir) \
 	    -DDATA_PATH="\"$(srcdir)/data\""
 
-EXTRA_DIST = data/random4k.bin
+EXTRA_DIST = data/random4k.bin data/ServiceBgo69762.xml data/TestBgo696762.xml
 all: all-am
 
 .SUFFIXES:
@@ -322,6 +331,9 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+test-bugs$(EXEEXT): $(test_bugs_OBJECTS) $(test_bugs_DEPENDENCIES) $(EXTRA_test_bugs_DEPENDENCIES) 
+	@rm -f test-bugs$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_bugs_OBJECTS) $(test_bugs_LDADD) $(LIBS)
 test-context$(EXEEXT): $(test_context_OBJECTS) $(test_context_DEPENDENCIES) $(EXTRA_test_context_DEPENDENCIES) 
 	@rm -f test-context$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_context_OBJECTS) $(test_context_LDADD) $(LIBS)
@@ -332,6 +344,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-bugs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-context.Po@am__quote@
 
 .c.o:
