@@ -1,3 +1,9 @@
+gupnp (0.20.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.20.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 19 Apr 2013 15:39:12 +0200
+
 gupnp (0.20.1-1) experimental; urgency=low
 
   * Make libgupnp-1.0-dev break packages it replaces files in
