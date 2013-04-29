@@ -1,3 +1,15 @@
+gupnp (0.20.2-2) experimental; urgency=low
+
+  [ Iain Lane ]
+  * Add build-dependency on docbook-xml
+    - otherwise xsltproc tries to download DTDs from the internet.
+  * Enable rebuilding of gtk-doc files (Closes: #702430)
+
+  [ Andreas Henriksson ]
+  * Drop explicit build-dependencies on gir1.2-*
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 29 Apr 2013 11:24:21 +0200
+
 gupnp (0.20.2-1) experimental; urgency=low
 
   * Imported Upstream version 0.20.2
