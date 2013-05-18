@@ -1,3 +1,9 @@
+gupnp (0.20.2-3) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 18 May 2013 02:01:33 +0200
+
 gupnp (0.20.2-2) experimental; urgency=low
 
   [ Iain Lane ]
