@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #include <config.h>
@@ -118,7 +118,13 @@ http_request_set_accept_language (SoupMessage *message)
         int dash_index;
         GString *tmp;
 
-        locale = setlocale (LC_ALL, NULL);
+#ifdef G_OS_WIN32
+        /* TODO: Use GetSystemDefaultLangID or similar */
+        return;
+#else
+
+        locale = setlocale (LC_MESSAGES, NULL);
+
         if (locale == NULL)
                 return;
 
@@ -149,6 +155,7 @@ http_request_set_accept_language (SoupMessage *message)
                                      tmp->str);
 
         g_string_free (tmp, TRUE);
+#endif
 }
 
 static double

@@ -42,7 +42,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
 	$(top_srcdir)/m4/introspection.m4 $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/vapigen.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -184,6 +184,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NETLINK = @USE_NETLINK@
+VAPIGEN = @VAPIGEN@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -242,7 +243,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @HAVE_GTEST_TRUE@TESTS_ENVIRONMENT = G_SLICE=debug-blocks \
-@HAVE_GTEST_TRUE@		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs
+@HAVE_GTEST_TRUE@		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs:$(LD_LIBRARY_PATH)
 
 @HAVE_GTEST_TRUE@TESTS = $(check_PROGRAMS)
 @HAVE_GTEST_TRUE@test_context_SOURCES = test-context.c
@@ -253,9 +254,9 @@ LDADD = \
 AM_CFLAGS = \
 	    $(LIBGUPNP_CFLAGS) \
 	    -I $(top_srcdir) \
-	    -DDATA_PATH="\"$(srcdir)\""
+	    -DDATA_PATH="\"$(srcdir)/data\""
 
-EXTRA_DIST = random4k.bin
+EXTRA_DIST = data/random4k.bin
 all: all-am
 
 .SUFFIXES:

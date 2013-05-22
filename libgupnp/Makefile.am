@@ -1,17 +1,24 @@
 LTVERSION = 4:0:0
 
+if OS_WIN32
+CONTEXT_MANAGER_IMPL = gupnp-windows-context-manager.c \
+		       gupnp-windows-context-manager.h
+CONTEXT_MANAGER_CFLAGS =
+CONTEXT_MANAGER_LIBS = -lws2_32 -liphlpapi
+WIN32_LDFLAGS = -no-undefined
+else
+CONTEXT_MANAGER_IMPL = gupnp-unix-context-manager.c \
+					   gupnp-unix-context-manager.h
 if USE_NETWORK_MANAGER
-CONTEXT_MANAGER_IMPL = gupnp-network-manager.c  \
-		       gupnp-network-manager.h
+CONTEXT_MANAGER_IMPL += gupnp-network-manager.c  \
+		        gupnp-network-manager.h
 CONTEXT_MANAGER_CFLAGS = -DUSE_NETWORK_MANAGER
 else
 if USE_CONNMAN
-CONTEXT_MANAGER_IMPL = gupnp-connman-manager.c  \
+CONTEXT_MANAGER_IMPL += gupnp-connman-manager.c  \
 			gupnp-connman-manager.h
 CONTEXT_MANAGER_CFLAGS = -DUSE_CONNMAN
-else
-CONTEXT_MANAGER_IMPL =
-CONTEXT_MANAGER_CFLAGS =
+endif
 endif
 endif
 
@@ -80,15 +87,15 @@ gupnp-marshal.h: gupnp-marshal.list
 
 BUILT_SOURCES = gupnp-marshal.c gupnp-marshal.h
 
-libgupnp_1_0_la_LDFLAGS = -version-info $(LTVERSION)
+libgupnp_1_0_la_LDFLAGS = -version-info $(LTVERSION) $(WIN32_LDFLAGS)
 
 libgupnp_1_0_la_SOURCES = $(introspection_sources)		\
 			  http-headers.c			\
 			  http-headers.h			\
 			  gupnp-context-private.h		\
 			  $(CONTEXT_MANAGER_IMPL) 		\
-			  gupnp-unix-context-manager.c  	\
-			  gupnp-unix-context-manager.h		\
+			  gupnp-simple-context-manager.h	\
+			  gupnp-simple-context-manager.c	\
 			  gupnp-device-info-private.h		\
 			  gupnp-error-private.h			\
 			  gupnp-resource-factory-private.h	\
@@ -101,7 +108,7 @@ libgupnp_1_0_la_SOURCES = $(introspection_sources)		\
 			  gena-protocol.h			\
 			  $(BUILT_SOURCES)
 
-libgupnp_1_0_la_LIBADD = $(LIBGUPNP_LIBS) $(DBUS_GLIB_LIBS) $(LIBCONIC_LIBS)
+libgupnp_1_0_la_LIBADD = $(LIBGUPNP_LIBS) $(DBUS_GLIB_LIBS) $(CONTEXT_MANAGER_LIBS)
 
 EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-network-manager.c   	   \
@@ -111,14 +118,17 @@ EXTRA_DIST = gupnp-marshal.list 	   \
 	     gupnp-linux-context-manager.c \
 	     gupnp-linux-context-manager.h \
 	     gupnp-unix-context-manager.c  \
-	     gupnp-unix-context-manager.h
+	     gupnp-unix-context-manager.h  \
+	     gupnp-windows-context-manager.c \
+	     gupnp-windows-context-manager.h
 
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
 INTROSPECTION_SCANNER_ARGS = --warn-all			\
 			     --symbol-prefix=gupnp	\
 			     --identifier-prefix=GUPnP	\
-			     --add-include-path=$(top_srcdir)
+			     --add-include-path=$(top_srcdir) \
+			     --pkg-export=gupnp-1.0
 INTROSPECTION_COMPILER_ARGS = --includedir=$(top_srcdir)
 
 if HAVE_INTROSPECTION

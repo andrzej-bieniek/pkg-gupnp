@@ -57,7 +57,7 @@ GUPnPContext
 </para>
 
 @main_context: 
-@interface: 
+@iface: 
 @port: 
 @error: 
 @Returns: 

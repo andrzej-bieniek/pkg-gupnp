@@ -115,3 +115,12 @@ GUPnPRootDevice
 @Returns: 
 
 
+<!-- ##### FUNCTION gupnp_root_device_get_ssdp_resource_group ##### -->
+<para>
+
+</para>
+
+@root_device: 
+@Returns: 
+
+

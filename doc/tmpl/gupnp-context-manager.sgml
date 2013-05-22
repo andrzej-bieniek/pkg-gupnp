@@ -89,3 +89,12 @@ GUPnPContextManager
 @root_device: 
 
 
+<!-- ##### FUNCTION gupnp_context_manager_get_port ##### -->
+<para>
+
+</para>
+
+@manager: 
+@Returns: 
+
+

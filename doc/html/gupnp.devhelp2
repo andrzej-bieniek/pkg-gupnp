@@ -156,6 +156,7 @@
     <keyword type="function" name="gupnp_root_device_get_relative_location ()" link="GUPnPRootDevice.html#gupnp-root-device-get-relative-location"/>
     <keyword type="function" name="gupnp_root_device_get_description_dir ()" link="GUPnPRootDevice.html#gupnp-root-device-get-description-dir"/>
     <keyword type="function" name="gupnp_root_device_get_description_path ()" link="GUPnPRootDevice.html#gupnp-root-device-get-description-path"/>
+    <keyword type="function" name="gupnp_root_device_get_ssdp_resource_group ()" link="GUPnPRootDevice.html#gupnp-root-device-get-ssdp-resource-group"/>
     <keyword type="property" name="The &quot;available&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--available"/>
     <keyword type="property" name="The &quot;description-dir&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-dir"/>
     <keyword type="property" name="The &quot;description-doc&quot; property" link="GUPnPRootDevice.html#GUPnPRootDevice--description-doc"/>
@@ -210,6 +211,7 @@
     <keyword type="function" name="gupnp_context_manager_create ()" link="GUPnPContextManager.html#gupnp-context-manager-create"/>
     <keyword type="function" name="gupnp_context_manager_manage_control_point ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-control-point"/>
     <keyword type="function" name="gupnp_context_manager_manage_root_device ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-root-device"/>
+    <keyword type="function" name="gupnp_context_manager_get_port ()" link="GUPnPContextManager.html#gupnp-context-manager-get-port"/>
     <keyword type="property" name="The &quot;main-context&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--main-context"/>
     <keyword type="property" name="The &quot;port&quot; property" link="GUPnPContextManager.html#GUPnPContextManager--port"/>
     <keyword type="signal" name="The &quot;context-available&quot; signal" link="GUPnPContextManager.html#GUPnPContextManager-context-available"/>

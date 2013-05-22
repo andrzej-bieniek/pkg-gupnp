@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -30,7 +30,6 @@
 #include <gobject/gvaluecollector.h>
 #include <gmodule.h>
 #include <libsoup/soup-date.h>
-#include <uuid/uuid.h>
 #include <string.h>
 #include "gupnp-service.h"
 #include "gupnp-root-device.h"
@@ -41,6 +40,12 @@
 #include "gena-protocol.h"
 #include "xml-util.h"
 #include "gvalue-util.h"
+
+#ifdef G_OS_WIN32
+#include <rpc.h>
+#else
+#include <uuid/uuid.h>
+#endif
 
 #define SUBSCRIPTION_TIMEOUT 300 /* DLNA (7.2.22.1) enforced */
 
@@ -458,7 +463,7 @@ gupnp_service_action_get_values (GUPnPServiceAction *action,
  * gupnp_service_action_get_value: (skip)
  * @action: A #GUPnPServiceAction
  * @argument: The name of the argument to retrieve
- * @value: The #GValue to store the value of the argument, initialized
+ * @value: (inout):The #GValue to store the value of the argument, initialized
  * to the correct type.
  *
  * Retrieves the value of @argument into @value.
@@ -1077,6 +1082,22 @@ subscription_response (GUPnPService *service,
 static char *
 generate_sid (void)
 {
+#ifdef G_OS_WIN32
+        char *ret = NULL;
+        UUID uuid;
+        RPC_STATUS stat;
+        stat = UuidCreate (&uuid);
+        if (stat == RPC_S_OK) {
+                unsigned char* uuidStr = NULL;
+                stat = UuidToString (&uuid, &uuidStr);
+                if (stat == RPC_S_OK) {
+                        ret = g_strdup_printf ("uuid:%s", uuidStr);
+                        RpcStringFree (&uuidStr);
+                }
+        }
+
+        return ret;
+#else
         uuid_t id;
         char out[39];
 
@@ -1084,6 +1105,7 @@ generate_sid (void)
         uuid_unparse (id, out);
 
         return g_strdup_printf ("uuid:%s", out);
+#endif
 }
 
 /* Subscription expired */
@@ -1669,7 +1691,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
          * GUPnPService::query-variable:
          * @service: The #GUPnPService that received the signal
          * @variable: The variable that is being queried
-         * @value: The location of the #GValue of the variable
+         * @value: (type GValue)(inout):The location of the #GValue of the variable
          *
          * Emitted whenever @service needs to know the value of @variable.
          * Handler should fill @value with the value of @variable.
@@ -1692,8 +1714,8 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
         /**
          * GUPnPService::notify-failed:
          * @service: The #GUPnPService that received the signal
-         * @callback_url: The callback URL
-         * @reason: A pointer to a #GError describing why the notify failed
+         * @callback_url: (type GList)(element-type SoupURI):A #GList of callback URLs
+         * @reason: (type GError): A pointer to a #GError describing why the notify failed
          *
          * Emitted whenever notification of a client fails.
          **/
@@ -1911,6 +1933,8 @@ notify_subscriber (gpointer key,
 
         /* Queue */
         data->pending_messages = g_list_prepend (data->pending_messages, msg);
+        soup_message_headers_append (msg->request_headers,
+                                     "Connection", "close");
 
         session = gupnp_service_get_session (data->service);
 

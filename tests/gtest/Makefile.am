@@ -1,6 +1,6 @@
 if HAVE_GTEST
 TESTS_ENVIRONMENT = G_SLICE=debug-blocks \
-		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs
+		    LD_LIBRARY_PATH=$(top_builddir)/libgupnp/.libs:$(LD_LIBRARY_PATH)
 
 TESTS=$(check_PROGRAMS)
 
@@ -15,6 +15,6 @@ LDADD = \
 AM_CFLAGS = \
 	    $(LIBGUPNP_CFLAGS) \
 	    -I $(top_srcdir) \
-	    -DDATA_PATH="\"$(srcdir)\""
+	    -DDATA_PATH="\"$(srcdir)/data\""
 
-EXTRA_DIST=random4k.bin
+EXTRA_DIST=data/random4k.bin

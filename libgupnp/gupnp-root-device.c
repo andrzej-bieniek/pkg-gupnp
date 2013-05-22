@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -697,4 +697,20 @@ gupnp_root_device_get_description_dir (GUPnPRootDevice *root_device)
         g_return_val_if_fail (GUPNP_IS_ROOT_DEVICE (root_device), NULL);
 
         return root_device->priv->description_dir;
+}
+
+/**
+ * gupnp_root_device_get_ssdp_resource_group:
+ * @root_device: A #GUPnPRootDevice
+ *
+ * Get the #GSSDPResourceGroup used by @root_device.
+ *
+ * Returns: (transfer none): The #GSSDPResourceGroup of @root_device.
+ **/
+GSSDPResourceGroup *
+gupnp_root_device_get_ssdp_resource_group (GUPnPRootDevice *root_device)
+{
+        g_return_val_if_fail (GUPNP_IS_ROOT_DEVICE (root_device), NULL);
+
+        return root_device->priv->group;
 }

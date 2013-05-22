@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -348,7 +348,7 @@ gupnp_service_proxy_class_init (GUPnPServiceProxyClass *klass)
         /**
          * GUPnPServiceProxy::subscription-lost:
          * @proxy: The #GUPnPServiceProxy that received the signal
-         * @error: A pointer to a #GError describing why the subscription has
+         * @error: (type GError):A pointer to a #GError describing why the subscription has
          * been lost
          *
          * Emitted whenever the subscription to this service has been lost due
@@ -967,7 +967,7 @@ gupnp_service_proxy_begin_action_list
  * @callback: (scope async): The callback to call when sending the action has succeeded
  * or failed
  * @user_data: User data for @callback
- * @hash: A #GHashTable of in parameter name and #GValue pairs
+ * @hash: (element-type utf8 GValue): A #GHashTable of in parameter name and #GValue pairs
  *
  * See gupnp_service_proxy_begin_action(); this version takes a #GHashTable
  * for runtime generated parameter lists.
@@ -1524,6 +1524,10 @@ gupnp_service_proxy_add_notify (GUPnPServiceProxy              *proxy,
  *
  * Cancels the variable change notification for @callback and @user_data.
  *
+ * This function must not be called directly or indirectly from a
+ * #GUPnPServiceProxyNotifyCallback associated with this service proxy, even
+ * if it is for another variable.
+ *
  * Return value: %TRUE on success.
  **/
 gboolean
@@ -1567,7 +1571,7 @@ gupnp_service_proxy_remove_notify (GUPnPServiceProxy              *proxy,
                         if (data->callbacks == NULL) {
                                 /* No callbacks left: Remove from hash */
                                 g_hash_table_remove (proxy->priv->notify_hash,
-                                                     data);
+                                                     variable);
                         }
 
                         found = TRUE;

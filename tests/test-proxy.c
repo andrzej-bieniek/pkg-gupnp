@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #include <libgupnp/gupnp-control-point.h>
@@ -24,6 +24,7 @@
 #include <string.h>
 #include <locale.h>
 #include <signal.h>
+#include <glib.h>
 
 GMainLoop *main_loop;
 
@@ -151,9 +152,13 @@ main (int argc, char **argv)
         GError *error;
         GUPnPContext *context;
         GUPnPControlPoint *cp;
+#ifndef G_OS_WIN32
         struct sigaction sig_action;
+#endif /* G_OS_WIN32 */
 
+#if !GLIB_CHECK_VERSION(2,35,0)
         g_type_init ();
+#endif
         setlocale (LC_ALL, "");
 
         error = NULL;
@@ -184,9 +189,13 @@ main (int argc, char **argv)
         main_loop = g_main_loop_new (NULL, FALSE);
 
         /* Hook the handler for SIGTERM */
+#ifndef G_OS_WIN32
         memset (&sig_action, 0, sizeof (sig_action));
         sig_action.sa_handler = interrupt_signal_handler;
         sigaction (SIGINT, &sig_action, NULL);
+#else
+        signal(SIGINT,interrupt_signal_handler);
+#endif /* G_OS_WIN32 */
 
         g_main_loop_run (main_loop);
         g_main_loop_unref (main_loop);

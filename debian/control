@@ -9,8 +9,8 @@ Build-Depends: debhelper (>= 9),
                libglib2.0-dev (>= 2.26),
                libsoup2.4-dev (>= 2.34.0-1~),
                libxml2-dev,
-               libgssdp-1.0-dev (>= 0.11.2),
-               libdbus-glib-1-dev,
+               libgssdp-1.0-dev (>= 0.13.0),
+               valac (>= 0.14.0),
                shared-mime-info,
                xsltproc,
                docbook-xsl (>= 1.75.2+dfsg-5),
@@ -20,7 +20,7 @@ Build-Depends: debhelper (>= 9),
                gir1.2-glib-2.0,
                gir1.2-gssdp-1.0,
                gir1.2-soup-2.4
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/gupnp.git
@@ -49,10 +49,15 @@ Homepage: http://live.gnome.org/GObjectIntrospection
 Package: libgupnp-1.0-dev
 Section: libdevel
 Architecture: any
-Depends: libgupnp-1.0-4 (= ${binary:Version}), gir1.2-gupnp-1.0, libgssdp-1.0-dev (>= 0.6.1), libsoup2.4-dev, libxml2-dev, ${misc:Depends}
+Depends: libgupnp-1.0-4 (= ${binary:Version}),
+         gir1.2-gupnp-1.0 (= ${binary:Version}),
+         libgssdp-1.0-dev (>= 0.6.1),
+         libsoup2.4-dev,
+         libxml2-dev,
+         ${misc:Depends}
 Recommends: python
 Suggests: libgupnp-doc
-Replaces: gir-repository-dev (<= 0.6.5-5)
+Replaces: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
 Description: GObject-based library for UPnP (development files)
  A GObject-based API for doing UPnP transparently.
  .

@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 /**
@@ -31,15 +31,12 @@
 #include <sys/socket.h>
 #include <linux/netlink.h>
 #include <linux/rtnetlink.h>
-#include <linux/if.h>
 #ifdef HAVE_LINUX_WIRELESS_H
 #include <linux/wireless.h>
 #endif
 #include <sys/ioctl.h>
 #include <errno.h>
 #include <string.h>
-
-#include <gio/gio.h>
 
 #include "gupnp-linux-context-manager.h"
 #include "gupnp-context.h"
@@ -476,6 +473,8 @@ query_all_network_interfaces (GUPnPLinuxContextManager *self)
         do {
                 receive_netlink_message (self, &error);
         } while (error == NULL);
+
+        g_error_free (error);
 }
 
 static void

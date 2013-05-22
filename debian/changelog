@@ -1,11 +1,55 @@
-gupnp (0.18.4-2) unstable; urgency=low
+gupnp (0.20.0-1) experimental; urgency=low
 
-  * python: fixed error when calling functions with gerror parameter
-    "TypeError: send_action_hash() takes exactly 5 argument(s) (4 given)" 
-  * python: workaround crash due to not valid out_hash passed from python to gupnp.
-    - e.g. in gupnp_service_proxy_send_action_hash_gi
+  * drop DEB_DH_INSTALL_ARGS usage from debian/rules
+  * Imported Upstream version 0.20.0
 
- -- Andrzej Bieniek <andyhelp@gmail.com>  Sun, 24 Jun 2012 13:15:59 +0000
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 20 Feb 2013 15:05:38 +0100
+
+gupnp (0.19.4-1) experimental; urgency=low
+
+  * Tighten dev -> gir package dependency
+  * Imported Upstream version 0.19.4
+  * Bump standards version to 3.9.4
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 28 Jan 2013 23:12:27 +0100
+
+gupnp (0.19.3-1) experimental; urgency=low
+
+  * Imported Upstream version 0.19.3
+  * Update symbols file with added gupnp_root_device_get_ssdp_resource_group
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 09 Dec 2012 14:31:40 +0100
+
+gupnp (0.19.1-1) experimental; urgency=low
+
+  * Replace gupnp-vala before 0.10.5 to avoid conflicts
+  * Imported Upstream version 0.19.1
+  * Revert "Bump gobject-introspection build-dep to 1.33.4 ..."
+    - upstream lowered the requirement again in 0.19.1.
+  * Revert "Add vapigen-m4-macro.patch from upstream"
+    - now included in upstream release.
+  * Update symbols file with new gupnp_context_manager_get_port
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 25 Oct 2012 13:43:57 +0200
+
+gupnp (0.19.0-3) experimental; urgency=low
+
+  * Imported Upstream version 0.19.0
+    - Beware! This version stops leaking gssdp, libxml and libsoup
+      linker flags!
+    - If you use symbols from a library, you need to link to it!
+    - Also link your modules with "-Wl,-z,defs" in LDFLAGS to
+      catch errors at build time!
+  * Add vapigen-m4-macro.patch from upstream.
+  * Bump gssdp build-dependency to 0.13.0 according to configure.ac
+  * Bump gobject-introspection build-dep to 1.33.4 according to configure.ac
+  * Drop dbus-glib build-dependency
+    - gupnp was ported to GDBus in 0.15.0 already.
+  * Build-dep on valac (>= 0.14.0) to get vapigen
+  * Install vapi and deps in libgupnp-1.0-dev
+  * Change pattern so list-missing doesn't complain
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 09 Oct 2012 22:54:53 +0200
 
 gupnp (0.18.4-1) unstable; urgency=low
 

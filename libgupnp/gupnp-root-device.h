@@ -15,14 +15,16 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #ifndef __GUPNP_ROOT_DEVICE_H__
 #define __GUPNP_ROOT_DEVICE_H__
 
 #include <libxml/tree.h>
+
+#include <libgssdp/gssdp-resource-group.h>
 
 #include "gupnp-context.h"
 #include "gupnp-device.h"
@@ -110,6 +112,10 @@ gupnp_root_device_get_description_path
 
 const char *
 gupnp_root_device_get_description_dir
+                                  (GUPnPRootDevice      *root_device);
+
+GSSDPResourceGroup *
+gupnp_root_device_get_ssdp_resource_group
                                   (GUPnPRootDevice      *root_device);
 
 G_END_DECLS
