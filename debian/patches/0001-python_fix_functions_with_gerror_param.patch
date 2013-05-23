@@ -25,10 +25,10 @@ index c39e9c9..2b862bc 100644
 +gupnp_service_proxy_send_action_hash_gi (GUPnPServiceProxy *proxy,
 +                                         const char        *action,
 +                                         GHashTable        *in_hash,
-+                                         GHashTable        *out_hash,
++                                         GHashTable        **out_hash,
 +                                         GError           **error)
 +{
-+    return gupnp_service_proxy_send_action_hash (proxy, action, error, in_hash, out_hash);
++    return gupnp_service_proxy_send_action_hash (proxy, action, error, in_hash, *out_hash);
 +}
 +
 +
@@ -174,7 +174,7 @@ index 7336d35..6aa98b5 100644
 +                                   (GUPnPServiceProxy              *proxy,
 +                                    const char                     *action,
 +                                    GHashTable                     *in_hash,
-+                                    GHashTable                     *out_hash,
++                                    GHashTable                     **out_hash,
 +                                    GError                        **error);
  
  gboolean
