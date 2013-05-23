@@ -1,3 +1,11 @@
+gupnp (0.20.0-1ubuntu1) raring; urgency=low
+
+  * Add B-D on docbook-xml, otherwise xsltproc tries to download DTDs from the
+    internet.
+  * Build with --enable-gtk-doc and add gtk-doc-utils B-D to prevent FTBFS. 
+
+ -- Iain Lane <iain.lane@canonical.com>  Wed, 06 Mar 2013 12:32:40 +0000
+
 gupnp (0.20.0-1) experimental; urgency=low
 
   * drop DEB_DH_INSTALL_ARGS usage from debian/rules

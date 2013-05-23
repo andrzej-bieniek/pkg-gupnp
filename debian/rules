@@ -12,6 +12,8 @@ else
 DEB_CONFIGURE_EXTRA_FLAGS += --with-context-manager=unix
 endif
 
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-gtk-doc
+
 DEB_DH_MAKESHLIBS_ARGS_ALL := -V
 
 DEB_INSTALL_MANPAGES_libgupnp-1.0-dev := gupnp-binding-tool.1
