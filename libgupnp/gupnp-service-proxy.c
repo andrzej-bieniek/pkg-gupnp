@@ -32,6 +32,7 @@
 #include <gobject/gvaluecollector.h>
 #include <string.h>
 #include <locale.h>
+#include <errno.h>
 
 #include "gupnp-service-proxy.h"
 #include "gupnp-context-private.h"
@@ -57,7 +58,7 @@ struct _GUPnPServiceProxyPrivate {
         char *sid; /* Subscription ID */
         GSource *subscription_timeout_src;
 
-        int seq; /* Event sequence number */
+        guint32 seq; /* Event sequence number */
 
         GHashTable *notify_hash;
 
@@ -105,7 +106,7 @@ typedef struct {
 
 typedef struct {
         char *sid;
-        int seq;
+        guint32 seq;
 
         xmlDoc *doc;
 } EmitNotifyData;
@@ -142,7 +143,7 @@ notify_data_free (NotifyData *data)
 /* Steals doc reference */
 static EmitNotifyData *
 emit_notify_data_new (const char *sid,
-                      int         seq,
+                      guint32     seq,
                       xmlDoc     *doc)
 {
         EmitNotifyData *data;
@@ -400,9 +401,9 @@ gupnp_service_proxy_send_action (GUPnPServiceProxy *proxy,
 }
 
 static void
-stop_main_loop (GUPnPServiceProxy       *proxy,
-                GUPnPServiceProxyAction *action,
-                gpointer                 user_data)
+stop_main_loop (G_GNUC_UNUSED GUPnPServiceProxy       *proxy,
+                G_GNUC_UNUSED GUPnPServiceProxyAction *action,
+                gpointer                               user_data)
 {
         g_main_loop_quit ((GMainLoop *) user_data);
 }
@@ -1163,10 +1164,10 @@ gupnp_service_proxy_end_action (GUPnPServiceProxy       *proxy,
 /* Checks an action response for errors and returns the parsed
  * xmlDoc object. */
 static xmlDoc *
-check_action_response (GUPnPServiceProxy       *proxy,
-                       GUPnPServiceProxyAction *action,
-                       xmlNode                **params,
-                       GError                 **error)
+check_action_response (G_GNUC_UNUSED GUPnPServiceProxy *proxy,
+                       GUPnPServiceProxyAction         *action,
+                       xmlNode                        **params,
+                       GError                         **error)
 {
         xmlDoc *response;
         int code;
@@ -1760,14 +1761,19 @@ emit_notifications (gpointer user_data)
                 emit_notify_data = pending_notify->data;
 
                 if (emit_notify_data->seq > proxy->priv->seq) {
-                        /* Oops, we missed a notify. Resubscribe .. */
+                        /* Error procedure on missed event according to
+                         * UDA 1.0, section 4.2, §5:
+                         * Re-subscribe to get a new SID and SEQ */
                         resubscribe = TRUE;
 
                         break;
                 }
 
                 /* Increment our own event sequence number */
-                if (proxy->priv->seq < G_MAXINT32)
+                /* UDA 1.0, section 4.2, §3: To prevent overflow, SEQ is set to
+                 * 1, NOT 0, when encountering G_MAXUINT32. SEQ == 0 always
+                 * indicates the initial event message. */
+                if (proxy->priv->seq < G_MAXUINT32)
                         proxy->priv->seq++;
                 else
                         proxy->priv->seq = 1;
@@ -1804,16 +1810,17 @@ emit_notifications (gpointer user_data)
  * message with our SID.
  */
 static void
-server_handler (SoupServer        *soup_server,
-                SoupMessage       *msg, 
-                const char        *server_path,
-                GHashTable        *query,
-                SoupClientContext *soup_client,
-                gpointer           user_data)
+server_handler (G_GNUC_UNUSED SoupServer        *soup_server,
+                SoupMessage                     *msg,
+                G_GNUC_UNUSED const char        *server_path,
+                G_GNUC_UNUSED GHashTable        *query,
+                G_GNUC_UNUSED SoupClientContext *soup_client,
+                gpointer                         user_data)
 {
         GUPnPServiceProxy *proxy;
-        const char *hdr;
-        int seq;
+        const char *hdr, *nt, *nts;
+        guint32 seq;
+        guint64 seq_parsed;
         xmlDoc *doc;
         xmlNode *node;
         EmitNotifyData *emit_notify_data;
@@ -1827,17 +1834,18 @@ server_handler (SoupServer        *soup_server,
                 return;
         }
 
-        hdr = soup_message_headers_get_one (msg->request_headers, "NT");
-        if (hdr == NULL || strcmp (hdr, "upnp:event") != 0) {
-                /* Proper NT header lacking */
-                soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
+        nt = soup_message_headers_get_one (msg->request_headers, "NT");
+        nts = soup_message_headers_get_one (msg->request_headers, "NTS");
+        if (nt == NULL || nts == NULL) {
+                /* Required header is missing */
+                soup_message_set_status (msg, SOUP_STATUS_BAD_REQUEST);
 
                 return;
         }
 
-        hdr = soup_message_headers_get_one (msg->request_headers, "NTS");
-        if (hdr == NULL || strcmp (hdr, "upnp:propchange") != 0) {
-                /* Proper NTS header lacking */
+        if (strcmp (nt, "upnp:event") != 0 ||
+            strcmp (nts, "upnp:propchange") != 0) {
+                /* Unexpected header content */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
 
                 return;
@@ -1851,10 +1859,21 @@ server_handler (SoupServer        *soup_server,
                 return;
         }
 
-        seq = atoi (hdr);
+        errno = 0;
+        seq_parsed = strtoul (hdr, NULL, 10);
+        if (errno != 0 || seq_parsed > G_MAXUINT32) {
+                /* Invalid SEQ header value */
+                soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
+
+                return;
+        }
+
+        seq = (guint32) seq_parsed;
 
         hdr = soup_message_headers_get_one (msg->request_headers, "SID");
-        if (hdr == NULL) {
+        if (hdr == NULL ||
+            strlen (hdr) <= strlen ("uuid:") ||
+            strncmp (hdr, "uuid:", strlen ("uuid:")) != 0) {
                 /* No SID */
                 soup_message_set_status (msg, SOUP_STATUS_PRECONDITION_FAILED);
 
@@ -1985,9 +2004,9 @@ subscription_expire (gpointer user_data)
  * Received subscription response.
  */
 static void
-subscribe_got_response (SoupSession       *session,
-                        SoupMessage       *msg,
-                        GUPnPServiceProxy *proxy)
+subscribe_got_response (G_GNUC_UNUSED SoupSession *session,
+                        SoupMessage               *msg,
+                        GUPnPServiceProxy         *proxy)
 {
         GError *error;
 

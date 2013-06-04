@@ -209,6 +209,7 @@
     <keyword type="struct" name="struct GUPnPContextManager" link="GUPnPContextManager.html#GUPnPContextManager-struct"/>
     <keyword type="function" name="gupnp_context_manager_new ()" link="GUPnPContextManager.html#gupnp-context-manager-new" deprecated="0.17.2: Use gupnp_context_manager_create()."/>
     <keyword type="function" name="gupnp_context_manager_create ()" link="GUPnPContextManager.html#gupnp-context-manager-create"/>
+    <keyword type="function" name="gupnp_context_manager_rescan_control_points ()" link="GUPnPContextManager.html#gupnp-context-manager-rescan-control-points"/>
     <keyword type="function" name="gupnp_context_manager_manage_control_point ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-control-point"/>
     <keyword type="function" name="gupnp_context_manager_manage_root_device ()" link="GUPnPContextManager.html#gupnp-context-manager-manage-root-device"/>
     <keyword type="function" name="gupnp_context_manager_get_port ()" link="GUPnPContextManager.html#gupnp-context-manager-get-port"/>

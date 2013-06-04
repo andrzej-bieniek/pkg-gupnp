@@ -15,6 +15,7 @@
 
 static gboolean status;
 
+G_BEGIN_DECLS
 G_MODULE_EXPORT void set_target_cb (GUPnPService *service,
                                     GUPnPServiceAction *action,
                                     gpointer user_data);
@@ -28,14 +29,16 @@ G_MODULE_EXPORT void query_target_cb (GUPnPService *service, char *variable,
                                       GValue *value, gpointer user_data);
 G_MODULE_EXPORT void query_status_cb (GUPnPService *service, char *variable,
                                       GValue *value, gpointer user_data);
-
+G_END_DECLS
 /*
  * Action handlers
  */
 
 /* SetTarget */
 G_MODULE_EXPORT void
-set_target_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_data)
+set_target_cb (GUPnPService          *service,
+               GUPnPServiceAction    *action,
+               G_GNUC_UNUSED gpointer user_data)
 {
   gboolean target;
 
@@ -61,7 +64,9 @@ set_target_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_
 
 /* GetTarget */
 G_MODULE_EXPORT void
-get_target_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_data)
+get_target_cb (G_GNUC_UNUSED GUPnPService *service,
+               GUPnPServiceAction         *action,
+               G_GNUC_UNUSED gpointer      user_data)
 {
   gupnp_service_action_set (action,
                             "RetTargetValue", G_TYPE_BOOLEAN, status,
@@ -71,7 +76,9 @@ get_target_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_
 
 /* GetStatus */
 G_MODULE_EXPORT void
-get_status_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_data)
+get_status_cb (G_GNUC_UNUSED GUPnPService *service,
+               GUPnPServiceAction         *action,
+               G_GNUC_UNUSED gpointer      user_data)
 {
   gupnp_service_action_set (action,
                             "ResultStatus", G_TYPE_BOOLEAN, status,
@@ -85,7 +92,10 @@ get_status_cb (GUPnPService *service, GUPnPServiceAction *action, gpointer user_
 
 /* Target */
 G_MODULE_EXPORT void
-query_target_cb (GUPnPService *service, char *variable, GValue *value, gpointer user_data)
+query_target_cb (G_GNUC_UNUSED GUPnPService *service,
+                 G_GNUC_UNUSED char         *variable,
+                 GValue                     *value,
+                 G_GNUC_UNUSED gpointer      user_data)
 {
   g_value_init (value, G_TYPE_BOOLEAN);
   g_value_set_boolean (value, status);
@@ -93,7 +103,10 @@ query_target_cb (GUPnPService *service, char *variable, GValue *value, gpointer 
 
 /* Status */
 G_MODULE_EXPORT void
-query_status_cb (GUPnPService *service, char *variable, GValue *value, gpointer user_data)
+query_status_cb (G_GNUC_UNUSED GUPnPService *service,
+                 G_GNUC_UNUSED char         *variable,
+                 GValue                     *value,
+                 G_GNUC_UNUSED gpointer      user_data)
 {
   g_value_init (value, G_TYPE_BOOLEAN);
   g_value_set_boolean (value, status);
@@ -101,7 +114,7 @@ query_status_cb (GUPnPService *service, char *variable, GValue *value, gpointer 
 
 
 int
-main (int argc, char **argv)
+main (G_GNUC_UNUSED int argc, G_GNUC_UNUSED char **argv)
 {
   GMainLoop *main_loop;
   GError *error = NULL;

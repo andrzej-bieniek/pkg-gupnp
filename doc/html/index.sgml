@@ -249,6 +249,7 @@
 <ANCHOR id="GUPnPContextManager-struct" href="gupnp/GUPnPContextManager.html#GUPnPContextManager-struct">
 <ANCHOR id="gupnp-context-manager-new" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-new">
 <ANCHOR id="gupnp-context-manager-create" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-create">
+<ANCHOR id="gupnp-context-manager-rescan-control-points" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-rescan-control-points">
 <ANCHOR id="gupnp-context-manager-manage-control-point" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-manage-control-point">
 <ANCHOR id="gupnp-context-manager-manage-root-device" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-manage-root-device">
 <ANCHOR id="gupnp-context-manager-get-port" href="gupnp/GUPnPContextManager.html#gupnp-context-manager-get-port">
