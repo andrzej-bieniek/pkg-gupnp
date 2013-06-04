@@ -72,9 +72,9 @@ enum {
 static guint signals[SIGNAL_LAST];
 
 static void
-on_context_unavailable (GUPnPContextManager *manager,
-                        GUPnPContext        *context,
-                        gpointer            *user_data)
+on_context_unavailable (GUPnPContextManager    *manager,
+                        GUPnPContext           *context,
+                        G_GNUC_UNUSED gpointer *user_data)
 {
         GList *l;
 
@@ -356,15 +356,19 @@ gupnp_context_manager_create (guint port)
                 impl_type = GUPNP_TYPE_CONNMAN_MANAGER;
 #endif
 
-        if (impl_type == G_TYPE_INVALID)
+        if (impl_type == G_TYPE_INVALID) {
             /* Either user requested us to use the Linux CM explicitly or we
              * are using one of the DBus managers but it's not available, so we
              * fall-back to it. */
 #if defined (USE_NETLINK) || defined (HAVE_LINUX_RTNETLINK_H)
-                impl_type = GUPNP_TYPE_LINUX_CONTEXT_MANAGER;
+                if (gupnp_linux_context_manager_is_available ())
+                        impl_type = GUPNP_TYPE_LINUX_CONTEXT_MANAGER;
+                else
+                    impl_type = GUPNP_TYPE_UNIX_CONTEXT_MANAGER;
 #else
                 impl_type = GUPNP_TYPE_UNIX_CONTEXT_MANAGER;
 #endif
+        }
 #endif /* G_OS_WIN32 */
         impl = g_object_new (impl_type,
                              "port", port,
@@ -374,6 +378,35 @@ gupnp_context_manager_create (guint port)
         g_object_unref (system_bus);
 #endif
         return impl;
+}
+
+/**
+ * gupnp_context_manager_rescan_control_points:
+ * @manager: A #GUPnPContextManager
+ *
+ * This function starts a rescan on every control point managed by @manager.
+ * Only the active control points send discovery messages.
+ * This function should be called when servers are suspected to have
+ * disappeared.
+ **/
+void
+gupnp_context_manager_rescan_control_points (GUPnPContextManager *manager)
+{
+        GList *l;
+
+        g_return_if_fail (GUPNP_IS_CONTEXT_MANAGER (manager));
+
+        l = manager->priv->objects;
+
+        while (l) {
+                if (GUPNP_IS_CONTROL_POINT (l->data)) {
+                        GSSDPResourceBrowser *browser =
+                                GSSDP_RESOURCE_BROWSER (l->data);
+                        gssdp_resource_browser_rescan (browser);
+                }
+
+                l = l->next;
+        }
 }
 
 /**

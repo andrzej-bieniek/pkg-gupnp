@@ -9,12 +9,10 @@ GUPnPContextManager
 
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -71,6 +69,14 @@ GUPnPContextManager
 
 @port: 
 @Returns: 
+
+
+<!-- ##### FUNCTION gupnp_context_manager_rescan_control_points ##### -->
+<para>
+
+</para>
+
+@manager: 
 
 
 <!-- ##### FUNCTION gupnp_context_manager_manage_control_point ##### -->
