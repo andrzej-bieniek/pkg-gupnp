@@ -1,3 +1,14 @@
+gupnp (0.20.3-1) unstable; urgency=low
+
+  * Imported Upstream version 0.20.3
+  * Add autotools-dev build-dependency
+    - fixes outdated-autotools-helper-file with help from CDBS
+  * Don't manually run dh_girepository anymore
+    - This is handled by CDBS since 0.4.90
+  * Update symbols with 1 addition
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 04 Jun 2013 15:37:22 +0200
+
 gupnp (0.20.2-3) unstable; urgency=low
 
   * Upload to unstable.
