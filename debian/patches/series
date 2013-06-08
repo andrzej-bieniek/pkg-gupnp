@@ -1,1 +1,2 @@
 0001-python_fix_functions_with_gerror_param.patch
+0002-fix_callback_annotation_in_gupnp_service_proxy_add_notify.patch

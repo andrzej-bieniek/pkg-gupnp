@@ -1,0 +1,32 @@
+From 5a6e790b24c6d947cb976cece733a32b22e6fb7f Mon Sep 17 00:00:00 2001
+From: Andrzej Bieniek <andyhelp@gmail.com>
+Date: Sat, 1 Jun 2013 22:33:13 +0100
+Subject: Fix callback annotation in gupnp_service_proxy_add_notify
+
+Second call to the callback was causing the segfault.
+Changing annotation from async to notified fixed the problem.
+(tested with python)
+
+From https://live.gnome.org/GObjectIntrospection/Annotations
+* async - Only valid for the duration of the first callback invokation. Can only be called once.
+* notified - valid until the GDestroyNotify argument is called. Can be called multiple times before the GDestroyNotify is called.
+---
+ libgupnp/gupnp-service-proxy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgupnp/gupnp-service-proxy.c b/libgupnp/gupnp-service-proxy.c
+index 0faa739..ff6a46f 100644
+--- a/libgupnp/gupnp-service-proxy.c
++++ b/libgupnp/gupnp-service-proxy.c
+@@ -1544,7 +1544,7 @@ gupnp_service_proxy_cancel_action (GUPnPServiceProxy       *proxy,
+  * @proxy: A #GUPnPServiceProxy
+  * @variable: The variable to add notification for
+  * @type: The type of the variable
+- * @callback: (scope async): The callback to call when @variable changes
++ * @callback: (scope notified): The callback to call when @variable changes
+  * @user_data: User data for @callback
+  *
+  * Sets up @callback to be called whenever a change notification for
+-- 
+1.8.1.2
+
