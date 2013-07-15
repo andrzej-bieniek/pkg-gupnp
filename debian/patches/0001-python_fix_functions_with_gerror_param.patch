@@ -133,7 +133,7 @@ index c39e9c9..2b862bc 100644
 + * @proxy: A #GUPnPServiceProxy
 + * @action: A #GUPnPServiceProxyAction handle
 + * @error: The location where to store any error, or %NULL
-+ * @hash: (element-type utf8 GValue) (out caller-allocates) (transfer none): A #GHashTable of
++ * @hash: (inout) (element-type utf8 GValue) (out caller-allocates) (transfer none): A #GHashTable of
 + * out parameter name and initialised #GValue pairs
 + *
 + * See gupnp_service_proxy_end_action(); this version takes a #GHashTable for
@@ -145,10 +145,10 @@ index c39e9c9..2b862bc 100644
 +gboolean
 +gupnp_service_proxy_end_action_hash_gi (GUPnPServiceProxy       *proxy,
 +                                        GUPnPServiceProxyAction *action,
-+                                        GHashTable              *hash,
++                                        GHashTable             **hash,
 +                                        GError                 **error)
 +{
-+    return gupnp_service_proxy_end_action_hash (proxy, action, error, hash);
++    return gupnp_service_proxy_end_action_hash (proxy, action, error, *hash);
 +}
 +
 +/**
@@ -212,7 +212,7 @@ index 7336d35..6aa98b5 100644
 +gupnp_service_proxy_end_action_hash_gi
 +                                   (GUPnPServiceProxy              *proxy,
 +                                    GUPnPServiceProxyAction        *action,
-+                                    GHashTable                     *hash,
++                                    GHashTable                    **hash,
 +                                    GError                        **error);
 +
 +gboolean
