@@ -1,3 +1,10 @@
+gupnp (0.20.4-1) unstable; urgency=low
+
+  * Imported Upstream version 0.20.4
+  * Update symbols file with one added symbol
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 03 Aug 2013 02:37:18 +0200
+
 gupnp (0.20.3-1) unstable; urgency=low
 
   * Imported Upstream version 0.20.3
