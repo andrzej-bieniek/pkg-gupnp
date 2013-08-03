@@ -58,6 +58,7 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_device_info_list_device_types@Base 0.18.0
  gupnp_device_info_list_devices@Base 0.18.0
  gupnp_device_info_list_dlna_capabilities@Base 0.18.0
+ gupnp_device_info_list_dlna_device_class_identifier@Base 0.20.4
  gupnp_device_info_list_service_types@Base 0.18.0
  gupnp_device_info_list_services@Base 0.18.0
  gupnp_device_proxy_get_type@Base 0.18.0
