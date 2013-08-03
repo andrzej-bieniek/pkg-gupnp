@@ -1,5 +1,5 @@
 <!-- ##### SECTION Title ##### -->
-GUPnPXMLDoc
+gupnp-linux-context-manager
 
 <!-- ##### SECTION Short_Description ##### -->
 
@@ -20,31 +20,5 @@ GUPnPXMLDoc
 
 
 <!-- ##### SECTION Image ##### -->
-
-
-<!-- ##### STRUCT GUPnPXMLDoc ##### -->
-<para>
-
-</para>
-
-@doc: 
-
-<!-- ##### FUNCTION gupnp_xml_doc_new ##### -->
-<para>
-
-</para>
-
-@xml_doc: 
-@Returns: 
-
-
-<!-- ##### FUNCTION gupnp_xml_doc_new_from_path ##### -->
-<para>
-
-</para>
-
-@path: 
-@error: 
-@Returns: 
 
 

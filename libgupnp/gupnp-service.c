@@ -355,7 +355,7 @@ gupnp_service_action_get_locales (GUPnPServiceAction *action)
 /**
  * gupnp_service_action_get:
  * @action: A #GUPnPServiceAction
- * @Varargs: tuples of argument name, argument type, and argument value
+ * @...: tuples of argument name, argument type, and argument value
  * location, terminated with %NULL.
  *
  * Retrieves the specified action arguments.
@@ -543,7 +543,7 @@ gupnp_service_action_get_argument_count (GUPnPServiceAction *action)
 /**
  * gupnp_service_action_set:
  * @action: A #GUPnPServiceAction
- * @Varargs: tuples of return value name, return value type, and
+ * @...: tuples of return value name, return value type, and
  * actual return value, terminated with %NULL.
  *
  * Sets the specified action return values.
@@ -927,6 +927,14 @@ control_server_handler (SoupServer                      *server,
                 soup_message_set_status (msg, SOUP_STATUS_BAD_REQUEST);
 
                 return;
+        }
+
+        /* DLNA 7.2.5.6: Always use HTTP 1.1 */
+        if (soup_message_get_http_version (msg) == SOUP_HTTP_1_0) {
+                soup_message_set_http_version (msg, SOUP_HTTP_1_1);
+                soup_message_headers_append (msg->response_headers,
+                                             "Connection",
+                                             "close");
         }
 
         context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
@@ -1737,7 +1745,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
 /**
  * gupnp_service_notify:
  * @service: A #GUPnPService
- * @Varargs: Tuples of variable name, variable type, and variable value,
+ * @...: Tuples of variable name, variable type, and variable value,
  * terminated with %NULL.
  *
  * Notifies listening clients that the properties listed in @Varargs
@@ -2191,7 +2199,7 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * A convenience function that attempts to connect all possible
  * #GUPnPService::action-invoked and #GUPnPService::query-variable signals to
  * appropriate callbacks for the service @service. It uses service introspection
- * and GModule's introspective features. It is very simillar to
+ * and #GModule<!-- -->'s introspective features. It is very simillar to
  * gtk_builder_connect_signals() except that it attempts to guess the names of
  * the signal handlers on its own.
  *
@@ -2200,17 +2208,18 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * off the action names and either prepend "on_" or append "_cb" to them. Same
  * goes for #GUPnPService::query-variable signals, except that "query_" should
  * be prepended to the variable name. For example, callback function for
- * "GetSystemUpdateID" action should be either named as
+ * <varname>GetSystemUpdateID</varname> action should be either named as
  * "get_system_update_id_cb" or "on_get_system_update_id" and callback function
  * for the query of "SystemUpdateID" state variable should be named
- * "query_system_update_id_cb" or "on_query_system_update_id".
+ * <function>query_system_update_id_cb</function> or
+ * <function>on_query_system_update_id</function>.
  *
- * Note that this function will not work correctly if GModule is not supported
- * on the platform or introspection is not available for service @service.
+ * <note>This function will not work correctly if #GModule is not supported
+ * on the platform or introspection is not available for @service.</note>
  *
- * WARNING: This function can not and therefore does not guarantee that the
+ * <warning>This function can not and therefore does not guarantee that the
  * resulting signal connections will be correct as it depends heavily on a
- * particular naming schemes described above.
+ * particular naming schemes described above.</warning>
  **/
 void
 gupnp_service_signals_autoconnect (GUPnPService *service,

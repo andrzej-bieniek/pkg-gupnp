@@ -30,7 +30,7 @@
  * GUPnP classes. It automatically starts a web server on demand.
  *
  * For debugging, it is possible to see the messages being sent and received by
- * exporting %GUPNP_DEBUG.
+ * exporting <envar>GUPNP_DEBUG</envar>.
  */
 
 #include <config.h>
@@ -183,7 +183,7 @@ gupnp_context_initable_init (GInitable     *initable,
                  NULL);
 
         user_agent = g_strdup_printf ("%s GUPnP/" VERSION " DLNADOC/1.50",
-                                      g_get_application_name ()? : "");
+                                      g_get_prgname ()? : "");
         g_object_set (context->priv->session,
                       SOUP_SESSION_USER_AGENT,
                       user_agent,
@@ -684,7 +684,7 @@ host_path_data_set_language (HostPathData *data, const char *language)
 /**
  * gupnp_context_set_default_language:
  * @context: A #GUPnPContext
- * @language A language tag as defined in RFC 2616 3.10
+ * @language: A language tag as defined in RFC 2616 3.10
  *
  * Set the default language for the Content-Length header to @language.
  *
