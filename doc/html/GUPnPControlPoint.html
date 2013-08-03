@@ -52,16 +52,16 @@
 <a class="link" href="GUPnPResourceFactory.html" title="GUPnPResourceFactory"><span class="returnvalue">GUPnPResourceFactory</span></a> * <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-get-resource-factory" title="gupnp_control_point_get_resource_factory ()">gupnp_control_point_get_resource_factory</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
 <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="returnvalue">GUPnPContext</span></a> *      <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-get-context" title="gupnp_control_point_get_context ()">gupnp_control_point_get_context</a>     (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
-const <span class="returnvalue">GList</span> *       <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-list-device-proxies" title="gupnp_control_point_list_device_proxies ()">gupnp_control_point_list_device_proxies</a>
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-list-device-proxies" title="gupnp_control_point_list_device_proxies ()">gupnp_control_point_list_device_proxies</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
-const <span class="returnvalue">GList</span> *       <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-list-service-proxies" title="gupnp_control_point_list_service_proxies ()">gupnp_control_point_list_service_proxies</a>
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       <a class="link" href="GUPnPControlPoint.html#gupnp-control-point-list-service-proxies" title="gupnp_control_point_list_service_proxies ()">gupnp_control_point_list_service_proxies</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
 </pre>
 </div>
 <div class="refsect1">
 <a name="GUPnPControlPoint.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  GObject
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----<a href="http://developer.gnome.org/gssdp/stable/GSSDPResourceBrowser.html">GSSDPResourceBrowser</a>
          +----GUPnPControlPoint
 </pre>
@@ -75,10 +75,10 @@ const <span class="returnvalue">GList</span> *       <a class="link" href="GUPnP
 <div class="refsect1">
 <a name="GUPnPControlPoint.signals"></a><h2>Signals</h2>
 <pre class="synopsis">
-  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-available" title='The "device-proxy-available" signal'>device-proxy-available</a>"                         : <code class="literal">Run Last</code>
-  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-unavailable" title='The "device-proxy-unavailable" signal'>device-proxy-unavailable</a>"                       : <code class="literal">Run Last</code>
-  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-available" title='The "service-proxy-available" signal'>service-proxy-available</a>"                        : <code class="literal">Run Last</code>
-  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-unavailable" title='The "service-proxy-unavailable" signal'>service-proxy-unavailable</a>"                      : <code class="literal">Run Last</code>
+  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-available" title='The "device-proxy-available" signal'>device-proxy-available</a>"                         : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-device-proxy-unavailable" title='The "device-proxy-unavailable" signal'>device-proxy-unavailable</a>"                       : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-available" title='The "service-proxy-available" signal'>service-proxy-available</a>"                        : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+  "<a class="link" href="GUPnPControlPoint.html#GUPnPControlPoint-service-proxy-unavailable" title='The "service-proxy-unavailable" signal'>service-proxy-unavailable</a>"                      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
 </pre>
 </div>
 <div class="refsect1">
@@ -223,10 +223,10 @@ Get the <a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint">
 <hr>
 <div class="refsect2">
 <a name="gupnp-control-point-list-device-proxies"></a><h3>gupnp_control_point_list_device_proxies ()</h3>
-<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_control_point_list_device_proxies
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_control_point_list_device_proxies
                                                         (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);</pre>
 <p>
-Get the <span class="type">GList</span> of discovered <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a> objects. Do not free the list
+Get the <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of discovered <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a> objects. Do not free the list
 nor its elements.
 </p>
 <div class="variablelist"><table border="0">
@@ -239,7 +239,7 @@ nor its elements.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>a <span class="type">GList</span> of
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
 <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a> objects. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.DeviceProxy][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
@@ -249,10 +249,10 @@ nor its elements.
 <hr>
 <div class="refsect2">
 <a name="gupnp-control-point-list-service-proxies"></a><h3>gupnp_control_point_list_service_proxies ()</h3>
-<pre class="programlisting">const <span class="returnvalue">GList</span> *       gupnp_control_point_list_service_proxies
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *       gupnp_control_point_list_service_proxies
                                                         (<em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);</pre>
 <p>
-Get the <span class="type">GList</span> of discovered <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> objects. Do not free the
+Get the <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of discovered <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> objects. Do not free the
 list nor its elements.
 </p>
 <div class="variablelist"><table border="0">
@@ -265,7 +265,7 @@ list nor its elements.
 </tr>
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
-<td>a <span class="type">GList</span>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>
 of <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> objects. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnP.ServiceProxy][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
@@ -289,7 +289,7 @@ The resource factory to use. Set to NULL for default factory.
 <a name="GUPnPControlPoint-device-proxy-available"></a><h3>The <code class="literal">"device-proxy-available"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point,
                                                         <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a>  *proxy,
-                                                        <span class="type">gpointer</span>           user_data)          : <code class="literal">Run Last</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 The ::device-proxy-available signal is emitted whenever a new
 device has become available.
@@ -318,7 +318,7 @@ device has become available.
 <a name="GUPnPControlPoint-device-proxy-unavailable"></a><h3>The <code class="literal">"device-proxy-unavailable"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point,
                                                         <a class="link" href="GUPnPDeviceProxy.html" title="GUPnPDeviceProxy"><span class="type">GUPnPDeviceProxy</span></a>  *proxy,
-                                                        <span class="type">gpointer</span>           user_data)          : <code class="literal">Run Last</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 The ::device-proxy-unavailable signal is emitted whenever a
 device is not available any more.
@@ -347,7 +347,7 @@ device is not available any more.
 <a name="GUPnPControlPoint-service-proxy-available"></a><h3>The <code class="literal">"service-proxy-available"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point,
                                                         <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy,
-                                                        <span class="type">gpointer</span>           user_data)          : <code class="literal">Run Last</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 The ::service-proxy-available signal is emitted whenever a new
 service has become available.
@@ -376,7 +376,7 @@ service has become available.
 <a name="GUPnPControlPoint-service-proxy-unavailable"></a><h3>The <code class="literal">"service-proxy-unavailable"</code> signal</h3>
 <pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point,
                                                         <a class="link" href="GUPnPServiceProxy.html" title="GUPnPServiceProxy"><span class="type">GUPnPServiceProxy</span></a> *proxy,
-                                                        <span class="type">gpointer</span>           user_data)          : <code class="literal">Run Last</code></pre>
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>           user_data)          : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
 <p>
 The ::service-proxy-unavailable signal is emitted whenever a
 service is not available any more.

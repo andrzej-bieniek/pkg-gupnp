@@ -24,7 +24,7 @@
 <a name="server-tutorial"></a>Writing a UPnP Service</h2></div></div></div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id395814"></a>Introduction</h2></div></div></div>
+<a name="id435893"></a>Introduction</h2></div></div></div>
 <p>
       This chapter explains how to implement a UPnP service using GUPnP. For
       this example we will create a virtual UPnP-enabled light bulb.
@@ -42,7 +42,7 @@
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id405284"></a>Defining the Device</h2></div></div></div>
+<a name="id441248"></a>Defining the Device</h2></div></div></div>
 <p>
       The first step is to write the <em class="firstterm">device description</em>
       file.  This is a short XML document which describes the device and what
@@ -118,7 +118,7 @@
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id399098"></a>Defining Services</h2></div></div></div>
+<a name="id424712"></a>Defining Services</h2></div></div></div>
 <p>
       Because we are using a standard service we can use the service description
       from the specification.  This is the <code class="literal">SwitchPower1</code>
@@ -211,7 +211,7 @@
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id399944"></a>Implementing the Device</h2></div></div></div>
+<a name="id433741"></a>Implementing the Device</h2></div></div></div>
 <p>
       Before starting to implement the device, some boilerplate code is needed
       to initialise GUPnP.  GLib types and threading needs to be initialised,
@@ -249,7 +249,7 @@ gupnp_root_device_set_available (dev, TRUE);</pre>
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id403106"></a>Implementing a Service</h2></div></div></div>
+<a name="id447183"></a>Implementing a Service</h2></div></div></div>
 <p>
       To implement a service we first fetch the <a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a> from the root
       device using <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-service" title="gupnp_device_info_get_service ()"><code class="function">gupnp_device_info_get_service()</code></a> (<a class="link" href="GUPnPRootDevice.html" title="GUPnPRootDevice"><span class="type">GUPnPRootDevice</span></a> is a
@@ -272,7 +272,7 @@ service = gupnp_device_info_get_service
       control point subscribes to the service (to announce the initial value),
       or whenever a client queries the value of a state variable (note that this
       is now deprecated behaviour for UPnP control points): the handler is
-      passed the variable name and a <span class="type">GValue</span> which should be set to the current
+      passed the variable name and a <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a> which should be set to the current
       value of the variable.
     </p>
 <p>
@@ -329,7 +329,7 @@ g_signal_connect (service, "action-invoked::GetStatus", G_CALLBACK (get_status_c
 g_signal_connect (service, "action-invoked::SetTarget", G_CALLBACK (set_target_cb), NULL);</pre>
 <p>
       State variable query handlers are called with the name of the variable and
-      a <span class="type">GValue</span>.  This value should be initialized with the relevant type and
+      a <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>.  This value should be initialized with the relevant type and
       then set to the current value.  Again signal detail can be used to connect
       handlers to specific state variable callbacks.
     </p>
@@ -358,7 +358,7 @@ g_signal_connect (service, "query-variable::Status", G_CALLBACK (query_status_cb
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id428587"></a>Generating Service-specific Wrappers</h2></div></div></div>
+<a name="id414788"></a>Generating Service-specific Wrappers</h2></div></div></div>
 <p>
       Using service-specific wrappers can simplify the implementation of a service.
       Wrappers can be generated with <a class="xref" href="gupnp-binding-tool.html" title="gupnp-binding-tool"><span class="refentrytitle">gupnp-binding-tool</span>(1)</a>

@@ -9,10 +9,12 @@ GUPnPDeviceInfo
 
 </para>
 
+
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
+
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -229,6 +231,15 @@ GUPnPDeviceInfo
 
 
 <!-- ##### FUNCTION gupnp_device_info_list_dlna_capabilities ##### -->
+<para>
+
+</para>
+
+@info: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gupnp_device_info_list_dlna_device_class_identifier ##### -->
 <para>
 
 </para>
