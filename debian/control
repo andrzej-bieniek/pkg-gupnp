@@ -6,6 +6,7 @@ XSBC-Original-Maintainer: Ross Burton <ross@debian.org>
 Uploaders: Andreas Henriksson <andreas@fatal.se>
 Build-Depends: debhelper (>= 9),
                cdbs,
+               autotools-dev,
                uuid-dev,
                libglib2.0-dev (>= 2.26),
                libsoup2.4-dev (>= 2.34.0-1~),
@@ -13,16 +14,12 @@ Build-Depends: debhelper (>= 9),
                libgssdp-1.0-dev (>= 0.13.0),
                valac (>= 0.14.0),
                shared-mime-info,
+               gtk-doc-tools,
                xsltproc,
                docbook-xml,
-               gtk-doc-tools,
                docbook-xsl (>= 1.75.2+dfsg-5),
                gobject-introspection (>= 0.9.12-4~),
-               libgirepository1.0-dev (>= 0.9.12),
-               gir1.2-freedesktop,
-               gir1.2-glib-2.0,
-               gir1.2-gssdp-1.0,
-               gir1.2-soup-2.4
+               libgirepository1.0-dev (>= 0.10.7-1~)
 Standards-Version: 3.9.4
 Homepage: http://www.gupnp.org
 Vcs-Git: git://git.debian.org/git/collab-maint/gupnp.git
@@ -61,6 +58,7 @@ Depends: libgupnp-1.0-4 (= ${binary:Version}),
 Recommends: python
 Suggests: libgupnp-doc
 Replaces: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
+Breaks: gir-repository-dev (<= 0.6.5-5), gupnp-vala (<< 0.10.5)
 Description: GObject-based library for UPnP (development files)
  A GObject-based API for doing UPnP transparently.
  .

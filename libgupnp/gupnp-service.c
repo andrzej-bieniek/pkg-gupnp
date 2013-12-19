@@ -355,7 +355,7 @@ gupnp_service_action_get_locales (GUPnPServiceAction *action)
 /**
  * gupnp_service_action_get:
  * @action: A #GUPnPServiceAction
- * @Varargs: tuples of argument name, argument type, and argument value
+ * @...: tuples of argument name, argument type, and argument value
  * location, terminated with %NULL.
  *
  * Retrieves the specified action arguments.
@@ -434,7 +434,7 @@ gupnp_service_action_get_values (GUPnPServiceAction *action,
                                  GList              *arg_types)
 {
         GList *arg_values;
-        int i;
+        guint i;
 
         g_return_val_if_fail (action != NULL, NULL);
 
@@ -491,7 +491,7 @@ gupnp_service_action_get_value (GUPnPServiceAction *action,
         }
 
         if (!found)
-                g_warning ("Failed to retreive '%s' argument of '%s' action",
+                g_warning ("Failed to retrieve '%s' argument of '%s' action",
                            argument,
                            action->name);
 }
@@ -543,7 +543,7 @@ gupnp_service_action_get_argument_count (GUPnPServiceAction *action)
 /**
  * gupnp_service_action_set:
  * @action: A #GUPnPServiceAction
- * @Varargs: tuples of return value name, return value type, and
+ * @...: tuples of return value name, return value type, and
  * actual return value, terminated with %NULL.
  *
  * Sets the specified action return values.
@@ -898,12 +898,12 @@ query_state_variable (GUPnPService       *service,
 
 /* controlURL handler */
 static void
-control_server_handler (SoupServer        *server,
-                        SoupMessage       *msg, 
-                        const char        *server_path,
-                        GHashTable        *query,
-                        SoupClientContext *soup_client,
-                        gpointer           user_data)
+control_server_handler (SoupServer                      *server,
+                        SoupMessage                     *msg,
+                        G_GNUC_UNUSED const char        *server_path,
+                        G_GNUC_UNUSED GHashTable        *query,
+                        G_GNUC_UNUSED SoupClientContext *soup_client,
+                        gpointer                         user_data)
 {
         GUPnPService *service;
         GUPnPContext *context;
@@ -927,6 +927,14 @@ control_server_handler (SoupServer        *server,
                 soup_message_set_status (msg, SOUP_STATUS_BAD_REQUEST);
 
                 return;
+        }
+
+        /* DLNA 7.2.5.6: Always use HTTP 1.1 */
+        if (soup_message_get_http_version (msg) == SOUP_HTTP_1_0) {
+                soup_message_set_http_version (msg, SOUP_HTTP_1_1);
+                soup_message_headers_append (msg->response_headers,
+                                             "Connection",
+                                             "close");
         }
 
         context = gupnp_service_info_get_context (GUPNP_SERVICE_INFO (service));
@@ -1286,12 +1294,12 @@ unsubscribe (GUPnPService *service,
 
 /* eventSubscriptionURL handler */
 static void
-subscription_server_handler (SoupServer        *server,
-                             SoupMessage       *msg, 
-                             const char        *server_path,
-                             GHashTable        *query,
-                             SoupClientContext *soup_client,
-                             gpointer           user_data)
+subscription_server_handler (G_GNUC_UNUSED SoupServer        *server,
+                             SoupMessage                     *msg,
+                             G_GNUC_UNUSED const char        *server_path,
+                             G_GNUC_UNUSED GHashTable        *query,
+                             G_GNUC_UNUSED SoupClientContext *soup_client,
+                             gpointer                         user_data)
 {
         GUPnPService *service;
         const char *callback, *nt, *sid;
@@ -1362,7 +1370,7 @@ static void
 got_introspection (GUPnPServiceInfo          *info,
                    GUPnPServiceIntrospection *introspection,
                    const GError              *error,
-                   gpointer                   user_data)
+                   G_GNUC_UNUSED gpointer     user_data)
 {
         GUPnPService *service = GUPNP_SERVICE (info);
         const GList *state_variables, *l;
@@ -1467,9 +1475,9 @@ gupnp_service_constructor (GType                  type,
 
 /* Root device availability changed. */
 static void
-notify_available_cb (GObject *object,
-                     GParamSpec *pspec,
-                     gpointer    user_data)
+notify_available_cb (GObject                  *object,
+                     G_GNUC_UNUSED GParamSpec *pspec,
+                     gpointer                  user_data)
 {
         GUPnPService *service;
 
@@ -1737,7 +1745,7 @@ gupnp_service_class_init (GUPnPServiceClass *klass)
 /**
  * gupnp_service_notify:
  * @service: A #GUPnPService
- * @Varargs: Tuples of variable name, variable type, and variable value,
+ * @...: Tuples of variable name, variable type, and variable value,
  * terminated with %NULL.
  *
  * Notifies listening clients that the properties listed in @Varargs
@@ -1803,9 +1811,9 @@ gupnp_service_notify_valist (GUPnPService *service,
 
 /* Received notify response. */
 static void
-notify_got_response (SoupSession *session,
-                     SoupMessage *msg,
-                     gpointer     user_data)
+notify_got_response (G_GNUC_UNUSED SoupSession *session,
+                     SoupMessage               *msg,
+                     gpointer                   user_data)
 {
         SubscriptionData *data;
 
@@ -1874,9 +1882,9 @@ notify_got_response (SoupSession *session,
 
 /* Send notification @user_data to subscriber @value */
 static void
-notify_subscriber (gpointer key,
-                   gpointer value,
-                   gpointer user_data)
+notify_subscriber (G_GNUC_UNUSED gpointer key,
+                   gpointer               value,
+                   gpointer               user_data)
 {
         SubscriptionData *data;
         const char *property_set;
@@ -2191,7 +2199,7 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * A convenience function that attempts to connect all possible
  * #GUPnPService::action-invoked and #GUPnPService::query-variable signals to
  * appropriate callbacks for the service @service. It uses service introspection
- * and GModule's introspective features. It is very simillar to
+ * and #GModule<!-- -->'s introspective features. It is very simillar to
  * gtk_builder_connect_signals() except that it attempts to guess the names of
  * the signal handlers on its own.
  *
@@ -2200,17 +2208,18 @@ connect_names_to_signal_handlers (GUPnPService *service,
  * off the action names and either prepend "on_" or append "_cb" to them. Same
  * goes for #GUPnPService::query-variable signals, except that "query_" should
  * be prepended to the variable name. For example, callback function for
- * "GetSystemUpdateID" action should be either named as
+ * <varname>GetSystemUpdateID</varname> action should be either named as
  * "get_system_update_id_cb" or "on_get_system_update_id" and callback function
  * for the query of "SystemUpdateID" state variable should be named
- * "query_system_update_id_cb" or "on_query_system_update_id".
+ * <function>query_system_update_id_cb</function> or
+ * <function>on_query_system_update_id</function>.
  *
- * Note that this function will not work correctly if GModule is not supported
- * on the platform or introspection is not available for service @service.
+ * <note>This function will not work correctly if #GModule is not supported
+ * on the platform or introspection is not available for @service.</note>
  *
- * WARNING: This function can not and therefore does not guarantee that the
+ * <warning>This function can not and therefore does not guarantee that the
  * resulting signal connections will be correct as it depends heavily on a
- * particular naming schemes described above.
+ * particular naming schemes described above.</warning>
  **/
 void
 gupnp_service_signals_autoconnect (GUPnPService *service,

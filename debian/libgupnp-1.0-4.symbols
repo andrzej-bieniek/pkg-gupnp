@@ -16,6 +16,7 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_context_manager_manage_control_point@Base 0.18.0
  gupnp_context_manager_manage_root_device@Base 0.18.0
  gupnp_context_manager_new@Base 0.18.0
+ gupnp_context_manager_rescan_control_points@Base 0.20.3
  gupnp_context_new@Base 0.18.0
  gupnp_context_set_default_language@Base 0.18.0
  gupnp_context_set_subscription_timeout@Base 0.18.0
@@ -57,17 +58,13 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_device_info_list_device_types@Base 0.18.0
  gupnp_device_info_list_devices@Base 0.18.0
  gupnp_device_info_list_dlna_capabilities@Base 0.18.0
+ gupnp_device_info_list_dlna_device_class_identifier@Base 0.20.4
  gupnp_device_info_list_service_types@Base 0.18.0
  gupnp_device_info_list_services@Base 0.18.0
  gupnp_device_proxy_get_type@Base 0.18.0
  gupnp_eventing_error_quark@Base 0.18.0
  gupnp_marshal_VOID__POINTER_POINTER@Base 0.18.0
  gupnp_marshal_VOID__STRING_POINTER@Base 0.18.0
-# the below symbols are Context Manager related internal symbols
-# the are internal and should never have been visible.
-# will be fixed by adding missing G_GNUC_INTERNAL upstream.
-#MISSING: 0.18.2-2# gupnp_network_manager_get_type@Base 0.18.0
-#MISSING: 0.18.2-2# gupnp_network_manager_is_available@Base 0.18.0
  gupnp_resource_factory_get_default@Base 0.18.0
  gupnp_resource_factory_get_type@Base 0.18.0
  gupnp_resource_factory_new@Base 0.18.0
@@ -149,8 +146,6 @@ libgupnp-1.0.so.4 libgupnp-1.0-4 #MINVER#
  gupnp_service_thaw_notify@Base 0.18.0
  gupnp_time_get_type@Base 0.18.0
  gupnp_time_tz_get_type@Base 0.18.0
-# See above comments for NM context manager...
-#MISSING: 0.18.2-2# gupnp_unix_context_manager_get_type@Base 0.18.0
  gupnp_uri_get_type@Base 0.18.0
  gupnp_uuid_get_type@Base 0.18.0
  gupnp_xml_doc_get_type@Base 0.18.0

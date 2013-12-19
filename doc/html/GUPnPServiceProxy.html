@@ -273,6 +273,13 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
 </td>
 </tr>
 <tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of in parameter name, in parameter type, and in parameter
+value, followed by <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, and then tuples of out parameter name,
+out parameter type, and out parameter value location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if sending the action was succesful.</td>
@@ -289,8 +296,7 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
-See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>; this version takes a va_list for
-use by language bindings.
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -488,6 +494,12 @@ or failed. <span class="annotation">[<acronym title="The callback is valid until
 </td>
 </tr>
 <tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of in parameter name, in parameter type, and in parameter
+value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A <a class="link" href="GUPnPServiceProxy.html#GUPnPServiceProxyAction" title="GUPnPServiceProxyAction"><span class="type">GUPnPServiceProxyAction</span></a> handle. This will be freed when
 <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-cancel-action" title="gupnp_service_proxy_cancel_action ()"><code class="function">gupnp_service_proxy_cancel_action()</code></a> or
@@ -507,8 +519,7 @@ or failed. <span class="annotation">[<acronym title="The callback is valid until
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
-See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>; this version takes a va_list for
-use by language bindings.
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-begin-action" title="gupnp_service_proxy_begin_action ()"><code class="function">gupnp_service_proxy_begin_action()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -688,6 +699,12 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
 </td>
 </tr>
 <tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of out parameter name, out parameter type, and out parameter
+value location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. The out parameter values should be
+freed after use</td>
+</tr>
+<tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.</td>
@@ -704,8 +721,7 @@ a UPnPError the error code will be the same in <em class="parameter"><code>error
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>,
                                                          <em class="parameter"><code><span class="type">va_list</span> var_args</code></em>);</pre>
 <p>
-See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>; this version takes a va_list for
-use by language bindings.
+See <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-end-action" title="gupnp_service_proxy_end_action ()"><code class="function">gupnp_service_proxy_end_action()</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -795,9 +811,6 @@ out-parameter names, types and place-holders for values. The returned list
 in <em class="parameter"><code>out_values</code></em> must be freed using <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><span class="type">g_list_free</span></a> and each element in it using
 <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#g-value-unset"><span class="type">g_value_unset</span></a> and <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Slices.html#g-slice-free"><span class="type">g_slice_free</span></a>.
 </p>
-<p>
-Return value : <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.
-</p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody>
@@ -835,6 +848,11 @@ that line up with <em class="parameter"><code>out_names</code></em>. <span class
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of values
 (as <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Generic-values.html#GValue"><span class="type">GValue</span></a>) that line up with <em class="parameter"><code>out_names</code></em> and <em class="parameter"><code>out_types</code></em>. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GValue][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span>
 </td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success.</td>
 </tr>
 </tbody>
 </table></div>

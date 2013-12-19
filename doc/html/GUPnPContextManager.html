@@ -47,6 +47,8 @@
 <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="returnvalue">GUPnPContextManager</span></a> * <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-new" title="gupnp_context_manager_new ()">gupnp_context_manager_new</a>         (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-The-Main-Event-Loop.html#GMainContext"><span class="type">GMainContext</span></a> *main_context</code></em>,
                                                          <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);
 <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="returnvalue">GUPnPContextManager</span></a> * <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-create" title="gupnp_context_manager_create ()">gupnp_context_manager_create</a>      (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> port</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-rescan-control-points" title="gupnp_context_manager_rescan_control_points ()">gupnp_context_manager_rescan_control_points</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *manager</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPContextManager.html#gupnp-context-manager-manage-control-point" title="gupnp_context_manager_manage_control_point ()">gupnp_context_manager_manage_control_point</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *manager</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPControlPoint.html" title="GUPnPControlPoint"><span class="type">GUPnPControlPoint</span></a> *control_point</code></em>);
@@ -152,6 +154,26 @@ the implementation falls back to the basic Unix context manager instead.
 </td>
 </tr>
 </tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-context-manager-rescan-control-points"></a><h3>gupnp_context_manager_rescan_control_points ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_context_manager_rescan_control_points
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a> *manager</code></em>);</pre>
+<p>
+This function starts a rescan on every control point managed by <em class="parameter"><code>manager</code></em>.
+Only the active control points send discovery messages.
+This function should be called when servers are suspected to have
+disappeared.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>manager</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPContextManager.html" title="GUPnPContextManager"><span class="type">GUPnPContextManager</span></a>
+</td>
+</tr></tbody>
 </table></div>
 </div>
 <hr>

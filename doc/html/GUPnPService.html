@@ -200,11 +200,18 @@ Retrieves the specified action arguments.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of argument name, argument type, and argument value
+location, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -345,11 +352,18 @@ Sets the specified action return values.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html#GUPnPServiceAction"><span class="type">GUPnPServiceAction</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>tuples of return value name, return value type, and
+actual return value, terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -544,11 +558,18 @@ have changed to the specified values.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>service</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPService.html" title="GUPnPService"><span class="type">GUPnPService</span></a>
 </td>
-</tr></tbody>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>Tuples of variable name, variable type, and variable value,
+terminated with <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -647,8 +668,8 @@ Sends out any pending notifications, and stops queuing of new ones.
 A convenience function that attempts to connect all possible
 <a class="link" href="GUPnPService.html#GUPnPService-action-invoked" title='The "action-invoked" signal'><span class="type">"action-invoked"</span></a> and <a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'><span class="type">"query-variable"</span></a> signals to
 appropriate callbacks for the service <em class="parameter"><code>service</code></em>. It uses service introspection
-and GModule's introspective features. It is very simillar to
-<code class="function">gtk_builder_connect_signals()</code> except that it attempts to guess the names of
+and <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a>'s introspective features. It is very simillar to
+<a href="http://developer.gnome.org/gtk2/GtkBuilder.html#gtk-builder-connect-signals"><code class="function">gtk_builder_connect_signals()</code></a> except that it attempts to guess the names of
 the signal handlers on its own.
 </p>
 <p>
@@ -657,19 +678,26 @@ functions for <a class="link" href="GUPnPService.html#GUPnPService-action-invoke
 off the action names and either prepend "on_" or append "_cb" to them. Same
 goes for <a class="link" href="GUPnPService.html#GUPnPService-query-variable" title='The "query-variable" signal'><span class="type">"query-variable"</span></a> signals, except that "query_" should
 be prepended to the variable name. For example, callback function for
-"GetSystemUpdateID" action should be either named as
+<code class="varname">GetSystemUpdateID</code> action should be either named as
 "get_system_update_id_cb" or "on_get_system_update_id" and callback function
 for the query of "SystemUpdateID" state variable should be named
-"query_system_update_id_cb" or "on_query_system_update_id".
+<code class="function">query_system_update_id_cb</code> or
+<code class="function">on_query_system_update_id</code>.
 </p>
 <p>
-Note that this function will not work correctly if GModule is not supported
-on the platform or introspection is not available for service <em class="parameter"><code>service</code></em>.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>This function will not work correctly if <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a> is not supported
+on the platform or introspection is not available for <em class="parameter"><code>service</code></em>.</div>
+<p>
 </p>
 <p>
-WARNING: This function can not and therefore does not guarantee that the
+</p>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>This function can not and therefore does not guarantee that the
 resulting signal connections will be correct as it depends heavily on a
-particular naming schemes described above.
+particular naming schemes described above.</div>
+<p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">

@@ -103,7 +103,7 @@ GUPnP classes. It automatically starts a web server on demand.
 </p>
 <p>
 For debugging, it is possible to see the messages being sent and received by
-exporting <code class="literal">GUPNP_DEBUG</code>.
+exporting <code class="envar">GUPNP_DEBUG</code>.
 </p>
 </div>
 <div class="refsect1">
@@ -345,11 +345,17 @@ Content-Language header is set to this value. The default value is "en".
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
-<tbody><tr>
+<tbody>
+<tr>
 <td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
 <td>A <a class="link" href="GUPnPContext.html" title="GUPnPContext"><span class="type">GUPnPContext</span></a>
-<em class="parameter"><code>language</code></em> A language tag as defined in RFC 2616 3.10</td>
-</tr></tbody>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>language</code></em> :</span></p></td>
+<td>A language tag as defined in RFC 2616 3.10</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <hr>
@@ -489,6 +495,7 @@ The <a href="/opt/rygel-stable/share/gtk-doc/html/libsoup-2.4/SoupSession.html">
 <p>
 The preferred subscription timeout: the number of seconds after
 which subscriptions are renewed. Set to '0' if subscriptions
+
 are never to time out.
 </p>
 <p>Allowed values: &lt;= 604800</p>

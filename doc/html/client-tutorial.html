@@ -24,7 +24,7 @@
 <a name="client-tutorial"></a>Writing a UPnP Client</h2></div></div></div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id506164"></a>Introduction</h2></div></div></div>
+<a name="id436847"></a>Introduction</h2></div></div></div>
 <p>
       This chapter explains how to write an application which fetches the
       external IP address from an UPnP-compliant modem.  To do this a
@@ -41,7 +41,7 @@
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id512092"></a>Finding Services</h2></div></div></div>
+<a name="id427461"></a>Finding Services</h2></div></div></div>
 <p>
       First, we initialize GUPnP and create a control point targeting the
       service type.  Then we connect a signal handler so that we are notified
@@ -104,7 +104,7 @@ main (int argc, char **argv)
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id477830"></a>Invoking Actions</h2></div></div></div>
+<a name="id420978"></a>Invoking Actions</h2></div></div></div>
 <p>
       Now we have an application which searches for the service we specified and
       calls <code class="function">service_proxy_available_cb</code> for each one it
@@ -154,11 +154,11 @@ service_proxy_available_cb (GUPnPControlPoint *cp,
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id504880"></a>Subscribing to state variable change notifications</h2></div></div></div>
+<a name="id417440"></a>Subscribing to state variable change notifications</h2></div></div></div>
 <p>
       It is possible to get change notifications for the service state variables 
       that have attribute <code class="literal">sendEvents="yes"</code>. We'll demonstrate
-      this by modifying <code class="function"><code class="function">service_proxy_available_cb()</code></code> and using 
+      this by modifying <code class="function">service_proxy_available_cb</code> and using
       <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify" title="gupnp_service_proxy_add_notify ()"><code class="function">gupnp_service_proxy_add_notify()</code></a> to setup a notification callback:
     </p>
 <pre class="programlisting">static void
@@ -189,7 +189,7 @@ service_proxy_available_cb (GUPnPControlPoint *cp,
 </div>
 <div class="simplesect">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id491045"></a>Generating Wrappers</h2></div></div></div>
+<a name="id422983"></a>Generating Wrappers</h2></div></div></div>
 <p>
       Using <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-send-action" title="gupnp_service_proxy_send_action ()"><code class="function">gupnp_service_proxy_send_action()</code></a> and <a class="link" href="GUPnPServiceProxy.html#gupnp-service-proxy-add-notify" title="gupnp_service_proxy_add_notify ()"><code class="function">gupnp_service_proxy_add_notify()</code></a>
       can become tedious, because of the requirement to specify the types and deal

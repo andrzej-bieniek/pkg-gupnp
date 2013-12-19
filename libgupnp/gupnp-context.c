@@ -30,7 +30,7 @@
  * GUPnP classes. It automatically starts a web server on demand.
  *
  * For debugging, it is possible to see the messages being sent and received by
- * exporting %GUPNP_DEBUG.
+ * exporting <envar>GUPNP_DEBUG</envar>.
  */
 
 #include <config.h>
@@ -183,7 +183,7 @@ gupnp_context_initable_init (GInitable     *initable,
                  NULL);
 
         user_agent = g_strdup_printf ("%s GUPnP/" VERSION " DLNADOC/1.50",
-                                      g_get_application_name ()? : "");
+                                      g_get_prgname ()? : "");
         g_object_set (context->priv->session,
                       SOUP_SESSION_USER_AGENT,
                       user_agent,
@@ -222,8 +222,8 @@ gupnp_context_initable_init (GInitable     *initable,
 }
 
 static void
-gupnp_context_initable_iface_init (gpointer g_iface,
-                                   gpointer iface_data)
+gupnp_context_initable_iface_init (gpointer               g_iface,
+                                   G_GNUC_UNUSED gpointer iface_data)
 {
         GInitableIface *iface = (GInitableIface *)g_iface;
         initable_parent_iface = g_type_interface_peek_parent (iface);
@@ -476,12 +476,12 @@ gupnp_context_get_session (GUPnPContext *context)
  * Default server handler: Return 404 not found.
  **/
 static void
-default_server_handler (SoupServer        *server,
-                        SoupMessage       *msg, 
-                        const char        *path,
-                        GHashTable        *query,
-                        SoupClientContext *client,
-                        gpointer           user_data)
+default_server_handler (G_GNUC_UNUSED SoupServer        *server,
+                        SoupMessage                     *msg,
+                        G_GNUC_UNUSED const char        *path,
+                        G_GNUC_UNUSED GHashTable        *query,
+                        G_GNUC_UNUSED SoupClientContext *client,
+                        G_GNUC_UNUSED gpointer           user_data)
 {
         soup_message_set_status (msg, SOUP_STATUS_NOT_FOUND);
 }
@@ -684,7 +684,7 @@ host_path_data_set_language (HostPathData *data, const char *language)
 /**
  * gupnp_context_set_default_language:
  * @context: A #GUPnPContext
- * @language A language tag as defined in RFC 2616 3.10
+ * @language: A language tag as defined in RFC 2616 3.10
  *
  * Set the default language for the Content-Length header to @language.
  *
@@ -825,12 +825,12 @@ redirect_to_folder (SoupMessage *msg)
 /* Serve @path. Note that we do not need to check for path including bogus
  * '..' as libsoup does this for us. */
 static void
-host_path_handler (SoupServer        *server,
-                   SoupMessage       *msg, 
-                   const char        *path,
-                   GHashTable        *query,
-                   SoupClientContext *client,
-                   gpointer           user_data)
+host_path_handler (G_GNUC_UNUSED SoupServer        *server,
+                   SoupMessage                     *msg,
+                   const char                      *path,
+                   G_GNUC_UNUSED GHashTable        *query,
+                   G_GNUC_UNUSED SoupClientContext *client,
+                   gpointer                         user_data)
 {
         char *local_path, *path_to_open;
         struct stat st;

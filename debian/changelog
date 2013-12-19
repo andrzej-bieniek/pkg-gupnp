@@ -1,10 +1,52 @@
-gupnp (0.20.0-1ubuntu1) raring; urgency=low
+gupnp (0.20.4-1) unstable; urgency=low
 
-  * Add B-D on docbook-xml, otherwise xsltproc tries to download DTDs from the
-    internet.
-  * Build with --enable-gtk-doc and add gtk-doc-utils B-D to prevent FTBFS. 
+  * Imported Upstream version 0.20.4
+  * Update symbols file with one added symbol
 
- -- Iain Lane <iain.lane@canonical.com>  Wed, 06 Mar 2013 12:32:40 +0000
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 03 Aug 2013 02:37:18 +0200
+
+gupnp (0.20.3-1) unstable; urgency=low
+
+  * Imported Upstream version 0.20.3
+  * Add autotools-dev build-dependency
+    - fixes outdated-autotools-helper-file with help from CDBS
+  * Don't manually run dh_girepository anymore
+    - This is handled by CDBS since 0.4.90
+  * Update symbols with 1 addition
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 04 Jun 2013 15:37:22 +0200
+
+gupnp (0.20.2-3) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 18 May 2013 02:01:33 +0200
+
+gupnp (0.20.2-2) experimental; urgency=low
+
+  [ Iain Lane ]
+  * Add build-dependency on docbook-xml
+    - otherwise xsltproc tries to download DTDs from the internet.
+  * Enable rebuilding of gtk-doc files (Closes: #702430)
+
+  [ Andreas Henriksson ]
+  * Drop explicit build-dependencies on gir1.2-*
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 29 Apr 2013 11:24:21 +0200
+
+gupnp (0.20.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.20.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 19 Apr 2013 15:39:12 +0200
+
+gupnp (0.20.1-1) experimental; urgency=low
+
+  * Make libgupnp-1.0-dev break packages it replaces files in
+    for policy compliance
+  * Imported Upstream version 0.20.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 07 Mar 2013 16:43:50 +0100
 
 gupnp (0.20.0-1) experimental; urgency=low
 

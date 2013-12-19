@@ -74,6 +74,8 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
                                                          <em class="parameter"><code><span class="type">int</span> *height</code></em>);
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-dlna-capabilities" title="gupnp_device_info_list_dlna_capabilities ()">gupnp_device_info_list_dlna_capabilities</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> *info</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-list-dlna-device-class-identifier" title="gupnp_device_info_list_dlna_device_class_identifier ()">gupnp_device_info_list_dlna_device_class_identifier</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> *info</code></em>);
 <span class="returnvalue">char</span> *              <a class="link" href="GUPnPDeviceInfo.html#gupnp-device-info-get-description-value" title="gupnp_device_info_get_description_value ()">gupnp_device_info_get_description_value</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> *info</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *element</code></em>);
@@ -579,7 +581,7 @@ returned icon, or <a href="http://library.gnome.org/devel/glib/unstable/glib-Sta
 <pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             gupnp_device_info_list_dlna_capabilities
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> *info</code></em>);</pre>
 <p>
-Get a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings that represent the device capabilities as announced 
+Get a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings that represent the device capabilities as announced
 in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
 </p>
 <div class="variablelist"><table border="0">
@@ -594,6 +596,34 @@ in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of newly allocated strings or
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the device description doesn't contain the &lt;dlna:X_DLNACAP&gt;
+element. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-device-info-list-dlna-device-class-identifier"></a><h3>gupnp_device_info_list_dlna_device_class_identifier ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             gupnp_device_info_list_dlna_device_class_identifier
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a> *info</code></em>);</pre>
+<p>
+Get a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of strings that represent the device class and version as
+announced in the device description file using the &lt;dlna:X_DLNADOC&gt;
+element.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDeviceInfo.html" title="GUPnPDeviceInfo"><span class="type">GUPnPDeviceInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of newly allocated strings or
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the device description doesn't contain the &lt;dlna:X_DLNADOC&gt;
 element. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8]</span>
 </td>
 </tr>

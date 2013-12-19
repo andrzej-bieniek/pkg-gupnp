@@ -85,7 +85,7 @@ gupnp_device_info_set_property (GObject      *object,
 
         switch (property_id) {
         case PROP_RESOURCE_FACTORY:
-                info->priv->factory = 
+                info->priv->factory =
                         GUPNP_RESOURCE_FACTORY (g_value_dup_object (value));
                 break;
         case PROP_CONTEXT:
@@ -474,7 +474,7 @@ gupnp_device_info_get_device_type (GUPnPDeviceInfo *info)
  * @info: A #GUPnPDeviceInfo
  *
  * Get the friendly name of the device.
- * 
+ *
  * Return value: A string, or %NULL. g_free() after use.
  **/
 char *
@@ -577,7 +577,7 @@ gupnp_device_info_get_model_number (GUPnPDeviceInfo *info)
  * @info: A #GUPnPDeviceInfo
  *
  * Get a URL pointing to the device model's website.
- * 
+ *
  * Return value: A string, or %NULL. g_free() after use.
  **/
 char *
@@ -595,7 +595,7 @@ gupnp_device_info_get_model_url (GUPnPDeviceInfo *info)
  * @info: A #GUPnPDeviceInfo
  *
  * Get the serial number of the device.
- * 
+ *
  * Return value: A string, or %NULL. g_free() after use.
  **/
 char *
@@ -630,7 +630,7 @@ gupnp_device_info_get_upc (GUPnPDeviceInfo *info)
  *
  * Get a URL pointing to the device's presentation page, for web-based
  * administration.
- * 
+ *
  * Return value: A string, or %NULL. g_free() after use.
  **/
 char *
@@ -654,7 +654,7 @@ typedef struct {
 } Icon;
 
 static Icon *
-icon_parse (GUPnPDeviceInfo *info, xmlNode *element)
+icon_parse (G_GNUC_UNUSED GUPnPDeviceInfo *info, xmlNode *element)
 {
         Icon *icon;
 
@@ -751,9 +751,10 @@ gupnp_device_info_get_icon_url (GUPnPDeviceInfo *info,
                         icon = icon_parse (info, element);
 
                         if (requested_mime_type) {
-                                mime_type_ok =
-                                        !strcmp (requested_mime_type,
-                                                 (char *) icon->mime_type);
+				if (icon->mime_type)
+					mime_type_ok = !strcmp (
+						requested_mime_type,
+						(char *) icon->mime_type);
                         } else
                                 mime_type_ok = TRUE;
 
@@ -869,7 +870,7 @@ gupnp_device_info_get_icon_url (GUPnPDeviceInfo *info,
         return ret;
 }
 
-/* Returns TRUE if @query matches against @base. 
+/* Returns TRUE if @query matches against @base.
  * - If @query does not specify a version, it matches any version specified
  *   in @base.
  * - If @query specifies a version, it matches any version specified in @base
@@ -926,10 +927,43 @@ resource_type_match (const char *query,
 }
 
 /**
+ * gupnp_device_info_list_dlna_device_class_identifier:
+ * @info: A #GUPnPDeviceInfo
+ *
+ * Get a #GList of strings that represent the device class and version as
+ * announced in the device description file using the &lt;dlna:X_DLNADOC&gt;
+ * element.
+ * Returns: (transfer full) (element-type utf8): a #GList of newly allocated strings or
+ * %NULL if the device description doesn't contain the &lt;dlna:X_DLNADOC&gt;
+ * element.
+ **/
+GList *
+gupnp_device_info_list_dlna_device_class_identifier (GUPnPDeviceInfo *info)
+{
+        xmlNode *element;
+        GList *list  = NULL;
+
+        g_return_val_if_fail (GUPNP_IS_DEVICE_INFO (info), NULL);
+
+        element = info->priv->element;
+
+        for (element = element->children; element; element = element->next) {
+                /* No early exit since the node explicitly may appear multiple
+                 * times: 7.2.10.3 */
+                if (!strcmp ("X_DLNADOC", (char *) element->name))
+                        list = g_list_prepend (list,
+                                               xmlNodeGetContent(element));
+        }
+
+        /* Return in order of appearance in document */
+        return g_list_reverse (list);
+}
+
+/**
  * gupnp_device_info_list_dlna_capabilities:
  * @info: A #GUPnPDeviceInfo
  *
- * Get a #GList of strings that represent the device capabilities as announced 
+ * Get a #GList of strings that represent the device capabilities as announced
  * in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
  *
  * Returns: (transfer full) (element-type utf8): a #GList of newly allocated strings or
@@ -1116,6 +1150,7 @@ gupnp_device_info_get_device (GUPnPDeviceInfo *info,
         xmlNode *element;
 
         g_return_val_if_fail (GUPNP_IS_DEVICE_INFO (info), NULL);
+        g_return_val_if_fail (type != NULL, NULL);
 
         class = GUPNP_DEVICE_INFO_GET_CLASS (info);
 
@@ -1270,6 +1305,7 @@ gupnp_device_info_get_service (GUPnPDeviceInfo *info,
         xmlNode *element;
 
         g_return_val_if_fail (GUPNP_IS_DEVICE_INFO (info), NULL);
+        g_return_val_if_fail (type != NULL, NULL);
 
         class = GUPNP_DEVICE_INFO_GET_CLASS (info);
 
